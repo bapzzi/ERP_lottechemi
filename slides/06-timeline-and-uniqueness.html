@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>06 · 17년 SAP 자산 + M&amp;A 통합 압력</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/style.css" />
+  <style>
+    /* 06 timeline-and-uniqueness 전용 */
+    .tl-main {
+      position: relative;
+      z-index: 3;
+      padding: 84px var(--slide-padding-x) 0;
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: var(--sp-6);
+      height: 864px;
+    }
+    .tl-headline {
+      font-family: var(--font-sans);
+      font-size: 36px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.32;
+      color: var(--color-ink-strong);
+      max-width: 1400px;
+    }
+    .tl-headline .tl-em { color: var(--color-red); }
+    .tl-track {
+      position: relative;
+      padding: var(--sp-7) 0 var(--sp-6);
+      margin-top: var(--sp-2);
+    }
+    .tl-axis {
+      position: absolute;
+      left: 0; right: 0;
+      top: 50%;
+      height: 2px;
+      background: var(--color-line);
+    }
+    .tl-points {
+      position: relative;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: var(--sp-4);
+    }
+    .tl-point {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .tl-year {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      color: var(--color-ink-soft);
+    }
+    .tl-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--color-paper);
+      border: 2px solid var(--color-ink-soft);
+      z-index: 2;
+    }
+    .tl-label {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: -0.005em;
+      color: var(--color-ink-strong);
+      text-align: center;
+      line-height: 1.4;
+      max-width: 240px;
+    }
+    .tl-sub {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--color-ink-mute);
+      text-align: center;
+    }
+    .tl-point--emph .tl-dot { background: var(--color-red); border-color: var(--color-red); }
+    .tl-point--emph .tl-year { color: var(--color-red); }
+    .tl-point--emph .tl-label { color: var(--color-red-deep); }
+    .tl-bottom {
+      display: grid;
+      grid-template-columns: 1.1fr 1fr;
+      gap: var(--sp-6);
+      align-items: stretch;
+    }
+    .tl-message {
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-red);
+      padding: var(--sp-5) var(--sp-6);
+    }
+    .tl-message-label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-red-deep);
+      margin-bottom: var(--sp-3);
+    }
+    .tl-message-body {
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      line-height: 1.55;
+      color: var(--color-ink-strong);
+    }
+    .tl-quote {
+      padding: var(--sp-5) var(--sp-6);
+      border: 1px solid var(--color-line);
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      justify-content: center;
+    }
+    .tl-quote-mark {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      color: var(--color-ink-faint);
+      line-height: 0.5;
+    }
+    .tl-quote-body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.5;
+      color: var(--color-ink);
+      font-style: italic;
+    }
+    .tl-quote-source {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--color-ink-mute);
+    }
+  </style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+    <section class="slide tone-b active" data-slide="6">
+      <header class="slide-head">
+        <div class="brand">
+          <img class="brand-logo" src="../shared/lotte-chemical-logo.jpeg" alt="롯데케미칼 로고" />
+        </div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page">
+          <span class="hp-num">06</span>
+        </div>
+      </header>
+      <main class="tl-main">
+        <div class="eyebrow reveal" style="--rev-delay:0.05s">
+          <span class="eb-bar"></span>
+          <span class="eb-num">1부 · 03</span>
+          <span class="eb-text">17년 SAP 자산 + M&amp;A 통합 압력</span>
+        </div>
+        <h1 class="tl-headline reveal" style="--rev-delay:0.2s">
+          17년 SAP 자산 누적 + M&amp;A 통합 압력의 결합이<br />
+          본 사례를 <span class="tl-em">일반적 ERP 도입과 구별한다</span>
+        </h1>
+        <div class="tl-track reveal" style="--rev-delay:0.4s">
+          <div class="tl-axis"></div>
+          <div class="tl-points">
+            <div class="tl-point">
+              <span class="tl-year">2003</span>
+              <span class="tl-dot"></span>
+              <span class="tl-label">SMART</span>
+              <span class="tl-sub">SAP 1차 도입</span>
+            </div>
+            <div class="tl-point">
+              <span class="tl-year">2010</span>
+              <span class="tl-dot"></span>
+              <span class="tl-label">GEMS</span>
+              <span class="tl-sub">석유화학 최초 자체 구축</span>
+            </div>
+            <div class="tl-point tl-point--emph">
+              <span class="tl-year">2016</span>
+              <span class="tl-dot"></span>
+              <span class="tl-label">M&amp;A 약 2.8조</span>
+              <span class="tl-sub">정밀화학 4,650억 + 첨단소재 2조 3,265억</span>
+            </div>
+            <div class="tl-point tl-point--emph">
+              <span class="tl-year">2017</span>
+              <span class="tl-dot"></span>
+              <span class="tl-label">SAP S/4HANA</span>
+              <span class="tl-sub">7개월 통합 컨버전</span>
+            </div>
+            <div class="tl-point">
+              <span class="tl-year">+α</span>
+              <span class="tl-dot"></span>
+              <span class="tl-label">디지털 코어</span>
+              <span class="tl-sub">후속 확장 (Step 4)</span>
+            </div>
+          </div>
+        </div>
+        <div class="tl-bottom">
+          <div class="tl-message reveal" style="--rev-delay:0.7s">
+            <div class="tl-message-label">두 조건 결합 환경</div>
+            <p class="tl-message-body">
+              13년 누적 SAP 자산이 있는 회사에 2016년 약 2.8조 원의 M&amp;A 자산이 더해졌다.
+              두 조건이 동시에 작동했기에 본 사례의 의사결정 경로는 일반적 ERP 도입과 다르다.
+            </p>
+          </div>
+          <blockquote class="tl-quote reveal" style="--rev-delay:0.85s">
+            <span class="tl-quote-mark">"</span>
+            <p class="tl-quote-body">
+              유가에 흔들리지 않고 지속성장하기 위해 디지털 코어를 탄탄히 한다.
+            </p>
+            <span class="tl-quote-source">박제성 정보전략담당 상무 인터뷰</span>
+          </blockquote>
+        </div>
+      </main>
+      <footer class="slide-foot">
+        <span class="sf-left">1부 · 왜 ERP 통합이 필요했는가</span>
+        <span class="sf-mid">광운대학교 경영대학 ERP개론 · 1팀</span>
+        <span class="sf-right">출처: Step 1 §3 + §6</span>
+      </footer>
+    </section>
+  </div>
+</div>
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+</div>
+<script src="../shared/script.js"></script>
+</body>
+</html>

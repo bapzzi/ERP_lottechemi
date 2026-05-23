@@ -1,0 +1,658 @@
+# slides.yml
+# 본 발표 전체 28장의 현재 최종 지도.
+# 슬라이드별 상세 명세는 outline/NN-name.md에서 관리한다.
+# 변경 사유는 outline/_review-log.md에 기록한다.
+
+meta:
+  total_slides: 28
+  candidate_plan: C-prime-prime
+  thesis_doc: spec/content-thesis.md
+  tone_doc: spec/tone-system.md
+  last_updated: 2026-05-22
+  version: v1.0
+
+chapters:
+  - id: 0
+    title: 표지·서론
+    slides_range: "01~02"
+  - id: 1
+    title: 왜 이 사례인가
+    slides_range: "03~08"
+  - id: 2
+    title: 13년 누적 + M&A 압력 + 의사결정
+    slides_range: "09~16"
+  - id: 3
+    title: 7개월의 구축
+    slides_range: "17~23"
+  - id: 4
+    title: 가동 이후의 검증
+    slides_range: "24~27"
+  - id: 5
+    title: 결론
+    slides_range: "28"
+
+tone_distribution:
+  tone_a: 5
+  tone_b: 13
+  tone_c: 10
+  note: |
+    Tone B가 권장 비율보다 다소 많음. 본 발표가 분석·논리 서사 성격이므로
+    챕터 진입·시퀀스 시작·종료가 B로 분류됨. tone-system §5 가이드는 권장이지 강제 아님.
+
+pending_components:
+  - name: timeline
+    used_in: ["10", "27", "28"]
+    purpose: SAP 자산 축적, 벤치마크, 결론 진화 흐름
+    tone_context: tone-b / tone-c
+  - name: governance-triad
+    used_in: ["13"]
+    purpose: 롯데케미칼·롯데정보통신·SAP 본사 추진 구조
+    tone_context: tone-b
+    design_guard: 3사 통합 구조도(integration-svg)와 시각적으로 명확히 구분
+  - name: decision-matrix
+    used_in: ["14"]
+    purpose: 4대 대안 비교
+    tone_context: tone-c
+  - name: compare-card
+    used_in: ["16"]
+    purpose: 롯데 온프레미스와 현대차·현대모비스 클라우드 비교
+    tone_context: tone-c
+    design_guard: 좌우 양측 톤 동등 (어느 한쪽이 우위로 보이면 메시지 깨짐)
+  - name: strategy-track
+    used_in: ["21"]
+    purpose: BPR·Customizing·Add-on 3트랙
+    tone_context: tone-c
+  - name: platform-hub
+    used_in: ["22"]
+    purpose: SAP 중심 + 주변 시스템 EAI 도식
+    tone_context: tone-c
+    design_guard: |
+      중앙 SAP가 주인공이라는 시각 위계 유지.
+      EHS는 SAP 플랫폼 경계 위에 걸친 형태 (EHS 처리 (ii)).
+  - name: impact-kpi
+    used_in: ["11", "23"]
+    purpose: 호황기 재무, 다운타임 임팩트
+    tone_context: tone-a
+    note: |
+      기존 .kpi-card로 충분하면 별도 정의 불필요.
+      화면 비중이 부족할 경우에만 사용자 승인 후 신규 정의.
+
+slides:
+  # ========== 챕터 0 · 표지·서론 ==========
+  - id: "01"
+    slug: cover
+    title: 표지
+    tone: tone-a
+    chapter: "0. 표지·서론"
+    status: built
+    core_message: "이 사례는 단순한 ERP 도입을 넘어, M&A 이후 3사를 하나의 운영 체계로 묶기 위한 통합 경영 기반 구축 프로젝트다."
+    must_include:
+      - 핵심 메시지 문장
+      - 발표 제목
+      - 광운대 ERP개론
+      - 발표자 정보
+    visual:
+      type: cover
+      components: [cover-title, integration-svg, key-line]
+    decision_sources: [design system phase 1]
+    evidence_sources: [content-thesis §1]
+    notes:
+      - 기존 01-cover.html 빌드 완료
+      - 핵심 메시지 확정에 따라 카피 검토 필요
+
+  - id: "02"
+    slug: thesis-map
+    title: 발표의 논리 지도
+    tone: tone-a
+    chapter: "0. 표지·서론"
+    status: draft
+    core_message: "이 발표는 M&A 통합 압력, 산업 특성, 의사결정 균형, 플랫폼 구조라는 네 가지 근거로 핵심 메시지를 입증한다."
+    must_include:
+      - 핵심 메시지 (중앙)
+      - 4개 보조 논지 (M&A 통합 압력 / 산업 특성과 계열사별 시스템 차이 / 트레이드오프 관리 / SAP 중심 플랫폼)
+    visual:
+      type: thesis-map
+      layout: 중앙 메시지 + 4개 보조 논지 링·카드
+    decision_sources: [피드백 §2.02]
+    evidence_sources: [content-thesis §2]
+
+  # ========== 챕터 1 · 왜 이 사례인가 ==========
+  - id: "03"
+    slug: chapter1-intro
+    title: 왜 롯데케미칼 사례가 어려운가
+    tone: tone-b
+    chapter: "1. 왜 이 사례인가"
+    status: draft
+    core_message: "롯데케미칼 사례의 난점은 석유화학 산업 특성과 3사 통합 조건이 동시에 작동했다는 데 있다."
+    must_include:
+      - 챕터 1 제목
+      - 3사 구조
+      - 산업 특성
+      - 계열사별 시스템 차이
+    visual:
+      type: chapter-cover
+    decision_sources: [톤 시스템 §2]
+    evidence_sources: [content-thesis §2, Step1]
+
+  - id: "04"
+    slug: three-companies
+    title: 분석 대상 3사 + 글로벌 운영
+    tone: tone-c
+    chapter: "1. 왜 이 사례인가"
+    status: draft
+    core_message: "롯데케미칼은 3사 + 6개국 거점 + 110개국 수출의 글로벌 화학 기업이다."
+    must_include:
+      - 3사 명칭과 사업 영역
+      - 해외 6개국
+      - 수출 110개국
+      - 2017 매출 15.8조 원 (보조 지표로만)
+    visual:
+      type: profile-grid
+      layout: 3사 구조 + 6개국 라벨 + 보조 KPI
+    notes:
+      - 2017 호황기 재무는 11번에서 본격 강조하므로 여기서는 규모 보조 지표
+    evidence_sources: [Step1, DART 2017 사업보고서]
+
+  - id: "05"
+    slug: industry-traits
+    title: 석유화학 산업 6대 특성
+    tone: tone-c
+    chapter: "1. 왜 이 사례인가"
+    status: draft
+    core_message: "석유화학 산업의 6대 특성이 ERP 통합 난도를 결정했다."
+    must_include:
+      - 연속공정
+      - 대규모 장치산업
+      - 원료가 변동성
+      - 품질·안전·환경 규제
+      - 글로벌 수출
+      - M&A 이후 기준정보 충돌
+    visual:
+      type: card-grid-6
+    notes:
+      - 6개를 모두 같은 비중으로 설명하지 않음
+      - 발표자가 중심 설명할 4개 강조 우선순위 (연속공정·규제·글로벌 수출·기준정보 충돌)
+    evidence_sources: [Step1, 보강 B]
+
+  - id: "06"
+    slug: si-question
+    title: 그룹 SI가 있어도 왜 계열사 시스템은 달라지는가
+    tone: tone-b
+    chapter: "1. 왜 이 사례인가"
+    status: draft
+    sequence: "1/3 (보강 A)"
+    core_message: "그룹 SI의 존재가 곧 모든 계열사의 ERP와 업무 시스템이 동일하다는 뜻은 아니다."
+    must_include:
+      - 롯데정보통신 그룹 SI 존재
+      - 계열사별 시스템 차이 문제 제기
+      - "비효율로 단정하지 않는다" 전제
+    visual:
+      type: question-card
+      layout: 큰 질문 텍스트 + 3사 시스템 아이콘
+    decision_sources: [보강 A 시퀀스 1, 교수님 피드백]
+    evidence_sources: [교수님 피드백, content-thesis §2]
+
+  - id: "07"
+    slug: industry-driven-difference
+    title: 산업 특성이 만든 차이
+    tone: tone-c
+    chapter: "1. 왜 이 사례인가"
+    status: draft
+    sequence: "2/3 (보강 A)"
+    core_message: "석유화학·정밀화학·첨단소재는 생산 방식·품질 기준·고객 대응·규제 요구가 다르다."
+    must_include:
+      - "롯데케미칼: 대규모 기초소재·석유화학 중심 운영"
+      - "롯데정밀화학: 정밀화학·스페셜티 성격의 업무 차이"
+      - "롯데첨단소재: 고기능 소재·고객별 품질 대응 성격의 업무 차이"
+      - 비교 차원 4개 (생산 방식·품질 기준·고객 대응·규제 요구)
+    visual:
+      type: compare-3x4
+    notes:
+      - 각 사 특성은 과도하게 단정하지 않고 "업무 차이가 발생할 수 있는 산업적 이유"로 표현
+    decision_sources: [보강 A 시퀀스 2, 교수님 피드백]
+    evidence_sources: [Step1, 교수님 피드백]
+
+  - id: "08"
+    slug: not-forced-unification
+    title: 그래서 정답은 강제 통일이 아니다
+    tone: tone-b
+    chapter: "1. 왜 이 사례인가"
+    status: draft
+    sequence: "3/3 (보강 A)"
+    core_message: "M&A 이후의 과제는 강제 통일이 아니라, 공통 영역은 표준화하고 각 사의 차별성은 관리하는 것이었다."
+    must_include:
+      - 공통 표준화 영역
+      - 차별성 보존 영역
+      - GAP 3트랙 예고만
+    visual:
+      type: split-narrative
+      layout: 좌(공통 표준화) vs 우(차별성 보존), 중앙 화살표
+    notes:
+      - GAP 3트랙은 여기서 결론 내리지 않고 챕터 3에서 본격 설명
+      - 챕터 3 §20에서 회수됨
+    decision_sources: [보강 A 시퀀스 3]
+    evidence_sources: [content-thesis §2, Step3 GAP 3트랙]
+
+  # ========== 챕터 2 · 13년 누적 + M&A 압력 + 의사결정 ==========
+  - id: "09"
+    slug: chapter2-intro
+    title: 무엇이 S/4HANA 전환을 가장 현실적인 선택으로 만들었나
+    tone: tone-b
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    core_message: "선택의 핵심은 새 ERP 도입이 아니라, 기존 SAP 자산을 활용해 M&A 통합 압력을 해결하는 것이었다."
+    must_include:
+      - 13년 SAP 자산
+      - M&A 통합 압력
+      - 대안 비교
+      - 운영 방식 선택
+    visual:
+      type: chapter-cover
+    notes:
+      - 호황기 재무는 09에서 빼고 11에서 본격 처리
+    evidence_sources: [Step1, Step2]
+
+  - id: "10"
+    slug: sap-asset-timeline
+    title: 13년 누적 SAP 자산 타임라인
+    tone: tone-b
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    core_message: "본 프로젝트는 2003년부터 누적된 SAP 운영 자산이 진화한 한 지점이다."
+    must_include:
+      - 2003 SMART → 2010 GEMS → 2017 S/4HANA 3대 축 (크게)
+      - 보조 시점 (2012·2015·2016) 작게
+    visual:
+      type: horizontal-timeline
+      components_needs_approval: [timeline]
+    notes:
+      - 중심은 2003~2017
+      - 2018 이후는 작게 "후속 진화"로만 표현 (결론/성과 챕터에서 회수)
+    evidence_sources: [Step1]
+
+  - id: "11"
+    slug: 2017-boom
+    title: 2017 호황기 카드
+    tone: tone-a
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    core_message: "사상 최대 실적기에 진행된 ERP 전환은 위기 대응이 아니라 성장 이후의 통합 운영 기반 정비였다."
+    must_include:
+      - 매출 15.8조 원
+      - 영업이익 2.93조 원 (사상 최대)
+      - "성장 기반 정비" 메시지
+    visual:
+      type: impact-kpi
+      js: [count-up, reveal]
+      animation_note: "신규 JS 작성 금지. 기존 shared/script.js 기능만 사용."
+    notes:
+      - "자금 여유" 해석 금지
+      - 성장 기반 정비 메시지만 사용
+    evidence_sources: [Step1, DART 2017 사업보고서]
+
+  - id: "12"
+    slug: ma-trigger
+    title: M&A 트리거 2.8조
+    tone: tone-c
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    core_message: "2.8조 원 규모 인수는 단순 사업 확장이 아니라 3사 통합 운영 압력을 만들었다."
+    must_include:
+      - 정밀화학 4,650억 원 (2016.02)
+      - 첨단소재 2조 3,265억 원 (2016.04)
+      - 합계 약 2.8조 원
+      - "3사 기준정보·프로세스 통합 압력"
+    visual:
+      type: ma-trigger-card
+      layout: 두 인수 카드 + 우측 합계 강조 + 하단 압력 한 줄
+    notes:
+      - 04와 시각 차별화 (04=글로벌 규모, 12=인수 금액+통합 압력)
+    decision_sources: [보조 논지 1, 보강 C]
+    evidence_sources: [Step1, DART 2017 사업보고서]
+
+  - id: "13"
+    slug: governance-triad
+    title: 거버넌스 3축
+    tone: tone-b
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    core_message: "외부 SI 일임이 아니라 그룹 IT 자산 통제권을 유지하는 추진 구조였다."
+    must_include:
+      - 롯데케미칼 (의사결정·요구사항·자원 배분)
+      - 롯데정보통신 (시스템 통합·운영 체계)
+      - SAP 본사 (방법론·리스크 검증)
+      - "업무 통합 대상이 아닌 프로젝트 추진 주체"
+    visual:
+      type: governance-triad
+      components_needs_approval: [governance-triad]
+    notes:
+      - 3사 통합 구조도와 시각 구분 명확
+      - 15~16 온프레미스 결정과 같은 "그룹 IT 통제권" 의사결정 철학으로 연결
+    decision_sources: [Step2 합의]
+    evidence_sources: [Step2]
+
+  - id: "14"
+    slug: decision-matrix
+    title: 4대 대안 비교 매트릭스
+    tone: tone-c
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    core_message: "쟁점은 '새 ERP 도입'이 아니라 '기존 SAP 자산의 고도화'였다."
+    must_include:
+      - A안 기존 SAP 기반 S/4HANA 전환 (선택)
+      - B안 Greenfield 신규 구축
+      - C안 타 ERP 전면 교체
+      - D안 ECC 유지 + 별도 통합
+      - 평가축 4개 (기술·운영·경제·확장성)
+    visual:
+      type: decision-matrix
+      layout: 4x4 매트릭스, 선택 행 강조
+      components_needs_approval: [decision-matrix]
+    notes:
+      - 평가축은 5개가 아닌 4개로 압축 (전략은 선택 이유 문장으로 흡수)
+      - 하단 주의 문장 "공식 Brownfield 분류 단정 금지, 통합형 컨버전으로 표현"
+    decision_sources: [Step2 합의]
+    evidence_sources: [Step2]
+
+  - id: "15"
+    slug: another-decision
+    title: 또 하나의 결정 — 2017년에는 왜 온프레미스였나
+    tone: tone-b
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    sequence: "1/2 (보강 F)"
+    core_message: "기존 SAP 자산·다운타임 통제·주변 시스템 연계 조건에서 운영 방식의 선택도 의사결정의 일부였다."
+    must_include:
+      - A안 선택 회수 (작게)
+      - 온프레미스 질문 던지기
+      - 5가지 조건 미리보기
+    visual:
+      type: question-with-recap
+      layout: 상단 A안 작은 카드 + 큰 질문
+    decision_sources: [보강 F 시퀀스 1+3 통합]
+    evidence_sources: [Step2, Step5 §3.3]
+
+  - id: "16"
+    slug: lotte-vs-hyundai
+    title: 상황이 다르면 ERP 운영 방식도 달라진다
+    tone: tone-c
+    chapter: "2. 13년 누적 + M&A 압력 + 의사결정"
+    status: draft
+    sequence: "2/2 (보강 F)"
+    core_message: "롯데 2017의 온프레미스와 현대차·현대모비스의 클라우드는 우열이 아니라 조건 차이의 결과다."
+    must_include:
+      - "좌측 (롯데 2017): 13년 SAP 자산 / 24시간 가동 / M&A 통합 / 다운타임 통제 / 주변 시스템 연계 → 온프레"
+      - "우측 (현대차·현대모비스 최근): 글로벌 법인 ERP 표준화 / 클라우드 인프라 성숙 / 실시간 데이터 통합 / 운영 자동화 → 클라우드"
+      - 중앙 메시지 (조건 차이의 결과)
+    visual:
+      type: compare-card
+      layout: 좌우 2분할, 양측 톤 동등
+      components_needs_approval: [compare-card]
+    needs_web_verification: true
+    verification_target:
+      - 현대차 SAP S/4HANA Cloud 전환 현황
+      - 현대모비스 SAP S/4HANA Cloud Private Edition / RISE with SAP 관련 공식 발표
+    notes:
+      - "뒤처졌다" 프레이밍 금지
+      - 다음 챕터 3 연결 — "이 조건 위에서 7개월 구축이 진행됨"
+    evidence_sources: [보강 F, SAP 공식 발표, 언론 보도]
+
+  # ========== 챕터 3 · 7개월의 구축 ==========
+  - id: "17"
+    slug: chapter3-intro
+    title: 7개월 안에 무엇을 해야 했나
+    tone: tone-b
+    chapter: "3. 7개월의 구축"
+    status: draft
+    core_message: "24시간 가동되는 3사 시스템을 멈추지 않고 7개월 안에 통합해야 했다."
+    must_include:
+      - 챕터 3 제목
+      - 4대 제약 미리보기
+      - "어떻게 안전하게 실행했는가" 질문
+    visual:
+      type: chapter-cover
+    evidence_sources: [Step3]
+
+  - id: "18"
+    slug: four-constraints
+    title: 4대 제약 조건
+    tone: tone-b
+    chapter: "3. 7개월의 구축"
+    status: draft
+    core_message: "네 가지 제약이 동시에 충돌한 고난도 통합 프로젝트였다."
+    must_include:
+      - "Time: 7개월 압축 일정"
+      - "Business Continuity: 24시간 연속 가동"
+      - "Multi-Entity: 3사 병존 운영"
+      - "Global Multi-Site: 6개국 + 110개국"
+    visual:
+      type: constraint-grid-4
+    notes:
+      - 4분할 카드지만 챕터 3 진입 직후 분석 카드이므로 Tone B 유지
+    decision_sources: [Step3 합의]
+    evidence_sources: [Step3]
+
+  - id: "19"
+    slug: methodology-evolution
+    title: 방법론 진화 — Big Bang에서 Roll-out으로
+    tone: tone-b
+    chapter: "3. 7개월의 구축"
+    status: draft
+    core_message: "시스템 환경의 복잡도에 따라 구축 방식도 진화했다."
+    must_include:
+      - 2003 SMART (단일 법인 Big Bang)
+      - 2010 GEMS (영역 확장)
+      - 2017 S/4HANA (3사 통합 Roll-out + 통합형 컨버전)
+    visual:
+      type: evolution-flow
+      layout: 3개 시점 화살표 연결
+    notes:
+      - 4대 방법론 비교표는 사용하지 않음 (Step3 합의)
+      - 10번 타임라인과 시각적 호응
+    decision_sources: [Step3 합의]
+    evidence_sources: [Step3]
+
+  - id: "20"
+    slug: not-standardize-all
+    title: 모든 것을 표준화하지 않는다
+    tone: tone-b
+    chapter: "3. 7개월의 구축"
+    status: draft
+    sequence: "1/3 (GAP + 보강 D)"
+    core_message: "챕터 1에서 예고한 균형이 여기서 실현된다 — 표준화할 것과 남길 것을 구분했다."
+    must_include:
+      - 챕터 1 §8 회수 ("강제 통일이 아니다" 결론)
+      - GAP 3트랙 명칭 등장
+      - 3트랙 미리보기
+    visual:
+      type: bridge-card
+      layout: 챕터 1 §8과 시각 호응 + 3트랙 라벨 등장
+    decision_sources: [Step3 합의, 보강 A 회수]
+    evidence_sources: [Step3, content-thesis §2]
+
+  - id: "21"
+    slug: gap-three-tracks
+    title: GAP 3트랙 — BPR · Customizing · Add-on
+    tone: tone-c
+    chapter: "3. 7개월의 구축"
+    status: draft
+    sequence: "2/3 (GAP + 보강 D)"
+    core_message: "BPR로 공통 표준화, Customizing으로 차별성 보존, Add-on으로 외부 시스템 연계."
+    must_include:
+      - "BPR: 기준정보·재무회계·구매물류"
+      - "Customizing: 각 사 본연 경쟁력·특화 프로세스"
+      - "Add-on: SCM·MES·PLM·LIMS·EHS·GEMS"
+    visual:
+      type: strategy-track
+      layout: 3트랙 분할 카드
+      components_needs_approval: [strategy-track]
+    notes:
+      - Add-on 트랙은 다음 슬라이드(22)로 자연스럽게 연결
+    decision_sources: [Step3 합의]
+    evidence_sources: [Step3]
+
+  - id: "22"
+    slug: sap-platform-hub
+    title: SAP는 단독 시스템이 아니다
+    tone: tone-c
+    chapter: "3. 7개월의 구축"
+    status: draft
+    sequence: "3/3 (GAP + 보강 D)"
+    core_message: "S/4HANA는 산업 운영 시스템을 연결하는 중심 플랫폼이었다."
+    must_include:
+      - 중앙 SAP S/4HANA
+      - 주변 6개 시스템명
+      - EAI 기반 연계
+      - EHS는 SAP 플랫폼 경계 위에 표현
+      - "각 시스템 설명은 5~7자 수준 (SCM 공급망 / MES 제조실행 / PLM 제품관리 / LIMS 품질실험 / EHS 환경안전 / GEMS 에너지)"
+    visual:
+      type: platform-hub
+      layout: 허브-스포크 (중앙 + 방사형)
+      components_needs_approval: [platform-hub]
+    notes:
+      - 시스템별 설명은 긴 문장 금지
+      - SAP S/4HANA가 중심 플랫폼이라는 시각 위계 유지
+      - 발표 중심을 SAP에서 빼앗기지 않게 함
+      - 21번 Add-on 트랙에서 자연스럽게 이어짐
+      - 결론(28)에서 회수됨
+      - EHS 처리 (ii) — SAP 내부 모듈과 외부 시스템 경계에 걸친 형태
+    decision_sources: [보강 D, 교수님 피드백, EHS 처리 (ii)]
+    evidence_sources: [Step3, 교수님 피드백, 보강 D]
+
+  - id: "23"
+    slug: downtime-kpi
+    title: 리스크 통제 KPI — 다운타임 114h → 52h
+    tone: tone-a
+    chapter: "3. 7개월의 구축"
+    status: draft
+    core_message: "SAP Value Assurance를 통한 사전 점검·반복 검증이 실제 다운타임 단축으로 검증되었다."
+    must_include:
+      - 진단 114h → 실제 52h
+      - "-54%"
+      - 약 62시간 단축
+      - SAP Value Assurance Service
+    visual:
+      type: impact-kpi
+      js: [count-up, reveal]
+      animation_note: "막대 길이 변화는 CSS transition으로 처리 가능할 때만 사용. 신규 JS 작성 금지."
+    notes:
+      - Step4(25번)에서 정량 4지표 중 하나로 재등장
+      - 역할 구분 — 여기는 리스크 통제 성과, 25번은 PIR 정량 성과
+    decision_sources: [Step3 합의]
+    evidence_sources: [Step3, 박제성 인터뷰[1], SAP Value Assurance[12]]
+
+  # ========== 챕터 4 · 가동 이후의 검증 ==========
+  - id: "24"
+    slug: pir-question
+    title: PIR의 질문 — 목표는 실제 성과로 회수되었는가
+    tone: tone-b
+    chapter: "4. 가동 이후의 검증"
+    status: draft
+    core_message: "Step4의 질문은 시스템이 가동됐는지가 아니라, Step2의 초기 목표가 실제 성과로 회수되었는가이다."
+    must_include:
+      - Step2 4대 목표 미리보기
+      - Step4 검증 기준 예고
+      - "가동 성공"과 "비즈니스 성과 검증"의 구분
+    visual:
+      type: question-bridge
+    notes:
+      - 단순 챕터 표지가 아니라 25~26번을 여는 질문 슬라이드로 사용
+      - 4장 챕터에서 진입에 큰 비중 두지 않고 본문처럼 운용
+    decision_sources: [피드백 §2]
+    evidence_sources: [Step2, Step4]
+
+  - id: "25"
+    slug: pir-quant-four
+    title: PIR 정량 4지표
+    tone: tone-c
+    chapter: "4. 가동 이후의 검증"
+    status: draft
+    core_message: "ERP 전환 성과는 네 가지 정량 지표로 확인된다."
+    must_include:
+      - 다운타임 114h→52h (재등장, 작게)
+      - 성능 90.5% 개선
+      - 매출대장 40만건 = 2분
+      - 통합 범위 10×3×6×110
+      - 자기평가 한계 한 줄 하단
+    visual:
+      type: kpi-grid-4
+      js: [count-up]
+      animation_note: "신규 JS 작성 금지. 기존 shared/script.js 기능만 사용."
+    notes:
+      - 다운타임은 23번에서 단독 강조했으므로 여기서는 작게 재등장
+      - 자기평가 한계 표기 — "정량 수치는 정보전략담당 임원 인터뷰 기반이며, 이사회 의결·DT 전략 기록으로 보완 해석"
+    decision_sources: [Step4 합의]
+    evidence_sources: [Step4, 박제성 인터뷰[1]]
+
+  - id: "26"
+    slug: goals-vs-results
+    title: 목표 ↔ 성과의 회수 + 후속 효과
+    tone: tone-c
+    chapter: "4. 가동 이후의 검증"
+    status: draft
+    core_message: "초기 목표는 PIR 성과로 회수되었고, 후속 이사회 의결로 객관 입증되었다."
+    must_include:
+      - "좌측 Step2 4대 목표: 3사 통합·글로벌 운영·중복투자 축소·디지털 코어"
+      - "우측 Step4 PIR 4대 성과 (모두 ○ 달성)"
+      - "하단 2018 이사회 의결 2건: 2018.02.08 그룹공통시스템·디지털혁신협의체 / 2018.12.19 IT 10건 일괄"
+    visual:
+      type: matching-with-followup
+      layout: 좌우 매칭 + 하단 후속 효과 시간 축
+    decision_sources: [Step4 합의]
+    evidence_sources: [Step2, Step4, DART 2018 사업보고서[9]]
+
+  - id: "27"
+    slug: benchmark-timeline
+    title: 타사 벤치마크 시간 축
+    tone: tone-c
+    chapter: "4. 가동 이후의 검증"
+    status: draft
+    core_message: "롯데케미칼의 2017년 전환은 국내 제조 대기업의 S/4HANA 전환 흐름에서 이른 시기에 속하는 선도적 사례였다."
+    must_include:
+      - 롯데케미칼 2017.11
+      - SK하이닉스 2018.02
+      - 삼성전기 2022
+      - 삼성전자 N-ERP 2022
+      - LG화학 2022~
+    visual:
+      type: benchmark-timeline
+      layout: 시간 축 + 기업별 점 + 간단 라벨
+      components_needs_approval: [timeline]
+    needs_web_verification: true
+    verification_target:
+      - 타사 S/4HANA 도입 시점 (SK하이닉스·삼성전기·삼성전자·LG화학)
+    notes:
+      - "최초" 단정 금지
+      - "이른 시기" "선도적 위치"로 표현
+      - Tone C이지만 표 형식이 아닌 시간 축 가독성 유지
+    decision_sources: [Step4 합의, 피드백 §3 Tone C 재분류]
+    evidence_sources: [Step4]
+
+  # ========== 챕터 5 · 결론 ==========
+  - id: "28"
+    slug: conclusion
+    title: 결론 — ERP가 아니라 통합 경영 기반
+    tone: tone-a
+    chapter: "5. 결론"
+    status: draft
+    core_message: "롯데케미칼의 ERP 전환은 시스템을 바꾼 프로젝트가 아니라, M&A 이후 하나의 회사처럼 운영하기 위한 통합 경영 기반을 만든 프로젝트였다."
+    must_include:
+      - 중앙 결론 변주 문장 (content-thesis §1)
+      - 성공 요인 3개 압축 (기존 SAP 자산을 버리지 않았다 / 다운타임 리스크를 사전에 통제했다 / 표준화와 차별성을 동시에 관리했다)
+      - "하단 17년 진화 흐름: 2003 SMART → 2010 GEMS → 2017 S/4HANA → 2018 DT 협의체 → 2030 톱7 비전"
+    speaker_notes:
+      - 기존 SAP 자산 보유 기업 시사점 — "전환 시기를 미루는 것보다 기존 자산을 어떻게 진화시킬지 검토하는 것이 중요"
+      - ERP는 단독 시스템이 아니라 통합 경영 플랫폼이라는 보조 메시지 (보강 E)
+      - 본질적 통찰 3가지 (Step5 §5)
+    visual:
+      type: conclusion-composite
+      layout: 중앙 결론 + 보조 영역 좌우 + 하단 진화 흐름
+      components_needs_approval: [timeline]
+    notes:
+      - 화면 정보 과밀 금지
+      - 표지(01)와 호응
+      - 22번(보강 D) 회수
+      - Step5 합의 응축
+      - 결론은 표지 메시지를 회수하는 역할이 우선
+    decision_sources: [Step5 합의, 보강 E, 보강 D 회수]
+    evidence_sources: [본문 전체 회수, content-thesis §1]

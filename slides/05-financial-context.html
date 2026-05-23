@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>05 · 호황기 재무 — 위기 대응이 아닌 미래 성장 기반 정비</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/style.css" />
+  <style>
+    /* 05 financial-context 전용 */
+    .fc-main {
+      position: relative;
+      z-index: 3;
+      padding: 84px var(--slide-padding-x) 0;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: var(--sp-6);
+      height: 864px;
+    }
+    .fc-headline {
+      font-family: var(--font-sans);
+      font-size: 38px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.32;
+      color: var(--color-ink-strong);
+      max-width: 1350px;
+    }
+    .fc-headline .fc-em { color: var(--color-red); }
+    .fc-kpi-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-5);
+      align-items: stretch;
+    }
+    .fc-mix {
+      background: var(--color-bg-cream);
+      padding: var(--sp-5) var(--sp-6);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: var(--sp-6);
+      align-items: center;
+    }
+    .fc-mix-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-ink-mute);
+    }
+    .fc-mix-bars {
+      display: grid;
+      grid-template-columns: 64.5fr 27.3fr 14.1fr;
+      gap: 2px;
+      height: 14px;
+    }
+    .fc-mix-bar {
+      height: 100%;
+    }
+    .fc-mix-bar--1 { background: var(--color-graphite); }
+    .fc-mix-bar--2 { background: var(--color-steel); }
+    .fc-mix-bar--3 { background: var(--color-olive); }
+    .fc-mix-legend {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--sp-4);
+      margin-top: var(--sp-3);
+    }
+    .fc-mix-leg-item {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .fc-mix-leg-name {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+    }
+    .fc-mix-leg-pct {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+    }
+    .fc-emph-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      background: var(--color-red-pale);
+      border: 1px solid var(--color-red-soft);
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+      color: var(--color-red-deep);
+      margin-top: 6px;
+    }
+  </style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+    <section class="slide tone-b active" data-slide="5">
+      <header class="slide-head">
+        <div class="brand">
+          <img class="brand-logo" src="../shared/lotte-chemical-logo.jpeg" alt="롯데케미칼 로고" />
+        </div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page">
+          <span class="hp-num">05</span>
+        </div>
+      </header>
+      <main class="fc-main">
+        <div class="eyebrow reveal" style="--rev-delay:0.05s">
+          <span class="eb-bar"></span>
+          <span class="eb-num">1부 · 02</span>
+          <span class="eb-text">호황기 재무</span>
+        </div>
+        <h1 class="fc-headline reveal" style="--rev-delay:0.2s">
+          사상 최대 영업이익 시기의 ERP 통합 — <span class="fc-em">위기 대응이 아닌 미래 성장 기반 정비</span>
+        </h1>
+        <div class="fc-kpi-row">
+          <div class="kpi-card reveal" style="--rev-delay:0.4s">
+            <div class="kpi-num"><span class="count" data-target="15.8" data-decimal="1">0</span><span class="kpi-unit">조원</span></div>
+            <div>
+              <div class="kpi-label">2017년 매출</div>
+              <div class="kpi-sub">전년 대비 +20%</div>
+            </div>
+          </div>
+          <div class="kpi-card kpi-card--emph reveal" style="--rev-delay:0.55s">
+            <div class="kpi-num"><span class="count" data-target="2.93" data-decimal="2">0</span><span class="kpi-unit">조원</span></div>
+            <div>
+              <div class="kpi-label">2017년 영업이익</div>
+              <div class="kpi-sub">사상 최대</div>
+              <div class="fc-emph-pill">선제적 정비 시점</div>
+            </div>
+          </div>
+          <div class="kpi-card reveal" style="--rev-delay:0.7s">
+            <div class="kpi-num"><span class="count" data-target="20">0</span><span class="kpi-unit">%</span></div>
+            <div>
+              <div class="kpi-label">매출 증감률</div>
+              <div class="kpi-sub">전년 대비</div>
+            </div>
+          </div>
+        </div>
+        <div class="fc-mix reveal" style="--rev-delay:0.9s">
+          <div class="fc-mix-label">사업부문<br />비중</div>
+          <div>
+            <div class="fc-mix-bars">
+              <div class="fc-mix-bar fc-mix-bar--1"></div>
+              <div class="fc-mix-bar fc-mix-bar--2"></div>
+              <div class="fc-mix-bar fc-mix-bar--3"></div>
+            </div>
+            <div class="fc-mix-legend">
+              <div class="fc-mix-leg-item">
+                <span class="fc-mix-leg-name">폴리머</span>
+                <span class="fc-mix-leg-pct">64.5%</span>
+              </div>
+              <div class="fc-mix-leg-item">
+                <span class="fc-mix-leg-name">모노머</span>
+                <span class="fc-mix-leg-pct">27.3%</span>
+              </div>
+              <div class="fc-mix-leg-item">
+                <span class="fc-mix-leg-name">기초유분</span>
+                <span class="fc-mix-leg-pct">14.1%</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="slide-foot">
+        <span class="sf-left">1부 · 왜 ERP 통합이 필요했는가</span>
+        <span class="sf-mid">광운대학교 경영대학 ERP개론 · 1팀</span>
+        <span class="sf-right">출처: Step 1 §2</span>
+      </footer>
+    </section>
+  </div>
+</div>
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+</div>
+<script src="../shared/script.js"></script>
+</body>
+</html>

@@ -1,0 +1,3109 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>롯데케미칼 SAP S/4HANA 사례 — Step 2 빌드 v3.1 (11장 · 09·10·12·17 1순위 재설계 + 글자 강제 룰 + SVG 픽토그램)</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../shared/style.css" />
+
+  <style>
+    /* =========================================================
+       Step 2 빌드 v1 — 매트릭스 v10.1 §9-NEW 12·16 정합
+       design-tokens v1.6 / component-catalog v1.6 / matrix v10.1 / CLAUDE.md v2.1
+       톤: 화이트·다크·레드 (cream 강조판 한정·red 신호등 역할)
+       슬라이드 레이아웃 표준: padding 52/76/64·헤더 108px·본문 856px
+       Step 1 빌드 v10 시각 통일성 100% 정합
+       (chem-sector-card·flow-chevron·at-sector__msg·num-circle·red-box-label·card-top-accent)
+       ========================================================= */
+
+    /* ===== 슬라이드 표준 (Step 1 v10 정합) ===== */
+    .slide-head {
+      padding: 16px 76px 0;
+      height: 108px;
+      box-sizing: border-box;
+      gap: 24px;
+    }
+    .brand-logo { height: 76px; max-width: 380px; }
+    .slide-foot { display: none; }
+    .slide-head::after {
+      left: 76px; right: 76px;
+      bottom: -16px;
+    }
+    .slide-main-v6 {
+      position: relative; z-index: 3;
+      padding: 24px 76px 64px;
+      height: calc(1080px - 108px);
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+    }
+
+    /* ===== 톤 어휘 (Step 1 v10 정합) ===== */
+    .red-box-label {
+      display: inline-flex; align-items: center;
+      padding: 6px 14px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      border-radius: var(--r-sm);
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .red-box-label--dark { background: var(--color-graphite); }
+    .num-circle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .num-circle--dark { background: var(--color-graphite); }
+
+    /* ===== 도메인 어휘 (Step 1 v10 정합 — chem-sector-card·number-watermark) ===== */
+    .chem-sector-card {
+      display: grid;
+      grid-template-rows: 28px auto 1fr;
+      gap: 10px;
+      padding: 24px 28px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 3px solid var(--color-red);
+      overflow: hidden;
+      min-height: 150px;
+    }
+    .chem-sector-card__formula {
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: -0.01em;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .chem-sector-card__title {
+      font-family: var(--font-sans);
+      font-size: 32px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.05;
+    }
+    .chem-sector-card__desc {
+      font-family: var(--font-sans);
+      font-size: 21px; font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.32;
+    }
+
+    /* ===== 12 ma-trigger (Step 2 v1 신규) ===== */
+    .mt-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 16px;
+      height: 100%;
+      position: relative;
+    }
+    .mt-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+      position: relative;
+      z-index: 2;
+    }
+    .mt-headline .mt-em { color: var(--color-red); }
+    /* 우하단 거대 watermark "2.8" — 배경 시각 무게 (rgba red 7%) */
+    .mt-watermark {
+      position: absolute;
+      right: -20px; bottom: 40px;
+      font-family: var(--font-mono);
+      font-size: 480px; font-weight: 800;
+      color: rgba(230, 0, 18, 0.07);
+      line-height: 0.85;
+      letter-spacing: -0.08em;
+      pointer-events: none; user-select: none;
+      z-index: 1;
+    }
+    /* KPI 카드 가로 3 (인수 카드 2 + 합계 강조 1) */
+    .mt-kpi-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.05fr;
+      gap: 14px;
+      min-height: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .mt-kpi-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 10px;
+      padding: 20px 26px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .mt-kpi-card__head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .mt-kpi-card__num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 17px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .mt-kpi-card__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--color-ink-mute);
+    }
+    .mt-kpi-card__value {
+      font-family: var(--font-mono);
+      font-size: 60px; font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      align-self: center;
+    }
+    .mt-kpi-card__value .mt-kpi-unit {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 600;
+      color: var(--color-ink-soft);
+      margin-left: 6px;
+    }
+    .mt-kpi-card__sub {
+      font-family: var(--font-sans);
+      font-size: 14px; font-weight: 500;
+      color: var(--color-ink-soft);
+    }
+    /* 합계 강조 박스 (card.is-active) */
+    .mt-kpi-card--total {
+      border-top-color: var(--color-red);
+      border-left: 12px solid var(--color-red);
+      padding-left: 22px;
+    }
+    .mt-kpi-card--total .mt-kpi-card__num { background: var(--color-red); }
+    .mt-kpi-card--total .mt-kpi-card__label { color: var(--color-red-deep); }
+    .mt-kpi-card--total .mt-kpi-card__value {
+      font-size: 110px;
+      color: var(--color-red);
+      font-weight: 800;
+    }
+    .mt-kpi-card--total .mt-kpi-card__value .mt-kpi-unit {
+      font-size: 44px;
+      color: var(--color-red-deep);
+      font-weight: 700;
+    }
+    .mt-kpi-card--total .mt-kpi-card__sub { color: var(--color-red-deep); font-weight: 600; }
+    /* 3사 카드 가로 + flow-chevron (v9 04 정합) */
+    .mt-3sa-row {
+      display: grid;
+      grid-template-columns: 1fr 28px 1fr 28px 1fr;
+      gap: 8px;
+      align-items: stretch;
+      min-height: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .mt-flow-chevron {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-graphite);
+      font-family: var(--font-mono);
+      font-size: 38px; font-weight: 700;
+      line-height: 1;
+      opacity: 0.72;
+      user-select: none;
+    }
+    /* 통합 압력 라벨 (중앙 정렬) */
+    .mt-pressure-label {
+      display: flex; justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .mt-pressure-label .red-box-label {
+      padding: 8px 18px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+    /* 결론 메시지 박스 (at-sector__msg 정합) */
+    .mt-msg {
+      padding: 11px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+      letter-spacing: -0.005em;
+      position: relative;
+      z-index: 2;
+    }
+    .mt-msg em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .mt-msg__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 16 lotte-vs-hyundai (Step 2 v1 신규) ===== */
+    .lh-main {
+      display: grid;
+      grid-template-rows: auto auto auto auto 1fr auto;
+      gap: 14px;
+      height: 100%;
+    }
+    .lh-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .lh-headline .lh-em { color: var(--color-red); }
+    /* 상단 도입 박스 — 좌우 2분할 정의 카드 */
+    .lh-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+    .lh-intro-card {
+      padding: 14px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .lh-intro-card--onprem { border-left: 4px solid var(--color-red); }
+    .lh-intro-card--cloud { border-left: 4px solid var(--color-graphite); }
+    .lh-intro-card__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .lh-intro-card--onprem .lh-intro-card__label { color: var(--color-red); }
+    .lh-intro-card--cloud .lh-intro-card__label { color: var(--color-ink-mute); }
+    .lh-intro-card__body {
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .lh-intro-card--cloud .lh-intro-card__body {
+      font-weight: 500;
+      color: var(--color-ink-soft);
+    }
+    /* 메인 3축 라벨 영역 */
+    .lh-main-label {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .lh-main-label__text {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 700;
+      color: var(--color-graphite);
+      letter-spacing: -0.01em;
+    }
+    /* 메인 3축 카드 가로 1×3 균등 */
+    .lh-main-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .lh-main-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 8px;
+      padding: 26px 24px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      position: relative;
+      overflow: hidden;
+    }
+    /* 카드 우상단 watermark 단순 번호 (rgba red 8%) */
+    .lh-main-card__watermark {
+      position: absolute;
+      right: 14px; top: -34px;
+      font-family: var(--font-mono);
+      font-size: 200px; font-weight: 800;
+      color: rgba(230, 0, 18, 0.08);
+      line-height: 0.85;
+      letter-spacing: -0.05em;
+      pointer-events: none; user-select: none;
+    }
+    .lh-main-card__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+      position: relative;
+      z-index: 2;
+    }
+    .lh-main-card__title {
+      font-family: var(--font-sans);
+      font-size: 32px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+      margin-top: 8px;
+      position: relative;
+      z-index: 2;
+    }
+    .lh-main-card__sub {
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.35;
+      position: relative;
+      z-index: 2;
+    }
+    .lh-main-card__body {
+      font-family: var(--font-sans);
+      font-size: 21px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.42;
+      letter-spacing: -0.008em;
+      position: relative;
+      z-index: 2;
+    }
+    .lh-main-card__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+      padding-top: 8px;
+      border-top: 1px solid var(--color-line-soft);
+      margin-top: 4px;
+      position: relative;
+      z-index: 2;
+    }
+    /* 보조 영역 (메인 3축 하단·가로 1×2) */
+    .lh-aux-wrap {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .lh-aux-label-row {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+    }
+    .lh-aux {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+    .lh-aux-card {
+      padding: 12px 20px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: flex; align-items: center; gap: 12px;
+    }
+    .lh-aux-card__label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-ink-mute);
+      flex-shrink: 0;
+    }
+    .lh-aux-card__body {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+
+    /* ===== 09 step2-intro (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 09) ===== */
+    .si-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 16px;
+      height: 100%;
+    }
+    .si-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .si-headline .si-em { color: var(--color-red); }
+    .si-essence {
+      padding: 14px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+      letter-spacing: -0.005em;
+    }
+    .si-essence em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .si-goals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .si-goal-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 8px;
+      padding: 22px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .si-goal-card__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+    }
+    .si-goal-card__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+      margin-top: 4px;
+    }
+    .si-goal-card__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.35;
+    }
+    .si-goal-card__body {
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.008em;
+    }
+    .si-quote {
+      padding: 11px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .si-quote em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .si-quote__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 10 governance-triad (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 10) ===== */
+    .gv-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 16px;
+      height: 100%;
+    }
+    .gv-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .gv-headline .gv-em { color: var(--color-red); }
+    .gv-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .gv-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 8px;
+      padding: 26px 24px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      position: relative;
+      overflow: hidden;
+    }
+    .gv-card__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+    }
+    .gv-card__title {
+      font-family: var(--font-sans);
+      font-size: 30px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+      margin-top: 6px;
+    }
+    .gv-card__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.35;
+    }
+    .gv-card__body {
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .gv-card__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+      padding-top: 8px;
+      border-top: 1px solid var(--color-line-soft);
+      margin-top: 4px;
+    }
+    .gv-msg {
+      padding: 11px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .gv-msg em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .gv-msg__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 11 make-vs-buy (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 11) ===== */
+    .mb-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 14px;
+      height: 100%;
+    }
+    .mb-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .mb-headline .mb-em { color: var(--color-red); }
+    .mb-quote {
+      padding: 12px 22px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .mb-quote__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+    .mb-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .mb-compare-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 8px;
+      padding: 22px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+    }
+    .mb-compare-card--make { border-left: 4px solid var(--color-graphite); }
+    .mb-compare-card--buy {
+      border-left: 4px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+    }
+    .mb-compare-card__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--color-ink-mute);
+    }
+    .mb-compare-card--buy .mb-compare-card__label { color: var(--color-red); }
+    .mb-compare-card__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .mb-compare-card--buy .mb-compare-card__title { color: var(--color-red-deep); }
+    .mb-compare-card__body {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .mb-result {
+      display: flex; justify-content: center;
+    }
+    .mb-result .red-box-label {
+      padding: 8px 18px;
+      font-size: 13px;
+      letter-spacing: 0.12em;
+    }
+    .mb-stages {
+      display: grid;
+      grid-template-columns: 1fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
+      gap: 4px;
+      align-items: stretch;
+    }
+    .mb-stage {
+      padding: 12px 14px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 3px solid var(--color-graphite);
+      display: flex; flex-direction: column; gap: 4px;
+      text-align: center;
+    }
+    .mb-stage--active {
+      border-top-color: var(--color-red);
+      border-left: 4px solid var(--color-red);
+    }
+    .mb-stage__num {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 700;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+    }
+    .mb-stage--active .mb-stage__num { color: var(--color-red); }
+    .mb-stage__title {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      line-height: 1.2;
+    }
+    .mb-stage__sub {
+      font-family: var(--font-mono);
+      font-size: 10px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.05em;
+    }
+    .mb-stage-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-graphite);
+      font-family: var(--font-mono);
+      font-size: 24px; font-weight: 700;
+      opacity: 0.7;
+    }
+
+    /* ===== 13 four-alternatives (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 13) ===== */
+    .fa-main {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 16px;
+      height: 100%;
+    }
+    .fa-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .fa-headline .fa-em { color: var(--color-red); }
+    .fa-table {
+      display: grid;
+      grid-template-rows: auto repeat(4, 1fr);
+      gap: 6px;
+      min-height: 0;
+    }
+    .fa-row {
+      display: grid;
+      grid-template-columns: 2.4fr 1fr 1fr 1fr;
+      gap: 8px;
+    }
+    .fa-cell {
+      padding: 14px 20px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: flex; align-items: center;
+    }
+    .fa-row--head .fa-cell {
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      justify-content: center;
+    }
+    .fa-row--head .fa-cell--label { justify-content: flex-start; }
+    .fa-cell__label-wrap { display: flex; flex-direction: column; gap: 2px; }
+    .fa-cell__title {
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+    }
+    .fa-cell__sub {
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 500;
+      color: var(--color-ink-soft);
+    }
+    .fa-cell__mark {
+      font-family: var(--font-mono);
+      font-size: 32px; font-weight: 800;
+      margin: 0 auto;
+      letter-spacing: -0.02em;
+    }
+    .fa-mark--great { color: var(--color-red); }
+    .fa-mark--good { color: var(--color-graphite); }
+    .fa-mark--mid { color: var(--color-ink-mute); }
+    .fa-mark--bad { color: var(--color-ink-faint); }
+    .fa-row--active .fa-cell {
+      background: var(--color-red-pale);
+      border-color: var(--color-red-soft);
+    }
+    .fa-row--active .fa-cell--label {
+      border-left: 6px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+    }
+    .fa-row--active .fa-cell__title { color: var(--color-red-deep); font-weight: 900; }
+    .fa-msg {
+      padding: 11px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .fa-msg em { color: var(--color-red); font-style: normal; font-weight: 800; }
+
+    /* ===== 14 five-feasibility (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 14) ===== */
+    .ff-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 14px;
+      height: 100%;
+    }
+    .ff-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .ff-headline .ff-em { color: var(--color-red); }
+    .ff-quote {
+      padding: 11px 22px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .ff-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      min-height: 0;
+    }
+    .ff-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 6px;
+      padding: 18px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .ff-card--last {
+      grid-column: 1 / 4;
+      border-top-color: var(--color-red);
+    }
+    .ff-card__head { display: flex; align-items: center; gap: 10px; }
+    .ff-card__num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 17px; font-weight: 800;
+    }
+    .ff-card__title {
+      font-family: var(--font-sans);
+      font-size: 24px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .ff-card__body {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.38;
+    }
+
+    /* ===== 15 economic-feasibility (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 15) ===== */
+    .ef-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+      height: 100%;
+    }
+    .ef-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .ef-headline .ef-em { color: var(--color-red); }
+    .ef-pre {
+      padding: 11px 22px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .ef-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+      min-height: 0;
+    }
+    .ef-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 6px;
+      padding: 18px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .ef-card--roi {
+      grid-column: 1 / 4;
+      border-top-color: var(--color-red);
+      border-left: 6px solid var(--color-red);
+      padding-left: 18px;
+    }
+    .ef-card__head { display: flex; align-items: center; gap: 10px; }
+    .ef-card__num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 17px; font-weight: 800;
+    }
+    .ef-card__title {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .ef-card--roi .ef-card__title { color: var(--color-red-deep); font-size: 26px; }
+    .ef-card__body {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.38;
+    }
+    .ef-card--roi .ef-card__body { font-size: 17px; }
+    .ef-quote {
+      padding: 11px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .ef-quote em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .ef-quote__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== 17 fact-six-reasons (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 17) ===== */
+    .fr-main {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 18px;
+      height: 100%;
+    }
+    .fr-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .fr-headline .fr-em { color: var(--color-red); }
+    .fr-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .fr-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 8px;
+      padding: 22px 24px 16px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .fr-card__head { display: flex; align-items: center; gap: 10px; }
+    .fr-card__num {
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 800;
+    }
+    .fr-card__title {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .fr-card__body {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .fr-card__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+      padding-top: 6px;
+      border-top: 1px solid var(--color-line-soft);
+    }
+
+    /* ===== 18 lecture-six-stages (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 18) ===== */
+    .ls-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 16px;
+      height: 100%;
+    }
+    .ls-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .ls-headline .ls-em { color: var(--color-red); }
+    .ls-quote {
+      padding: 12px 22px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .ls-quote__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+    .ls-stages {
+      display: grid;
+      grid-template-columns: 1fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr 12px 1fr;
+      gap: 4px;
+      align-items: stretch;
+      min-height: 0;
+    }
+    .ls-stage {
+      padding: 16px 14px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: flex; flex-direction: column; gap: 8px;
+      text-align: center;
+      position: relative;
+    }
+    .ls-stage--active {
+      border-top-color: var(--color-red);
+      border-left: 6px solid var(--color-red);
+      padding-left: 14px;
+    }
+    .ls-stage__num {
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 800;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+    }
+    .ls-stage--active .ls-stage__num { color: var(--color-red); }
+    .ls-stage__title {
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      line-height: 1.2;
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .ls-stage--active .ls-stage__title { color: var(--color-red-deep); }
+    .ls-stage__sub {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.05em;
+    }
+    .ls-stage-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-graphite);
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 700;
+      opacity: 0.65;
+    }
+
+    /* ===== 19 escrow-supplement (Step 2 v2 신규 — 매트릭스 v10.3 §9-NEW 19) ===== */
+    .es-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .es-headline {
+      font-family: var(--font-sans);
+      font-size: 42px; font-weight: 800;
+      letter-spacing: -0.024em; line-height: 1.22;
+      color: var(--color-ink-strong);
+      max-width: 1600px;
+    }
+    .es-headline .es-em { color: var(--color-red); }
+    .es-def {
+      padding: 14px 22px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .es-def__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+    .es-axes {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    .es-axis {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 10px;
+      padding: 26px 28px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+    }
+    .es-axis__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+    }
+    .es-axis__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .es-axis__body {
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .es-msg {
+      padding: 12px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+    }
+    .es-msg em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .es-msg__src {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+    }
+
+    /* =========================================================
+       Step 2 v3 — GPT 피드백 반영 (글자 강제 룰 + 신규 4 컴포넌트)
+       적용 페이지: 14·15·18·19 (가장 시급 cream 빈 박스 제거)
+       글자 강제 룰: 페이지 제목 52px·카드 제목 32px·카드 본문 24px·표 본문 28px·하단 결론 26px
+       ========================================================= */
+
+    /* ===== 공통 v3 헤드라인 강제 룰 ===== */
+    .v3-eyebrow .red-box-label {
+      font-size: 16px;
+      padding: 8px 18px;
+      letter-spacing: 0.12em;
+    }
+    .v3-eyebrow .eb-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .v3-headline {
+      font-family: var(--font-sans);
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -0.028em; line-height: 1.18;
+      color: var(--color-ink-strong);
+      max-width: 1700px;
+    }
+    .v3-headline em, .v3-headline .v3-em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .v3-msg {
+      padding: 16px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.012em;
+    }
+    .v3-msg em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .v3-msg__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 14 feasibility-scorecard (fs-*) — Step 2 v3 신규 ===== */
+    .fs-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 24px;
+      height: 100%;
+    }
+    .fs-grid {
+      display: grid;
+      grid-template-columns: 0.45fr 1fr;
+      gap: 28px;
+      min-height: 0;
+    }
+    .fs-pent {
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 12px solid var(--color-red);
+      padding: 28px 24px 20px;
+      display: flex; flex-direction: column;
+      gap: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+    .fs-pent__label {
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-red);
+    }
+    .fs-pent__title {
+      font-family: var(--font-sans);
+      font-size: 32px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .fs-pent__svg {
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+      min-height: 0;
+    }
+    .fs-pent__svg svg { width: 100%; height: auto; max-height: 380px; }
+    .fs-pent__svg .pent-axis { stroke: var(--color-line); stroke-width: 1.5; fill: none; }
+    .fs-pent__svg .pent-grid { stroke: var(--color-line-soft); stroke-width: 1; fill: none; }
+    .fs-pent__svg .pent-fill { fill: var(--color-red); opacity: 0.18; }
+    .fs-pent__svg .pent-line { stroke: var(--color-red); stroke-width: 2.5; fill: none; }
+    .fs-pent__svg .pent-dot { fill: var(--color-red); }
+    .fs-pent__svg .pent-label {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 800;
+      fill: var(--color-ink-strong);
+      letter-spacing: -0.01em;
+    }
+    .fs-pent__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.45;
+    }
+    /* 우측 5대 카드 grid */
+    .fs-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .fs-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 8px;
+      padding: 22px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .fs-card--last {
+      grid-column: 1 / 3;
+      border-top-color: var(--color-red);
+      border-left: 6px solid var(--color-red);
+      padding-left: 22px;
+    }
+    .fs-card__head { display: flex; align-items: center; gap: 12px; }
+    .fs-card__num {
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+    }
+    .fs-card__title {
+      font-family: var(--font-sans);
+      font-size: 32px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .fs-card--last .fs-card__title { color: var(--color-red-deep); }
+    .fs-card__body {
+      font-family: var(--font-sans);
+      font-size: 24px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.38;
+    }
+
+    /* ===== 15 cost-avoidance-funnel (cf-*) — Step 2 v3 신규 ===== */
+    .cf-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 20px;
+      height: 100%;
+    }
+    .cf-funnel {
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 14px;
+      min-height: 0;
+    }
+    .cf-funnel__label {
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700;
+      color: var(--color-ink-strong);
+    }
+    .cf-inputs {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .cf-input-card {
+      padding: 20px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: flex; flex-direction: column; gap: 8px;
+    }
+    .cf-input-card__head {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cf-input-card__num {
+      width: 40px; height: 40px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 800;
+    }
+    .cf-input-card__title {
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.15;
+    }
+    .cf-input-card__body {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.38;
+    }
+    /* funnel 수렴 화살표 영역 */
+    .cf-converge {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1fr;
+      align-items: center;
+      gap: 12px;
+      height: 56px;
+    }
+    .cf-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-red);
+      font-family: var(--font-mono);
+      font-size: 32px; font-weight: 800;
+      transform: rotate(90deg);
+    }
+    /* 출력 영역 — 5 ROI 강조 박스 */
+    .cf-output {
+      padding: 26px 32px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 12px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+      display: grid;
+      grid-template-columns: 56px 1fr;
+      gap: 18px; align-items: center;
+    }
+    .cf-output__num {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 26px; font-weight: 800;
+    }
+    .cf-output__body {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .cf-output__title {
+      font-family: var(--font-sans);
+      font-size: 36px; font-weight: 900;
+      color: var(--color-red-deep);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .cf-output__body-text {
+      font-family: var(--font-sans);
+      font-size: 24px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .cf-quote {
+      padding: 14px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .cf-quote em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .cf-quote__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 18 rfp-process-flow (rp-*) — Step 2 v3 신규 ===== */
+    .rp-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 20px;
+      height: 100%;
+    }
+    .rp-quote {
+      padding: 14px 24px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .rp-quote em, .rp-quote strong { color: var(--color-red); font-weight: 800; }
+    .rp-quote__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+    .rp-flow {
+      display: grid;
+      grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;
+      gap: 8px;
+      align-items: stretch;
+      min-height: 0;
+    }
+    .rp-step {
+      padding: 22px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: flex; flex-direction: column; gap: 10px;
+      text-align: center;
+      opacity: 0.5;
+    }
+    .rp-step__num {
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+    }
+    .rp-step__title {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      line-height: 1.18;
+      flex: 1;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .rp-step__sub {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.05em;
+    }
+    /* Step 2 본 단계 강조 (1단계) */
+    .rp-step--active {
+      opacity: 1;
+      border-top-color: var(--color-red);
+      border-left: 6px solid var(--color-red);
+      padding-left: 16px;
+    }
+    .rp-step--active .rp-step__num {
+      color: var(--color-red);
+      font-size: 24px;
+    }
+    .rp-step--active .rp-step__title {
+      color: var(--color-red-deep);
+      font-size: 24px;
+      font-weight: 900;
+    }
+    .rp-step--active .rp-step__sub {
+      color: var(--color-red);
+      font-weight: 800;
+    }
+    /* 2단계 RFP 단축됨 — 흐리지 않게·중간 강조 */
+    .rp-step--shortened {
+      opacity: 0.85;
+      border-top-color: var(--color-graphite);
+    }
+    .rp-step--shortened .rp-step__sub {
+      color: var(--color-graphite);
+      font-weight: 800;
+    }
+    .rp-arrow {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-graphite);
+      font-family: var(--font-mono);
+      font-size: 30px; font-weight: 800;
+      opacity: 0.55;
+    }
+
+    /* ===== 19 escrow-substitute-diagram (es2-*) — Step 2 v3 신규 ===== */
+    .es2-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 20px;
+      height: 100%;
+    }
+    .es2-diagram {
+      display: grid;
+      grid-template-columns: 1fr 60px 1.2fr;
+      gap: 16px;
+      align-items: stretch;
+      min-height: 0;
+    }
+    /* 좌측 — 일반 Escrow 필요 구조 */
+    .es2-side {
+      padding: 26px 28px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+    }
+    .es2-side__label {
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--color-ink-mute);
+    }
+    .es2-side__title {
+      font-family: var(--font-sans);
+      font-size: 30px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .es2-side__body {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .es2-side__pill {
+      display: inline-flex; align-items: center;
+      padding: 8px 16px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-strong);
+      width: fit-content;
+    }
+    /* 중앙 — 대체 화살표 */
+    .es2-bridge {
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 48px; font-weight: 800;
+      color: var(--color-red);
+    }
+    /* 우측 — 본 사례 대체 구조 (강조) */
+    .es2-side--alt {
+      border-top-color: var(--color-red);
+      border-left: 6px solid var(--color-red);
+      padding-left: 24px;
+    }
+    .es2-side--alt .es2-side__label { color: var(--color-red); }
+    .es2-side--alt .es2-side__title { color: var(--color-red-deep); }
+    .es2-axes {
+      display: grid;
+      grid-template-rows: 1fr 1fr;
+      gap: 12px;
+    }
+    .es2-axis {
+      padding: 14px 18px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-red);
+      display: flex; flex-direction: column; gap: 4px;
+    }
+    .es2-axis__num {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+    }
+    .es2-axis__title {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.015em;
+      line-height: 1.18;
+    }
+    .es2-axis__body {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      margin-top: 4px;
+    }
+
+    /* =========================================================
+       Step 2 v3.1 — GPT 피드백 2차 반영 (글자 강제 룰 확장 + SVG 픽토그램)
+       적용 페이지: 09·10·12·17 (1순위 4장 재설계)
+       글자 강제 룰: 헤드라인 52px·카드 제목 38px·카드 본문 26px·sub 20px·eyebrow 18px·src 14px·num-circle 50px
+       ========================================================= */
+
+    /* ===== 글자 강제 룰 v3.1 확장 ===== */
+    .v3-eyebrow .red-box-label {
+      font-size: 18px;
+      padding: 10px 22px;
+    }
+    .v3-pict-wrap {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--color-bg-cream);
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .v3-pict-wrap--red {
+      background: var(--color-red);
+    }
+    .v3-pict-wrap svg {
+      width: 32px; height: 32px;
+      fill: none;
+      stroke: var(--color-red);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .v3-pict-wrap--red svg { stroke: var(--color-paper); }
+
+    /* ===== 09 step2-intro v3.1 (.si2-* — 4대 목적 카드 + 픽토그램) ===== */
+    .si2-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 22px;
+      height: 100%;
+    }
+    .si2-goals {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 18px;
+      min-height: 0;
+    }
+    .si2-goal-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 12px;
+      padding: 28px 30px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .si2-goal-card__head {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .si2-goal-card__num {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+    }
+    .si2-goal-card__title {
+      font-family: var(--font-sans);
+      font-size: 38px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.022em;
+      line-height: 1.1;
+    }
+    .si2-goal-card__sub {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 700;
+      color: var(--color-ink-soft);
+      line-height: 1.35;
+    }
+    .si2-goal-card__body {
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.01em;
+    }
+    .si2-quote {
+      padding: 16px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .si2-quote em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .si2-quote__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 10 governance-triad v3.1 (.gv2-* — 3축 카드 + 픽토그램 + 결론) ===== */
+    .gv2-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 22px;
+      height: 100%;
+    }
+    .gv2-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      min-height: 0;
+    }
+    .gv2-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 12px;
+      padding: 30px 28px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      position: relative;
+      overflow: hidden;
+    }
+    .gv2-card__head {
+      display: flex; align-items: center; gap: 16px;
+    }
+    .gv2-card__num {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+    }
+    .gv2-card__title {
+      font-family: var(--font-sans);
+      font-size: 38px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.022em;
+      line-height: 1.1;
+    }
+    .gv2-card__sub {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 700;
+      color: var(--color-ink-soft);
+      line-height: 1.35;
+    }
+    .gv2-card__body {
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.42;
+      letter-spacing: -0.01em;
+    }
+    .gv2-card__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+      padding-top: 10px;
+      border-top: 1px solid var(--color-line-soft);
+      margin-top: 6px;
+    }
+
+    /* ===== 12 ma-trigger v3.1 (.mt2-* — watermark 보정 + KPI + 3사 + 픽토그램) ===== */
+    .mt2-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 16px;
+      height: 100%;
+      position: relative;
+    }
+    /* 우하단 watermark "2.8" — v3.1 보정 (안 가: 280~340px·opacity 5%) */
+    .mt2-watermark {
+      position: absolute;
+      right: -10px; bottom: 30px;
+      font-family: var(--font-mono);
+      font-size: 320px; font-weight: 800;
+      color: rgba(230, 0, 18, 0.05);
+      line-height: 0.85;
+      letter-spacing: -0.08em;
+      pointer-events: none; user-select: none;
+      z-index: 1;
+    }
+    .mt2-kpi-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1.1fr;
+      gap: 16px;
+      min-height: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .mt2-kpi-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 10px;
+      padding: 24px 28px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .mt2-kpi-card__head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .mt2-kpi-card__num {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+    }
+    .mt2-kpi-card__label {
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--color-ink-mute);
+    }
+    .mt2-kpi-card__value {
+      font-family: var(--font-mono);
+      font-size: 80px; font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .mt2-kpi-card__value .mt2-kpi-unit {
+      font-family: var(--font-sans);
+      font-size: 32px; font-weight: 700;
+      color: var(--color-ink-soft);
+      margin-left: 6px;
+    }
+    .mt2-kpi-card__sub {
+      font-family: var(--font-sans);
+      font-size: 24px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.38;
+    }
+    .mt2-kpi-card--total {
+      border-top-color: var(--color-red);
+      border-left: 12px solid var(--color-red);
+      padding-left: 24px;
+    }
+    .mt2-kpi-card--total .mt2-kpi-card__num { background: var(--color-red); }
+    .mt2-kpi-card--total .mt2-kpi-card__label { color: var(--color-red-deep); }
+    .mt2-kpi-card--total .mt2-kpi-card__value {
+      font-size: 140px;
+      color: var(--color-red);
+      font-weight: 800;
+    }
+    .mt2-kpi-card--total .mt2-kpi-card__value .mt2-kpi-unit {
+      font-size: 52px;
+      color: var(--color-red-deep);
+      font-weight: 700;
+    }
+    .mt2-kpi-card--total .mt2-kpi-card__sub {
+      color: var(--color-red-deep);
+      font-weight: 700;
+    }
+    .mt2-3sa-row {
+      display: grid;
+      grid-template-columns: 1fr 32px 1fr 32px 1fr;
+      gap: 10px;
+      align-items: stretch;
+      min-height: 0;
+      position: relative;
+      z-index: 2;
+    }
+    .mt2-3sa-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 8px;
+      padding: 22px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 3px solid var(--color-red);
+    }
+    .mt2-3sa-card__head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .mt2-3sa-card__formula {
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: -0.01em;
+    }
+    .mt2-3sa-card__title {
+      font-family: var(--font-sans);
+      font-size: 38px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.022em;
+      line-height: 1.08;
+    }
+    .mt2-3sa-card__body {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .mt2-flow-chevron {
+      display: flex; align-items: center; justify-content: center;
+      color: var(--color-graphite);
+      font-family: var(--font-mono);
+      font-size: 44px; font-weight: 700;
+      line-height: 1;
+      opacity: 0.72;
+      user-select: none;
+    }
+    .mt2-pressure-label {
+      display: flex; justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .mt2-pressure-label .red-box-label {
+      padding: 12px 26px;
+      font-size: 18px;
+      letter-spacing: 0.14em;
+    }
+
+    /* ===== 17 fact-six-reasons v3.1 (.fr2-* — 6사유 + 픽토그램 + 결론 박스 신규) ===== */
+    .fr2-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 20px;
+      height: 100%;
+    }
+    .fr2-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    .fr2-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 10px;
+      padding: 24px 26px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+    }
+    .fr2-card__head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .fr2-card__num {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+    }
+    .fr2-card__title {
+      font-family: var(--font-sans);
+      font-size: 36px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.022em;
+      line-height: 1.1;
+    }
+    .fr2-card__body {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .fr2-card__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+      padding-top: 8px;
+      border-top: 1px solid var(--color-line-soft);
+    }
+
+    /* =========================================================
+       Step 2 v3.2 — 13 four-alternatives 보정 (.fa2-*)
+       글자 강제 룰: 헤드라인 52px·표 본문 28px·sub 16px·헤더 16px·◎ 40px
+       SELECTED 배지 우상단·A안 red rail 8px·선택 기준 라벨 표 위
+       기존 .fa-* 영역 유지 (다른 영역 영향 X) — 신규 클래스 추가
+       ========================================================= */
+    .fa2-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .fa2-criteria-label {
+      display: flex; align-items: center; gap: 16px;
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .fa2-criteria-label .red-box-label {
+      font-size: 16px;
+      padding: 10px 22px;
+      letter-spacing: 0.12em;
+    }
+    .fa2-table {
+      display: grid;
+      grid-template-rows: auto repeat(4, 1fr);
+      gap: 8px;
+      min-height: 0;
+    }
+    .fa2-row {
+      display: grid;
+      grid-template-columns: 2.4fr 1fr 1fr 1fr;
+      gap: 10px;
+    }
+    .fa2-cell {
+      padding: 18px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: flex; align-items: center;
+      position: relative;
+    }
+    .fa2-row--head .fa2-cell {
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      justify-content: center;
+      padding: 14px 26px;
+    }
+    .fa2-row--head .fa2-cell--label { justify-content: flex-start; }
+    .fa2-cell__label-wrap {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .fa2-cell__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.18;
+    }
+    .fa2-cell__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.35;
+    }
+    .fa2-cell__mark {
+      font-family: var(--font-mono);
+      font-size: 40px; font-weight: 800;
+      margin: 0 auto;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .fa2-mark--great { color: var(--color-red); }
+    .fa2-mark--good { color: var(--color-graphite); }
+    .fa2-mark--mid { color: var(--color-ink-mute); }
+    .fa2-mark--bad { color: var(--color-ink-faint); }
+    .fa2-row--active .fa2-cell {
+      background: var(--color-red-pale);
+      border-color: var(--color-red-soft);
+    }
+    .fa2-row--active .fa2-cell--label {
+      border-left: 8px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+      padding-left: 22px;
+    }
+    .fa2-row--active .fa2-cell__title {
+      color: var(--color-red-deep);
+      font-weight: 900;
+    }
+    .fa2-cell__badge {
+      position: absolute;
+      top: 10px; right: 14px;
+      padding: 6px 14px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      border-radius: var(--r-sm);
+      z-index: 2;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+
+    <!-- ============= SLIDE 12 · ma-trigger v3.1 (GPT 피드백 2차 — watermark 보정 + 픽토그램) ============= -->
+    <section class="slide tone-c active" data-slide="1">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">12</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="mt2-main">
+          <div class="mt2-watermark" aria-hidden="true">2.8</div>
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 2 · 04</span>
+            <span class="eb-text">M&amp;A 트리거 2.8조</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            M&amp;A 이후 3사 통합 압력 — 단순 시스템 통합이 아닌 <span class="v3-em">수직 계열화 공급망(SCM) 실시간 동기화</span>
+          </h1>
+          <div class="mt2-kpi-row reveal" style="--rev-delay:0.4s">
+            <div class="mt2-kpi-card">
+              <div class="mt2-kpi-card__head">
+                <span class="mt2-kpi-card__num">1</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 10 4 L 10 14 L 4 14 L 4 28 L 28 28 L 28 14 L 22 14 L 22 4 Z" /><line x1="12" y1="9" x2="20" y2="9" /><line x1="12" y1="20" x2="20" y2="20" /><circle cx="16" cy="13" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <span class="mt2-kpi-card__label">롯데정밀화학 인수 · 2016.02</span>
+              </div>
+              <span class="mt2-kpi-card__value">4,650<span class="mt2-kpi-unit">억</span></span>
+              <span class="mt2-kpi-card__sub">정밀화학·스페셜티 영역 확장 — 암모니아·메셀로스 등</span>
+            </div>
+            <div class="mt2-kpi-card">
+              <div class="mt2-kpi-card__head">
+                <span class="mt2-kpi-card__num">2</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 6 10 L 16 4 L 26 10 L 26 22 L 16 28 L 6 22 Z" /><path d="M 6 10 L 16 16 L 26 10" /><line x1="16" y1="16" x2="16" y2="28" /><circle cx="16" cy="16" r="2" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <span class="mt2-kpi-card__label">롯데첨단소재 인수 · 2016.04</span>
+              </div>
+              <span class="mt2-kpi-card__value">2조 3,265<span class="mt2-kpi-unit">억</span></span>
+              <span class="mt2-kpi-card__sub">고기능 소재 사업 확장 — ABS·PC·인조대리석</span>
+            </div>
+            <div class="mt2-kpi-card mt2-kpi-card--total">
+              <div class="mt2-kpi-card__head">
+                <span class="mt2-kpi-card__num">∑</span>
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 6 6 L 26 6 L 18 16 L 26 26 L 6 26" /></svg>
+                </span>
+                <span class="mt2-kpi-card__label">M&amp;A 합계 (약)</span>
+              </div>
+              <span class="mt2-kpi-card__value">2.8<span class="mt2-kpi-unit">조</span></span>
+              <span class="mt2-kpi-card__sub">3사 통합 ERP 의사결정 직접 동인 — SCM 동기화 압력</span>
+            </div>
+          </div>
+          <div class="mt2-3sa-row reveal" style="--rev-delay:0.6s">
+            <article class="mt2-3sa-card">
+              <div class="mt2-3sa-card__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="10" cy="16" r="3" /><circle cx="22" cy="16" r="3" /><line x1="13" y1="16" x2="19" y2="16" /><line x1="10" y1="13" x2="10" y2="6" /><line x1="22" y1="13" x2="22" y2="6" /><line x1="10" y1="19" x2="10" y2="26" /><line x1="22" y1="19" x2="22" y2="26" /></svg>
+                </span>
+                <span class="mt2-3sa-card__formula">C₂H₄ · 기초유분 원천</span>
+              </div>
+              <h3 class="mt2-3sa-card__title">롯데케미칼</h3>
+              <p class="mt2-3sa-card__body">기초유분·합성수지·화성 — 본 사례 모회사·글로벌 11위 화학사·6국 거점·110국 수출</p>
+            </article>
+            <div class="mt2-flow-chevron" aria-hidden="true">›</div>
+            <article class="mt2-3sa-card">
+              <div class="mt2-3sa-card__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 12 4 L 20 4 L 20 14 L 25 24 C 26 26 24 28 22 28 L 10 28 C 8 28 6 26 7 24 L 12 14 Z" /><line x1="13" y1="14" x2="19" y2="14" /><circle cx="14" cy="22" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="18" cy="20" r="1" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <span class="mt2-3sa-card__formula">Specialty · 중간재</span>
+              </div>
+              <h3 class="mt2-3sa-card__title">롯데정밀화학</h3>
+              <p class="mt2-3sa-card__body">정밀화학·암모니아·메셀로스 등 스페셜티 — 2016.02 인수 4,650억·정밀화학 영역 확장</p>
+            </article>
+            <div class="mt2-flow-chevron" aria-hidden="true">›</div>
+            <article class="mt2-3sa-card">
+              <div class="mt2-3sa-card__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 6 10 L 16 4 L 26 10 L 26 22 L 16 28 L 6 22 Z" /><path d="M 6 10 L 16 16 L 26 10 M 16 16 L 16 28" /><path d="M 11 7 L 11 19 M 21 7 L 21 19" stroke-dasharray="2 2" /></svg>
+                </span>
+                <span class="mt2-3sa-card__formula">Composite · 고기능</span>
+              </div>
+              <h3 class="mt2-3sa-card__title">롯데첨단소재</h3>
+              <p class="mt2-3sa-card__body">ABS·PC·인조대리석 등 고기능 소재 — 2016.04 인수 2조 3,265억·고기능 소재 사업 확장</p>
+            </article>
+          </div>
+          <div class="mt2-pressure-label reveal" style="--rev-delay:0.78s">
+            <span class="red-box-label">INTEGRATION PRESSURE · 통합 압력</span>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.9s">
+            <span>3사 기준정보·프로세스 통합 압력 + 수직 계열화 공급망(SCM)의 <em>실시간 동기화 압력</em> — ERP 통합은 단순 재무제표 합산이 아닌 SCM 실시간 흐름 동기화 작업</span>
+            <span class="v3-msg__src">출처 [8] [14] [15]</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 16 · lotte-vs-hyundai v1 (매트릭스 v10.1 §9-NEW 16) ============= -->
+    <section class="slide tone-c" data-slide="2">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">16</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="lh-main">
+          <div class="eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">Step 2 · 08</span>
+            <span class="eb-text">온프레미스 vs 클라우드</span>
+          </div>
+          <h1 class="lh-headline reveal" style="--rev-delay:0.2s">
+            왜 <span class="lh-em">온프레미스</span>인가 — 24시간 무중단 + 화학 특화 + 2017 클라우드 성숙도 3축
+          </h1>
+          <div class="lh-intro reveal" style="--rev-delay:0.35s">
+            <div class="lh-intro-card lh-intro-card--onprem">
+              <span class="lh-intro-card__label">ON-PREMISE · 온프레미스</span>
+              <p class="lh-intro-card__body">자체 데이터센터에 직접 구축·운영 — 모든 통제권 회사 내부 보유</p>
+            </div>
+            <div class="lh-intro-card lh-intro-card--cloud">
+              <span class="lh-intro-card__label">CLOUD · SaaS</span>
+              <p class="lh-intro-card__body">외부 전문 기업의 대형 데이터센터 임대 사용 — 통제권 외부 의존</p>
+            </div>
+          </div>
+          <div class="lh-main-label reveal" style="--rev-delay:0.45s">
+            <span class="red-box-label">MAIN 3축</span>
+            <span class="lh-main-label__text">본 사례가 온프레미스를 선택한 3가지 사유</span>
+          </div>
+          <div class="lh-main-row reveal" style="--rev-delay:0.55s">
+            <article class="lh-main-card">
+              <div class="lh-main-card__watermark" aria-hidden="true">1</div>
+              <span class="lh-main-card__num">1</span>
+              <h3 class="lh-main-card__title">24시간 무중단</h3>
+              <p class="lh-main-card__sub">제로 다운타임 요구</p>
+              <p class="lh-main-card__body">석유화학 공장은 1년 365일 가동 — 시스템 1분 정지도 수십억 원 손실. 클라우드 외부 네트워크 장애 시 자체 대응 불가 → 인프라 완전 통제 필요</p>
+              <span class="lh-main-card__src">출처 [1] 박제성 인터뷰 · [11] 이상신 박사논문 (연속공정 산업)</span>
+            </article>
+            <article class="lh-main-card">
+              <div class="lh-main-card__watermark" aria-hidden="true">2</div>
+              <span class="lh-main-card__num">2</span>
+              <h3 class="lh-main-card__title">화학 특화 영역</h3>
+              <p class="lh-main-card__sub">연산품·부산물 회계 + GEMS·GRC</p>
+              <p class="lh-main-card__body">한 공정 여러 제품 동시 생산 — 연산품·부산물 회계 처리. GEMS·화학물질관리·GRC 등 본 사례 특화 영역. SaaS 표준 강제 환경에서는 자유로운 설정 제약</p>
+              <span class="lh-main-card__src">출처 [16] SAP Learning 「Joint Production」 · [8] 사업보고서 (GEMS 2010)</span>
+            </article>
+            <article class="lh-main-card">
+              <div class="lh-main-card__watermark" aria-hidden="true">3</div>
+              <span class="lh-main-card__num">3</span>
+              <h3 class="lh-main-card__title">2017 클라우드 성숙도</h3>
+              <p class="lh-main-card__sub">Public Edition Greenfield 한정</p>
+              <p class="lh-main-card__body">SAP S/4HANA 클라우드 2017년 2월 출시 직후 — 국내 대기업급 검증 사례 부재. Public Edition Greenfield만 지원 → 통합형 컨버전(Brownfield 성격) 온프레미스에서만 가능</p>
+              <span class="lh-main-card__src">출처 [17] TechTarget 「What is SAP S/4HANA?」 · docx Step 5 §3.3</span>
+            </article>
+          </div>
+          <div class="lh-aux-wrap">
+            <div class="lh-aux-label-row">보조 사유 (참고)</div>
+            <div class="lh-aux reveal" style="--rev-delay:0.85s">
+              <div class="lh-aux-card">
+                <span class="lh-aux-card__label">보조 1</span>
+                <p class="lh-aux-card__body">주변 시스템 연계 — SCM·MES·PLM·LIMS·EHS·GEMS 등 10개 모듈 Add-on 영역</p>
+              </div>
+              <div class="lh-aux-card">
+                <span class="lh-aux-card__label">보조 2</span>
+                <p class="lh-aux-card__body">기준정보 통합 — 3사 자재·거래처·계정·조직 코드 통합 영역</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 09 · step2-intro v3.1 (GPT 피드백 2차 — 4대 목적 + 픽토그램) ============= -->
+    <section class="slide tone-c" data-slide="3">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">09</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="si2-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 2 · 01</span>
+            <span class="eb-text">§1 도입 의사결정</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            ERP 통합의 본질 — 기존 SAP 자산 유지 + <span class="v3-em">M&amp;A 이후 3사·글로벌 운영 통합</span> 4대 비즈니스 목적
+          </h1>
+          <div class="si2-goals reveal" style="--rev-delay:0.4s">
+            <article class="si2-goal-card">
+              <div class="si2-goal-card__head">
+                <span class="si2-goal-card__num">1</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="8" cy="10" r="5" /><circle cx="24" cy="10" r="5" /><circle cx="16" cy="22" r="5" /><path d="M 12 12 L 16 18 M 20 12 L 16 18" /></svg>
+                </span>
+                <h3 class="si2-goal-card__title">3사 시스템 통합</h3>
+              </div>
+              <p class="si2-goal-card__sub">롯데케미칼 · 정밀화학 · 첨단소재</p>
+              <p class="si2-goal-card__body">2조 8천억원 M&amp;A 통합 운영 — 기준정보·프로세스 단일 플랫폼으로 3사 운영체계 통합</p>
+            </article>
+            <article class="si2-goal-card">
+              <div class="si2-goal-card__head">
+                <span class="si2-goal-card__num">2</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" /><ellipse cx="16" cy="16" rx="5" ry="13" /><line x1="3" y1="16" x2="29" y2="16" /><circle cx="8" cy="10" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="24" cy="13" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="20" cy="22" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <h3 class="si2-goal-card__title">글로벌 거점 지원</h3>
+              </div>
+              <p class="si2-goal-card__sub">6국 거점 + 110국 수출</p>
+              <p class="si2-goal-card__body">단일 운영체계로 글로벌 거점 통화·세무·법인 회계 통합 — 분 단위 손익 통제</p>
+            </article>
+            <article class="si2-goal-card">
+              <div class="si2-goal-card__head">
+                <span class="si2-goal-card__num">3</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><rect x="3" y="6" width="6" height="6" /><rect x="13" y="6" width="6" height="6" /><rect x="23" y="6" width="6" height="6" /><path d="M 6 14 L 16 22 M 16 14 L 16 22 M 26 14 L 16 22" /><rect x="11" y="22" width="10" height="6" fill="var(--color-red)" stroke="none" opacity="0.85" /></svg>
+                </span>
+                <h3 class="si2-goal-card__title">중복 투자 리스크 축소</h3>
+              </div>
+              <p class="si2-goal-card__sub">3사 시스템 병존 → 단일 플랫폼</p>
+              <p class="si2-goal-card__body">신규 SAP 플랫폼으로 중복 유지보수·인프라 비용 해소 — 운영비 절감 + ROI 회수</p>
+            </article>
+            <article class="si2-goal-card">
+              <div class="si2-goal-card__head">
+                <span class="si2-goal-card__num">4</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="20" rx="2" /><rect x="11" y="11" width="10" height="10" fill="var(--color-red)" stroke="none" /><line x1="6" y1="11" x2="2" y2="11" /><line x1="6" y1="16" x2="2" y2="16" /><line x1="6" y1="21" x2="2" y2="21" /><line x1="26" y1="11" x2="30" y2="11" /><line x1="26" y1="16" x2="30" y2="16" /><line x1="26" y1="21" x2="30" y2="21" /><line x1="11" y1="6" x2="11" y2="2" /><line x1="16" y1="6" x2="16" y2="2" /><line x1="21" y1="6" x2="21" y2="2" /><line x1="11" y1="26" x2="11" y2="30" /><line x1="16" y1="26" x2="16" y2="30" /><line x1="21" y1="26" x2="21" y2="30" /></svg>
+                </span>
+                <h3 class="si2-goal-card__title">디지털 코어 확보</h3>
+              </div>
+              <p class="si2-goal-card__sub">DT · 인텔리전트 엔터프라이즈</p>
+              <p class="si2-goal-card__body">2018+ 디지털혁신협의체·그룹공통시스템 확장 기반 — SCM·MES·PLM·LIMS·EHS 연계</p>
+            </article>
+          </div>
+          <div class="si2-quote reveal" style="--rev-delay:0.9s">
+            <span>"롯데케미칼은 글로벌 거점에서 일어나는 모든 활동을 지원하기 위해 SAP S/4HANA로 <em>3개사의 시스템을 통합하기로 결정</em>했다"</span>
+            <span class="si2-quote__src">출처 [1] 박제성 인터뷰 · [8] 사업보고서</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 10 · governance-triad v3.1 (GPT 피드백 2차 — 3축 + 픽토그램) ============= -->
+    <section class="slide tone-c" data-slide="4">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">10</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="gv2-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 2 · 02</span>
+            <span class="eb-text">§2 거버넌스 3축</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            발주 · 수행 · 기술 <span class="v3-em">3축 거버넌스</span> — 그룹 IT 자산 통제권 확보
+          </h1>
+          <div class="gv2-row reveal" style="--rev-delay:0.4s">
+            <article class="gv2-card">
+              <div class="gv2-card__head">
+                <span class="gv2-card__num">1</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 16 4 L 28 12 L 28 20 L 16 28 L 4 20 L 4 12 Z" /><path d="M 11 14 L 15 18 L 22 11" stroke-width="2.5" /></svg>
+                </span>
+                <h3 class="gv2-card__title">발주 · 의사결정</h3>
+              </div>
+              <p class="gv2-card__sub">롯데케미칼</p>
+              <p class="gv2-card__body">김교현 대표 · 박제성 상무 — 의사결정 주체 + 자원 배분 + 요구사항 정의. 본 프로젝트 발주자로서 그룹 IT 자산 통제권 유지 전략적 판단</p>
+              <span class="gv2-card__src">출처 [1] 박제성 인터뷰 · [8] 사업보고서</span>
+            </article>
+            <article class="gv2-card">
+              <div class="gv2-card__head">
+                <span class="gv2-card__num">2</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="11" cy="11" r="6" /><circle cx="22" cy="22" r="6" /><path d="M 17 11 L 22 16" /><circle cx="11" cy="11" r="2" fill="var(--color-red)" stroke="none" /><circle cx="22" cy="22" r="2" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <h3 class="gv2-card__title">수행 · 통합</h3>
+              </div>
+              <p class="gv2-card__sub">롯데정보통신 (그룹 SI)</p>
+              <p class="gv2-card__body">시스템 구축·통합 수행 + 그룹 표준 운영체계 적용. 외부 글로벌 SI 일임 회피·그룹 IT 자산 내부 축적</p>
+              <span class="gv2-card__src">출처 [8] 사업보고서</span>
+            </article>
+            <article class="gv2-card">
+              <div class="gv2-card__head">
+                <span class="gv2-card__num">3</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 16 3 L 28 8 L 28 17 C 28 22 23 27 16 30 C 9 27 4 22 4 17 L 4 8 Z" /><path d="M 11 15 L 15 19 L 22 11" stroke-width="2.5" /></svg>
+                </span>
+                <h3 class="gv2-card__title">기술 · 방법론</h3>
+              </div>
+              <p class="gv2-card__sub">SAP 본사 (Value Assurance Service)</p>
+              <p class="gv2-card__body">구축 방법론 + 리스크 통제 기술 + Best Practice 제공. SAP Activate Hybrid Agile + 인증 + 다운타임 사전 검증</p>
+              <span class="gv2-card__src">출처 [12] SAP Value Assurance</span>
+            </article>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.85s">
+            <span>외부 글로벌 SI(Accenture · IBM · Deloitte) 일임 X → 그룹 IT 자산 통제권 확보 전략. 2018년 이사회 4건 의결 — 02.08 그룹공통시스템·디지털혁신협의체·05.28 환경 에너지 통합·12.19 SAP 라이선스 추가 구매 — <em>그룹 차원 디지털 전환의 의도된 출발점</em> 사후 입증</span>
+            <span class="v3-msg__src">출처 [9] 2018 정정 사업보고서</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 11 · make-vs-buy v2 (매트릭스 v10.3 §9-NEW 11) ============= -->
+    <section class="slide tone-c" data-slide="5">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">11</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="mb-main">
+          <div class="eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">Step 2 · 03</span>
+            <span class="eb-text">§3 Make or Buy</span>
+          </div>
+          <h1 class="mb-headline reveal" style="--rev-delay:0.2s">
+            강의 자료 정합 — <span class="mb-em">Buy(패키지)</span> 1차 의사결정
+          </h1>
+          <div class="mb-quote reveal" style="--rev-delay:0.35s">
+            <span>"시스템을 개발할 것인지 외부에서 패키지 형태로 구입할 것인지를 결정 (Make or Buy, 즉 In-house / Package)"</span>
+            <span class="mb-quote__src">강의 자료 10p</span>
+          </div>
+          <div class="mb-compare reveal" style="--rev-delay:0.5s">
+            <article class="mb-compare-card mb-compare-card--make">
+              <span class="mb-compare-card__label">MAKE · IN-HOUSE</span>
+              <h3 class="mb-compare-card__title">자체 개발</h3>
+              <p class="mb-compare-card__body">글로벌 회계 · 생산 · 품질 · 화학물질관리 · M&amp;A 통합 자체 개발 시 기간 · 비용 · 표준화 리스크 과대. Scope Creep 리스크</p>
+            </article>
+            <article class="mb-compare-card mb-compare-card--buy">
+              <span class="mb-compare-card__label">BUY · PACKAGE (선택)</span>
+              <h3 class="mb-compare-card__title">패키지 도입</h3>
+              <p class="mb-compare-card__body">기존 SAP 운영 경험 + 글로벌 표준 프로세스 활용. 단 프로세스 불일치 · 벤더 종속(Lock-in) 리스크 관리 필요</p>
+            </article>
+          </div>
+          <div class="mb-result reveal" style="--rev-delay:0.7s">
+            <span class="red-box-label">결론 — 패키지 ERP 기반 고도화 타당</span>
+          </div>
+          <div class="mb-stages reveal" style="--rev-delay:0.85s">
+            <div class="mb-stage">
+              <span class="mb-stage__num">1</span>
+              <span class="mb-stage__title">Discover</span>
+              <span class="mb-stage__sub">탐색</span>
+            </div>
+            <div class="mb-stage-arrow" aria-hidden="true">›</div>
+            <div class="mb-stage">
+              <span class="mb-stage__num">2</span>
+              <span class="mb-stage__title">Prepare</span>
+              <span class="mb-stage__sub">준비</span>
+            </div>
+            <div class="mb-stage-arrow" aria-hidden="true">›</div>
+            <div class="mb-stage">
+              <span class="mb-stage__num">3</span>
+              <span class="mb-stage__title">Explore</span>
+              <span class="mb-stage__sub">탐구</span>
+            </div>
+            <div class="mb-stage-arrow" aria-hidden="true">›</div>
+            <div class="mb-stage mb-stage--active">
+              <span class="mb-stage__num">4 · 강조</span>
+              <span class="mb-stage__title">Realize</span>
+              <span class="mb-stage__sub">스프린트 반복</span>
+            </div>
+            <div class="mb-stage-arrow" aria-hidden="true">›</div>
+            <div class="mb-stage">
+              <span class="mb-stage__num">5</span>
+              <span class="mb-stage__title">Deploy</span>
+              <span class="mb-stage__sub">배포</span>
+            </div>
+            <div class="mb-stage-arrow" aria-hidden="true">›</div>
+            <div class="mb-stage">
+              <span class="mb-stage__num">6</span>
+              <span class="mb-stage__title">Run</span>
+              <span class="mb-stage__sub">운영</span>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 13 · four-alternatives v3.2 (Step 2 v3.2 보정 — 52px 헤드라인·28px 표 본문·SELECTED 배지·red rail 8px·선택 기준 라벨) ============= -->
+    <section class="slide tone-c" data-slide="6">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">13</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="fa2-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 2 · 05</span>
+            <span class="eb-text">§4 4대 대안</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            패키지 ERP 4안 비교 — <span class="v3-em">A안 선택</span>
+          </h1>
+          <div class="fa2-criteria-label reveal" style="--rev-delay:0.32s">
+            <span class="red-box-label">선택 기준</span>
+            <span>기존 자산 유지 + 통합 리스크 최소화</span>
+          </div>
+          <div class="fa2-table reveal" style="--rev-delay:0.45s">
+            <div class="fa2-row fa2-row--head">
+              <div class="fa2-cell fa2-cell--label">대안</div>
+              <div class="fa2-cell">기술</div>
+              <div class="fa2-cell">경제</div>
+              <div class="fa2-cell">운영</div>
+            </div>
+            <div class="fa2-row fa2-row--active">
+              <div class="fa2-cell fa2-cell--label">
+                <span class="fa2-cell__badge">SELECTED</span>
+                <div class="fa2-cell__label-wrap">
+                  <span class="fa2-cell__title">A. 기존 SAP 기반 S/4HANA 전환</span>
+                  <span class="fa2-cell__sub">13년 SAP 자산 유지 + 통합형 컨버전</span>
+                </div>
+              </div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--great">◎</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--great">◎</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--great">◎</span></div>
+            </div>
+            <div class="fa2-row">
+              <div class="fa2-cell fa2-cell--label">
+                <div class="fa2-cell__label-wrap">
+                  <span class="fa2-cell__title">B. SAP S/4HANA Greenfield 신규</span>
+                  <span class="fa2-cell__sub">신규 구축 — 기존 자산 미활용</span>
+                </div>
+              </div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--good">○</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--mid">△</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--mid">△</span></div>
+            </div>
+            <div class="fa2-row">
+              <div class="fa2-cell fa2-cell--label">
+                <div class="fa2-cell__label-wrap">
+                  <span class="fa2-cell__title">C. Oracle · MS Dynamics 등 타 ERP</span>
+                  <span class="fa2-cell__sub">전면 교체 — 기존 SAP 자산 폐기</span>
+                </div>
+              </div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--mid">△</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--bad">×</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--bad">×</span></div>
+            </div>
+            <div class="fa2-row">
+              <div class="fa2-cell fa2-cell--label">
+                <div class="fa2-cell__label-wrap">
+                  <span class="fa2-cell__title">D. 현행 SAP ERP + 별도 통합</span>
+                  <span class="fa2-cell__sub">기존 유지 + 통합 모듈 추가</span>
+                </div>
+              </div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--mid">△</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--mid">△</span></div>
+              <div class="fa2-cell"><span class="fa2-cell__mark fa2-mark--bad">×</span></div>
+            </div>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.92s">
+            <span>A안 선정 사유 — 기존 SAP 자산 유지 + 3사 통합 + 글로벌 운영 <em>가장 낮은 리스크</em>로 달성 가능</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 14 · five-feasibility v3 (GPT 피드백 — feasibility-scorecard) ============= -->
+    <section class="slide tone-c" data-slide="7">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">14</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="fs-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">Step 2 · 06</span>
+            <span class="eb-text">§5 5대 타당성 평가</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            5대 타당성 평가 — <span class="v3-em">기술 · 운영 · 경제 · 전략 · 확장성</span> 모두 적합
+          </h1>
+          <div class="fs-grid reveal" style="--rev-delay:0.4s">
+            <aside class="fs-pent">
+              <span class="fs-pent__label">SCORECARD · 5축</span>
+              <h3 class="fs-pent__title">A안 타당성 점수판</h3>
+              <div class="fs-pent__svg">
+                <svg viewBox="-220 -200 440 400" aria-label="5대 타당성 pentagon scorecard">
+                  <!-- pentagon grid (3 levels: 60·100·140) -->
+                  <polygon class="pent-grid" points="0,-60 57.1,-18.5 35.3,48.5 -35.3,48.5 -57.1,-18.5" />
+                  <polygon class="pent-grid" points="0,-100 95.1,-30.9 58.8,80.9 -58.8,80.9 -95.1,-30.9" />
+                  <polygon class="pent-axis" points="0,-140 133.2,-43.3 82.3,113.3 -82.3,113.3 -133.2,-43.3" />
+                  <!-- 5 axes lines from center -->
+                  <line class="pent-axis" x1="0" y1="0" x2="0" y2="-140" />
+                  <line class="pent-axis" x1="0" y1="0" x2="133.2" y2="-43.3" />
+                  <line class="pent-axis" x1="0" y1="0" x2="82.3" y2="113.3" />
+                  <line class="pent-axis" x1="0" y1="0" x2="-82.3" y2="113.3" />
+                  <line class="pent-axis" x1="0" y1="0" x2="-133.2" y2="-43.3" />
+                  <!-- score polygon (모두 만점 — A안 적합 5/5) -->
+                  <polygon class="pent-fill" points="0,-140 133.2,-43.3 82.3,113.3 -82.3,113.3 -133.2,-43.3" />
+                  <polyline class="pent-line" points="0,-140 133.2,-43.3 82.3,113.3 -82.3,113.3 -133.2,-43.3 0,-140" />
+                  <circle class="pent-dot" cx="0" cy="-140" r="5" />
+                  <circle class="pent-dot" cx="133.2" cy="-43.3" r="5" />
+                  <circle class="pent-dot" cx="82.3" cy="113.3" r="5" />
+                  <circle class="pent-dot" cx="-82.3" cy="113.3" r="5" />
+                  <circle class="pent-dot" cx="-133.2" cy="-43.3" r="5" />
+                  <!-- labels -->
+                  <text class="pent-label" x="0" y="-160" text-anchor="middle">기술</text>
+                  <text class="pent-label" x="150" y="-48" text-anchor="start">운영</text>
+                  <text class="pent-label" x="95" y="135" text-anchor="middle">경제</text>
+                  <text class="pent-label" x="-95" y="135" text-anchor="middle">전략</text>
+                  <text class="pent-label" x="-150" y="-48" text-anchor="end">확장성</text>
+                </svg>
+              </div>
+              <p class="fs-pent__sub">강의 자료 2대 타당성(기술·경제) + <strong style="color:var(--color-red);">운영 · 전략 · 확장성</strong> 3축 확장 = 5대 평가 프레임</p>
+            </aside>
+            <div class="fs-cards">
+              <article class="fs-card">
+                <div class="fs-card__head">
+                  <span class="fs-card__num">1</span>
+                  <h3 class="fs-card__title">기술적</h3>
+                </div>
+                <p class="fs-card__body">인메모리 S/4HANA · 대용량 처리 · 기존 ECC→S/4HANA 전환 경로 확보</p>
+              </article>
+              <article class="fs-card">
+                <div class="fs-card__head">
+                  <span class="fs-card__num">2</span>
+                  <h3 class="fs-card__title">운영적</h3>
+                </div>
+                <p class="fs-card__body">10개 핵심 업무 통합 — 구매·생산·설비·품질·영업·관리회계·재무자금·인사·GRC·화학물질관리</p>
+              </article>
+              <article class="fs-card">
+                <div class="fs-card__head">
+                  <span class="fs-card__num">3</span>
+                  <h3 class="fs-card__title">경제적</h3>
+                </div>
+                <p class="fs-card__body">기준정보 재활용 · 교육비 절감 · 인터페이스 부담 감소 · 중복 운영비</p>
+              </article>
+              <article class="fs-card">
+                <div class="fs-card__head">
+                  <span class="fs-card__num">4</span>
+                  <h3 class="fs-card__title">전략적</h3>
+                </div>
+                <p class="fs-card__body">M&amp;A 통합 · 글로벌 거점 확대 · DT 기반 + 2018+ 디지털혁신협의체 후속 효과</p>
+              </article>
+              <article class="fs-card fs-card--last">
+                <div class="fs-card__head">
+                  <span class="fs-card__num">5</span>
+                  <h3 class="fs-card__title">확장성 — 비SAP 주변 시스템 연계</h3>
+                </div>
+                <p class="fs-card__body">SCM · MES · PLM · LIMS · EHS · WMS 등 비SAP 주변 시스템 연계 — EAI 기반 단일 디지털 코어 확장 구조</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 15 · economic-feasibility v3 (GPT 피드백 — cost-avoidance-funnel) ============= -->
+    <section class="slide tone-c" data-slide="8">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">15</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="cf-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">Step 2 · 07</span>
+            <span class="eb-text">§6 경제적 타당성</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            <span class="v3-em">비용 회피형 관리</span> — 4대 절감 요인이 <span class="v3-em">M&amp;A 자산 통합 ROI</span>로 수렴
+          </h1>
+          <div class="cf-funnel reveal" style="--rev-delay:0.4s">
+            <div class="cf-funnel__label">
+              <span class="red-box-label">FUNNEL · 비용 회피 → ROI</span>
+              <span>본 프로젝트 투자 규모 비공개 → 정성·간접 비용 회피 4요인이 ROI로 수렴</span>
+            </div>
+            <div class="cf-inputs">
+              <article class="cf-input-card">
+                <div class="cf-input-card__head">
+                  <span class="cf-input-card__num">1</span>
+                  <h3 class="cf-input-card__title">기준정보 재활용</h3>
+                </div>
+                <p class="cf-input-card__body">자재 · 거래처 · 계정 · 조직 13년 SAP 자산 활용</p>
+              </article>
+              <article class="cf-input-card">
+                <div class="cf-input-card__head">
+                  <span class="cf-input-card__num">2</span>
+                  <h3 class="cf-input-card__title">교육비 절감</h3>
+                </div>
+                <p class="cf-input-card__body">기존 SAP 경험 유지 — 통상 ERP 비용 10~15% 차지하는 교육비 회피</p>
+              </article>
+              <article class="cf-input-card">
+                <div class="cf-input-card__head">
+                  <span class="cf-input-card__num">3</span>
+                  <h3 class="cf-input-card__title">인터페이스 부담 감소</h3>
+                </div>
+                <p class="cf-input-card__body">SCM · MES · PLM · LIMS · EHS 기존 연계 구조 유지 — 재설계 비용 회피</p>
+              </article>
+              <article class="cf-input-card">
+                <div class="cf-input-card__head">
+                  <span class="cf-input-card__num">4</span>
+                  <h3 class="cf-input-card__title">중복 운영비 절감</h3>
+                </div>
+                <p class="cf-input-card__body">3사 시스템 병존 → 단일 플랫폼으로 통합 운영비 축소</p>
+              </article>
+            </div>
+            <div class="cf-converge" aria-hidden="true">
+              <span class="cf-arrow">›</span>
+              <span class="cf-arrow">›</span>
+              <span class="cf-arrow">›</span>
+              <span class="cf-arrow">›</span>
+            </div>
+            <article class="cf-output">
+              <span class="cf-output__num">5</span>
+              <div class="cf-output__body">
+                <h3 class="cf-output__title">M&amp;A 자산 통합 ROI</h3>
+                <p class="cf-output__body-text">2조 8천억원 인수 자산 운영 가치 극대화 — 단일 디지털 코어가 M&amp;A 성과 회수의 직접 기반</p>
+              </div>
+            </article>
+          </div>
+          <div class="cf-quote reveal" style="--rev-delay:0.9s">
+            <span>"통합 운영체계 확보 · 신규 SAP 플랫폼 도입으로 <em>중복투자 리스크 제거</em>"</span>
+            <span class="cf-quote__src">출처 [1] 박제성 인터뷰 · [2] [3] [8] [10]</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 17 · fact-six-reasons v3.1 (GPT 피드백 2차 — 6사유 + 픽토그램 + 결론 박스 신규) ============= -->
+    <section class="slide tone-c" data-slide="9">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">17</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="fr2-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 2 · 09</span>
+            <span class="eb-text">§7 Fact 6사유</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            Fact 기반 <span class="v3-em">6대 선정 사유</span> — 13년 자산 + M&amp;A + 10모듈 + 연계 + Brownfield + 학술
+          </h1>
+          <div class="fr2-cards reveal" style="--rev-delay:0.4s">
+            <article class="fr2-card">
+              <div class="fr2-card__head">
+                <span class="fr2-card__num">1</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><rect x="4" y="8" width="24" height="20" rx="2" /><line x1="4" y1="14" x2="28" y2="14" /><line x1="10" y1="4" x2="10" y2="11" /><line x1="22" y1="4" x2="22" y2="11" /><text x="16" y="24" text-anchor="middle" font-family="JetBrains Mono" font-size="9" font-weight="800" fill="var(--color-red)" stroke="none">13y</text></svg>
+                </span>
+                <h3 class="fr2-card__title">13년 누적 SAP 운영</h3>
+              </div>
+              <p class="fr2-card__body">2003-04 SMART 빅뱅 10개월 · 2010 GEMS 석유화학 최초 도입 · 13년 누적 운영 경험 자산</p>
+              <span class="fr2-card__src">출처 [8] 사업보고서</span>
+            </article>
+            <article class="fr2-card">
+              <div class="fr2-card__head">
+                <span class="fr2-card__num">2</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="9" cy="10" r="4" /><circle cx="23" cy="10" r="4" /><path d="M 9 14 L 16 22 M 23 14 L 16 22" /><circle cx="16" cy="22" r="4" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <h3 class="fr2-card__title">M&amp;A 3사 통합</h3>
+              </div>
+              <p class="fr2-card__body">2조 8천억원 — 정밀화학 4,650억 + 첨단소재 2조 3,265억 → 단일 디지털 코어 통합 운영 필요성</p>
+              <span class="fr2-card__src">출처 [8] · content-thesis §2 보조 논지 1</span>
+            </article>
+            <article class="fr2-card">
+              <div class="fr2-card__head">
+                <span class="fr2-card__num">3</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><rect x="3" y="3" width="8" height="8" /><rect x="13" y="3" width="8" height="8" /><rect x="23" y="3" width="6" height="8" /><rect x="3" y="13" width="8" height="8" /><rect x="13" y="13" width="8" height="8" fill="var(--color-red)" stroke="none" /><rect x="23" y="13" width="6" height="8" /><rect x="3" y="23" width="8" height="6" /><rect x="13" y="23" width="8" height="6" /><rect x="23" y="23" width="6" height="6" /></svg>
+                </span>
+                <h3 class="fr2-card__title">10개 핵심 단일 디지털 코어</h3>
+              </div>
+              <p class="fr2-card__body">구매·생산·설비·품질·영업·관리회계·재무자금·인사·GRC·화학물질관리 10개 핵심 업무 통합</p>
+              <span class="fr2-card__src">출처 [1] · [7]</span>
+            </article>
+            <article class="fr2-card">
+              <div class="fr2-card__head">
+                <span class="fr2-card__num">4</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="4" fill="var(--color-red)" stroke="none" /><circle cx="6" cy="6" r="3" /><circle cx="26" cy="6" r="3" /><circle cx="6" cy="26" r="3" /><circle cx="26" cy="26" r="3" /><line x1="9" y1="9" x2="14" y2="14" /><line x1="23" y1="9" x2="18" y2="14" /><line x1="9" y1="23" x2="14" y2="18" /><line x1="23" y1="23" x2="18" y2="18" /></svg>
+                </span>
+                <h3 class="fr2-card__title">주변 시스템 연계</h3>
+              </div>
+              <p class="fr2-card__body">EAI 통한 비SAP 시스템 (SCM·MES·PLM·LIMS·EHS·GEMS) 연동 구조 유지 · 단일 디지털 코어 확장</p>
+              <span class="fr2-card__src">출처 [10]</span>
+            </article>
+            <article class="fr2-card">
+              <div class="fr2-card__head">
+                <span class="fr2-card__num">5</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 4 16 L 16 6 L 28 16 L 28 28 L 4 28 Z" /><rect x="13" y="20" width="6" height="8" fill="var(--color-red)" stroke="none" /><line x1="8" y1="16" x2="24" y2="16" stroke-dasharray="2 2" /></svg>
+                </span>
+                <h3 class="fr2-card__title">Brownfield <em style="font-style:normal;color:var(--color-red);font-weight:800;">성격</em> 컨버전</h3>
+              </div>
+              <p class="fr2-card__body">SAP 공식 분류 단정 X — 기존 자산 활용 통합형 컨버전 "성격" 신중 표현. ECC → S/4HANA 전환 경로</p>
+              <span class="fr2-card__src">출처 [7]</span>
+            </article>
+            <article class="fr2-card">
+              <div class="fr2-card__head">
+                <span class="fr2-card__num">6</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><path d="M 5 4 L 27 4 L 27 28 L 5 28 Z" /><line x1="9" y1="10" x2="23" y2="10" /><line x1="9" y1="15" x2="23" y2="15" /><line x1="9" y1="20" x2="19" y2="20" /><circle cx="22" cy="22" r="3" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <h3 class="fr2-card__title">학술 보강</h3>
+              </div>
+              <p class="fr2-card__body">PPM 모델 변화 거부 · 전환비용 부정적 영향 통계적 유의 — 기존 SAP 자산 유지 합리성 학술 보강</p>
+              <span class="fr2-card__src">출처 [11]</span>
+            </article>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.95s">
+            <span><em>Fact 기반 6대 사유 종합</em> — 13년 SAP 자산 + 2.8조 M&amp;A 통합 압력 + 10모듈 단일 디지털 코어 + EAI 연계 + Brownfield 성격 + 학술 보강 → A안(기존 SAP 기반 S/4HANA 전환) 선정 정당화</span>
+            <span class="v3-msg__src">출처 [1] [2] [7] [8] [10] [11]</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 18 · lecture-six-stages v3 (GPT 피드백 — rfp-process-flow) ============= -->
+    <section class="slide tone-c" data-slide="10">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">18</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="rp-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">Step 2 · 10</span>
+            <span class="eb-text">§8 강의 6단계 매핑</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            강의 6단계 프레임 정합 — Step 2는 <span class="v3-em">1단계 (타당성 조사)</span>·RFP 단축된 변형 사례
+          </h1>
+          <div class="rp-quote reveal" style="--rev-delay:0.35s">
+            <span>"누구 제품을 사서 어떻게 우리 몸에 맞출까" → 본 사례는 <strong>'누구 제품 정해진' 상태</strong> + '어떻게 맞출까'에 의사결정 집중</span>
+            <span class="rp-quote__src">강의 자료 23p</span>
+          </div>
+          <div class="rp-flow reveal" style="--rev-delay:0.5s">
+            <article class="rp-step rp-step--active">
+              <span class="rp-step__num">1</span>
+              <span class="rp-step__title">타당성 조사 (Make or Buy)</span>
+              <span class="rp-step__sub">★ Step 2 본 단계</span>
+            </article>
+            <span class="rp-arrow" aria-hidden="true">›</span>
+            <article class="rp-step rp-step--shortened">
+              <span class="rp-step__num">2</span>
+              <span class="rp-step__title">요구사항 정의·분석 (RFP·벤더·Demo·계약)</span>
+              <span class="rp-step__sub">단축됨</span>
+            </article>
+            <span class="rp-arrow" aria-hidden="true">›</span>
+            <article class="rp-step">
+              <span class="rp-step__num">3</span>
+              <span class="rp-step__title">제품 선정·설계 (GAP·Baseline)</span>
+              <span class="rp-step__sub">Step 3</span>
+            </article>
+            <span class="rp-arrow" aria-hidden="true">›</span>
+            <article class="rp-step">
+              <span class="rp-step__num">4</span>
+              <span class="rp-step__title">조정·테스트 (Config·Customizing·Add-on)</span>
+              <span class="rp-step__sub">Step 3</span>
+            </article>
+            <span class="rp-arrow" aria-hidden="true">›</span>
+            <article class="rp-step">
+              <span class="rp-step__num">5</span>
+              <span class="rp-step__title">구현 (Big Bang·Phased·Parallel)</span>
+              <span class="rp-step__sub">Step 3</span>
+            </article>
+            <span class="rp-arrow" aria-hidden="true">›</span>
+            <article class="rp-step">
+              <span class="rp-step__num">6</span>
+              <span class="rp-step__title">PIR (구현 후 검토)</span>
+              <span class="rp-step__sub">Step 4</span>
+            </article>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 19 · escrow-supplement v3 (GPT 피드백 — escrow-substitute-diagram) ============= -->
+    <section class="slide tone-c" data-slide="11">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">19</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="es2-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">Step 2 · 11</span>
+            <span class="eb-text">§8 보충 · Escrow</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            Escrow 협약 대체 장치 — 본 사례에서는 <span class="v3-em">구조적으로 불필요</span>
+          </h1>
+          <div class="es2-diagram reveal" style="--rev-delay:0.4s">
+            <article class="es2-side">
+              <span class="es2-side__label">일반 패키지 구매</span>
+              <h3 class="es2-side__title">Escrow 필요 구조</h3>
+              <p class="es2-side__body">소스 코드 미제공 + 외부 SI 수행 → 벤더 파산 · 유지보수 불능 리스크 → 소스 코드 제3자 보관 안전 장치 필요</p>
+              <span class="es2-side__pill">강의 자료 24p</span>
+            </article>
+            <div class="es2-bridge" aria-hidden="true">≠</div>
+            <article class="es2-side es2-side--alt">
+              <span class="es2-side__label">본 사례 대체 장치</span>
+              <h3 class="es2-side__title">SAP 라이선스 + 그룹 통제권</h3>
+              <div class="es2-axes">
+                <div class="es2-axis">
+                  <span class="es2-axis__num">축 1 — 공동 수행</span>
+                  <h4 class="es2-axis__title">SAP 본사 + 롯데정보통신</h4>
+                  <p class="es2-axis__body">그룹 SI + 본사 공동 수행 → 외부 SI 대상 표준 Escrow 필요성 ↓</p>
+                </div>
+                <div class="es2-axis">
+                  <span class="es2-axis__num">축 2 — 그룹 통제권</span>
+                  <h4 class="es2-axis__title">SAP 표준 라이선스 + 2018+ 이사회 의결</h4>
+                  <p class="es2-axis__body">그룹 차원 디지털 자산 통제권 + 그룹공통시스템 의결로 사후 입증 = Escrow 기능적 대체</p>
+                </div>
+              </div>
+            </article>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.9s">
+            <span>외부 시스템 의존도 ↓ + 그룹 자체 통제 ↑ → Escrow 협약 필요성 <em>구조적으로 해소</em></span>
+            <span class="v3-msg__src">출처 강의 자료 24p · [9] 정정 사업보고서</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+  </div>
+</div>
+
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">←→</span><span class="hint-txt">슬라이드</span>
+</div>
+
+<script src="../shared/script.js"></script>
+</body>
+</html>

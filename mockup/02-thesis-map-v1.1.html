@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>02 v1.1 · 발표의 논리 지도 [MOCKUP]</title>
+
+  <link
+    rel="stylesheet"
+    as="style"
+    crossorigin
+    href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css"
+  />
+  <link
+    href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap"
+    rel="stylesheet"
+  />
+  <link rel="stylesheet" href="../shared/style.css" />
+
+  <style>
+    /* ===== 목업 인라인 신규 토큰 (Step 1에서 shared/style.css로 정식 이관 예정) ===== */
+    :root {
+      --color-dark: #1A1D24;
+      --color-on-dark: #FFFFFF;
+      --color-on-dark-soft: #C8CBD0;
+      --shadow-card-soft: 0 16px 40px -20px rgba(21, 23, 28, 0.18);
+    }
+
+    /* ===== slide-head 다크 띠 (표지·02·03 공통) ===== */
+    .slide-head--dark {
+      background: var(--color-dark);
+      border-bottom: none;
+    }
+    .slide-head--dark .hm-item {
+      color: var(--color-on-dark-soft);
+    }
+    .slide-head--dark .hm-dot {
+      background: var(--color-on-dark-soft);
+    }
+    .slide-head--dark .hp-num,
+    .slide-head--dark .hp-total {
+      color: var(--color-on-dark);
+    }
+    .slide-head--dark .hp-sep {
+      color: var(--color-on-dark-soft);
+    }
+    .slide-head--dark .brand-logo {
+      filter: brightness(0) invert(1);
+      opacity: 0.92;
+    }
+
+    /* ===== 02번 v1.1 메인 레이아웃 ===== */
+    .thesis-map-v11 {
+      position: absolute;
+      inset: 0;
+      padding: 120px 96px 80px;
+      box-sizing: border-box;
+    }
+
+    .tm-eyebrow {
+      margin-bottom: 36px;
+    }
+
+    .tm-stage {
+      position: relative;
+      height: calc(100% - 80px);
+    }
+
+    /* 4개 보조 논지 카드 사방 배치 */
+    .tm-card {
+      position: absolute;
+      width: 420px;
+      height: 240px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-radius: var(--r-lg);
+      padding: 28px 32px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: var(--shadow-card-soft);
+      overflow: hidden;
+    }
+    .tm-card--tl { top: 0; left: 0; }
+    .tm-card--tr { top: 0; right: 0; }
+    .tm-card--bl { bottom: 0; left: 0; }
+    .tm-card--br { bottom: 0; right: 0; }
+
+    /* 카드 코너 액센트 (우상단 작은 레드 삼각) */
+    .tm-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 0 24px 24px 0;
+      border-color: transparent var(--color-red) transparent transparent;
+    }
+
+    .tm-card .tc-num {
+      font-family: var(--font-mono);
+      font-size: 30px;
+      font-weight: 600;
+      color: var(--color-red);
+      letter-spacing: 0.02em;
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .tm-card .tc-title {
+      font-family: var(--font-sans);
+      font-size: 23px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      margin: 0;
+      letter-spacing: -0.01em;
+      line-height: 1.3;
+    }
+    .tm-card .tc-text {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 500;
+      line-height: 1.6;
+      color: var(--color-ink);
+      margin: 4px 0 0;
+    }
+    .tm-card .tc-chapter {
+      font-family: var(--font-mono);
+      font-size: 11.5px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      margin: auto 0 0;
+      letter-spacing: 0.08em;
+      padding-top: 14px;
+      border-top: 1px solid var(--color-line-soft);
+      text-transform: uppercase;
+    }
+
+    /* 중앙 다크 박스 */
+    .tm-center {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 720px;
+      background: var(--color-dark);
+      color: var(--color-on-dark);
+      padding: 44px 56px;
+      border-radius: var(--r-lg);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      box-shadow: 0 32px 70px -28px rgba(21, 23, 28, 0.45);
+      box-sizing: border-box;
+    }
+    .tm-center .tc-label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.14em;
+      color: var(--color-on-dark-soft);
+      margin: 0 0 22px;
+      text-transform: uppercase;
+    }
+    .tm-center .tc-body {
+      font-family: var(--font-sans);
+      font-size: 27px;
+      font-weight: 600;
+      line-height: 1.55;
+      color: var(--color-on-dark);
+      margin: 0;
+      letter-spacing: -0.015em;
+    }
+    .tm-center .tc-body .msg-hl {
+      color: var(--color-red);
+      font-weight: 700;
+    }
+    .tm-center .tc-meta {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 500;
+      color: var(--color-on-dark-soft);
+      margin: 22px 0 0;
+      letter-spacing: 0.01em;
+    }
+
+    /* ===== 디버그 메모 (다크 비율 표기) ===== */
+    .debug-memo {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      color: var(--color-ink-mute);
+      background: var(--color-bg-cream);
+      padding: 6px 10px;
+      border-radius: 4px;
+      border: 1px dashed var(--color-line);
+      z-index: 100;
+      letter-spacing: 0.04em;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="stage" id="stage">
+    <div class="deck" id="deck">
+
+      <section class="slide tone-a active" data-slide="2">
+
+        <header class="slide-head slide-head--dark">
+          <div class="brand">
+            <img
+              class="brand-logo"
+              src="../shared/lotte-chemical-logo.jpeg"
+              alt="롯데케미칼 로고"
+            />
+            <div class="head-meta">
+              <span class="hm-item">광운대학교 경영대학</span>
+              <span class="hm-dot"></span>
+              <span class="hm-item">ERP개론</span>
+              <span class="hm-dot"></span>
+              <span class="hm-item">기업 통합 ERP 사례 분석</span>
+            </div>
+          </div>
+          <div class="head-page">
+            <span class="hp-num">02</span>
+            <span class="hp-sep">/</span>
+            <span class="hp-total">30</span>
+          </div>
+        </header>
+
+        <main class="thesis-map-v11">
+
+          <div class="eyebrow tm-eyebrow reveal" style="--rev-delay:0.10s">
+            <span class="eb-bar"></span>
+            <span class="eb-num">논리 지도</span>
+            <span class="eb-text">발표 전체를 입증하는 네 가지 근거</span>
+          </div>
+
+          <div class="tm-stage">
+
+            <article class="tm-card tm-card--tl reveal" style="--rev-delay:0.55s">
+              <div class="tc-num">01</div>
+              <h3 class="tc-title">M&amp;A 통합 압력</h3>
+              <p class="tc-text">출발점은 시스템 노후화가 아니라<br />M&amp;A 이후 통합 운영 압력이었다.</p>
+              <p class="tc-chapter">본문 · 챕터 1 · 2</p>
+            </article>
+
+            <article class="tm-card tm-card--tr reveal" style="--rev-delay:0.70s">
+              <div class="tc-num">02</div>
+              <h3 class="tc-title">산업 특성과 시스템 차이</h3>
+              <p class="tc-text">산업 특성이 ERP 통합 난도와<br />의사결정 방향을 결정했다.</p>
+              <p class="tc-chapter">본문 · 챕터 1 · 3</p>
+            </article>
+
+            <div class="tm-center reveal" style="--rev-delay:0.30s">
+              <p class="tc-label">이 발표의 결론</p>
+              <p class="tc-body">
+                이 사례는 단순한 ERP 도입을 넘어,<br />
+                M&amp;A 이후 <span class="msg-hl">3사를 하나의 운영 체계로 묶기 위한</span><br />
+                통합 경영 기반 구축 프로젝트다.
+              </p>
+              <p class="tc-meta">이 결론은 네 가지 보조 논지로 입증된다.</p>
+            </div>
+
+            <article class="tm-card tm-card--bl reveal" style="--rev-delay:0.85s">
+              <div class="tc-num">03</div>
+              <h3 class="tc-title">트레이드오프 관리</h3>
+              <p class="tc-text">합리성은 양극단 선택이 아니라<br />능동적 균형에서 나왔다.</p>
+              <p class="tc-chapter">본문 · 챕터 2 · 3</p>
+            </article>
+
+            <article class="tm-card tm-card--br reveal" style="--rev-delay:1.00s">
+              <div class="tc-num">04</div>
+              <h3 class="tc-title">SAP 중심 플랫폼</h3>
+              <p class="tc-text">S/4HANA는 산업 운영 시스템을<br />연결하는 중심 플랫폼이었다.</p>
+              <p class="tc-chapter">본문 · 챕터 3 · 5</p>
+            </article>
+
+          </div>
+
+        </main>
+
+        <footer class="slide-foot">
+          <div class="sf-left">
+            <span class="hint">
+              <span class="hint-key">→</span>
+              <span class="hint-sep"></span>
+              <span class="hint-txt">다음 슬라이드</span>
+            </span>
+          </div>
+          <div class="sf-mid">
+            <span class="hm-item">챕터 1 · 왜 이 사례인가</span>
+          </div>
+          <div class="sf-right">
+            <span class="hm-item">MOCKUP · 02 v1.1</span>
+          </div>
+        </footer>
+
+        <div class="debug-memo">
+          다크 영역 ≈ 16.4% (헤더 5.6% + 중앙 박스 10.8%) · 권장 25% 이내
+        </div>
+
+      </section>
+
+    </div>
+  </div>
+
+  <script src="../shared/script.js"></script>
+</body>
+</html>

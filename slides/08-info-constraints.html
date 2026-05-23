@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>08 · 정보화 제약과 ERP 필요성</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/style.css" />
+  <style>
+    /* 08 info-constraints 전용 */
+    .ic-main {
+      position: relative;
+      z-index: 3;
+      padding: 64px var(--slide-padding-x) 0;
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: var(--sp-5);
+      height: 904px;
+    }
+    .ic-headline {
+      font-family: var(--font-sans);
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      color: var(--color-ink-strong);
+      max-width: 1400px;
+    }
+    .ic-headline .ic-em { color: var(--color-red); }
+    .ic-flow-head {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: var(--sp-4);
+      padding: var(--sp-3) var(--sp-4);
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      align-items: center;
+    }
+    .ic-flow-head-item {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--color-ink-soft);
+      text-align: left;
+    }
+    .ic-flow-head-arrow {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--color-ink-mute);
+      text-align: center;
+    }
+    .ic-table {
+      display: grid;
+      grid-template-rows: repeat(5, 1fr);
+      gap: 1px;
+      background: var(--color-line);
+      border: 1px solid var(--color-line);
+    }
+    .ic-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 1px;
+      background: var(--color-line-soft);
+    }
+    .ic-cell {
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--color-paper);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      justify-content: center;
+    }
+    .ic-cell-title {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: -0.005em;
+      color: var(--color-ink-strong);
+      line-height: 1.3;
+    }
+    .ic-cell-sub {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.45;
+    }
+    .ic-cell--erp {
+      background: var(--color-red-pale);
+    }
+    .ic-cell--erp .ic-cell-title { color: var(--color-red-deep); }
+    .ic-cell--erp .ic-cell-sub { color: var(--color-red-deep); opacity: 0.85; }
+  </style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+    <section class="slide tone-c active" data-slide="8">
+      <header class="slide-head">
+        <div class="brand">
+          <img class="brand-logo" src="../shared/lotte-chemical-logo.jpeg" alt="롯데케미칼 로고" />
+        </div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page">
+          <span class="hp-num">08</span>
+        </div>
+      </header>
+      <main class="ic-main">
+        <div class="eyebrow reveal" style="--rev-delay:0.05s">
+          <span class="eb-bar"></span>
+          <span class="eb-num">1부 · 05</span>
+          <span class="eb-text">정보화 제약과 ERP 필요성</span>
+        </div>
+        <h1 class="ic-headline reveal" style="--rev-delay:0.2s">
+          산업 특성이 정보화 제약으로 이어지고, <span class="ic-em">ERP 통합으로 풀린다</span>
+        </h1>
+        <div class="ic-flow-head reveal" style="--rev-delay:0.35s">
+          <div class="ic-flow-head-item">산업 특성</div>
+          <div class="ic-flow-head-arrow">→ 정보화 제약 →</div>
+          <div class="ic-flow-head-item">ERP 통합 효과</div>
+        </div>
+        <div class="ic-table">
+          <div class="ic-row reveal" style="--rev-delay:0.45s">
+            <div class="ic-cell">
+              <div class="ic-cell-title">24시간 연속 가동</div>
+              <div class="ic-cell-sub">정지 = 막대한 손실</div>
+            </div>
+            <div class="ic-cell">
+              <div class="ic-cell-title">다운타임 허용 폭 제한</div>
+              <div class="ic-cell-sub">시스템 전환 시간 자체가 리스크</div>
+            </div>
+            <div class="ic-cell ic-cell--erp">
+              <div class="ic-cell-title">통합 다운타임 통제</div>
+              <div class="ic-cell-sub">Roll-out + 사전 진단으로 단축</div>
+            </div>
+          </div>
+          <div class="ic-row reveal" style="--rev-delay:0.55s">
+            <div class="ic-cell">
+              <div class="ic-cell-title">원료가 · 환율 변동</div>
+              <div class="ic-cell-sub">실시간 수익성 영향</div>
+            </div>
+            <div class="ic-cell">
+              <div class="ic-cell-title">실시간 손익·재고 통제 요구</div>
+              <div class="ic-cell-sub">분 단위 의사결정 데이터</div>
+            </div>
+            <div class="ic-cell ic-cell--erp">
+              <div class="ic-cell-title">S/4HANA 인메모리 실시간 처리</div>
+              <div class="ic-cell-sub">매출대장 40만 건 / 2분</div>
+            </div>
+          </div>
+          <div class="ic-row reveal" style="--rev-delay:0.65s">
+            <div class="ic-cell">
+              <div class="ic-cell-title">글로벌 6국 · 110국</div>
+              <div class="ic-cell-sub">법인·통화·세무 다변화</div>
+            </div>
+            <div class="ic-cell">
+              <div class="ic-cell-title">법인 간 회계·기준정보 통합 부담</div>
+              <div class="ic-cell-sub">현지 시스템 파편화</div>
+            </div>
+            <div class="ic-cell ic-cell--erp">
+              <div class="ic-cell-title">공통 기준정보 표준화</div>
+              <div class="ic-cell-sub">하나의 운영 체계로 통합</div>
+            </div>
+          </div>
+          <div class="ic-row reveal" style="--rev-delay:0.75s">
+            <div class="ic-cell">
+              <div class="ic-cell-title">M&amp;A 직후 3사 병존</div>
+              <div class="ic-cell-sub">시스템·프로세스 충돌</div>
+            </div>
+            <div class="ic-cell">
+              <div class="ic-cell-title">기준정보 충돌 · 중복 운영</div>
+              <div class="ic-cell-sub">사일로화된 데이터</div>
+            </div>
+            <div class="ic-cell ic-cell--erp">
+              <div class="ic-cell-title">3사 통합 + 표준화/차별화 균형</div>
+              <div class="ic-cell-sub">공통화 + 각 사 경쟁력 보존</div>
+            </div>
+          </div>
+          <div class="ic-row reveal" style="--rev-delay:0.85s">
+            <div class="ic-cell">
+              <div class="ic-cell-title">EHS · 화학물질 규제</div>
+              <div class="ic-cell-sub">국제 환경·안전 기준</div>
+            </div>
+            <div class="ic-cell">
+              <div class="ic-cell-title">추적성·보고 요구 강화</div>
+              <div class="ic-cell-sub">수기·파편 데이터 한계</div>
+            </div>
+            <div class="ic-cell ic-cell--erp">
+              <div class="ic-cell-title">EHS·화학물질 모듈 연계</div>
+              <div class="ic-cell-sub">기록·추적성 시스템화</div>
+            </div>
+          </div>
+        </div>
+      </main>
+      <footer class="slide-foot">
+        <span class="sf-left">1부 · 왜 ERP 통합이 필요했는가</span>
+        <span class="sf-mid">광운대학교 경영대학 ERP개론 · 1팀</span>
+        <span class="sf-right">출처: Step 1 §5</span>
+      </footer>
+    </section>
+  </div>
+</div>
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+</div>
+<script src="../shared/script.js"></script>
+</body>
+</html>

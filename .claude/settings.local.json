@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls /Users/sinhaewon/claude/lotte-erp/outline/)",
+      "Bash(ls /Users/sinhaewon/claude/lotte-erp/docs/)",
+      "Bash(ls /Users/sinhaewon/claude/lotte-erp/dist/)",
+      "Bash(ls -la /Users/sinhaewon/claude/lotte-erp/outline/archived/)",
+      "Bash(ls -la /Users/sinhaewon/claude/lotte-erp/outline/)",
+      "Bash(unzip -p /Users/sinhaewon/claude/lotte-erp/docs/Step1_v4.docx word/document.xml)"
+    ]
+  }
+}

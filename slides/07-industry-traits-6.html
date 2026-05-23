@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>07 · 석유화학 산업 6대 특성</title>
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../shared/style.css" />
+  <style>
+    /* 07 industry-traits-6 전용 */
+    .tr-main {
+      position: relative;
+      z-index: 3;
+      padding: 64px var(--slide-padding-x) 0;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: var(--sp-5);
+      height: 904px;
+    }
+    .tr-headline {
+      font-family: var(--font-sans);
+      font-size: 34px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.3;
+      color: var(--color-ink-strong);
+      max-width: 1400px;
+    }
+    .tr-headline .tr-em { color: var(--color-red); }
+    .tr-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+    .tr-card {
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      padding: var(--sp-5) var(--sp-5);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: var(--sp-3);
+      position: relative;
+    }
+    .tr-card--emph {
+      border-top: 3px solid var(--color-red);
+      background: linear-gradient(180deg, var(--color-red-pale) 0%, var(--color-paper) 50%);
+    }
+    .tr-card--soft {
+      background: var(--color-bg-cream);
+      border-color: var(--color-line-soft);
+    }
+    .tr-card--soft .tr-card-name,
+    .tr-card--soft .tr-card-body {
+      color: var(--color-ink-soft);
+    }
+    .tr-card-num {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--color-ink-mute);
+    }
+    .tr-card--emph .tr-card-num { color: var(--color-red); }
+    .tr-card-name {
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--color-ink-strong);
+      line-height: 1.3;
+    }
+    .tr-card-body {
+      font-family: var(--font-sans);
+      font-size: 13.5px;
+      font-weight: 500;
+      letter-spacing: -0.005em;
+      color: var(--color-ink-soft);
+      line-height: 1.55;
+    }
+  </style>
+</head>
+<body>
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+    <section class="slide tone-c active" data-slide="7">
+      <header class="slide-head">
+        <div class="brand">
+          <img class="brand-logo" src="../shared/lotte-chemical-logo.jpeg" alt="롯데케미칼 로고" />
+        </div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span>
+          <span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page">
+          <span class="hp-num">07</span>
+        </div>
+      </header>
+      <main class="tr-main">
+        <div class="eyebrow reveal" style="--rev-delay:0.05s">
+          <span class="eb-bar"></span>
+          <span class="eb-num">1부 · 04</span>
+          <span class="eb-text">석유화학 산업 6대 특성</span>
+        </div>
+        <h1 class="tr-headline reveal" style="--rev-delay:0.2s">
+          석유화학 산업의 <span class="tr-em">6대 특성이 ERP 의존도를 결정한다</span>
+        </h1>
+        <div class="tr-grid">
+          <article class="tr-card tr-card--emph reveal" style="--rev-delay:0.4s">
+            <span class="tr-card-num">01</span>
+            <h3 class="tr-card-name">자본집약적 장치산업</h3>
+            <p class="tr-card-body">대규모 설비 투자·연속공정. 가동률·다운타임이 곧 손익에 직결된다.</p>
+          </article>
+          <article class="tr-card tr-card--emph reveal" style="--rev-delay:0.5s">
+            <span class="tr-card-num">02</span>
+            <h3 class="tr-card-name">경기순환 · 원료가 변동성</h3>
+            <p class="tr-card-body">유가·환율에 따른 마진 변동. 실시간 수익성·재고 통제가 핵심.</p>
+          </article>
+          <article class="tr-card tr-card--soft reveal" style="--rev-delay:0.6s">
+            <span class="tr-card-num">03</span>
+            <h3 class="tr-card-name">산업의 쌀 · 전후방 연계</h3>
+            <p class="tr-card-body">전후방 산업 의존도가 매우 높음.</p>
+          </article>
+          <article class="tr-card tr-card--emph reveal" style="--rev-delay:0.7s">
+            <span class="tr-card-num">04</span>
+            <h3 class="tr-card-name">글로벌 다거점</h3>
+            <p class="tr-card-body">6국 생산 거점 · 110국 수출. 통화·세무·법인 간 회계 표준 통합 필요.</p>
+          </article>
+          <article class="tr-card tr-card--soft reveal" style="--rev-delay:0.8s">
+            <span class="tr-card-num">05</span>
+            <h3 class="tr-card-name">M&amp;A 사업 포트폴리오 확대</h3>
+            <p class="tr-card-body">인수 이후 기준정보 충돌 발생.</p>
+          </article>
+          <article class="tr-card tr-card--emph reveal" style="--rev-delay:0.9s">
+            <span class="tr-card-num">06</span>
+            <h3 class="tr-card-name">규제 · 품질 · 안전관리</h3>
+            <p class="tr-card-body">EHS·화학물질·국제 환경 규제 대응. 기록·추적성이 시스템 의존적이다.</p>
+          </article>
+        </div>
+      </main>
+      <footer class="slide-foot">
+        <span class="sf-left">1부 · 왜 ERP 통합이 필요했는가</span>
+        <span class="sf-mid">광운대학교 경영대학 ERP개론 · 1팀</span>
+        <span class="sf-right">출처: Step 1 §4</span>
+      </footer>
+    </section>
+  </div>
+</div>
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+</div>
+<script src="../shared/script.js"></script>
+</body>
+</html>
