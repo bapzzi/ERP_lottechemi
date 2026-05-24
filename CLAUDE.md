@@ -384,6 +384,7 @@ lotte-erp/
 - 2026.05.23 v2.3 · 매트릭스 §12 매핑 보정 차수. 매트릭스 v10.2 → v10.3 보정 차수 (Step 1·2 docx § 흐름 정합). 매트릭스 §12-4 신설 — v10.3 보정 페이지 번호 ↔ slides.yml 28장 # 변환 표 (Step 1·2 영역 19장 모두 매핑 정합). §12-5 신설 — slides.yml v1.0 골조 보정 진입 권장 (다음 차수). Step 2 영역 신규 슬러그 9건 확정 (step2-intro·governance-triad·make-vs-buy·four-alternatives·five-feasibility·economic-feasibility·fact-six-reasons·lecture-six-stages·escrow-supplement). Escrow 페이지 번호 19 확정 (v10.2 옵션 D 해소). 9장 §9-NEW 작성 영역 표 갱신 (v10.3 정합 슬러그). 9장 §9-NEW 본문 자체 변경 X (가드 29 정합) — Escrow 헤딩 + 페이지 번호 정합 문구만 갱신. content-thesis §5 변경 이력에 v10.3 라인 추가 (보조 논지 매핑 페이지 번호 정합 검증·본문 변경 없음). 빌드 영향 X (Step 1 v10·Step 2 v1 빌드 보호·가드 18·22 정합). §13-4 가드 유효성에 본 차수 추가 가드 28·29·30 등록. §13-5 매트릭스 ↔ slides.yml 매핑 인지에 v2.3 본 차수 보정 완료 표시 (가드 14·26 부분 해소·Step 1·2 영역 매핑 완료). §13-6 §9-NEW 페이지 번호 정합 완료 명시. §3 절대 규칙·§4 전역 타이포·레이아웃 규칙 변경 없음. 빌드 진입 X. 백업 생략. 다음 차수: Step 2 빌드 v2 진입 (페이지 번호 정합 완료 후 안전 진입·시나리오 1) 또는 Step 3 §3 진입 + slides.yml 골조 보정 통합 (시나리오 2).
 - 2026.05.23 v2.4 · Step 3 §3 docx 본문 영역 매핑 진입 차수 (Step 2 빌드 v3.1 통과 후·본인 디렉션 "얼추 마무리"·Step 3 §3 진입). 매트릭스 v10.3 → v10.4 보정 차수. 매트릭스 §9-NEW에 Step 3 영역 7장 일괄 신규 강제 명시 본문 작성 (20 chapter3-intro·21 four-constraints·22 methodology-evolution·23 not-standardize-all·24 gap-three-tracks·25 sap-platform-hub·26 downtime-kpi). 각 장 v3.1 디자인 패턴 강제 명시 (헤드라인 52px·카드 제목 38px·body 26px·픽토그램 56px wrap + 32px SVG·card-top-accent·num-circle 50px·v3-msg 결론 박스). docx Step 3 본문 직접 정독 X (Bash 금지·docx binary) — slides.yml chapter 3 must_include + 매트릭스 v9 1차 산출 정보 기반 작성. docx 직접 인용은 다음 차수 보강 권장. 페이지 번호 20~26 7장 확정 — slides.yml 기존 chapter 3 슬러그 그대로 이동·페이지 번호만 보정. content-thesis §2 보조 논지 3 비대칭성·새 디지털 코어 페이지 22 methodology-evolution 매핑 확정 (가드 11 정합 — "본사 일방 Roll-out X·3사 동시 안착" 표현·"글로벌 싱글 인스턴스" 단정 X·박제성 인터뷰 인용 정합). 매트릭스 §12-4 매핑 표 Step 3 영역 7행 추가. §9-NEW 작성 영역 표 7행 추가. 미진입 영역 표 갱신 (Step 4·5·Step 2 잔여 영역·slides.yml 골조 확장 모두 다음 차수). slides.yml v1.0 골조 28장 본 차수 변경 X (§12-4 매핑 표만 확장). 빌드 영향 X (Step 1 v10·Step 2 v3.1 빌드 보호). §13-4 가드 유효성에 본 차수 추가 가드 39·40·41·42 등록. §13-6 §9-NEW Step 3 영역 적용 완료 명시. §13-8 신설 (Step 2 잔여 영역 운영 메모 — 2순위 11·13·16·3순위 14·15·18·19 v3 텍스트 잔존·발표 직전 일괄 보정 차수에서 처리 권장·가드 40 정합). 색상 비율 추정 7장 모두 4.5~6.5% 범위 (7% 이내·가드 10·26 downtime-kpi 6.5~7% 경계). §3 절대 규칙·§4 전역 타이포·레이아웃 규칙 변경 없음. 빌드 진입 X. 백업 생략. 다음 차수: Step 3 빌드 v1 (dist/preview-step3.html 신규) 또는 Step 4·5 §3 진입.
 - 2026.05.24 v2.6 · 세션 영역 안정화 + 신규 세션 진입 가이드 신설 차수 (Step 1 v11 GPT 피드백 반영 완료 후·신규 세션 진입 전). SESSION_STATE.md 영역 누적 갱신 (본 세션 진입 14단계·미진입 영역 우선순위 4단계·핵심 운영 메모 3가지 문서 역할 분리·가드 1~64 활성/비활성·Bash 영역 제약·디자인 보호·표현 금지 5건·신규 세션 진입 영역 정독 5건). CLAUDE.md §12 v2.6 라인 + §13-4 가드 61·62·63·64 등록 + §13-9 신설 (Step 1 GPT 피드백 누적 11건·○ 5건·△ 1건·보정 보류 5건) + **§14 신규 신설 (신규 세션 진입 가이드)** — 정독 영역 5건 우선순위·신규 세션 첫 차수 권장 진입 영역 (Step 2 GPT 피드백 반영 v3.1 → v3.2)·신규 세션 첫 본인 메시지 영역. 자체 판단 결정: gpt-feedback-log.md 신규 생성 X (CLAUDE.md §13-9 통합)·presentation-content-master.md v1.0 → v1.1 X (다음 차수 본인 결정)·매트릭스 §10 변경 X (직전 v11 빌드 라인 유지). 본 차수 변경 영역 — SESSION_STATE.md + CLAUDE.md v2.6만. 매트릭스 §9-NEW·dist 빌드·content-thesis·디자인 요소 변경 X (가드 53·60). 다음 세션 진입 권장: Step 2 GPT 피드백 반영 (v3.1 → v3.2·Step 1 v11과 동일 패턴).
+- 2026.05.24 v2.7 · **Step 3 빌드 v1 마감 차수 + git push 운영 규칙 신설**. 본 세션 진입: Step 2 v3.2 13 four-alternatives 보정 (SELECTED 배지·red rail 8px·선택 기준 라벨·표 본문 28px·◎ 40px) + Step 3 빌드 v1 (dist/preview-step3.html 신규·7장·20~26 hp-num 정합·신규 클래스 .s20-* ~ .s26-* 7개·신규 픽토그램 .pict-* 6개·Step 2 v3.2 어휘 100% 재활용·자체 보정 5건·자체 압축 3건·모든 슬라이드 red 7% 이내). 매트릭스 v10.6 신규 라인 추가 (Step 3 빌드 v1 마감 영역 명세). 본 차수 신규 가드 5건 등록: **가드 65** (Bash 완전 배제 강화·예외 없음·Exit 143 재발 방지·Read·Write·Edit·Glob·Grep만 사용) + **가드 66·66-1·66-2·66-3** (Step 마감 시점 git push 자동 진입·66-1 Step 마감 push 기본·66-2 분할 마감 push 선택·66-3 발표 직전 통합 push 필수·Claude Code Bash 도구 X·본인 직접 터미널 실행·가드 7·65 정합). §13-10 신설 (Step 3 빌드 v1 마감 누적). §14-2 신규 세션 첫 차수 권장 진입 영역 갱신 (Step 4·5 §3 우선순위 1·2). §14-6 신설 (git push 운영 흐름·GitHub 리포지토리 https://github.com/bapzzi/ERP_lottechemi · GitHub Pages https://bapzzi.github.io/ERP_lottechemi/). 디자인 요소 보호 정합 (가드 53·45·49)·표현 금지 5건 정합 (가드 11)·Bash 완전 배제 정합 (가드 7·65). content-thesis §2 보조 논지 3 (22 매핑) + 보조 논지 4 (25 매핑) 모두 빌드 정합. 백업 생략 (변경 이력 라인으로만 보존). 다음 차수 (신규 세션 권장): Step 4·5 §3 진입 (우선순위 1·2·docs/Step4_v4.md·Step5_v4.md 정독) → Step 4·5 빌드 v1 → 발표 직전 잔여 영역 일괄 보정.
 - 2026.05.23 v2.5 · docx 미반영 영역 1·2·3순위 통합 반영 차수 (직전 자체 점검 + docx → md 정합 검증 차수 결과 — 정합 ○ 29건·△ 11건·✗ 1건·미반영 24건 영역 본인 결정 — 시나리오 2 채택). 매트릭스 v10.4 → v10.5 보정 차수. **자체 점검 정직 보고 (가드 43)**: 이전 모든 §9-NEW 작성 차수에서 docx 직접 정독 X 사실 명시. **docx 정독 재시도 (가드 44)**: Bash sandbox·Read binary 영역 모두 실패 — 본인 후속 액션 (pandoc 변환 docs/Step1~5_v4.md 5개 파일) 완료 후 Read 직접 정독 ○. **단계 3 정합 검증 + 단계 4·5 본 차수 통합 반영**: 매트릭스 §9-NEW 09·10·15·17·22·23·26 본문 영역 갈아엎기 (1순위 5건·2순위 4건·3순위 5건·정합 △ 일부). **1순위 5건**: 09 박제성 정확 인용·10 2018 이사회 의결 4건 세부·22 SAP S/4HANA 1610·23 AS-IS/TO-BE 6대 항목·26 6대 리스크 매트릭스. **2순위 4건 통합**: 17 카드 6 본문 확장 — 이상신 IT 5대 특성·박주황 제조업 5대 동향·이상신 클라우드 적용률·PPM 모델 세부 (학자명 노출 X·출처 [11] 번호만·가드 2). **3순위 5건**: 22 4대 방법론 비교·22 압축 일정 4근거·15 비용 회피형 4통제·26 다운타임 의미 4가지·26 테스트 5종·22 Migration Big Bang. **정합 △ 보정**: 박제성 정확 인용·GEMS 정확 어휘 "Greenhouse Gas & Energy Management" (dist/preview-step1.html v10 06 timeline sub). dist/preview-step2.html v3.1 09·10만 갈아엎기 (자체 판단 — 15·17·26은 매트릭스 §9-NEW 본문만·dist 빌드 본문은 카드 grid·padding 영향 우려 다음 차수 보정). **신규 페이지 추가 X** — 모두 기존 페이지 본문 확장 (5(6)대 리스크 매트릭스·다운타임 의미·테스트 5종 → 26·4대 방법론·압축 일정 4근거 → 22·이상신 학술 4건 → 17·비용 회피 4통제 → 15·AS-IS/TO-BE 6항목 → 23·2018 이사회 4건 → 10). 매트릭스 §12-4 매핑 표 변경 X. **출처 정합 ✗ 본 차수 미진입** (Step 3 docx [3]~[7] vs Step 1·2·매트릭스 §11 통합 — 별도 차수). **디자인 요소 보호 (가드 53)**: 시각 어휘·글자 강제 룰·SVG 픽토그램 19개·색상 비율·grid·layout 변경 X — 텍스트 본문 영역만 갈아엎기. §13-4 가드 유효성에 본 차수 추가 가드 43·44·45·46·47·48·49·50·51·52·53·54·55·56 등록 (43~51 정합 검증 차수·52~56 본 차수 통합 반영 차수). §13-6 §9-NEW Step 2·3 영역 docx 정합 반영 명시. §3 절대 규칙·§4 전역 타이포·레이아웃 규칙 변경 없음. 빌드 영향 — preview-step1.html v10 06 GEMS sub·preview-step2.html v3.1 09·10 영역만 갈아엎기 (최소 변경). 백업 생략. 다음 차수: 본인 시각 평가·출처 §11 통합 차수·Step 3 빌드 v1·Step 4·5 §3 영역.
 - (이후 변경 시 기록)
 
@@ -489,6 +490,19 @@ lotte-erp/
 **비활성 가드** (각 차수 완료 영역): 15 (v9 빌드 완료)·18 (v10 빌드 완료)·22 (Step 2 v1 빌드 완료)·26 (v10.3 §12-4 완료)·31 (Step 2 v1 보호)·32 (Step 2 v1 보호)·35 (Step 2 v3.1 분할 2 완료)·39 (Step 3 §9-NEW 작성 완료)·41 (slides.yml 골조 본 세션 미변경 완료)·42 (Step 3 v3.1 강제 명시 완료)
 
 가드 11~64는 본 세션 한정 가드. 다음 세션 진입 시 가드 유효성 재선언 필요 (CLAUDE.md §14 정합).
+
+**v2.7 본 차수 추가 가드 (Step 3 빌드 v1 마감 + git push 운영 규칙 신설)**:
+
+- **가드 65**: Bash 완전 배제 강화 — `Bash`·`BashOutput` 도구 호출 자체 X·예외 없음. 직전 차수 Exit 143 영역 재발 방지. 허용 도구: `Read`·`Write`·`Edit`·`Glob`·`Grep`만. Bash 우회 매핑: `wc`/`cat` → Read · `grep` → Grep · `ls`/`find` → Glob · `diff` → 본인 환경 권장. 사전 체크 4단계: ① 본 명령이 허용 도구로 대체 가능한가? → ② 대체 가능 시 허용 도구 진입 → ③ 대체 불가능 시 본인 보고 + 결정 대기 → ④ 어떤 경우에도 Bash 도구 직접 호출 X.
+- **가드 66**: Step 마감 시점 git push 자동 진입 — 각 Step 빌드 v1 또는 보정 차수 마감 시점 (본인 시각 평가 ○ 시점) push 사전 보고 → 본인 직접 터미널 실행 (Claude Code Bash 도구 X·가드 7·65 정합·본인 Mac /Users/sinhaewon/claude/lotte-erp 영역). 커밋 메시지 표준 (Step 빌드 v1 마감/보정 차수/GPT 피드백 반영 3가지 형식). push 사전 보고 영역 자체 점검 3건: 본 차수 변경 파일 목록 (Task 영역 정합) · `.gitignore` 영역 정합 자체 확인 · 신규 파일 생성 영역 보고.
+- **가드 66-1**: Step 마감 시점 push (기본) — Step 1·2·3·4·5 각 빌드 v1 또는 보정 차수 마감 시점만 push. 각 슬라이드 보정 차수는 마지막 통합 push에 통합.
+- **가드 66-2**: 분할 마감 시점 push (선택) — Step 3 분할 1·2·3 같은 분할 단위 마감 시점도 push 영역 허용. 본인 결정 영역.
+- **가드 66-3**: 발표 직전 통합 push (필수) — 발표 직전 hp-num 일괄 보정·최종 검수 완료 시점 무조건 1회 통합 push. 발표 PC·팀원 환경 최신 본 보장.
+
+**v2.7 활성 가드 (본 세션 종료 시점)**: 1~14·16·17·19~21·23·24·27~30·33·34·36·37·38·40~66
+**v2.7 비활성 가드 (각 차수 완료 영역)**: v2.6 동일 + 가드 39·41·42·52·53·54·55·56 (Step 3 §3·빌드 v1 완료 영역).
+
+가드 11~66은 본 세션 한정 가드. 다음 세션 진입 시 가드 유효성 재선언 필요 (CLAUDE.md §14 정합). 다만 가드 65·66·66-1·66-2·66-3은 향후 모든 차수 영구 적용 가드 (Bash 완전 배제·git push 운영 규칙).
 
 ### 13-5. 매트릭스 ↔ slides.yml 매핑 인지 (v1.9 신규)
 
@@ -622,6 +636,42 @@ outline/slides.yml (Phase 2 발표 전체 28장 구조)은 슬라이드 번호·
 - Step 2 11장 영역 (09·10·11·12·13·14·15·16·17·18·19)
 - v3.1 → v3.2 영역
 
+### 13-10. Step 3 빌드 v1 마감 누적 (v2.7 신규)
+
+**Step 3 빌드 v1 (2026.05.24)** 분할 1 (20·21) + 분할 2 (22·23·24·26) + 25 sap-platform-hub 통합 마감.
+
+**Step 2 v3.2 13 four-alternatives 보정 영역 (v2.7 본 세션 영역)**:
+- v2 잔존 → v3.2 갈아엎기 — 헤드라인 42→52px·표 본문 19→28px·◎ 32→40px·A안 red rail 6→8px·SELECTED 배지 우상단 신규·선택 기준 라벨 "기존 자산 유지 + 통합 리스크 최소화" 표 위 신규·결론 .fa-msg → .v3-msg 정합
+- 신규 클래스 .fa2-* 영역 (.fa-* 영역 보존)
+- 색상 비율 red 6~7% 이내 (가드 10 정합)
+- 본인 시각 평가 ○ → 다음 차수 진입 영역
+
+**Step 3 빌드 v1 빌드 결과**:
+- dist/preview-step3.html 신규 생성 (7장·20~26·hp-num 정합·data-slide 1~7)
+- 신규 슬라이드 클래스 7개 (.s20-* ~ .s26-*)
+- 신규 픽토그램 클래스 6개 (.pict-scm·.pict-mes·.pict-plm·.pict-lims·.pict-ehs·.pict-gems·Step 4·5 재활용 가능)
+- Step 2 v3.2 어휘 100% 재활용 (.v3-headline·.v3-eyebrow·.v3-em·.v3-msg·.v3-pict-wrap·.red-box-label)
+- 색상 비율 모든 슬라이드 red 4.5~6.2% (7% 이내·가드 10 정합)
+
+**자체 보정 결정 5건**:
+- 25 hub border 6px → 4px 사전 축소 (가드 10 안전성 확보)
+- 25 EAI 6 방사형 SVG line → 하단 통합 라벨 + 점선 라인 (좌표 계산 복잡성 회피·반응형 강건성)
+- 26 KPI value 140px → 130px 사전 축소 (가드 10 안전성)
+- 21 카드 제목 38→30·body 26→24 (잘림 방지·작은 카드 영역)
+- 24 카드 제목 38→36 (영어 5자 "Customizing" 안정성)
+
+**자체 압축 3건** (정보 밀도 영역 핵심만 유지·2차 정보 발표 멘트 처리):
+- 22 4대 방법론 비교·압축 일정 4근거 → 발표 멘트
+- 23 split-narrative → 6항목 표 흡수
+- 26 다운타임 의미 4·테스트 5·VAS 3 → 발표 멘트
+
+**git push 운영 규칙 신설 (v2.7 가드 66)**:
+- 본 차수 push 사전 보고 + 본인 직접 터미널 실행 (가드 7·65 정합)
+- 다음 차수부터 가드 66 영구 적용
+- GitHub 리포지토리: https://github.com/bapzzi/ERP_lottechemi
+- GitHub Pages: https://bapzzi.github.io/ERP_lottechemi/
+- 접속 URL: /dist/preview-step1·2·3.html (Step 4·5 추가 시 4·5)
+
 ---
 
 ## §14. 신규 세션 진입 가이드 (v2.6 신규·가드 62 정합)
@@ -638,30 +688,39 @@ outline/slides.yml (Phase 2 발표 전체 28장 구조)은 슬라이드 번호·
 4. **`outline/step-page-matrix.md` v10.5 §10 변경 이력 + §9-NEW** (본 세션 영역 인지·매트릭스 강제 명시 본문)
 5. **`dist/preview-step1.html` v11·`dist/preview-step2.html` v3.1** (현 빌드 본문·필요 영역만)
 
-### 14-2. 신규 세션 첫 차수 권장 진입 영역
+### 14-2. 신규 세션 첫 차수 권장 진입 영역 (v2.7 갱신)
 
-**우선순위 1 — Step 2 GPT 피드백 반영 (v3.1 → v3.2)**
-- Step 1 v11과 동일 패턴
-- 11건 영역 자체 판단 (○ 반영·△ 부분·보정 보류)
-- 디자인 요소 보호 (가드 53·45·49)
-- 표현 금지 어휘 5건 (가드 11)
-- 색상 비율 7% 이내 (가드 10)
+**완료 영역 (v2.7 본 세션)**:
+- ✅ Step 2 GPT 피드백 13 four-alternatives 보정 (v3.2)
+- ✅ Step 3 빌드 v1 마감 (7장·20~26)
 
-**우선순위 2 — Step 3 빌드 v1 진입** (Step 2 GPT 피드백 완료 후)
-- dist/preview-step3.html 신규 파일
-- 매트릭스 v10.5 §9-NEW 20·21·22·23·24·25·26 본문 정합 빌드
+**우선순위 1 — Step 4 §3 진입** (다음 세션 첫 차수 권장)
+- docs/Step4_v4.md 정독
+- 매트릭스 §9-NEW Step 4 영역 작성 (27 PIR 정량 4지표 등)
+- 표현 금지 어휘 5건 (가드 11)·색상 비율 7% 이내 (가드 10)
 
-**우선순위 3 — Step 4·5 §3 진입**
-- docs/Step4·5_v4.md 정독
-- 매트릭스 §9-NEW Step 4·5 영역 작성
+**우선순위 2 — Step 5 §3 진입**
+- docs/Step5_v4.md 정독
+- 매트릭스 §9-NEW Step 5 영역 작성 (28 conclusion·핵심 메시지 회수)
 
-**우선순위 4 — 잔여 보정 영역** (발표 직전)
+**우선순위 3 — Step 4·5 빌드 v1 진입**
+- dist/preview-step4.html·dist/preview-step5.html 신규
+- Step 2 v3.2 + Step 3 v1 어휘 100% 재활용 (.v3-*·.pict-*)
+- Step 마감 시점 git push (가드 66 정합)
+
+**우선순위 4 — Step 2 잔여 영역 보정** (발표 직전 일괄)
+- 11 make-vs-buy·16 lotte-vs-hyundai (v2 잔존)
+- 14·15·18·19 v3 텍스트 잔존
+- §13-8 운영 메모 정합
+
+**우선순위 5 — 발표 직전 잔여 영역**
 - 출처 §11 통합 (정합 ✗ 1건)
-- Step 2 잔여 영역 (CLAUDE.md §13-8)
 - hp-num 일괄 보정 (§13-7)
-- presentation-content-master.md v1.0 → v1.1
 - content-thesis §2 보조 논지 4 본문 갱신
+- presentation-content-master.md v1.0 → v1.1
 - slides.yml v1.0 골조 확장
+- 전체 통합 검토 + 발표 리허설
+- 가드 66-3 발표 직전 통합 push (필수)
 
 ### 14-3. 신규 세션 첫 본인 메시지 영역 (예시)
 
@@ -707,3 +766,44 @@ outline/slides.yml (Phase 2 발표 전체 28장 구조)은 슬라이드 번호·
 | docs/md | Step1·2·3·4·5_v4.md 5개 (본인 pandoc 변환·정합 검증용) |
 
 **신규 세션 진입 시 본 영역과 동일성 검증 권장**.
+
+### 14-6. git push 운영 흐름 (v2.7 신규·가드 66 정합)
+
+**적용 시점**: Step 마감 시점 (가드 66-1·기본) 또는 분할 마감 시점 (가드 66-2·선택). 발표 직전 통합 push 필수 (가드 66-3).
+
+**Claude Code 영역** (Bash 도구 X·가드 7·65 정합):
+1. 본인 시각 평가 ○ 시점 매트릭스·CLAUDE.md 갱신 완료
+2. push 사전 보고 (E 영역 형식·자체 점검 3건 포함):
+   - 본 차수 변경 파일 목록 (Task 영역 정합)
+   - `.gitignore` 영역 정합 자체 확인 (운영 문서 포함 여부)
+   - 신규 파일 생성 영역
+   - 변경 영역 명세 + 커밋 메시지 권장 + 본인 직접 실행 명령
+3. 본인 ○ 시점 → 본인 직접 터미널 실행 (Claude Code Bash X)
+
+**본인 영역** (Mac /Users/sinhaewon/claude/lotte-erp 터미널 직접 실행):
+
+```bash
+cd /Users/sinhaewon/claude/lotte-erp
+git status
+git add .
+git commit -m "<Claude Code 권장 커밋 메시지>"
+git push origin main
+```
+
+**GitHub Pages 반영 확인 (push 후 1~3분)**:
+1. https://github.com/bapzzi/ERP_lottechemi/actions workflow 초록 체크
+2. 접속 URL 정합 확인:
+   - https://bapzzi.github.io/ERP_lottechemi/dist/preview-step1.html
+   - https://bapzzi.github.io/ERP_lottechemi/dist/preview-step2.html
+   - https://bapzzi.github.io/ERP_lottechemi/dist/preview-step3.html
+   - (Step 4·5 추가 시 preview-step4·5.html)
+3. 본인 영역 확인 완료 → 다음 차수 진입 결정 → Claude Code 보고
+
+**커밋 메시지 표준** (Claude Code 사전 작성·본인 활용):
+- Step 빌드 v1 마감: "Step {N} 빌드 v1 마감 — {장표 수}장 ({hp-num 범위})"
+- 보정 차수: "Step {N} v{N.M} 보정 — {장표 hp-num} {보정 영역}"
+- GPT 피드백 반영: "Step {N} GPT 피드백 반영 — v{N.M} → v{N.M+1}"
+
+**.gitignore 영역** (운영 문서 보호):
+- CLAUDE.md·SESSION_STATE.md·docs/·outline/·spec/·.claude/·*.docx·.DS_Store·node_modules/
+- push 진입 시점 운영 문서 포함 여부 자체 점검 필수
