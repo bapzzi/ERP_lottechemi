@@ -72,18 +72,11 @@
 
 ---
 
-## 5. 1차 산출 전체 합산
+## 5. 1차 산출 전체 합산 (v3 과거 기록 — v10.13 폐기·현재 §12-4 매핑 표 기준)
 
-| 영역 | 페이지 | 시간 |
-|---|---|---|
-| 도입부 (01 cover + 02 toc) | 2장 | ~1분 40초 |
-| 1부 진입 (C1-intro) | 1장 | ~25초 |
-| 1부 본론 (S1-1~S1-5) | 5장 | ~5분 40초 |
-| 2부 진입 (C2-intro) | 1장 | ~25초 |
-| 2부 본론 (S2-1~S2-6) | 6장 | ~6분 30초 |
-| **1차 산출 합계** | **15장** | **약 14분 40초** |
+**현재 기준 (v10.13)**: 49장 — Step 1 10장·Step 2 11장·Step 3 14장·Step 4 8장·Step 5 8장 + 도입부·챕터 진입·결론 8장. 자세한 매핑은 §12-4 표 참조.
 
-전체 발표 30분 예산 중 1부·2부 본론까지 약 14분 40초 (49%). 나머지 약 15분에 3부·4부·5부 본론 + 챕터 진입 3장 + 결론 흐름 배치 — 2차 산출에서 분배.
+**과거 기록 (v3 1차 산출 시점·폐기)**: 도입부 2장 + 1부 진입 1장 + 1부 본론 5장 + 2부 진입 1장 + 2부 본론 6장 = 1차 산출 15장·약 14분 40초·3부~5부는 2차 산출 분배 예고. 본 표는 v3 1차 산출 정합·v10.4~v10.13 산출에서 49장으로 확장 완료.
 
 ---
 
@@ -204,8 +197,11 @@ S1-3 통합 페이지의 정보 밀도·시간 부담은 빌드 단계 검증 �
 ### 7-3. 02 toc의 화면 분량
 02 toc에 5부 모두 한 줄 설명이 노출되면 정보 요소 5개 + 핵심 메시지 1개 = 6개. Tone B 적정 밀도. 빌드 단계에서 5부 항목 가로/세로 배치 결정.
 
-### 7-4. Step 3 분량 (2차 산출 진입 시)
-docx 50,497자 / §7개+다수 하위절 — 8~12장 권장 범위. 2차 산출 시 챕터 진입 1장 + 본론 8~12장 = 9~13장. 본인 결정 후 진입.
+### 7-4. Step 3 분량 — v10.13에서 14장 확정
+
+**현재 기준 (v10.13)**: Step 3는 **20~33·총 14장** 확정. 본인 디렉션 — Step 3는 Step 1·2 합친 분량의 docx (50,497자)·7장 또는 10장 압축 부적절·14장 완전안 채택.
+
+**과거 기록 (v3 1차 산출 시점)**: docx 50,497자 / §7개+다수 하위절 — 8~12장 권장 범위·2차 산출 시 챕터 진입 1장 + 본론 8~12장 = 9~13장. 이 추정은 v3 시점·14장 확정으로 폐기.
 
 ### 7-5. 1차 산출 초반부 압축 옵션 (빌드 단계 검증)
 
@@ -230,13 +226,13 @@ docx 50,497자 / §7개+다수 하위절 — 8~12장 권장 범위. 2차 산출 
 
 ---
 
-## 8. 다음 단계
+## 8. 다음 단계 (v10.13 갱신)
 
-1. 본인 + 외부 시점 검토 (자료 경계·docx 정합·Step 혼합 / 결정 1 통합 위탁 검증)
-2. 통과 시 2차 산출 (Step 3·4·5) 진입
-3. 1차·2차 통합 후 전체 매트릭스 (`outline/step-page-matrix.md` 최종본) 작성
-4. 통과 시 빌드 진입 (HTML 초안)
-5. 빌드 후 페이지별 세부 수정
+1. **Step 3 디자인 1차 재구성** — `dist/preview-step3.html` v1 → v2 (14장 빌드·신규 7장 + 기존 7장 페이지 번호 시프트 + 25↔26 위치 교환 + 출처 일괄 정정)
+2. **Step 4·5 페이지 번호 시프트 dist 적용** — 헤더 페이지 번호 v10.13 시프트 (Step 4 +7·Step 5 +7) — 다음 차수 본인 결정
+3. **발표 직전 일괄 보정** — Step 2 잔여·hp-num 일괄·content-thesis 본문 갱신·slides.yml 골조 보정 (28장 → 49장)
+
+**과거 기록 (v3 1차 산출 시점)**: 1·2차 산출 진입·외부 시점 검토 단계는 v10.4·v10.7·v10.8·v10.13에서 모두 완료. 현재 매트릭스는 49장 전체 정합 완료 상태.
 
 ---
 
@@ -1310,10 +1306,131 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 22 methodology-evolution (Step 3 방법론 진화 + 비대칭성·새 디지털 코어) — v10.4 신규
+### 22 governance-triad (Step 3 구축 단계 거버넌스 3축) — v10.13 신규
 
-본 페이지는 docx Step 3 방법론 진화 본문 + **content-thesis §2 보조 논지 3 비대칭성·새 디지털 코어 매핑 확정** 페이지.
-**페이지 번호 정합**: slides.yml 기존 19 methodology-evolution 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 22 확정.
+본 페이지는 docx Step 3 §2 「구축 단계의 거버넌스 3축 협력 구조」 매핑.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·22 governance-triad 슬러그.
+**Step 2 13 governance-triad와 구분**: Step 2 13은 "도입 의사결정 단계 거버넌스 (외부 SI 일임이 아닌 그룹 IT 통제권)" — Step 3 22는 "구축 단계 거버넌스 (실행 책임 분담)". 동일 3축이지만 역할 세분화.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 03
+  - 핵심 메시지: "어느 한 주체로는 추진 불가능한 규모 — <em>롯데케미칼·롯데정보통신·SAP 본사 3축</em>이 발주·수행·기술 분담"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 3축 카드 가로 1×3 + 3축 구조의 의미 + 결론 v3-msg)
+
+  영역 1 (3축 카드 가로 1×3·v3.1 정합·card-top-accent 4px red):
+  - 카드 1 (발주·의사결정): num-circle 50px red "1" + 픽토그램 56px (서명·결정·문서)
+    - 라벨 mono 13px red: "AXIS 1 · 발주"
+    - 제목 38px: "발주 · 의사결정"
+    - sub 20px: "롯데케미칼 (김교현 대표·박제성 상무)"
+    - body 26px: "프로젝트 거버넌스 총괄·비즈니스 요구사항 정의·자원 배분 의사결정·IT 자산 통제권 유지"
+  - 카드 2 (수행·통합): num-circle 50px red "2" + 픽토그램 56px (톱니바퀴·구축·연결)
+    - 라벨 mono 13px red: "AXIS 2 · 수행"
+    - 제목 38px: "수행 · 통합"
+    - sub 20px: "롯데정보통신 (그룹 SI 계열사)"
+    - body 26px: "시스템 통합 SI 수행·통합 운영체계 확보·신규 SAP 플랫폼 도입을 통한 중복투자 리스크 제거"
+  - 카드 3 (기술·방법론): num-circle 50px red "3" + 픽토그램 56px (체크·검증·표준)
+    - 라벨 mono 13px red: "AXIS 3 · 기술"
+    - 제목 38px: "기술 · 방법론"
+    - sub 20px: "SAP 본사 (Value Assurance Service)"
+    - body 26px: "S/4HANA 도입 방법론 SAP Activate 적용·Fit-Gap 분석·Migration Planning·Go-Live Readiness Check 표준 컴포넌트 제공"
+
+  영역 2 (3축 구조의 의미 2가지 — split-narrative 좌우 또는 가로 1×2 박스):
+  - 의미 1 (좌·cream + graphite border-left 4px):
+    - 라벨 mono 13px graphite: "MEANING 1"
+    - 본문 22px: "그룹 계열사 SI (롯데정보통신) 활용은 단순 비용 절감이 아니라 <em>S/4HANA 가동 이후 안정적 운영체계 확보 + 그룹 차원 IT 자산 통제권 유지</em>라는 장기적 판단"
+  - 의미 2 (우·cream + graphite border-left 4px):
+    - 라벨 mono 13px graphite: "MEANING 2"
+    - 본문 22px: "SAP 본사가 단순 라이선스 공급자가 아닌 <em>Value Assurance Service 구조화된 컨설팅</em>으로 직접 참여 — 압축 일정 하 고난도 기술 리스크를 패키지 공급사 자원으로 해결하는 전략적 판단"
+
+  영역 3 (박제성 인용 박스 — Step 4 30 qual-5values 박제성 인용 박스 패턴 정합·자체 판단·있으면 더 좋음):
+  - cream + graphite border-left 4px
+  - "롯데정보통신이 통합 운영체계를 확보, 신규 SAP 플랫폼 도입으로 중복투자 리스크 제거"
+  - 우측 출처: "박제성 상무 인터뷰 (2019.09)"
+
+  영역 4 (결론 v3-msg 박스): white + red border-left 4px
+  - "<em>외부 SI 일임이 아닌 3축 협력 구조</em> — 단일 주체 추진 불가능 규모·그룹 자원 + 패키지 공급사 + 발주처 통제권 결합"
+  - 우측 출처: 박제성 상무 인터뷰 + 롯데케미칼 사업보고서 + 2018 정정 사업보고서 + SAP Value Assurance 공식 자료
+
+must_include:
+- 3축 명칭 (롯데케미칼·롯데정보통신·SAP 본사)
+- 각 축 역할 (발주·수행·기술)
+- 3축 구조의 의미 2가지 (그룹 SI 장기 통제권·SAP 본사 직접 참여 전략적 판단)
+- 박제성 정확 인용 "통합 운영체계 + 중복투자 리스크 제거"
+
+시각 어휘: 3축 카드 가로 1×3·card-top-accent 4px red·num-circle 50px·픽토그램 3개 (서명·톱니·체크)·의미 2 박스 cream·박제성 인용 박스 cream·v3-msg 결론
+
+자체 판단 결과:
+- grid 4행
+- 3축 카드 가로 1×3 균등 (3축 동등 위계·각 축 동일 시각 무게)
+- 의미 2 박스는 가로 1×2 또는 좌우 split-narrative (정보 위계 분리)
+- 박제성 인용 박스 cream (Step 4 30 패턴 정합·자체 판단 영역)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료
+색상 비율 (가드 10): 3 num-circle red + 3 card-top-accent red + 3 픽토그램 red + 박제성 인용 박스 cream + v3-msg + eyebrow = 약 5.5~6.5% (7% 이내 정합)
+footer: 우하단 키보드 안내만
+```
+
+### 23 four-methodologies (Step 3 4대 구축 방법론 비교) — v10.13 신규
+
+본 페이지는 docx Step 3 §3.1 「4대 구축 방법론 비교」 매핑.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·23 four-methodologies 슬러그.
+**Step 2 13 four-alternatives와 구분**: Step 2 13은 "4대 대안 비교 (A/B/C/D 패키지 도입 대안)" — Step 3 23은 "4대 구축 방법론 비교 (Big Bang/Phased/Pilot/Roll-out)". Step 2 13의 표 패턴 (SELECTED 배지·red rail·trade-off) 그대로 정합.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 04
+  - 핵심 메시지: "<em>4대 구축 방법론 트레이드오프</em>에서 압축 일정과 3사 통합을 동시에 만족하는 유일한 해는 Roll-out"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 선택 기준 라벨 + 4 방법론 비교 표 + 결론 v3-msg)
+
+  영역 1 (선택 기준 라벨): red-box-label
+  - "선택 기준: 7개월 압축 일정 + 3사 동시 전환 다운타임 리스크 통제"
+
+  영역 2 (4 방법론 비교 표 — Step 2 13 four-alternatives 표 패턴 정합):
+  - 표 형식 5열 (방법론 / 특징 / 장점 / 단점 / 본 사례 적합도)
+  - 행 헤더 (graphite border-bottom 2px·body 800)
+  - 행 1 (Big Bang): "전체 모듈·법인 일시 전환" / "통합 효과 즉시 발현·과도기 비용 최소" / "리스크 집중·다운타임 길어짐" / **△ — 3사 동시 전환 시 다운타임 리스크 과대**
+  - 행 2 (Phased): "모듈·부서별 단계적 전환" / "리스크 분산·학습 효과" / "통합 효과 지연·인터페이스 부담 가중" / **△ — 7개월 일정 내 단계 분할 불가**
+  - 행 3 (Pilot): "1개 부서·법인 시범 → 본격 확산" / "검증 후 확산·실패 영향 국소화" / "전체 일정 길어짐·두 번 작업" / **× — 7개월 일정상 시범 후 확산 불가**
+  - 행 4 (Roll-out·card.is-active red border-left 6px·SELECTED 배지 우상단): "기준 법인 구축 → 타 법인·거점 확산" / "기준 모델 안정화 후 확산·리스크 통제" / "기준 법인 의존도 높음" / **○ — 롯데케미칼 기준 → 정밀화학·첨단소재 확산**
+  - 4번째 행 강조 (선정 표시·SELECTED 배지·red rail 8px)
+
+  영역 3 (Roll-out 3대 근거 보조 — 가로 1×3 작은 카드 graphite·docx §3.2 line 230~246):
+  - 근거 1: "기준 법인 SAP 자산 활용 — 2003 SMART·2010 GEMS·13년 누적 운영 경험·기준 모델 'Scope 0(처음부터)' 회피"
+  - 근거 2: "비즈니스 영속성 리스크 분산 — 3사 동시 전환 시 한 사 시스템 장애가 전체 확산 위험 → 롯데케미칼 먼저 안정화"
+  - 근거 3: "통합형 컨버전(Brownfield 성격) 정합성 — SAP 권장 ECC → S/4HANA System Conversion 경로·기존 데이터·커스터마이징 그대로 이관"
+
+  영역 4 (결론 v3-msg 박스): white + red border-left 4px
+  - "Big Bang·Phased·Pilot 모두 7개월 + 3사 + 다운타임 통제 조건 충족 X → <em>Roll-out이 유일한 해</em>"
+  - 우측 출처: 롯데케미칼 사업보고서 · docx Step 3 §3
+
+must_include:
+- 4 방법론 명칭 (Big Bang·Phased·Pilot·Roll-out)
+- 각 방법론 특징·장점·단점·본 사례 적합도
+- Roll-out 선정 강조 (card.is-active·SELECTED 배지)
+- Roll-out 3대 근거 (기준 법인 자산·영속성 분산·Brownfield 정합)
+- 결론: 다른 3 방법론 부적합 → Roll-out 유일
+
+시각 어휘: 5×5 표(Step 2 13 four-alternatives 패턴 정합)·4행 card.is-active red rail 8px + SELECTED 배지·Roll-out 3 근거 보조 카드 가로 1×3 graphite·v3-msg 결론
+
+자체 판단 결과:
+- grid 4행
+- 5×5 표 (방법론·특징·장점·단점·적합도)
+- 4행 Roll-out 강조 (red rail 8px + SELECTED 배지 우상단·Step 2 v3.2 13 패턴 정합)
+- 3 근거 카드 가로 1×3 (정보 보강·docx §3.2 line 230~246 정합)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 롯데케미칼 사업보고서 · docx Step 3 §3
+색상 비율 (가드 10): 4행 card.is-active + red rail 8px + SELECTED 배지 + 4 ×/△ red + 3 근거 카드 graphite + v3-msg + eyebrow = 약 5~6% (7% 이내 정합)
+footer: 우하단 키보드 안내만
+```
+
+### 24 methodology-evolution (Step 3 방법론 진화 + 비대칭성·새 디지털 코어) — v10.4 신규·v10.13 페이지 번호 시프트 22→24
+
+본 페이지는 docx Step 3 §3.2 「본 사례의 방법론 선택과 그 근거 + 역사적 맥락」 매핑 + **content-thesis §2 보조 논지 3 비대칭성·새 디지털 코어 매핑 확정** 페이지.
+**페이지 번호 시프트 (v10.13)**: 기존 22 → 24 (Step 3 14장 확장 차수). 본문 영역 변경 X·v10.5 영역 4대 방법론 비교 보조 영역은 23 four-methodologies로 분리·압축 일정 4근거 보조 영역은 25 seven-month-grounds로 분리.
+**페이지 번호 정합 (v10.4·v10.13 유지)**: slides.yml 기존 19 methodology-evolution 슬러그 Step 3 영역으로 이동.
 
 ```
 구조:
@@ -1366,10 +1483,134 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 23 not-standardize-all (Step 3 GAP 진입 — 챕터 1 §8 회수) — v10.4 신규
+### 25 seven-month-grounds (Step 3 7개월 압축 4근거) — v10.13 신규
 
-본 페이지는 docx Step 3 GAP 3트랙 진입 + 챕터 1 §8 회수.
-**페이지 번호 정합**: slides.yml 기존 20 not-standardize-all 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 23 확정.
+본 페이지는 docx Step 3 §4.1 「Time 7개월 압축이 현실적으로 가능했던 4 근거」 매핑.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지. 24 methodology-evolution v10.5 보조 영역에서 독립 분리.
+**핵심 메시지**: SAP 표준 신규 구축 18~24개월 대비 7개월 압축은 단일 근거가 아닌 4 근거 결합 결과.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 06
+  - 핵심 메시지: "<em>7개월 압축</em> — SAP 표준 18~24개월 대비 1.5~3배 압축이 가능했던 4 근거"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 비교 라벨 + 4 근거 카드 2×2 + 결론 v3-msg)
+
+  영역 1 (비교 라벨 — cream + red border-left 4px): 
+  - "SAP 표준 신규 구축 18~24개월 → 본 사례 <em>7개월 (2017.04~11)</em> — 1.5~3배 압축"
+  - 우측 라벨 mono 12px ink-mute: "동종 사례 평균 12~18개월 대비도 1.5배 압축"
+
+  영역 2 (4 근거 카드 2×2·v3.1 정합·각 카드 동등 위계):
+  - 카드 1 (① 통합형 컨버전): card-top-accent 4px red + num-circle 50px red "1" + 픽토그램 56px (블록 결합·변환)
+    - 제목 38px: "통합형 컨버전"
+    - sub 20px: "Brownfield 성격"
+    - body 26px: "기준 법인 롯데케미칼 SAP ECC 자산 그대로 이관·전환 → 신규 그린필드 대비 <em>분석·설계·구현 단계 분량 대폭 축소</em>"
+  - 카드 2 (② 13년 누적 SAP 운영 경험): card-top-accent 4px red + num-circle 50px red "2" + 픽토그램 56px (시계+13·축적)
+    - 제목 38px: "13년 SAP 운영 경험"
+    - sub 20px: "2003 SMART · 2010 GEMS"
+    - body 26px: "사용자 교육·변경관리 부담 신규 도입 기업 대비 현저히 낮음·<em>사용자 경험 + 커스터마이징 자산 재활용</em>"
+  - 카드 3 (③ 그룹 SI 사전 협업): card-top-accent 4px red + num-circle 50px red "3" + 픽토그램 56px (그룹·연결)
+    - 제목 38px: "그룹 SI 사전 협업"
+    - sub 20px: "롯데정보통신"
+    - body 26px: "외부 SI 공모·선정·온보딩 절차 생략·그룹 차원 IT 자산·인력 풀 <em>즉시 동원</em> 가능"
+  - 카드 4 (④ SAP Value Assurance Service): card-top-accent 4px red + num-circle 50px red "4" + 픽토그램 56px (체크·표준 컴포넌트)
+    - 제목 38px: "SAP Value Assurance"
+    - sub 20px: "표준 컴포넌트"
+    - body 26px: "Fit-Gap Analysis·Migration Planning Workshop·Go-Live Readiness Check·Custom Code Management·Data Migration Architecture — <em>자체 방법론 개발 없이 검증된 절차</em>"
+
+  영역 3 (결론 v3-msg 박스): white + red border-left 4px
+  - "4 근거의 <em>결합</em>이 본 사례 차별성 — 단일 근거로 7개월 압축 불가능"
+  - 우측 출처: 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §4.1
+
+must_include:
+- 4 근거 명칭 (통합형 컨버전·13년 SAP·그룹 SI·SAP VAS)
+- 각 근거 본문 26px 3~4줄
+- 결합 강조 (단일 근거 X)
+- 비교 라벨 (18~24개월 → 7개월)
+- SAP VAS 표준 컴포넌트 정확 어휘 (Fit-Gap·Migration Planning·Go-Live Readiness Check)
+
+시각 어휘: 비교 라벨 cream·4 카드 2×2·card-top-accent 4px red·num-circle 50px·픽토그램 4 (블록·시계+13·그룹·체크)·v3-msg 결론
+
+자체 판단 결과:
+- grid 4행
+- 4 카드 2×2 (Step 2 18 onpremise 패턴 정합·정보 밀도 적정)
+- 모든 카드 card-top-accent red (4 근거 모두 본 사례 핵심)
+- 비교 라벨 cream (정보 도입 영역·청중 인지 영역 안내)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §4.1
+색상 비율 (가드 10): 4 num-circle red + 4 card-top-accent red + 4 픽토그램 red + 비교 라벨 cream + v3-msg + eyebrow = 약 5.5~6.5% (7% 이내 정합)
+footer: 우하단 키보드 안내만
+```
+
+### 26 time-cost-scope (Step 3 PMBOK Iron Triangle 통제) — v10.13 신규
+
+본 페이지는 docx Step 3 §4.1 + §4.2 + §4.3 「3대 제약 조건 통제: Time·Cost·Scope」 매핑.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·26 time-cost-scope 슬러그.
+**핵심 메시지**: PMBOK Iron Triangle 3축 적용 — Time은 25 영역 4 근거 회수·Cost는 비용 회피형 관리·Scope는 3축 균형.
+**Step 2 15 economic-feasibility와 구분**: Step 2 15는 "경제적 타당성 4 요인 ROI 수렴" — Step 3 26은 "PMBOK 3축 통제 프레임 (Time·Cost·Scope 동시 균형)".
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 07
+  - 핵심 메시지: "PMBOK Iron Triangle — Time·Cost·Scope <em>3축 동시 통제</em>"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + PMBOK 정의 인용 박스 + 3축 카드 가로 1×3 + 결론 v3-msg)
+
+  영역 1 (강의 PMBOK 정의 인용 박스): cream + graphite border-left 4px
+  - "강의 자료 5p — '계획된 일정(Time) 내, 배정된 예산(Cost)을 사용하여, 합의한 업무(Scope)를 완수함으로 고객 만족(Quality) 극대화'"
+  - 본 사례는 3대 제약이 가장 치열하게 충돌한 단계
+
+  영역 2 (3축 카드 가로 1×3·v3.1 정합·각 카드 card-top-accent):
+  - 카드 1 (Time·시간 통제): card-top-accent 4px red + num-circle 50px red "T" + 픽토그램 56px (시계·압축)
+    - 제목 38px: "Time"
+    - sub 20px: "7개월 압축 (2017.04~11)"
+    - body 26px: "동종 사례 평균 12~18개월 대비 1.5배 압축. <em>25번 4 근거 회수</em> — 통합형 컨버전·13년 SAP·그룹 SI·SAP VAS"
+  - 카드 2 (Cost·비용 회피형 관리): card-top-accent 4px red + num-circle 50px red "C" + 픽토그램 56px (동전·감소·회피)
+    - 제목 38px: "Cost"
+    - sub 20px: "비용 회피형 관리"
+    - body 26px: "투자 총액 비공개 — '최소 비용'이 아닌 <em>비용 발생 구조 통제</em>. 4 통제: 자산 재활용·그룹 SI·중복 운영비·전환 리스크 비용"
+    - src 14px mono ink-mute: "docx §4.2 line 283~318"
+  - 카드 3 (Scope·범위 3축 균형): card-top-accent 4px red + num-circle 50px red "S" + 픽토그램 56px (범위·균형)
+    - 제목 38px: "Scope"
+    - sub 20px: "3축 균형"
+    - body 26px: "법인 축 (3사+6국) · 모듈 축 (10모듈) · 프로세스 축 (공통 표준화 + 본연 경쟁력 유지). <em>Best Practice 강제 vs 현행 보존</em> 후자 우선"
+    - src 14px mono ink-mute: "docx §4.3 line 320~355"
+
+  영역 3 (본연 경쟁력 유지 원칙 박스 — 박제성 인용 또는 cream 박스):
+  - cream + graphite border-left 4px
+  - "박제성 상무 인터뷰: 3사 본연의 핵심 비즈니스 경쟁력 유지·각 사별 특화 프로세스 유지 — <em>비즈니스 영속성 리스크 통제</em>를 위한 적극적 의사결정"
+
+  영역 4 (결론 v3-msg 박스): white + red border-left 4px
+  - "Iron Triangle 3축 <em>동시 만족</em>이 본 사례 차별성 — Time 단축 + Cost 회피 + Scope 균형 어느 하나도 희생 X"
+  - 우측 출처: docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p
+
+must_include:
+- PMBOK Iron Triangle 정의 (강의 자료 5p 인용)
+- Time·Cost·Scope 3축 카드
+- Cost는 "비용 회피형 관리" 정확 표현 (docx §4.2)
+- Scope는 3축 균형 (법인·모듈·프로세스)
+- 본연 경쟁력 유지 원칙 (박제성 정확 인용)
+- 결론: 3축 동시 만족·어느 하나도 희생 X
+
+시각 어휘: 강의 PMBOK 정의 박스 cream·3축 카드 가로 1×3·card-top-accent 4px red·픽토그램 3 (시계·동전·범위)·본연 경쟁력 박스 cream·v3-msg 결론
+
+자체 판단 결과:
+- grid 4행
+- 3축 카드 가로 1×3 동등 위계
+- 강의 PMBOK 정의 박스 cream (강의 인용 박스 패턴 정합)
+- 본연 경쟁력 박스 cream (박제성 인용·정보 위계 보조)
+- src 14px mono ink-mute (Cost·Scope 카드 docx § 인용)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p
+색상 비율 (가드 10): 3 num-circle red + 3 card-top-accent red + 3 픽토그램 red + 2 cream 박스 + v3-msg + eyebrow = 약 5~6% (7% 이내 정합)
+footer: 우하단 키보드 안내만
+```
+
+### 27 not-standardize-all (Step 3 GAP 진입 — 챕터 1 §8 회수) — v10.4 신규·v10.13 페이지 번호 시프트 23→27
+
+본 페이지는 docx Step 3 §5.1 「AS-IS / TO-BE GAP 분석 진입 + 6대 항목 비교」 매핑 + 챕터 1 §8 회수.
+**페이지 번호 시프트 (v10.13)**: 기존 23 → 27 (Step 3 14장 확장 차수). 본문 영역 변경 X (사용자 디렉션 "본문 변경 X·페이지 번호만").
+**페이지 번호 정합 (v10.4·v10.13 유지)**: slides.yml 기존 20 not-standardize-all 슬러그 Step 3 영역으로 이동.
 
 ```
 구조:
@@ -1413,10 +1654,11 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 24 gap-three-tracks (Step 3 GAP 3트랙 본문) — v10.4 신규
+### 28 gap-three-tracks (Step 3 GAP 3트랙 본문) — v10.4 신규·v10.13 페이지 번호 시프트 24→28
 
-본 페이지는 docx Step 3 GAP 3트랙 본문 매핑.
-**페이지 번호 정합**: slides.yml 기존 21 gap-three-tracks 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 24 확정.
+본 페이지는 docx Step 3 §5.2 「GAP 해결 3트랙 전략」 매핑.
+**페이지 번호 시프트 (v10.13)**: 기존 24 → 28 (Step 3 14장 확장 차수). 본문 영역 변경 X·Configuration 영역은 29 configuration-baseline 독립 페이지로 분리.
+**페이지 번호 정합 (v10.4·v10.13 유지)**: slides.yml 기존 21 gap-three-tracks 슬러그 Step 3 영역으로 이동.
 
 ```
 구조:
@@ -1453,10 +1695,77 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 25 sap-platform-hub (Step 3 SAP 중심 플랫폼 + 주변 시스템) — v10.4 신규
+### 29 configuration-baseline (Step 3 Configuration·Baseline·Scope Creep 통제) — v10.13 신규
 
-본 페이지는 docx Step 3 SAP 중심 플랫폼 + 주변 6 시스템 매핑.
-**페이지 번호 정합**: slides.yml 기존 22 sap-platform-hub 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 25 확정.
+본 페이지는 docx Step 3 §4.4 「Configuration의 중요성·패키지 도입의 가장 큰 위험요소」 + §5.5 「기준선(Baseline) 설정과 Scope Creep 통제」 통합 매핑.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·29 configuration-baseline 슬러그.
+**핵심 메시지**: 패키지 구현의 가장 큰 위험은 설정 오류이며·Baseline과 변경관리로 Scope Creep 통제. **강의 자료 29p·31p·13p·28p 직접 인용 영역 — 교수님 검수 가능 핵심 페이지**.
+**사용자 디렉션 정합 (v10.13)**: 28 GAP 3트랙 안 흡수 X·독립 페이지·강의 자료 영역 강조 명확화.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 10
+  - 핵심 메시지: "패키지 구현의 가장 큰 위험은 <em>설정 오류</em>이며·Baseline·변경관리로 Scope Creep 통제"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 강의 자료 29p 인용 박스 + 좌우 split-narrative (Configuration 위험 vs Baseline 통제) + 결론 v3-msg)
+
+  영역 1 (강의 자료 29p 인용 박스): cream + graphite border-left 4px
+  - "강의 자료 29p — '선정된 패키지의 표준 기능을 자사 프로세스에 맞게 파라미터를 조정하는 설정(Configuration) 작업과·패키지에 없는 기능을 별도로 개발하는 커스터마이징(Customizing/Add-on)을 병행한다. <em>파라미터의 적절하지 않은 설정은 패키지 구현 시 가장 큰 위험요소</em>이다'"
+  - 우측 라벨 mono 13px graphite: "강의 자료 29p"
+
+  영역 2 (좌우 split-narrative 2 카드):
+  - 좌 (Configuration 위험·card-top-accent 4px red + 픽토그램 56px 슬라이더·파라미터):
+    - 라벨 mono 13px red: "위험 영역"
+    - 제목 38px: "Configuration 위험"
+    - sub 20px: "10모듈 × 수천 파라미터"
+    - body 26px: "MM(구매) 모듈 — 회사 코드·구매 조직·플랜트·저장위치·자재 그룹·전표 유형 등 수십 개 마스터 파라미터·SAP S/4HANA 10모듈 각각 수천 파라미터"
+    - 하단 cream 라벨: "강의 자료 31p Summary — 자체 개발 핵심 = '소스 코드 작성'·<em>패키지 구매 핵심 = '파라미터 조정 + 연계'</em>"
+  - 중앙 화살표 (graphite 44px chevron) — Configuration 위험 → Baseline 통제 흐름
+  - 우 (본 사례 Configuration 위험 통제·card-top-accent 4px red + 픽토그램 56px 자물쇠·고정):
+    - 라벨 mono 13px red: "통제 영역"
+    - 제목 38px: "13년 누적 ECC 자산 컨버전 이관"
+    - sub 20px: "Configuration 위험 본질적 축소"
+    - body 26px: "13년 누적 SAP ECC Configuration 자산을 컨버전 방식으로 이관 → <em>신규 그린필드 도입 대비 Configuration 리스크 본질적으로 축소</em>·7개월 압축 일정 가능 결정적 요인"
+
+  영역 3 (Baseline 영역 보조 — 가로 1×2 작은 박스 또는 cream 영역):
+  - Baseline 정의 (강의 자료 13p 인용): cream + graphite border-left 4px
+    - 라벨 mono 13px graphite: "강의 자료 13p"
+    - 본문 22px: "기준선은 설계의 마감 시점(cut-off point)·동결 지점(Freezing Point) — 범위 변경(Scope Creep) 문제 완화. 기준선 이후 모든 변경은 변경관리 대상·별도 승인 절차로 엄격히 제한"
+  - 본 사례 Baseline (강의 자료 28p 정합): cream + red border-left 4px
+    - 라벨 mono 13px red: "본 사례"
+    - 본문 22px: "구매 지향에서 최종 벤더·제품 선정 완료 시점 = Baseline (강의 자료 28p) — 롯데케미칼은 이미 SAP 사용 중·<em>Baseline 시점 앞당김</em>·후속 단계 시간 여유 확보"
+
+  영역 4 (결론 v3-msg 박스): white + red border-left 4px
+  - "BPR + Customizing + Add-on 3트랙은 단순 기술 선택이 아니라 <em>Scope Creep 방지 변경관리 장치</em> — 각 트랙 사전 구분으로 추가 요구사항 분류 의사결정 프레임 작동"
+  - 우측 출처: 강의 자료 29p·31p·13p·28p · docx Step 3 §4.4·§5.5
+
+must_include:
+- 강의 자료 29p "가장 큰 위험요소" 정확 인용
+- 강의 자료 31p Summary 표 비교 (자체 개발 vs 패키지 구매)
+- Configuration 영역 (10모듈 × 수천 파라미터)
+- 본 사례 통제 방식 (13년 ECC 자산 컨버전 이관)
+- 강의 자료 13p Baseline 정의 정확 인용
+- 강의 자료 28p Baseline 시점 (구매 지향 최종 선정 시점)
+- 결론: 3트랙이 Scope Creep 방지 변경관리 장치
+
+시각 어휘: 강의 29p 인용 박스 cream (상단 큰 면)·좌우 split-narrative + 중앙 chevron·하단 Baseline 영역 cream 2 박스·v3-msg 결론
+
+자체 판단 결과:
+- grid 4행
+- 좌우 1:1 split-narrative (Configuration 위험 vs 본 사례 통제 영역)
+- Baseline 영역 가로 1×2 cream (강의 인용 패턴 정합·강의 자료 13p·28p 직접 인용)
+- 강의 자료 29p 인용 박스 상단 큰 면 (페이지 핵심 영역 강조)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 강의 자료 29p·31p·13p·28p · docx Step 3 §4.4·§5.5
+색상 비율 (가드 10): 좌우 카드 card-top-accent red 2 + 픽토그램 red 2 + 중앙 chevron + 우 본 사례 카드 강조 + 3 cream 박스 + v3-msg + eyebrow = 약 5~6% (7% 이내 정합)
+footer: 우하단 키보드 안내만
+```
+
+### 30 sap-platform-hub (Step 3 SAP 중심 플랫폼 + 주변 시스템) — v10.4 신규·v10.13 페이지 번호 시프트 25→30
+
+본 페이지는 docx Step 3 §5.2 Add-on 트랙 + 보강 D SAP 중심 플랫폼 + 주변 6 시스템 매핑.
+**페이지 번호 시프트 (v10.13)**: 기존 25 → 30 (Step 3 14장 확장 차수). 본문 영역 변경 X (사용자 디렉션 "본문 변경 X·페이지 번호만").
+**페이지 번호 정합 (v10.4·v10.13 유지)**: slides.yml 기존 22 sap-platform-hub 슬러그 Step 3 영역으로 이동. content-thesis §2 보조 논지 4 매핑 페이지 번호 25 → 30 갱신.
 
 ```
 구조:
@@ -1490,10 +1799,83 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 26 downtime-kpi (Step 3 리스크 통제 KPI) — v10.4 신규
+### 31 migration-test-vas (Step 3 Migration 구분 + 테스트 5종 + SAP VAS 3요소) — v10.13 신규
 
-본 페이지는 docx Step 3 다운타임 KPI + SAP Value Assurance 매핑.
-**페이지 번호 정합**: slides.yml 기존 23 downtime-kpi 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 26 확정.
+본 페이지는 docx Step 3 §6.4 「Migration 방식의 위치 Big Bang vs Phased vs Parallel」 + §6.5 「강의 테스트 5종 본 사례 적용」 + §6.6 「Rollback Plan 비상 계획」 통합 매핑.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·31 migration-test-vas 슬러그. 기존 26 downtime-kpi v10.5 영역의 테스트 5종 + VAS 3 영역을 본 페이지로 분리·다운타임 의미 4도 32 downtime-kpi에서 본 페이지로 일부 이동 검토 (다만 사용자 디렉션 — 32에 의미 4 유지·31은 검증 차원만).
+**핵심 메시지**: 같은 Big Bang 용어가 구축 방법론(Roll-out)과 데이터 이관(Migration Big Bang) 두 층위에서 다르게 쓰임 — 혼동 풀이 + 테스트 5종 + VAS 3 사전 검증.
+**3단 구조 (사용자 디렉션 v10.13 정합)**: 상단 Migration 구분 / 중단 테스트 5종 / 하단 VAS 3요소. 표 빽빽 X·각 단 핵심 영역만.
+**Rollback Plan 처리**: 하단 보조 라벨 또는 발표 멘트 (사용자 디렉션 — 독립 슬라이드 X).
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 12
+  - 핵심 메시지: "구축 Roll-out × Migration Big Bang <em>2축 결합</em> + 테스트 5종 + VAS 3 사전 검증"
+- 본문 grid: auto 1fr 1fr 1fr auto auto (6행 — 헤드라인 + Migration 구분 상단 + 테스트 5종 중단 + VAS 3 하단 + Rollback 보조 라벨 + 결론 v3-msg)
+
+  영역 1 (Migration 구분 — 상단·좌우 2축 카드):
+  - 라벨 mono 13px red: "BIG BANG 용어 2 층위"
+  - 좌 (구축 방법론 차원·card-top-accent 4px graphite): 픽토그램 56px (단계·확산)
+    - 라벨 mono 13px graphite: "차원 1 · 구축 방법론"
+    - 제목 28px: "Roll-out"
+    - body 22px: "어떤 단위로 시스템을 구축·확산할 것인가 — 본 사례 롯데케미칼 기준 법인 → 정밀화학·첨단소재 순차 (박제성 인용·강의 자료 본 단계 3장)"
+  - 우 (Migration 방식 차원·card-top-accent 4px red·card.is-active): 픽토그램 56px (데이터 이관·전환)
+    - 라벨 mono 13px red: "차원 2 · Migration 방식"
+    - 제목 28px red-deep: "Big Bang 데이터 이관"
+    - body 22px: "어떤 흐름으로 기존 데이터를 새 시스템으로 옮길 것인가 — 본 사례 다운타임 단축(114h → 52h) 단일 KPI는 <em>Big Bang 데이터 이관</em> 시사 (강의 자료 17p)"
+  - 본 사례 = <strong>구축 Roll-out × Migration Big Bang 2축 결합</strong> (docx §6.4 정확 표현)
+
+  영역 2 (테스트 5종 — 중단·가로 1×5·작게·정보 밀도 관리):
+  - 라벨 mono 13px ink-mute: "강의 자료 14~16p 테스트 5종 — 본 사례 적용 매핑"
+  - 카드 1 (단위·모듈 테스트·graphite): 픽토그램 36px (모듈·블록) + 제목 18px "단위·모듈" + body 14px "SAP 컨설턴트가 10모듈 각 기능 단위 검증·Configuration 파라미터별 단위 검증"
+  - 카드 2 (인터페이스·통합·graphite): 픽토그램 (연결·인터페이스) + 제목 18px "인터페이스·통합" + body 14px "SAP S/4HANA ↔ 비SAP (SCM·MES·PLM·LIMS·EHS·GEMS) EAI 검증 + 3사 모듈 간 통합 검증"
+  - 카드 3 (시스템 테스트·graphite): 픽토그램 (성능·게이지) + 제목 18px "시스템·성능" + body 14px "SAP VAS Migration Planning Workshop + Go-Live Readiness Check 다운타임 진단·PIR 성능 90.5% 개선 결과"
+  - 카드 4 (UAT·card.is-active red·card-top-accent 4px red): 픽토그램 (사용자·체크) + 제목 18px red-deep "UAT 인수 테스트" + body 14px "Key User 실제 업무 시나리오 검증·박제성 인용 <em>'회계부서 박수'</em> 정성 표현"
+  - 카드 5 (사교성 테스트·graphite): 픽토그램 (공존·환경) + 제목 18px "사교성" + body 14px "기존 시스템 환경 (SCM·MES·PLM·LIMS·EHS·GEMS) 공존 검증·13년 누적 EAI 자산 부담 ↓"
+
+  영역 3 (SAP Value Assurance 3요소 — 하단·가로 1×3):
+  - 라벨 mono 13px red: "SAP VAS · 사전·반복·사후 3요소"
+  - 카드 1 (사전 진단·card-top-accent 4px red): 픽토그램 36px (진단·체크) + 제목 22px "사전 진단" + body 16px "Fit-Gap Analysis · 동종 사례 분석 · 다운타임 진단 (진단 114h 도출)"
+  - 카드 2 (반복 검증·card-top-accent 4px red): 픽토그램 (반복·rehearsal) + 제목 22px "반복 검증" + body 16px "Migration Planning Workshop · 모의 컷오버 rehearsal · 데이터 이관 시나리오 검증"
+  - 카드 3 (사후 검증·card-top-accent 4px red): 픽토그램 (Go-Live·승인) + 제목 22px "사후 검증" + body 16px "Go-Live Readiness Check · Value Realization Service · 가동 직전 시스템 안정성 점검"
+
+  영역 4 (Rollback Plan 보조 라벨 — 작은 영역·발표 멘트 대안):
+  - cream + graphite border-left 4px·padding 작게
+  - 본문 14~16px: "비상 계획: <em>Go/No-Go 판단·데이터 백업·Rollback Plan</em> — SAP VAS Go-Live Readiness Check 표준 절차 의존 (docx §6.6 line 740~753·자료 공개 영역 제한·추정 영역 명시)"
+
+  영역 5 (결론 v3-msg 박스): white + red border-left 4px
+  - "구축 Roll-out × Migration Big Bang 2축 결합 + <em>테스트 5종 + VAS 3 단계 사전 검증</em>이 다운타임 54%↓ 달성 직접 기반"
+  - 우측 출처: 박제성 상무 인터뷰 · SAP Value Assurance 공식 자료 · 강의 자료 14~17p · docx Step 3 §6
+
+must_include:
+- Migration Big Bang ≠ 구축 Roll-out 구분 (docx §6.4 정확 표현 — "동일 Big Bang 용어 두 차원")
+- 본 사례 = 구축 Roll-out × Migration Big Bang 2축 결합
+- 테스트 5종 (단위·인터페이스·시스템·UAT·사교성) — 강의 자료 14~16p
+- UAT 강조 (박제성 "회계부서 박수" 인용)
+- SAP VAS 3요소 (사전·반복·사후) — Fit-Gap·Migration Planning·Go-Live Readiness Check
+- Rollback Plan 보조 라벨 (독립 슬라이드 X·docx §6.6 자료 공개 영역 제한 명시)
+
+시각 어휘: 3단 구조 — 상단 좌우 2축 카드 + 중단 테스트 5종 가로 1×5 작게 + 하단 VAS 3 가로 1×3 + Rollback 보조 라벨 cream + v3-msg 결론
+
+자체 판단 결과:
+- grid 6행 (헤드라인 + Migration 2축 + 테스트 5 + VAS 3 + Rollback 보조 + 결론)
+- 정보 밀도 큼 — 카드 크기 본문 14~22px (3단 모두 정보 압축)
+- 상단 Migration 2축 좌우 균등 (구축 Roll-out vs Migration Big Bang 대비 강조·card.is-active 우측)
+- 중단 테스트 5 가로 1×5 (5축 동등 위계·UAT 강조 card.is-active)
+- 하단 VAS 3 가로 1×3 (3요소 동등 위계·모두 card-top-accent red)
+- Rollback 보조 라벨 cream (발표 멘트 대안·자료 공개 영역 제한 명시)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 박제성 상무 인터뷰 · SAP Value Assurance 공식 자료 · 강의 자료 14~17p · docx Step 3 §6
+색상 비율 (가드 10): 좌 graphite + 우 card.is-active red + 테스트 4 graphite + 5 UAT card.is-active red + 3 VAS card-top-accent red + Rollback cream + v3-msg + eyebrow = 약 5.5~6.5% (7% 이내 경계·정보 밀도 큼·빌드 시 자체 검증 권장)
+footer: 우하단 키보드 안내만
+```
+
+### 32 downtime-kpi (Step 3 다운타임 KPI + 비즈니스 의미 4 + 6대 리스크 매트릭스) — v10.4 신규·v10.13 페이지 번호 시프트 26→32
+
+본 페이지는 docx Step 3 §6 「리스크 관리 + §6.1 다운타임 통제 의미」 매핑.
+**페이지 번호 시프트 (v10.13)**: 기존 26 → 32 (Step 3 14장 확장 차수). 본문 영역 변경 X·테스트 5종 + VAS 3은 31 migration-test-vas로 이동 (사용자 디렉션 정합 — 32는 KPI 숫자 주인공·의미 4 카드 하단·6대 리스크 작은 보조 표).
+**페이지 번호 정합 (v10.4·v10.13 유지)**: slides.yml 기존 23 downtime-kpi 슬러그 Step 3 영역으로 이동.
 
 ```
 구조:
@@ -1561,7 +1943,141 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 27 pir-frame (Step 4 §1 PIR 분석 프레임 + 데이터 가용성) — v10.7 신규
+### 33 step3-conclusion (Step 3 결론·방법론·범위·검증·플랫폼 회수) — v10.13 신규
+
+본 페이지는 docx Step 3 §7 「본 사례의 의사결정 패턴 종합·4대 원칙」 매핑 + Step 4 PIR 연결 영역.
+**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·33 step3-conclusion 슬러그·Step 3 마감 영역.
+**핵심 메시지**: Step 3의 핵심은 빠른 구축이 아니라 방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조.
+**디자인 패턴**: Step 1 v13 slide 10 step1-conclusion 정합·Step 2 v3.2 19 escrow-supplement 결론 패턴 정합.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 3 · 14
+  - 핵심 메시지: "Step 3의 핵심은 빠른 구축이 아니라·<em>방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조</em>"
+- 본문 grid: auto 1fr auto auto (4행 — 헤드라인 + 4 회수 카드 2×2 + thesis 박스 + Step 4 예고)
+
+  영역 1 (4 회수 카드 2×2·v3.1 정합·각 카드 다른 회수 페이지):
+  - 카드 1 (① 방법론 진화·card-top-accent 4px red): num-circle 50px red "1" + 픽토그램 56px (시계+화살표·진화)
+    - 라벨 mono 13px red: "RECALL · 22·23·24"
+    - 제목 32px: "방법론 진화"
+    - sub 18px: "기존 자산 진화적 활용"
+    - body 22px: "2003 SMART → 2010 GEMS → 2017 S/4HANA 1610·단일 법인 Big Bang에서 3사 Roll-out + 통합형 컨버전으로 <em>진화</em>"
+  - 카드 2 (② 범위 균형·card-top-accent 4px red): num-circle 50px red "2" + 픽토그램 56px (저울·균형)
+    - 라벨 mono 13px red: "RECALL · 27·28"
+    - 제목 32px: "범위 균형"
+    - sub 18px: "표준화와 차별성 동시"
+    - body 22px: "BPR (ROI 명확 영역 공통 표준화) + Customizing (본연 경쟁력 보존) + Add-on (외부 시스템 연계) <em>3트랙 균형</em>"
+  - 카드 3 (③ 사전 검증·card-top-accent 4px red): num-circle 50px red "3" + 픽토그램 56px (체크·진단)
+    - 라벨 mono 13px red: "RECALL · 31·32"
+    - 제목 32px: "사전 검증"
+    - sub 18px: "리스크 사전 통제"
+    - body 22px: "다운타임 진단 114h → 단축 52h (-54%)·테스트 5종 + VAS 3 단계·<em>리스크를 사후 대응이 아닌 사전 진단·계량화·외부 자원 동원으로 통제</em>"
+  - 카드 4 (④ 플랫폼 통합·card-top-accent 4px red·card.is-active): num-circle 50px red "4" + 픽토그램 56px (코어·연결)
+    - 라벨 mono 13px red: "RECALL · 22·30"
+    - 제목 32px red-deep: "플랫폼 통합"
+    - sub 18px: "그룹 자원 + SAP 중심 코어"
+    - body 22px: "그룹 SI (롯데정보통신) + SAP 본사 직접 협력 + S/4HANA 단일 디지털 코어 + 주변 6 시스템 EAI 연계 — <em>content-thesis 보조 논지 4 회수</em>"
+
+  영역 2 (thesis 박스 — Step 3 핵심 결론 문장·Step 1 slide 10 thesis 패턴 정합):
+  - cream + red border-left 6px·중앙 정렬·padding 32px 48px·큰 면
+  - 본문 28~32px·800 weight·color graphite + red em 강조:
+    "Step 3의 핵심은 빠른 구축이 아니라,<br/><em>방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조</em>다."
+  - 우측 출처: docx Step 3 §7 4대 원칙 회수
+
+  영역 3 (Step 4 예고 — 작은 박스·다음 챕터 안내):
+  - white + graphite border-left 4px·작은 영역
+  - 본문 18px ink-soft: "<em>이제 남은 질문은 구축이 실제 성과로 이어졌는가이다</em> → Step 4 PIR (Post-Implementation Review)"
+  - 우측 라벨 mono 13px ink-mute: "NEXT · 챕터 4"
+
+must_include:
+- 4 원칙 회수 (방법론 진화·범위 균형·사전 검증·플랫폼 통합)
+- 각 카드 회수 페이지 번호 명시 (RECALL · 페이지 번호)
+- thesis 박스 결론 문장 정확 인용 ("Step 3의 핵심은 빠른 구축이 아니라·방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조")
+- Step 4 예고 ("이제 남은 질문은 구축이 실제 성과로 이어졌는가이다")
+- 4번째 카드 강조 (보조 논지 4 회수·card.is-active)
+
+시각 어휘: 4 회수 카드 2×2·card-top-accent 4px red·4번째 card.is-active·픽토그램 4 (시계+화살표·저울·체크·코어)·thesis 박스 cream + red border-left 6px (큰 면)·Step 4 예고 작은 박스·v3-msg 변형
+
+자체 판단 결과:
+- grid 4행
+- 4 카드 2×2 (정보 위계 균등·4 원칙 동등)
+- 4번째 강조 (보조 논지 4 회수·결론 28 conclusion 다음 차수와 정합)
+- thesis 박스 큰 면 cream + red rail (Step 1 v13 slide 10 step1-conclusion 패턴 정합·결론 영역 강조)
+- Step 4 예고 작은 박스 (다음 챕터 영역 안내·Step 1 slide 10 다음 챕터 예고 패턴 정합)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): docx Step 3 §7 4대 원칙 회수
+색상 비율 (가드 10): 4 num-circle red + 4 card-top-accent red + 4 픽토그램 red + 4번째 card.is-active + thesis 박스 cream + red border-left 6px + Step 4 예고 graphite + v3-msg + eyebrow = 약 6~7% (경계 영역·thesis 박스 영역 큰 면 빌드 시 자체 검증·border 6px → 4px 자체 보정 가능)
+footer: 우하단 키보드 안내만
+```
+
+### 35 step4-intro-overview (Step 4 진입·안내 페이지) — v10.16 신규
+
+본 페이지는 Step 4 진입부 안내. Step 3 마지막 33 step3-conclusion에서 "남은 질문은 구축이 실제 성과로 이어졌는가이다" 회수 후 Step 4 진입 관문. Step 1·2·3 안내 패턴 정합.
+**페이지 번호 확정 (v10.16 신규)**: Step 4 9장 (35~43) 첫 페이지·v10.14 9장 확정 후 v10.16 본 차수 본문 작성.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 4 · 01
+  - 핵심 메시지: "Step 4는 구축 성과가 실제로 <em>검증됐는가</em>를 살핀다"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 좌 질문 박스 + 우 6 흐름 카드 + 하단 thesis)
+
+  영역 1 (좌 질문 박스·s3i-question 패턴 정합·red border-left 12px):
+  - 라벨 mono 14px red: "CORE QUESTION"
+  - 본문 42px 900: "구축은 끝났다.<br/>이제 <em>실제 성과로<br/>이어졌는가?</em>"
+  - sub 20px: "공개자료로 확인 가능한 범위 안에서 PIR 관점으로 성과·후속·한계를 균형 검증"
+
+  영역 2 (우 6 흐름 카드·s3i-flow 패턴 정합·grid 2×3·검증 느낌 시각 어휘):
+  - 카드 1 (정량 성과): num-circle 50px red "1" + 픽토그램 56px (KPI 그래프·체크)
+    - 라벨 mono 12px red: "01 · 정량 성과"
+    - 제목 22px 900: "다운타임 -54% · 성능 +90.5%"
+    - body 15px: "114h → 52h · 조회 40만건 2분 · 통합 10×3×6×110"
+  - 카드 2 (정성 가치): num-circle 50px red "2" + 픽토그램 56px (5각형·가치)
+    - 라벨: "02 · 정성 가치"
+    - 제목 22px: "3사 시너지 · 디지털 코어"
+    - body: "글로벌 운영 · MDM · 사용자 만족 (회계부서 박수)"
+  - 카드 3 (목표 달성): num-circle 50px red "3" + 픽토그램 56px (목표·달성 체크)
+    - 라벨: "03 · 목표 달성"
+    - 제목 22px: "Step 2 4대 목표 모두 ○"
+    - body: "3사 통합·글로벌·중복투자 제거·디지털 코어 확보"
+  - 카드 4 (후속 입증): num-circle 50px red "4" + 픽토그램 56px (timeline·확장)
+    - 라벨: "04 · 후속 입증"
+    - 제목 22px: "2018 이사회 의결 + DT 전략"
+    - body: "그룹공통시스템·디지털혁신협의체·SAP 라이선스 추가 → 2020 DT 가속화"
+  - 카드 5 (벤치마크): num-circle 50px red "5" + 픽토그램 56px (랭킹·시기 비교)
+    - 라벨: "05 · 벤치마크"
+    - 제목 22px: "국내 대기업 중 선구적 위치"
+    - body: "SK하이닉스 +3개월 · 삼성·LG +5년 우위 · 톱10 → 톱7 비전 격상"
+  - 카드 6 (한계 인식·card.is-active red): num-circle 50px red "6" + 픽토그램 56px (괄호·범위 표시)
+    - 라벨 red: "06 · 한계 인식"
+    - 제목 22px red-deep: "공개자료 기반 검증의 균형"
+    - body: "ROI 비공개 · 만족도 정량자료 부재 · 글로벌 적응도 자료 부재 — 한계 명시 후 신뢰도 확보"
+
+  영역 3 (하단 thesis·cream + red border-left 6px·s3i-thesis 패턴 정합):
+  - 본문 22px 800: "Step 4의 핵심은 '성과가 있었다'가 아니라, 공개자료로 확인 가능한 범위 안에서 <em>성과·후속·한계를 균형 있게 검증</em>하는 것이다"
+
+must_include:
+- 핵심 질문 "구축은 끝났다. 실제 성과로 이어졌는가?"
+- 6 흐름 카드 (정량·정성·목표·후속·벤치·한계)
+- 카드 6 한계 인식 강조 (Step 4 균형 검증 차별성)
+- 하단 thesis ("성과가 있었다" X·균형 검증)
+- 검증 느낌 시각 어휘 (체크·평가표·KPI·PIR 프레임)
+
+시각 어휘: s3i-question (좌 red border-left 12px)·s3i-flow grid 2×3·s3i-card·s3i-thesis cream·카드 6 강조 card.is-active red·검증 느낌 픽토그램 (체크·평가·KPI)
+
+자체 판단 결과:
+- grid 4행 (헤드라인 + 좌우 분할 + 하단 thesis)
+- 좌 질문 38~42%·우 카드 62~58% (Step 3 20 안내 패턴 정합)
+- 카드 6 한계 인식 강조 (card.is-active red·균형 검증 강조)
+- 픽토그램 검증 느낌 (체크·평가표·KPI·timeline·랭킹·괄호)
+
+출처 표기 (Step 2 v4 기준 정합): 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료 · 2020 보도자료
+색상 비율 (가드 10): 6 num-circle red + 6 픽토그램 red + 카드 6 card.is-active + 좌 red border-left 12px + 하단 thesis red border-left 6px + eyebrow em = 약 6~6.5% (7% 이내·경계 영역·자체 검증)
+footer: 우하단 키보드 안내만
+```
+
+### 36 pir-frame (Step 4 §1 PIR 분석 프레임 + 데이터 가용성) — v10.7 신규·v10.13 시프트 27→34·v10.16 시프트 34→36
 
 본 페이지는 docx Step 4 §1 「PIR 분석 프레임 + 데이터 가용성」 매핑.
 **페이지 번호 정합 (가드 28·30·41)**: slides.yml 28장 골조 24 pir-question 자리 보정 — v10.7 신규 슬러그 pir-frame·페이지 번호 27 확정. slides.yml 골조 보정은 다음 차수 §12-5 권장 영역.
@@ -1612,7 +2128,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 28 quant-results-1 (Step 4 §2.1·§2.2 다운타임 + 성능) — v10.7 신규
+### 37 quant-results-1 (Step 4 §2.1·§2.2 다운타임 + 성능) — v10.7 신규·v10.16 시프트 28→37
 
 본 페이지는 docx Step 4 §2.1 「다운타임 단축 114h→52h」 + §2.2 「프로그램 성능 90.5% 개선」 매핑.
 **페이지 번호 정합**: slides.yml 25 pir-quant-four 자리 보정 — v10.7 신규 슬러그 quant-results-1·페이지 번호 28 확정.
@@ -1668,7 +2184,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 29 quant-results-2 (Step 4 §2.3·§2.4 조회 + 통합 범위) — v10.7 신규
+### 38 quant-results-2 (Step 4 §2.3·§2.4 조회 + 통합 범위) — v10.7 신규·v10.16 시프트 29→38
 
 본 페이지는 docx Step 4 §2.3 「매출대장 조회 40만건 2분」 + §2.4 「통합 범위 10모듈×3사×6국×110국」 매핑.
 **페이지 번호 정합**: slides.yml 25 pir-quant-four 분할 자리 — v10.7 신규 슬러그 quant-results-2·페이지 번호 29 확정.
@@ -1731,7 +2247,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 30 qual-5values (Step 4 §3 정성 5가치) — v10.7 신규
+### 39 qual-5values (Step 4 §3 정성 5가치) — v10.7 신규·v10.16 시프트 30→39
 
 본 페이지는 docx Step 4 §3 「정성 성과 5가치 분석」 매핑 (3사 시너지·글로벌·디지털 코어·MDM·만족).
 **페이지 번호 정합**: slides.yml 28장 골조 미매핑 영역 — v10.7 신규 슬러그 qual-5values·페이지 번호 30 확정.
@@ -1798,7 +2314,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 31 goal-matching (Step 4 §4 초기 목표 vs 달성도 매칭) — v10.7 신규
+### 40 goal-matching (Step 4 §4 초기 목표 vs 달성도 매칭) — v10.7 신규·v10.16 시프트 31→40
 
 본 페이지는 docx Step 4 §4 「Step 2 4대 초기 목표 vs 실제 달성도 매칭」 매핑.
 **페이지 번호 정합**: slides.yml 26 goals-vs-results 자리 정합 — v10.7 슬러그 goal-matching·페이지 번호 31 확정.
@@ -1867,7 +2383,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 32 followup-2018 (Step 4 §5.1·§5.2 후속 효과 + DT 전략) — v10.7 신규
+### 41 followup-2018 (Step 4 §5.1·§5.2 후속 효과 + DT 전략) — v10.7 신규·v10.16 시프트 32→41
 
 본 페이지는 docx Step 4 §5.1 「2018 이사회 의결 디지털 투자」 + §5.2 「2018 DT 전략 수립 + 2020 가속화」 매핑.
 **페이지 번호 정합**: slides.yml 28장 골조 미매핑 — v10.7 신규 슬러그 followup-2018·페이지 번호 32 확정.
@@ -1928,7 +2444,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 33 vision-bench (Step 4 §5.3·§6 비전 격상 + 타사 벤치마크) — v10.7 신규
+### 42 vision-bench (Step 4 §5.3·§6 비전 격상 + 타사 벤치마크) — v10.7 신규·v10.16 시프트 33→42
 
 본 페이지는 docx Step 4 §5.3 「비전 격상 톱10→톱7」 + §6 「타사 벤치마크 S/4HANA 시기적 위치」 매핑.
 **페이지 번호 정합**: slides.yml 27 benchmark-timeline 자리 정합 — v10.7 슬러그 vision-bench·페이지 번호 33 확정.
@@ -1983,7 +2499,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 34 pir-conclusion (Step 4 §7·§8 종합 평가 + 한계) — v10.7 신규
+### 43 pir-conclusion (Step 4 §7·§8 종합 평가 + 한계 5건 보조 축소·별도 페이지 분리 X) — v10.7 신규·v10.16 시프트 34→43
 
 본 페이지는 docx Step 4 §7 「PIR 종합 평가 5영역」 + §7.1 「강의 PIR 3대 기준 정합」 + §8 「PIR 한계·검증 범위」 통합 매핑.
 **페이지 번호 정합**: slides.yml 28장 골조 미매핑·Step 4 마감 페이지 — v10.7 신규 슬러그 pir-conclusion·페이지 번호 34 확정.
@@ -2051,7 +2567,73 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 35 csf-frame (Step 5 §1 결론 토대 + §1.1 강의 Summary 5대 차이) — v10.8 신규
+### 44 step5-intro-overview (Step 5 진입·안내 페이지·발표 마감 흐름 시작) — v10.16 신규
+
+본 페이지는 Step 5 진입부 안내. Step 4 마지막 43 pir-conclusion에서 다층 검증 신뢰도 + Step 5 CSF 도출 예고 후 Step 5 진입 관문. 발표 결론부 시작·종합·일반화·마감 분위기.
+**페이지 번호 확정 (v10.16 신규)**: Step 5 9장 (44~52) 첫 페이지·v10.14 9장 확정 후 v10.16 본 차수 본문 작성.
+
+```
+구조:
+- 상단 v3-eyebrow + 헤드라인 52px
+  - eyebrow: STEP 5 · 01
+  - 핵심 메시지: "그래서 이 사례에서 <em>무엇을 배우는가</em>"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 좌 질문 박스 + 우 6 흐름 카드 + 하단 thesis)
+
+  영역 1 (좌 질문 박스·s3i-question 패턴 정합·red border-left 12px):
+  - 라벨 mono 14px red: "CORE QUESTION"
+  - 본문 38px 900: "이 사례의<br/><em>성공 요인</em>은 무엇이고<br/>다른 기업에는<br/>어떤 <em>교훈</em>을 주는가?"
+  - sub 20px: "Step 1~4 분석 결과를 압축해 ERP 도입의 전략적 의미를 도출하는 발표 마감"
+
+  영역 2 (우 6 흐름 카드·s3i-flow 패턴 정합·grid 2×3·종합·일반화·마감 분위기 시각 어휘):
+  - 카드 1 (CSF 5가지·card.is-active red): num-circle 50px red "1" + 픽토그램 56px (5 별·핵심)
+    - 라벨 mono 12px red: "01 · 핵심 성공 요인"
+    - 제목 22px 900 red-deep: "CSF 5가지"
+    - body 15px: "기존 SAP 자산 · 비즈니스 목표 · SAP VAS · 그룹 SI · 표준화 균형"
+  - 카드 2 (발표용 CSF 3): num-circle 50px red "2" + 픽토그램 56px (압축·중심)
+    - 라벨: "02 · 발표 압축"
+    - 제목 22px: "CSF 3개로 압축"
+    - body: "기존 자산 활용 · 리스크 사전 통제 · 표준화 균형"
+  - 카드 3 (한계 4): num-circle 50px red "3" + 픽토그램 56px (괄호·범위)
+    - 라벨: "03 · 한계 4"
+    - 제목 22px: "타 기업 적용 트레이드오프"
+    - body: "ROI 비공개 · 표준화 한계 · 온프레 선택 · 직원 적응 비가시"
+  - 카드 4 (시사점 3): num-circle 50px red "4" + 픽토그램 56px (확장·다른 기업)
+    - 라벨: "04 · 시사점 3"
+    - 제목 22px: "어떤 기업에 적용 가능한가"
+    - body: "M&A 통합 기업 · 장치산업 · 2027 ECC EOS 대비"
+  - 카드 5 (본질 통찰 3·card.is-active red): num-circle 50px red "5" + 픽토그램 56px (코어 칩·플랫폼)
+    - 라벨 red: "05 · 본질 통찰"
+    - 제목 22px 900 red-deep: "통합 경영 플랫폼"
+    - body: "ERP는 시스템 구축 X · 누적 진화 · 트레이드오프 능동 관리"
+  - 카드 6 (향후 + 결론·card.is-active red): num-circle 50px red "6" + 픽토그램 56px (미래·핀잡)
+    - 라벨 red: "06 · 향후 + 결론"
+    - 제목 22px 900 red-deep: "2030 톱7 + 핀잡 메시지"
+    - body: "클라우드 · AI · 디지털 트윈 · 2030 비전 + 발표 마감 핀잡"
+
+  영역 3 (하단 thesis·cream + red border-left 6px·s3i-thesis 패턴 정합·마감 분위기 강조):
+  - 본문 22px 800: "Step 5의 핵심은 성공 요인을 나열하는 것이 아니라, ERP 도입을 <em>'시스템 구축'이 아닌 '통합 경영 플랫폼 선택'으로 재해석</em>하는 것이다"
+
+must_include:
+- 핵심 질문 "이 사례의 성공 요인은 무엇이고·다른 기업에는 어떤 교훈을 주는가?"
+- 6 흐름 카드 (CSF 5·압축 3·한계 4·시사 3·통찰 3·향후+결론)
+- 카드 1·5·6 강조 (CSF·통찰·결론 — 발표 마감 영역 핵심)
+- 하단 thesis ("시스템 구축" X·"통합 경영 플랫폼 선택"으로 재해석)
+- 종합·일반화·마감 분위기 시각 어휘 (5별·압축·괄호·확장·코어·미래)
+
+시각 어휘: s3i-question·s3i-flow grid 2×3·s3i-card·s3i-thesis cream·카드 1·5·6 card.is-active red (3건 강조·발표 마감 영역 정합)·종합 픽토그램
+
+자체 판단 결과:
+- grid 4행
+- 좌 질문 38~42%·우 카드 62~58% (Step 4 35 안내 패턴 정합)
+- 카드 1·5·6 강조 (CSF·통찰·결론 = 발표 마감 핵심)
+- Step 4 안내보다 더 정리된 느낌·종합·일반화·마감 분위기
+
+출처 표기 (Step 2 v4 기준 정합): 강의 자료 31p · 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2020 보도자료
+색상 비율 (가드 10): 6 num-circle red + 6 픽토그램 red + 카드 1·5·6 card.is-active red 3개 + 좌 red border-left 12px + 하단 thesis red border-left 6px + eyebrow em = 약 6.5~7% (7% 경계·자체 검증 필수·빌드 시 카드 1·5·6 중 1·2개로 강조 조정 가능)
+footer: 우하단 키보드 안내만
+```
+
+### 45 csf-frame (Step 5 §1 결론 토대 + §1.1 강의 Summary 5대 차이) — v10.8 신규·v10.16 시프트 35→45
 
 본 페이지는 docx Step 5 §1 「결론 도출 분석 토대」 + §1.1 「강의 자료 31p Summary 5대 차이 표」 매핑.
 Step 5 챕터 진입 영역·결론 회수 영역 시작.
@@ -2100,7 +2682,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 36 csf-5values (Step 5 §2 CSF 5가지 + 단일 의사결정 철학) — v10.8 신규
+### 46 csf-5values (Step 5 §2 CSF 5가지 + 단일 의사결정 철학) — v10.8 신규·v10.16 시프트 36→46
 
 본 페이지는 docx Step 5 §2 「CSF 5가지」 매핑.
 **content-thesis §2 보조 논지 1·3 매핑 확정 페이지**:
@@ -2171,7 +2753,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 37 csf-3-pres (Step 5 §2.1 발표용 CSF 3개·강의 정합 매핑) — v10.8 신규
+### 47 csf-3-pres (Step 5 §2.1 발표용 CSF 3개·강의 정합 매핑) — v10.8 신규·v10.16 시프트 37→47
 
 본 페이지는 docx Step 5 §2.1 「발표용 CSF 3개·강의 자료 정합 매핑」 매핑.
 **페이지 번호 정합**: slides.yml 28장 골조 미매핑 영역 — v10.8 신규 슬러그 csf-3-pres·페이지 번호 37 확정.
@@ -2229,7 +2811,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 38 limits-4 (Step 5 §3 한계 4가지·의도된 트레이드오프) — v10.8 신규
+### 48 limits-4 (Step 5 §3 한계 4가지·의도된 트레이드오프·타 기업 적용 일반화 관점) — v10.8 신규·v10.16 시프트 38→48
 
 본 페이지는 docx Step 5 §3 「한계·실패 요인 4가지·의도된 트레이드오프」 매핑.
 **content-thesis §2 보조 논지 3 매핑 페이지**: 한계 3.3 (온프레미스 vs 클라우드 정합성) → 보조 논지 3 (트레이드오프 관리) 회수.
@@ -2286,7 +2868,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 39 implications-3 (Step 5 §4 시사점 3가지) — v10.8 신규
+### 49 implications-3 (Step 5 §4 시사점 3가지) — v10.8 신규·v10.16 시프트 39→49
 
 본 페이지는 docx Step 5 §4 「타 기업 적용 시사점 3가지」 매핑.
 **content-thesis §2 보조 논지 1·3 매핑 페이지**: 시사 1 (M&A 통합) → 보조 논지 1 매핑·시사 3 (2027 ECC EOS·온프레미스 vs 클라우드) → 보조 논지 3 매핑.
@@ -2339,7 +2921,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 40 insights-3 (Step 5 §5 본질적 통찰 3가지·결론 회수 시작) — v10.8 신규
+### 50 insights-3 (Step 5 §5 본질적 통찰 3가지·결론 회수 시작·보조 논지 4 회수) — v10.8 신규·v10.16 시프트 40→50
 
 본 페이지는 docx Step 5 §5 「본질적 통찰 3가지」 매핑.
 **content-thesis §2 보조 논지 4 회수 시작 페이지**: 통찰 5.1 (ERP = 통합 경영 플랫폼) → 보조 논지 4 회수 (25 hub-spoke + 28 quant 통합 4축 + 34 pir-conclusion 정합).
@@ -2396,7 +2978,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 41 future-4 (Step 5 §6 향후 과제 4가지) — v10.8 신규
+### 51 future-4 (Step 5 §6 향후 과제 4가지·보조 논지 4 매핑) — v10.8 신규·v10.16 시프트 41→51
 
 본 페이지는 docx Step 5 §6 「향후 과제 4가지·다음 디지털 단계」 매핑.
 **content-thesis §2 보조 논지 4 매핑 페이지**: 향후 과제 4건 모두 → 보조 논지 4 단일 디지털 코어 확장 영역.
@@ -2454,7 +3036,7 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 42 final-conclusion (Step 5 §7 최종 결론 + 핀잡 메시지·발표 마감 영역) — v10.8 신규
+### 52 final-conclusion (Step 5 §7 최종 결론 + 핀잡 메시지·발표 마감·핀잡 시각 주인공·출처 작은 source-line·별도 출처 페이지 X) — v10.8 신규·v10.16 시프트 42→52
 
 본 페이지는 docx Step 5 §7 「최종 결론·핀잡 메시지·발표 마감」 매핑.
 **content-thesis §1 핵심 메시지 결론 변주 + §2 보조 논지 4 최종 회수 페이지**.
@@ -2528,13 +3110,20 @@ footer: 우하단 키보드 안내만
 | 17 (Step 2 §7 Fact 6사유) | 17 (v10.3 확정) | fact-six-reasons (v10.3 신규 슬러그·기존 slides.yml 17 chapter3-intro는 Step 3 영역으로 이동·다음 차수 골조 보정) | ○ (v10.2 본문·v10.3 매핑 정합) | [1] [2] [7] [8] [10] [11] |
 | 18 (Step 2 §8 강의 6단계 매핑) | 18 (v10.3 확정) | lecture-six-stages (v10.3 신규 슬러그·기존 slides.yml 18 four-constraints는 Step 3 영역으로 이동) | ○ (v10.2 본문·v10.3 매핑 정합) | 강의 자료 10p·23p·31p |
 | 19 (Step 2 §8 보충 Escrow) | 19 (v10.3 확정·옵션 D 해소) | escrow-supplement (v10.3 신규 슬러그·기존 slides.yml 19 methodology-evolution는 Step 3 영역으로 이동) | ○ (v10.2 본문·v10.3 매핑 정합) | 강의 자료 24p + [9] |
-| 20 chapter3-intro (Step 3 §1 챕터 진입) | 20 (v10.4 확정) | chapter3-intro (slides.yml 17 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | [1] [8] · slides.yml chapter 3 must_include 정합 |
-| 21 four-constraints (Step 3 4대 제약 본문) | 21 (v10.4 확정) | four-constraints (slides.yml 18 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | [1] [8] |
-| 22 methodology-evolution (Step 3 방법론 진화 + 비대칭성·새 디지털 코어) | 22 (v10.4 확정·content-thesis §2 보조 논지 3 매핑 확정) | methodology-evolution (slides.yml 19 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | [1] [8] [10] · content-thesis §2 보조 논지 3 |
-| 23 not-standardize-all (Step 3 GAP 진입 + 챕터 1 §8 회수) | 23 (v10.4 확정) | not-standardize-all (slides.yml 20 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | content-thesis §2 보조 논지 2 + docx Step 1 §6 + Step 3 GAP |
-| 24 gap-three-tracks (Step 3 GAP 3트랙 본문) | 24 (v10.4 확정) | gap-three-tracks (slides.yml 21 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | docx Step 3 GAP 3트랙 |
-| 25 sap-platform-hub (Step 3 SAP 중심 플랫폼 + 주변 6 시스템) | 25 (v10.4 확정·content-thesis §2 보조 논지 4 매핑) | sap-platform-hub (slides.yml 22 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | docx Step 3 + 보강 D + 교수님 피드백 + EHS 처리 (ii) |
-| 26 downtime-kpi (Step 3 리스크 통제 KPI 다운타임 114h→52h) | 26 (v10.4 확정) | downtime-kpi (slides.yml 23 슬러그 이동·v10.4 정합) | ○ (v10.4 신규) | [1] 박제성 인터뷰 · [12] SAP Value Assurance Service |
+| 20 chapter3-intro (Step 3 §1 챕터 진입) | 20 (v10.4·v10.13 유지) | chapter3-intro | ○ (v10.4 신규·v10.13 유지) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 |
+| 21 four-constraints (Step 3 §1.1 4대 제약 본문) | 21 (v10.4·v10.13 유지) | four-constraints | ○ (v10.4 신규·v10.13 유지) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 이상신 2020 박사논문 |
+| **22 governance-triad (Step 3 §2 구축 단계 거버넌스 3축)** | 22 (v10.13 신규) | governance-triad (신규 슬러그) | ○ (v10.13 신규) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료 |
+| **23 four-methodologies (Step 3 §3.1 4대 구축 방법론 비교 + Roll-out 선정)** | 23 (v10.13 신규) | four-methodologies (신규 슬러그) | ○ (v10.13 신규) | 롯데케미칼 사업보고서 · docx Step 3 §3 |
+| 24 methodology-evolution (Step 3 §3.2 방법론 진화 + 비대칭성·새 디지털 코어) | 24 (v10.4 → v10.13 시프트 22→24·본문 변경 X·content-thesis §2 보조 논지 3 매핑 페이지 번호 갱신) | methodology-evolution | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 회사 연혁 · content-thesis §2 보조 논지 3 |
+| **25 seven-month-grounds (Step 3 §4.1 7개월 압축 4 근거)** | 25 (v10.13 신규) | seven-month-grounds (신규 슬러그) | ○ (v10.13 신규) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §4.1 |
+| **26 time-cost-scope (Step 3 §4.1·§4.2·§4.3 PMBOK Iron Triangle 통제)** | 26 (v10.13 신규) | time-cost-scope (신규 슬러그) | ○ (v10.13 신규) | docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p |
+| 27 not-standardize-all (Step 3 §5.1 GAP 진입 + 챕터 1 §8 회수 + AS-IS/TO-BE 6항목 표) | 27 (v10.4 → v10.13 시프트 23→27·본문 변경 X) | not-standardize-all | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 롯데케미칼 사업보고서 · docx Step 1 §6 + Step 3 GAP · content-thesis §2 보조 논지 2 |
+| 28 gap-three-tracks (Step 3 §5.2 GAP 3트랙 본문) | 28 (v10.4 → v10.13 시프트 24→28·본문 변경 X) | gap-three-tracks | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 강의 자료 27p · 박제성 상무 인터뷰 · 회사 연혁 · docx Step 3 §5 |
+| **29 configuration-baseline (Step 3 §4.4 + §5.5 Configuration·Baseline·Scope Creep 통제)** | 29 (v10.13 신규) | configuration-baseline (신규 슬러그) | ○ (v10.13 신규) | 강의 자료 29p·31p·13p·28p · docx Step 3 §4.4·§5.5 |
+| 30 sap-platform-hub (Step 3 §5.2 Add-on + 보강 D SAP 중심 플랫폼 + 주변 6 시스템) | 30 (v10.4 → v10.13 시프트 25→30·본문 변경 X·content-thesis §2 보조 논지 4 매핑 페이지 번호 갱신) | sap-platform-hub | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 롯데케미칼 사업보고서 · SAP Korea 사례 자료 · docx Step 3 + 보강 D + EHS 처리 (ii) |
+| **31 migration-test-vas (Step 3 §6.4 + §6.5 + §6.6 Migration 구분 + 테스트 5종 + SAP VAS 3 + Rollback 보조)** | 31 (v10.13 신규) | migration-test-vas (신규 슬러그) | ○ (v10.13 신규) | 박제성 상무 인터뷰 · SAP Value Assurance 공식 자료 · 강의 자료 14~17p · docx Step 3 §6 |
+| 32 downtime-kpi (Step 3 §6 다운타임 KPI 114h→52h + 비즈니스 의미 4 + 6대 리스크 매트릭스) | 32 (v10.4 → v10.13 시프트 26→32·본문 변경 X·테스트 5종 + VAS 3은 31로 이동) | downtime-kpi | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 박제성 상무 인터뷰 · SAP Value Assurance 공식 자료 |
+| **33 step3-conclusion (Step 3 §7 결론 4 원칙 회수 + Step 4 PIR 연결)** | 33 (v10.13 신규) | step3-conclusion (신규 슬러그) | ○ (v10.13 신규) | docx Step 3 §7 4대 원칙 회수 |
 | 27 pir-frame (Step 4 §1 PIR 프레임 + 7개 분석 영역) | 27 (v10.7 확정) | pir-frame (v10.7 신규 슬러그·slides.yml 24 pir-question 자리 보정) | ○ (v10.7 신규) | [1] 박제성 인터뷰 + [8] 사업보고서 + [9] 정정 사업보고서 |
 | 28 quant-results-1 (Step 4 §2.1·§2.2 다운타임 + 성능) | 28 (v10.7 확정) | quant-results-1 (v10.7 신규 슬러그·slides.yml 25 pir-quant-four 자리 분할) | ○ (v10.7 신규) | [1] 박제성 인터뷰 + [12] SAP Value Assurance |
 | 29 quant-results-2 (Step 4 §2.3·§2.4 조회 + 통합 범위) | 29 (v10.7 확정) | quant-results-2 (v10.7 신규 슬러그·slides.yml 25 pir-quant-four 자리 분할) | ○ (v10.7 신규) | [1] 박제성 인터뷰 + [8] 사업보고서 |
@@ -2552,18 +3141,20 @@ footer: 우하단 키보드 안내만
 | 41 future-4 (Step 5 §6 향후 과제 4가지·content-thesis 보조 논지 4 매핑) | 41 (v10.8 확정) | future-4 (v10.8 신규 슬러그·slides.yml 미매핑) | ○ (v10.8 신규) | [1] [11] + 학자명 노출 X |
 | 42 final-conclusion (Step 5 §7 최종 결론 + 핀잡 메시지·발표 마감·content-thesis §1 결론 변주 + 보조 논지 4 최종 회수) | 42 (v10.8 확정) | final-conclusion (v10.8 신규 슬러그·slides.yml 28 conclusion 자리 정합) | ○ (v10.8 신규) | docx Step 5 §7 + [1]~[13] 13건 |
 
-### 본 차수 §9-NEW 미진입 영역 (가드 12·14·16·17·20·25·26·27·39·40·41·42·68·71 정합)
+### §9-NEW 미진입 항목 (v10.13 기준)
 
-| 페이지 | 미진입 사유 |
+| 페이지·항목 | 미진입 사유 |
 |---|---|
-| 07 industry-driven-difference (slides.yml) | 본 차수 미진입·발표 직전 일괄 보정 차수 결정 (필요 시) |
-| 08 not-forced-unification (slides.yml) | 본 차수 미진입·발표 직전 일괄 보정 차수 결정 (필요 시) |
-| Step 2 잔여 영역 (2순위 11·13·16·3순위 14·15·18·19 v3 텍스트 잔존) | 발표 직전 일괄 보정 차수 — 가드 40 정합·CLAUDE.md §13-8 운영 메모 (v2.4) |
-| slides.yml v1.0 골조 28장 확장 | v10.7·v10.8 매핑 추가로 28장 → 43장 확장 필요 영역·§12-5 권장·발표 직전 영역 |
-| 출처 §11 통합 (정합 ✗ 1건) | 발표 직전 영역·우선순위 5 |
-| hp-num 일괄 보정 | 발표 직전 영역·§13-7 운영 메모·우선순위 5 |
-| content-thesis 본문 갱신 (보조 논지 4 본문) | 발표 직전 영역·우선순위 5 |
-| presentation-content-master.md v1.0 → v1.1 | 발표 직전 영역·우선순위 5 |
+| 07 industry-driven-difference (slides.yml) | 발표 직전 일괄 보정 차수에서 결정 (필요 시) |
+| 08 not-forced-unification (slides.yml) | 발표 직전 일괄 보정 차수에서 결정 (필요 시) |
+| Step 2 잔여 보정 (2순위 11·13·16·3순위 14·15·18·19 v3 텍스트 잔존) | 발표 직전 일괄 보정 — 가드 40·CLAUDE.md §13-8 운영 메모 (v2.4) |
+| Step 3 디자인 1차 재구성 (`dist/preview-step3.html` v1 → v2) | 14장 빌드·신규 7장 + 기존 5장 페이지 번호 시프트 + 25↔26 위치 교환 + 출처 일괄 정정 — 다음 차수 진입 권장 |
+| Step 4·5 dist 헤더 페이지 번호 시프트 (`preview-step4.html`·`preview-step5.html` +7) | 다음 차수 본인 결정·자세한 본문 동기화 발표 직전 일괄 |
+| slides.yml v1.0 골조 보정 (28장 → 49장) | §12-5 권장·발표 직전 단계 |
+| 출처 §11 통합 (정합 ✗ 1건) | 발표 직전 단계 |
+| hp-num 일괄 보정 | 발표 직전 단계·§13-7 운영 메모 |
+| content-thesis §3 매핑 표 페이지 번호 갱신 (Step 4·5 시프트 반영) | 발표 직전 단계 본문 갱신 |
+| presentation-content-master.md 자세한 본문 동기화 | v1.3에서 Step 3 14장 안내만 추가·자세한 본문은 다음 차수 본인 결정 |
 
 ---
 
@@ -2596,6 +3187,8 @@ footer: 우하단 키보드 안내만
 - v10.7 (2026.05.24) — **Step 4 §3 docx 본문 영역 매핑 진입 차수** (Step 3 빌드 v1 마감 후·본인 디렉션 "Step 4 진입"·외부 시점 가이드 정합 영역 1·2·3·4·5·6·7 순차 진입). §9-NEW에 Step 4 영역 8장 일괄 신규 강제 명시 본문 작성 (27 pir-frame·28 quant-results-1·29 quant-results-2·30 qual-5values·31 goal-matching·32 followup-2018·33 vision-bench·34 pir-conclusion). 각 장 자체 판단 결과 명시 (grid·시각 어휘·강조 영역·v3.1 디자인 패턴 정합 — 헤드라인 52px·카드 제목 38px·body 26px·픽토그램 56px wrap·card-top-accent·num-circle 50px·v3-msg 결론 박스). docx Step 4 본문 직접 정독 ○ (Read 직접 영역·611행 정합 검증 완료). 페이지 번호 27~34 8장 확정 — slides.yml 24·25·26·27 챕터 4 본론 슬러그는 v10.7 신규 슬러그(pir-frame·quant-results-1·quant-results-2·goal-matching·vision-bench)로 자리 보정·신규 슬러그 3개(qual-5values·followup-2018·pir-conclusion) slides.yml 미매핑 영역 추가. content-thesis §2 보조 논지 1·3·4 매핑 확정 영역: 보조 논지 1 → 30 qual-5values 가치 1 (3사 시너지) + 31 goal-matching 목표 1 매핑·보조 논지 3 → 30 qual-5values 가치 3 (디지털 코어 박제성 인용) + 32 followup-2018 DT 전략 로드맵 매핑·보조 논지 4 → 31 goal-matching 목표 4 (DT 기반·강조) + 34 pir-conclusion 강의 PIR 3대 기준 ② 사업 효익 회수 매핑 (25 hub-spoke 빌드와 결론 28 conclusion 정합). 보조 논지 2 (산업 특성·계열사 차이) → Step 4 직접 매핑 X (이미 06 si-question·07·08 영역). **표현 금지 회피 검증 완료 (가드 11)**: docx Step 4 본문 영역 위반 5건 검증 — 학자명 "이상신" 4건 (line 124·250·410·468) → 본문 영역 출처 [11] 번호만 사용·"Brownfield 컨버전" 단정 1건 (line 254) → "Brownfield 성격" 신중 표현 영역·"글로벌 싱글 인스턴스" X·"OPERA" X·"자금 여유" X (모두 회피 검증). §12-4 매핑 표 Step 4 영역 8행 추가 (27~34). §9-NEW 작성 영역 표 8행 추가. 미진입 영역 표 갱신 (Step 4 영역 제거·Step 5 영역만 남음·Step 2 잔여·골조 보정 유지·가드 68 신규 등록). slides.yml v1.0 골조 28장 본 차수 변경 X (§12-4 매핑 표만 확장·골조 보정 다음 차수 본인 결정·30~32장 → 34~36장 확장 필요 영역). 빌드 영향 X (Step 1 v11·Step 2 v3.2·Step 3 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 출처 [13] 2020.08.12 보도자료 docx Step 4 §3.3·§5.2 정합 영역 사용 (§11 외부 출처 영역 추가 X — docx 출처 [1]~[13] 영역 정합). 디자인 요소 보호 정합 (시각 어휘·글자 강제 룰·SVG 픽토그램·색상 비율·grid·layout 변경 X). Step 5 §3 본 차수 미진입 (가드 39·다음 차수). 가드 67·68·69 본 차수 등록 (Step 4 §3 진입·docx 정독 영역·slides.yml 골조 보정 다음 차수 권장). 백업 생략 (변경 이력 라인으로만 보존). 색상 비율 추정 8장 모두 4.5~6.5% 범위 (7% 이내·가드 10·28·29·32·34 6~6.5% 경계 영역 자체 판단 빌드 시 검증). 다음 차수: Step 4 빌드 v1 (dist/preview-step4.html 신규·우선순위 1) 또는 Step 5 §3 진입 (우선순위 2).
 - v10.8 (2026.05.25) — **Step 5 §3 docx 본문 영역 매핑 진입 차수** (Step 4 v1 분할 1·2 마감 후·본인 디렉션 "Step 5 §3 진입"·외부 시점 가이드 영역 1·2·3·4·5·6·7 순차 진입). 매트릭스 v10.7 → v10.8 보정 차수. 매트릭스 §9-NEW에 Step 5 영역 8장 일괄 신규 강제 명시 본문 작성 (35 csf-frame·36 csf-5values·37 csf-3-pres·38 limits-4·39 implications-3·40 insights-3·41 future-4·42 final-conclusion). docx Step 5 본문 직접 정독 ○ (Read 직접 영역·512행 정합). 각 장 v3.1 디자인 패턴 강제 명시 (헤드라인 52px·카드 제목 28~32px·body 18~20px·픽토그램 56px wrap·card-top-accent·num-circle 50px·v3-msg 결론 박스). 페이지 번호 35~42 8장 확정 — slides.yml 28 conclusion 슬러그 자리 보정 (42 final-conclusion 정합) + 신규 슬러그 7건 (csf-frame·csf-5values·csf-3-pres·limits-4·implications-3·insights-3·future-4) 추가. content-thesis §2 보조 논지 1·3·4 매핑 확정 영역: 보조 논지 1 → 36 CSF 1·2·4 + 39 시사 1 매핑·보조 논지 3 → 36 CSF 1·3 + 38 한계 3.3 + 39 시사 3 매핑·보조 논지 4 → 40 §5.1 통합 경영 플랫폼 + 41 §6 향후 과제 + 42 §7 최종 결론 최종 회수 (25 hub-spoke + 28 통합 4축 + 34 PIR conclusion 정합). 보조 논지 2 → Step 5 직접 매핑 X (이미 06 si-question 영역). **표현 금지 회피 검증 완료 (가드 11)**: docx Step 5 본문 영역 위반 검증 — 학자명 "이상신" 4건 (line 186·280·414·434) → 매트릭스 §9-NEW 영역 출처 [11] 번호만 사용·src "학자명 노출 X · 가드 11 정합" 명시. "Brownfield" 영역 (line 123·211·337) → 모두 "Brownfield 성격" 신중 표현 형식·docx 자체 정합 ○·매트릭스 §9-NEW 동일 신중 표현. "글로벌 싱글 인스턴스"·"OPERA"·"자금 여유" → docx 본문 위반 X (정합). 매트릭스 §12-4 매핑 표 Step 5 영역 8행 추가 (35~42) + §12-5 v10.8 갱신 (slides.yml 골조 43장 확장 영역). §9-NEW 작성 영역 표 8행 추가 + 미진입 영역 표 갱신 (Step 5 영역 제거·발표 직전 영역만 잔존·가드 71 신규 등록). 매트릭스 §11 변경 X (출처 13건 [1]~[13] docx 출처 영역 정합). 디자인 요소 보호 정합 (시각 어휘·글자 강제 룰·SVG 픽토그램·색상 비율·grid·layout 변경 X). 빌드 영향 X (Step 1 v11·Step 2 v3.2·Step 3 v1·Step 4 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 가드 70·71·72 본 차수 등록 (Step 5 §3 진입·발표 직전 영역 운영 영역·결론 회수 시각 영역). 백업 생략 (변경 이력 라인으로만 보존). 색상 비율 추정 8장 모두 4.5~6.5% 범위 (7% 이내·가드 10·42 final-conclusion 7% 경계 영역 자체 검증 필수·핀잡 박스 red border 4px 전체 영역 영역 큰 면적 영역 빌드 시점 자체 보정 영역 결정 권장). 다음 차수: Step 5 빌드 v1 (dist/preview-step5.html 신규·우선순위 1·**stage·deck id 영역 필수**·Step 4 v1 보정 차수 정합·가드 65 위반 영역 0건 유지) 또는 발표 직전 영역 (우선순위 4·5).
 - v10.9 (2026.05.25) — **Step 1 v11 → v12 외부 시점 검증 결과 반영 차수** (Step 5 v1 마감 후·본인 디렉션 "Step 1 내용 우선 보정 + hp-num 일괄 보정"·외부 시점 검증 결과 치명적 2·중대 8·경미 7 + hp-num 4 통합 반영). dist/preview-step1.html v11 → v12 영역 18건 Edit + CSS 17건 신규 추가 (dist/preview-step1.html 내부 style 블록·자체 판단·shared/style.css 변경 X·가드 53 정합). **치명적 2건 ○**: 치-1 slide 08 학술 보강 박스 (IT 5대 제약 chips 5 + 제조업 5대 동향 chips 5·.ic-academic 영역·학자명 노출 X·가드 11 정합) + Step 1 결론 박스 (.ic-conclusion 영역·중-7 통합)·치-2 출처 라벨 4건 추가 (04 [8] [14] [15]·05 fc-source 박스 [8]·06 timeline tl-source 박스 [1] [8] [10]·08 ic-conclusion__src [1] [8] [11]). **중대 8건 7건 ○·1건 보류**: 중-1 영업이익 +15.2% YoY·중-2 박제성 인용자 위계 ("정보전략담당 상무·정보전략 책임자·인터뷰 [1]")·중-3 박제성 인용 본문 후반부 회복 ("디지털 트랜스포메이션·인텔리전트 엔터프라이즈")·중-4 SMART Big Bang·10개월 sub·중-5 tr-conclusion 10모듈 본문 보강·중-6 slide 03 chapter intro 보강 카드 추가 + 라벨 "5장 + 보강 1"·중-7 치-1 통합·중-8 Tone 위계 영역 보류 (가드 53 디자인 보호·다음 차수). **경미 7건 3건 ○·4건 선택 보류**: 경-1 치-2 통합·경-4 REACH·TSCA·화평법 영역·경-5 6국 legend (미국·영국·우즈베키스탄·파키스탄·중국·말레이시아)·경-2·3·6·7 본 차수 미진입 (정보 밀도·디자인·미세 영역). **hp-num 일괄 보정 4건 ○** (가드 74 정합·Step 1 영역만 선보정·Step 2~5 §13-7 정합 유지): slide 5 11→05·slide 6 10→06·slide 7 05→07·slide 9 06→09. **신규 CSS 17건** (가드 75 정합·기존 .tr-conclusion·.sq-msg·.at-sector__msg·.tl-message 패턴 재활용): .ic-academic 영역 8 + .ic-conclusion 영역 3 + .fc-source 1 + .tl-source 1 + .tl-quote-body em 1 + .pi-card--addon 영역 3. 디자인 영역 보호 정합 ○ (가드 53·45·49 — SVG 픽토그램·글자 강제 룰·색상 비율·grid·layout·shared 변경 X)·표현 금지 5건 회피 정합 ○ (가드 11 — 학자명 노출 X·Brownfield 단정 X·글로벌 싱글 인스턴스 X·OPERA X·자금 여유 X). §9-NEW 본문 영역 변경 X (dist 빌드 영역 메모만·v10.5 패턴 정합). 빌드 영향 — Step 1 v11 → v12 1건만 (Step 2 v3.2·Step 3 v1·Step 4 v1·Step 5 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 가드 73·74·75 본 차수 등록. 백업 생략 (변경 이력 라인으로만 보존). 다음 차수: 디자인 영역 (Tone 위계·신용등급 AA+·시점 영역 등·우선순위 1) 또는 발표 직전 영역 (Step 2 잔여 보정·출처 §11 통합·hp-num Step 2~5 일괄 보정·content-thesis 본문 갱신·slides.yml 골조 보정·우선순위 2~5).
+- v10.14 (2026.05.25) — **Step 4·5 9장 확정 차수 — 문서 정합만·dist 변경 X** (본인 디렉션 정합·Step 1·2·3 패턴 정합). **Step 4 9장 (35~43)**: 35 step4-intro-overview (신규 안내·좌 질문 + 우 6단 흐름 카드 + 하단 thesis) + 36 pir-frame (구 34) + 37 quant-results-1 (구 35) + 38 quant-results-2 (구 36) + 39 qual-5values (구 37) + 40 goal-matching (구 38) + 41 followup-2018 (구 39) + 42 vision-bench (구 40) + 43 pir-conclusion (구 41·**한계 5건 작은 보조 표로 축소**·주인공 = PIR 5영역 + 강의 3대 기준·**한계 별도 페이지 분리 X**). **Step 5 9장 (44~52)**: 44 step5-intro-overview (신규 안내) + 45 csf-frame (구 42) + 46 csf-5values (구 43) + 47 csf-3-pres (구 44) + 48 limits-4 (구 45·**타 기업 적용·사례 일반화 트레이드오프 관점**) + 49 implications-3 (구 46) + 50 insights-3 (구 47·보조 논지 4 회수) + 51 future-4 (구 48) + 52 final-conclusion (구 49·**핀잡 메시지 시각 주인공**·출처 작은 source-line 자료명 5건 압축·**별도 출처 페이지 X**). **§12-4 매핑 표**: Step 4 영역 9행 (35~43)·Step 5 영역 9행 (44~52)로 확장. **§9-NEW 본문 영역**: 신규 안내 페이지 2장 본문 작성은 다음 차수 권장 (자세한 강제 명시 본문 영역·본 차수 §12-4 매핑 표 + §10 변경 이력만 확정). **Step 4 한계 vs Step 5 한계 관점 분리** (가드 정합): Step 4 43 = PIR 분석 검증 가능 범위·Step 5 48 = 타 기업 적용 트레이드오프. **출처 표기 Step 2 v4 / canonical v1.4 정합 유지** — 박제성 상무 인터뷰·자료명 중심·번호 표기 청중 노출 X. content-thesis v10.13 → v10.14 + master v1.3 → v1.4 + CLAUDE.md §12 v2.15 라인 동시 갱신. dist 빌드 변경 X (preview-step4·5.html v1 빌드 보호·가드 18·22·32·35·39·41 정합·다음 차수 디자인 재구성 진입). 디자인 요소 보호 (가드 53·45·49). 표현 금지 5건 회피 (가드 11). Bash 완전 배제 (가드 7·65). 가드 85·86·87 본 차수 등록 (Step 4·5 9장·안내 페이지 신규·페이지 번호 +1 시프트). 백업 생략. 다음 차수: §9-NEW Step 4·5 영역 안내 페이지 2장 본문 작성 + 기존 8장씩 헤더 시프트 (다음 차수 진입 권장) 또는 dist 디자인 1차 재구성 (preview-step4.html v1 → v2 + preview-step5.html v1 → v2).
+- v10.13 (2026.05.25) — **Step 3 14장 완전안 확정 + §9-NEW 7장 → 14장 확장 차수** (본인 디렉션 정합 — Step 3는 Step 1·2 합친 분량의 docx·7장 압축 부적절·문서 정합만 진입·HTML 변경 X). Step 3 §9-NEW 기존 7장 (20·21·22·23·24·25·26) → 신규 14장 (20·21·22·23·24·25·26·27·28·29·30·31·32·33). **신규 7장 본문 작성**: 22 governance-triad (C·docx §2 거버넌스 3축 발주·수행·기술)·23 four-methodologies (D·docx §3.1 4 방법론 비교 + Roll-out 선정)·25 seven-month-grounds (F·docx §4.1 압축 4근거)·26 time-cost-scope (G·docx §4.1·§4.2·§4.3 PMBOK Iron Triangle)·29 configuration-baseline (J·docx §4.4 + §5.5 강의 자료 29p·13p·28p)·31 migration-test-vas (L+M·docx §6.4 + §6.5 + §6.6 Rollback 보조 라벨)·33 step3-conclusion (P·docx §7 4 원칙 회수 + Step 4 연결). **기존 7장 페이지 번호 시프트**: 22 methodology-evolution → 24·23 not-standardize-all → 27·24 gap-three-tracks → 28·25 sap-platform-hub → 30·26 downtime-kpi → 32 (본문 변경 X·헤더 페이지 번호만). 26 downtime-kpi (신규 32) 6대 리스크 매트릭스는 32 통합 유지·다운타임 의미 4 + 테스트 5종은 31 migration-test-vas로 이동 (사용자 디렉션 정합). **Step 4·5 페이지 번호 시프트 기록 (본문 변경 X·가드 67·71 정합)**: Step 4 영역 27~34 → 34~41 (+7)·Step 5 영역 35~42 → 42~49 (+7). §12-4 매핑 표 Step 3 영역 14행으로 확장·Step 4·5 영역 시프트 기록. §9-NEW 작성 영역 표 Step 3 영역 14행으로 갱신. **출처 표기 규칙 Step 2 v4 기준 유지** (canonical v1.4 §13-3 정합·"박제성 상무 인터뷰" 통일·자료명 중심·번호 표기 청중 노출 X — HTML 갱신은 본 차수 미진입·다음 차수 디자인 재구성 시점). dist 빌드 영향 X (Step 1 v12~v14·Step 2 v3.2~v3.3·Step 3 v1·Step 4 v1·Step 5 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 디자인 요소 보호 정합 (가드 53·45·49). 표현 금지 5건 회피 정합 (가드 11). Bash 완전 배제 정합 (가드 7·65). 가드 82·83·84 본 차수 등록 (Step 3 14장 확정·문서 정합만·HTML 보호). 백업 생략. 다음 차수: Step 3 디자인 1차 재구성 (dist/preview-step3.html v1 → v2·신규 7장 영역 빌드 + 기존 7장 페이지 번호 시프트 + 25↔26 위치 교환 + 출처 일괄 정정).
 - v10.11 (2026.05.25) — **Step 1 v13 → v21 누적 보정 + Step 2 v3.2 매트릭스 영역 메모 차수** (Step 1 v14·v15·v16·v17·v18·v19·v20·v21 다중 보정 차수 누적 영역·dist/preview-step1.html 빌드 영역만·매트릭스 §9-NEW 본문 변경 X·디자인 보호 가드 53). Step 1 v14 외부 시점 검증 누락 4건 + Step 1 v15~v21 본인 시각 평가 영역 (HIGH·MEDIUM·F 영역 누적·P4 map 분리·P5 mix 라벨 grid·P6 quote 3줄 분리 등) 영역 빌드 메모만. Step 2 v3.2 영역 (HIGH 4 + MEDIUM 5 본문 동기화 + chapter2-intro 신설 영역·DS1~DS7 정합·H1 박제성 출처·H2 Make/Buy 강의 31p·H3 슬러그·H4 카드 4 출처·M1 §1.7 흡수·M2 카드 6 학술·M3 라벨 제거·M4 05.28 삭제·M5 분 단위 손익 통제 삭제) 영역 본 차수 매트릭스 §9-NEW 본문 갱신 X (자세한 본문 동기화 영역 본 차수 매우 큼·본인 결정 영역 권장·다음 차수). 매트릭스 §9-NEW 본문 영역은 v10.5·v10.6·v10.7·v10.8 영역 그대로 유지. 빌드 영역 (dist/preview-step1.html v13→v21·dist/preview-step2.html v3.1→v3.2) 만 변경 영역. 가드 53·45·49 정합 (디자인 보호)·가드 11 정합 (표현 금지 5건 회피)·가드 7·65 정합 (Bash 위반 영역 회수). 백업 생략.
 - v10.12 (2026.05.25) — **Step 2 v3.2 → v3.3 chapter2-intro 신설 + 운영 영역 갱신 차수** (본인 명령어 정합·운영 영역 갱신 차수). chapter2-intro 신규 슬라이드 신설 (DS4=○·dist/preview-step2.html v3.3 영역·data-slide 0·hp-num 11·Slide 03 chapter1-intro 시각 어휘 100% 정합 복제·좌 35% big-num "2" + 우 65% 6 미리보기 카드 세로·6 카드: 도입 의사결정의 본질·거버넌스 3축·Make vs Buy·M&A 트리거 2.8조·A안 선정·Fact 6사유). Step 2 영역 페이지 번호 chapter2-intro 신설 영향 +1 shift 영역 (12 → 13·16 → 17·09 → 12·10 → 13·11 → 14·13 → 15·14 → 16·15 → 17·17 → 18·18 → 19·19 → 20·기존 페이지 번호 영역 → +1 shift 영역 매트릭스 §9-NEW 본문 갱신 본 차수 미진입·자세한 영역 본인 결정 영역 권장 — 다음 차수). 매트릭스 §9-NEW 본문 영역 변경 X (자세한 페이지 번호 +1 shift 영역 다음 차수). 빌드 영역 — dist/preview-step2.html v3.2 → v3.3 영역만 변경 (chapter2-intro 추가 CSS·HTML 변경 0건 v3.2 영역 유지). 디자인 영역 보호 정합 ○ (가드 53·45·49·81 — shared/style.css·SVG 좌표·grid 골조 변경 X). 표현 금지 5건 회피 정합 ○ (가드 11). Bash 위반 영역 본 차수 2건 회수 (가드 7·65 정합·1건 master · 1건 matrix § 10 grep). content-thesis §5 영역 본 차수 매핑 정합 영역 (Slide 16 슬러그·Slide 12 보조 논지 2 매핑). 발표 분량 영역 정합 — Step 2 11장 → 12장·14~16분 → 15~17분·총 35~37분 → 36~38분. 본 차수 운영 영역 갱신 영역만 (master v1.2·matrix v10.12·CLAUDE.md v2.13·content-thesis §5)·dist 빌드 영역 변경 X (본 차수 분리·가드 53). 백업 생략.
 
@@ -2782,29 +3375,38 @@ footer: 우하단 키보드 안내만
 | 17 | **fact-six-reasons** (v10.3 신규 슬러그) | Step 2 §7 Fact 기반 6대 선정 사유 | (slides.yml 17 chapter3-intro 자리 보정 — chapter3-intro는 Step 3 영역으로 이동·예: 신 20번·다음 차수) |
 | 18 | **lecture-six-stages** (v10.3 신규 슬러그) | Step 2 §8 강의 자료 6단계 매핑 | (slides.yml 18 four-constraints 자리 보정 — four-constraints는 Step 3 영역으로 이동) |
 | 19 | **escrow-supplement** (v10.3 신규 슬러그·페이지 번호 확정·옵션 D 해소) | Step 2 §8 보충 Escrow | (slides.yml 19 methodology-evolution 자리 보정 — methodology-evolution은 Step 3 영역으로 이동) |
-| 20 | **chapter3-intro** (v10.4 신규·slides.yml 17 슬러그 이동) | Step 3 §1 챕터 진입 + 4대 제약 미리보기 | (slides.yml 17 자리에서 이동) |
-| 21 | **four-constraints** (v10.4 신규·slides.yml 18 슬러그 이동) | Step 3 4대 제약 본문 (Time·Continuity·Multi-Entity·Global) | (slides.yml 18 자리에서 이동) |
-| 22 | **methodology-evolution** (v10.4 신규·slides.yml 19 슬러그 이동·content-thesis §2 보조 논지 3 비대칭성·새 디지털 코어 매핑 확정) | Step 3 방법론 진화 + 비대칭성·새 디지털 코어 | (slides.yml 19 자리에서 이동) |
-| 23 | **not-standardize-all** (v10.4 신규·slides.yml 20 슬러그 이동) | Step 3 GAP 진입 + 챕터 1 §8 회수 | (slides.yml 20 자리에서 이동) |
-| 24 | **gap-three-tracks** (v10.4 신규·slides.yml 21 슬러그 이동) | Step 3 GAP 3트랙 본문 (BPR·Customizing·Add-on) | (slides.yml 21 자리에서 이동) |
-| 25 | **sap-platform-hub** (v10.4 신규·slides.yml 22 슬러그 이동) | Step 3 SAP 중심 플랫폼 + 주변 6 시스템 | (slides.yml 22 자리에서 이동) |
-| 26 | **downtime-kpi** (v10.4 신규·slides.yml 23 슬러그 이동) | Step 3 리스크 통제 KPI 다운타임 114h→52h | (slides.yml 23 자리에서 이동) |
-| 27 | **pir-frame** (v10.7 신규) | Step 4 §1 PIR 프레임 + 7개 분석 영역 (정량 4 + 정성 + 후속) | (slides.yml 24 pir-question 자리 보정·다음 차수 골조 보정) |
-| 28 | **quant-results-1** (v10.7 신규) | Step 4 §2.1·§2.2 다운타임 114h→52h + 성능 90.5%↑ | (slides.yml 25 pir-quant-four 자리 분할) |
-| 29 | **quant-results-2** (v10.7 신규) | Step 4 §2.3·§2.4 조회 40만건 2분 + 통합 10모듈×3사×6국×110국 | (slides.yml 25 pir-quant-four 자리 분할) |
-| 30 | **qual-5values** (v10.7 신규·content-thesis §2 보조 논지 1·3 매핑 확정) | Step 4 §3 정성 5가치 (시너지·글로벌·디지털 코어·MDM·만족) | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 31 | **goal-matching** (v10.7 신규·content-thesis §2 보조 논지 1·4 매핑 확정) | Step 4 §4 초기 목표 vs 달성도 매칭 (Step 2 4대 목표 모두 ○) | (slides.yml 26 goals-vs-results 자리 정합) |
-| 32 | **followup-2018** (v10.7 신규·content-thesis §2 보조 논지 3 매핑 확정) | Step 4 §5.1·§5.2 후속 효과 (2018 이사회 15+건·DT 전략 로드맵) | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 33 | **vision-bench** (v10.7 신규) | Step 4 §5.3·§6 비전 격상 (톱10→톱7) + 타사 벤치마크 5개사 | (slides.yml 27 benchmark-timeline 자리 정합) |
-| 34 | **pir-conclusion** (v10.7 신규·content-thesis §2 보조 논지 4 회수) | Step 4 §7·§8 종합 평가 5영역 + 강의 PIR 3대 기준 + 한계 5건 | (slides.yml 미매핑·다음 차수 골조 추가·결론 28 conclusion 정합) |
-| 35 | **csf-frame** (v10.8 신규) | Step 5 §1 결론 토대 + §1.1 강의 5대 차이 표 | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 36 | **csf-5values** (v10.8 신규·content-thesis §2 보조 논지 1·3 매핑) | Step 5 §2 CSF 5가지 + 단일 의사결정 철학 | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 37 | **csf-3-pres** (v10.8 신규) | Step 5 §2.1 발표용 CSF 3개 + 강의 정합 매핑 | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 38 | **limits-4** (v10.8 신규·content-thesis §2 보조 논지 3 매핑) | Step 5 §3 한계 4가지 (의도된 트레이드오프) | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 39 | **implications-3** (v10.8 신규·content-thesis §2 보조 논지 1·3 매핑) | Step 5 §4 시사점 3가지 (M&A 통합·장치산업·2027 ECC EOS) | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 40 | **insights-3** (v10.8 신규·content-thesis §2 보조 논지 4 회수 시작) | Step 5 §5 본질적 통찰 3가지 (통합 경영 플랫폼·누적 진화·트레이드오프 관리) | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 41 | **future-4** (v10.8 신규·content-thesis §2 보조 논지 4 매핑) | Step 5 §6 향후 과제 4가지 (클라우드·AI·디지털 트윈·2030 톱7) | (slides.yml 미매핑·다음 차수 골조 추가) |
-| 42 | **final-conclusion** (v10.8 신규·content-thesis §1 결론 변주 + 보조 논지 4 최종 회수·발표 마감) | Step 5 §7 최종 결론 + 핀잡 메시지 + 출처 13건 + 학습 가치 | (slides.yml 28 conclusion 자리 정합) |
+| 20 | **chapter3-intro** (v10.4·v10.13 유지) | Step 3 §1 챕터 진입 + 4대 제약 미리보기 | (slides.yml 17 자리에서 이동) |
+| 21 | **four-constraints** (v10.4·v10.13 유지) | Step 3 §1.1 4대 제약 본문 (Time·Continuity·Multi-Entity·Global) | (slides.yml 18 자리에서 이동) |
+| 22 | **governance-triad** (v10.13 신규) | Step 3 §2 거버넌스 3축 (발주·수행·기술 역할 분담) | (Step 2 13 governance-triad와 구분 — Step 3 22는 구축 단계 거버넌스) |
+| 23 | **four-methodologies** (v10.13 신규) | Step 3 §3.1 4대 구축 방법론 비교 (Big Bang·Phased·Pilot·Roll-out 트레이드오프) | (Step 2 13 four-alternatives 표 패턴 정합·Roll-out 선정 배지) |
+| 24 | **methodology-evolution** (v10.4 → v10.13 페이지 번호 시프트 22→24·본문 유지·content-thesis §2 보조 논지 3 매핑 페이지 번호 갱신) | Step 3 §3.2 방법론 진화 (2003 SMART → 2010 GEMS → 2017 S/4HANA 1610) | (4 방법론 비교 보조 영역은 23으로 분리·압축 4근거는 25로 분리) |
+| 25 | **seven-month-grounds** (v10.13 신규) | Step 3 §4.1 7개월 압축 4근거 (통합형 컨버전·13년 SAP·그룹 SI·SAP VAS) | (24 methodology-evolution v10.5 보조 영역에서 분리·독립 페이지) |
+| 26 | **time-cost-scope** (v10.13 신규) | Step 3 §4.1·§4.2·§4.3 PMBOK Iron Triangle (Time·Cost 회피형·Scope 균형) | (Step 2 15 economic-feasibility와 구분 — Step 3 26은 PMBOK 3축 프레임) |
+| 27 | **not-standardize-all** (v10.4 → v10.13 페이지 번호 시프트 23→27·본문 유지) | Step 3 §5.1 GAP 진입 + 챕터 1 §8 회수 + AS-IS/TO-BE 6항목 표 | (slides.yml 20 자리에서 이동·split-narrative 추가 권장) |
+| 28 | **gap-three-tracks** (v10.4 → v10.13 페이지 번호 시프트 24→28·본문 유지) | Step 3 §5.2 GAP 3트랙 본문 (BPR·Customizing·Add-on) | (Configuration 영역 29로 분리) |
+| 29 | **configuration-baseline** (v10.13 신규) | Step 3 §4.4 + §5.5 Configuration·Baseline·Scope Creep 통제 (강의 자료 29p "가장 큰 위험요소" + 13p·28p Baseline) | (사용자 디렉션 정합 — GAP 안 흡수 X·독립 페이지·강의 자료 직접 인용) |
+| 30 | **sap-platform-hub** (v10.4 → v10.13 페이지 번호 시프트 25→30·본문 유지·content-thesis §2 보조 논지 4 매핑 페이지 번호 갱신) | Step 3 §5.2 Add-on 트랙 + 보강 D SAP 중심 플랫폼 + 주변 6 시스템 | (slides.yml 22 자리에서 이동) |
+| 31 | **migration-test-vas** (v10.13 신규·기존 26 일부 흡수) | Step 3 §6.4 + §6.5 + §6.6 Migration Big Bang 구분 + 테스트 5종 + SAP VAS 3요소 + Rollback Plan 보조 | (구축 Roll-out × Migration Big Bang 2축 결합 혼동 풀이·3단 구조 — 상단 Migration 구분·중단 테스트 5종·하단 VAS 3·Rollback 하단 보조 라벨 또는 발표 멘트) |
+| 32 | **downtime-kpi** (v10.4 → v10.13 페이지 번호 시프트 26→32·본문 유지·KPI + 의미 4 + 6대 리스크 매트릭스 통합·테스트 5종·VAS 3은 31로 이동) | Step 3 §6 다운타임 KPI 114h→52h + 비즈니스 의미 4 (생산·출하·후속·안전) + 6대 리스크 매트릭스 | (사용자 디렉션 정합 — KPI 숫자 주인공·의미 4 카드 하단·6대 리스크 작은 보조 표) |
+| 33 | **step3-conclusion** (v10.13 신규) | Step 3 §7 결론 4 원칙 회수 (방법론 진화·범위 균형·사전 검증·플랫폼 통합) + Step 4 PIR 연결 | (Step 1 v13 slide 10 step1-conclusion·Step 2 v3.2 19 escrow 패턴 정합) |
+| **35** | **step4-intro-overview** (v10.14 신규 안내) | Step 4 진입·"구축은 끝났다. 실제 성과로 이어졌는가?"·6단 흐름 (정량 4·정성 5·목표 4·후속·벤치·한계) | (Step 1·2·3 안내 패턴 정합·신규 페이지·다음 차수 §9-NEW 본문 작성) |
+| 36 | **pir-frame** (v10.7 → v10.14 시프트 34→36·본문 변경 X·구 27→34→36) | Step 4 §1 PIR 프레임 + 7개 분석 영역·강의 19p 인용 + ROI 비공개 명시 | (slides.yml 24 pir-question 자리 보정) |
+| 37 | **quant-results-1** (v10.7 → v10.14 시프트 35→37·본문 변경 X) | Step 4 §2.1·§2.2 다운타임 114h→52h + 성능 90.5%↑ | (slides.yml 25 자리 분할) |
+| 38 | **quant-results-2** (v10.7 → v10.14 시프트 36→38·본문 변경 X) | Step 4 §2.3·§2.4 조회 40만건 2분 + 통합 10×3×6×110 | (slides.yml 25 자리 분할) |
+| 39 | **qual-5values** (v10.7 → v10.14 시프트 37→39·본문 변경 X·content-thesis 보조 논지 1·3 매핑 페이지 번호 갱신 30→37→39) | Step 4 §3 정성 5가치 (시너지·글로벌·디지털 코어·MDM·만족) | (slides.yml 미매핑) |
+| 40 | **goal-matching** (v10.7 → v10.14 시프트 38→40·본문 변경 X·content-thesis 보조 논지 1·4 매핑 페이지 번호 갱신 31→38→40) | Step 4 §4 초기 4대 목표 vs 달성도 매칭 | (slides.yml 26 자리 정합) |
+| 41 | **followup-2018** (v10.7 → v10.14 시프트 39→41·본문 변경 X·content-thesis 보조 논지 3 매핑 페이지 번호 갱신 32→39→41) | Step 4 §5.1·§5.2 후속 효과 + DT 전략 로드맵 | (slides.yml 미매핑) |
+| 42 | **vision-bench** (v10.7 → v10.14 시프트 40→42·본문 변경 X) | Step 4 §5.3·§6 비전 격상 + 타사 5개사 벤치마크 | (slides.yml 27 자리 정합) |
+| 43 | **pir-conclusion** (v10.7 → v10.14 시프트 41→43·본문 변경 X·**한계 5건 작은 보조 표로 축소·별도 페이지 분리 X**·content-thesis 보조 논지 4 회수 페이지 번호 갱신 34→41→43) | Step 4 §7·§8 종합 5영역 ○ + 강의 PIR 3대 기준 + 한계 5건 보조 | (slides.yml 미매핑·결론 52 final-conclusion 정합) |
+| **44** | **step5-intro-overview** (v10.14 신규 안내) | Step 5 진입·"그래서 우리는 무엇을 배우는가?"·6단 흐름 (CSF 5·압축 3·한계·시사·통찰·향후·결론) | (Step 1·2·3 안내 패턴 정합·신규 페이지·다음 차수 §9-NEW 본문 작성) |
+| 45 | **csf-frame** (v10.8 → v10.14 시프트 42→45·본문 변경 X) | Step 5 §1 결론 토대 + §1.1 강의 5대 차이 표 | (slides.yml 미매핑) |
+| 46 | **csf-5values** (v10.8 → v10.14 시프트 43→46·본문 변경 X·content-thesis 보조 논지 1·3 매핑 페이지 번호 갱신 36→43→46) | Step 5 §2 CSF 5가지 + 단일 의사결정 철학 | (slides.yml 미매핑) |
+| 47 | **csf-3-pres** (v10.8 → v10.14 시프트 44→47·본문 변경 X) | Step 5 §2.1 발표용 CSF 3 + 강의 정합 매핑 | (slides.yml 미매핑) |
+| 48 | **limits-4** (v10.8 → v10.14 시프트 45→48·본문 변경 X·**Step 4 43과 관점 분리** — Step 4 = PIR 분석 검증 가능 범위·Step 5 48 = 타 기업 적용·사례 일반화 트레이드오프) | Step 5 §3 한계 4가지 (의도된 트레이드오프) | (slides.yml 미매핑) |
+| 49 | **implications-3** (v10.8 → v10.14 시프트 46→49·본문 변경 X·content-thesis 보조 논지 1·3 매핑 페이지 번호 갱신) | Step 5 §4 시사점 3가지 | (slides.yml 미매핑) |
+| 50 | **insights-3** (v10.8 → v10.14 시프트 47→50·본문 변경 X·content-thesis 보조 논지 4 회수 시작 페이지 번호 갱신) | Step 5 §5 본질 통찰 3가지 (통합 플랫폼·누적 진화·트레이드오프 관리) | (slides.yml 미매핑) |
+| 51 | **future-4** (v10.8 → v10.14 시프트 48→51·본문 변경 X·content-thesis 보조 논지 4 매핑 페이지 번호 갱신) | Step 5 §6 향후 과제 4 (클라우드·AI·디지털 트윈·2030 톱7) | (slides.yml 미매핑) |
+| 52 | **final-conclusion** (v10.8 → v10.14 시프트 49→52·본문 변경 X·**핀잡 메시지 시각 주인공·출처 작은 source-line 자료명 5건 압축·별도 출처 페이지 X**·content-thesis §1 결론 변주 + 보조 논지 4 최종 회수·발표 마감) | Step 5 §7 최종 결론 + 핀잡 메시지 + 출처 (작은 source-line) | (slides.yml 28 conclusion 자리 정합) |
 
 ### 12-5. slides.yml v1.0 골조 보정 진입 권장 (v10.3 신규)
 
@@ -2815,9 +3417,12 @@ footer: 우하단 키보드 안내만
 - slides.yml 09 chapter2-intro·17 chapter3-intro 챕터 진입 슬러그는 본 차수 §9-NEW 영역에서 별도 영역으로 이동 필요
 - slides.yml 10·11 (sap-asset-timeline·2017-boom)은 의미상 Step 1 영역 — Step 1 본 빌드 v10 06·05 페이지 정합
 
-**slides.yml v1.0 골조 보정 진입 권장 (v10.8 갱신)**:
-- slides.yml 28장 골조 재구성 (Step 1 8장 + Step 2 11장 + Step 3 7장 + Step 4 8장 + Step 5 8장 = 총 42장 확장 필요·v10.8 본 차수 기준·도입부 01·02·03 + 챕터 진입 영역 포함 시 43장 영역)
-- 본 보정 진입은 본인 결정 영역 — 발표 분량 영향·발표 직전 일괄 보정 영역 권장 (우선순위 5)
-- v10.8 본 차수 추가 — Step 5 영역 8행 매핑 추가로 slides.yml 미매핑 슬러그 7건 (csf-frame·csf-5values·csf-3-pres·limits-4·implications-3·insights-3·future-4) 발생·골조 보정 시점 신규 슬러그 등록 필요·slides.yml 28 conclusion만 42 final-conclusion 자리 정합
+**slides.yml v1.0 골조 보정 진입 권장 (v10.13 갱신)**:
+- 현재 기준 — Step 1 10장 + Step 2 11장 + Step 3 14장 + Step 4 8장 + Step 5 8장 + 도입부·챕터 진입·결론 8장 = **총 49장**
+- slides.yml v1.0 골조 28장은 Phase 2 초기 산출물 — 본 49장 기준과 21장 차이·발표 직전 일괄 골조 보정 권장 (우선순위 5)
+- 신규 슬러그 다수 발생: Step 3 신규 7건 (governance-triad·four-methodologies·seven-month-grounds·time-cost-scope·configuration-baseline·migration-test-vas·step3-conclusion) + Step 4 신규 3건 (qual-5values·followup-2018·pir-conclusion) + Step 5 신규 7건 (csf-frame·csf-5values·csf-3-pres·limits-4·implications-3·insights-3·future-4)
+- 골조 보정 시점 신규 슬러그 17건 등록 필요·기존 slides.yml 28 conclusion만 49 final-conclusion 자리 정합
 
-본 §12-5는 본 차수 보정 결과 한계 명시·다음 차수 진입 권장 안내. 가드 14·26 해소 완료 (Step 1·2·3·4·5 영역 매핑 정합 완료·slides.yml v1.0 → v2.0 골조 보정 발표 직전 영역).
+본 §12-5는 본 차수 보정 결과 한계 명시·다음 차수 진입 권장 안내. 가드 14·26 해소 완료 (Step 1~5 매핑 정합 완료·slides.yml v1.0 → v2.0 골조 보정은 발표 직전 단계).
+
+**과거 기록 (v10.8 시점 — 본 §12-5 갱신 전)**: slides.yml 28장 골조 → 43장 확장 명시 (Step 1 8장·Step 2 11장·Step 3 7장 기준). 본 영역은 v10.13 Step 3 14장 확정으로 폐기·현재 기준은 49장.

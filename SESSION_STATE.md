@@ -107,8 +107,15 @@
 - dist/preview-step1.html v10 → v11: 02 toc 질문형 통일·03 5번 카드 결론 위계·04 결론 박스 강화·05 결론 박스 신설·06 결론 박스 강화
 - 11건 영역 중 ○ 반영 5건·△ 부분 1건·보정 보류 5건 (01·04 중간 라벨·08·10·11·자체 판단)
 
-### 단계 14 — 세션 영역 안정화 (본 차수)
+### 단계 14 — 세션 영역 안정화
 - SESSION_STATE.md 갱신·CLAUDE.md v2.5 → v2.6 + §14 신설 (신규 세션 진입 가이드)
+
+### 단계 15 — Step 2 v4.1 동결 + spec/step1-canonical-patterns.md v1.1 신설 + Step 2 v5 매칭표 (2026.05.25)
+- **Step 2 v4.1 동결** — Sub 1·Sub 1+·Sub 1++·Sub 1+++ 영역 임시 보정 누적·09·10 영역 4 차례 보정·11·12·13·14·15 영역 Phase B 영역·16·17·18·19 미진입 영역. **v5에서 덧칠 X·canonical 기준 재구성 영역**.
+- **spec/step1-canonical-patterns.md v1.0 신설 → v1.1 보완** — Step 1 v14 + v15~v20 누적 보정 영역 정답 패턴 추출 (§1 레이아웃·§2 공통·§3 슬라이드별·§4 결론·§5 출처·§6 GG-NEW·§7 글자·§8 reveal·§9 위계·§10 체크리스트)·v1.1 보완 (§0-0 우선 적용·§0-0 CSS 본 정의 확인·§0-2 재사용 정책 3 등급·§4-4 결론 6 원칙·§10-3 캡처 검증 의무·§12 Step 2 v5 매칭표 09~19)
+- **CLAUDE.md §6-2 Phase 3 필수 로드 갱신** — canonical v1.1 영역 한 줄 추가 (component-catalog·design-tokens·tone-system보다 우선)
+- **Step 2 v5 재작업 예정** — canonical 정합 기준·Phase A (09·10) → Phase B (11·12) → Phase C (13·14·15) → Phase D (16·17) → Phase E (18·19) 5 분할·각 Phase 마감 시점 캡처 검증 ○ 후 다음 Phase 진입
+- **본 차수 영역 변경**: spec/step1-canonical-patterns.md (신규 + 보완)·CLAUDE.md (한 줄)·SESSION_STATE.md (본 라인)·dist 빌드 영역 변경 X·매트릭스 변경 X·content-thesis 변경 X (최소 변경 정합)
 
 ---
 

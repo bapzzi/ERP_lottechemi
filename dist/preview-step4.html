@@ -1,0 +1,1908 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>롯데케미칼 SAP S/4HANA 사례 — Step 4 빌드 v2 (9장 · 35 step4-intro-overview 신규 + 36~43 본론 시프트)</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../shared/style.css" />
+
+  <style>
+    /* =========================================================
+       Step 4 빌드 v1 — 분할 1 · 4장 (27 pir-frame + 28 quant-results-1 + 29 quant-results-2 + 30 qual-5values)
+       matrix v10.7 / CLAUDE.md v2.8 / docx Step 4 v3
+       Step 2 v3.2 + Step 3 v1 시각 통일성 100% 정합
+       (v3-headline·v3-eyebrow·v3-em·v3-msg·v3-pict-wrap·num-circle·red-box-label·card-top-accent·card.is-active)
+       슬라이드 레이아웃 표준: padding 24/76/64·헤더 108px·본문 856px
+       색상 비율 표준: white 70%+ · graphite 18~22% · red 4.5~6.5% (가드 10 정합·7% 이내)
+       표현 금지 회피: 학자명 "이상신" X·"Brownfield 컨버전" X·"글로벌 싱글 인스턴스" X·"OPERA" X·"자금 여유" X (가드 11)
+       ========================================================= */
+
+    /* ===== 슬라이드 표준 (Step 3 v1 정합·재정의) ===== */
+    .slide-head {
+      padding: 16px 76px 0;
+      height: 108px;
+      box-sizing: border-box;
+      gap: 24px;
+    }
+    .brand-logo { height: 76px; max-width: 380px; }
+    .slide-foot { display: none; }
+    .slide-head::after {
+      left: 76px; right: 76px;
+      bottom: -16px;
+    }
+    .slide-main-v6 {
+      position: relative; z-index: 3;
+      padding: 24px 76px 64px;
+      height: calc(1080px - 108px);
+      box-sizing: border-box;
+      display: flex; flex-direction: column;
+    }
+
+    /* ===== 톤 어휘 (Step 3 v1 정합) ===== */
+    .red-box-label {
+      display: inline-flex; align-items: center;
+      padding: 6px 14px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      border-radius: var(--r-sm);
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .num-circle {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* ===== v3 공통 (Step 3 v1 정합) ===== */
+    .v3-eyebrow .red-box-label {
+      font-size: 18px;
+      padding: 10px 22px;
+      letter-spacing: 0.12em;
+    }
+    .v3-eyebrow .eb-text {
+      font-size: 20px;
+      font-weight: 700;
+    }
+    .v3-headline {
+      font-family: var(--font-sans);
+      font-size: 52px; font-weight: 800;
+      letter-spacing: -0.028em; line-height: 1.18;
+      color: var(--color-ink-strong);
+      max-width: 1700px;
+    }
+    .v3-headline em, .v3-headline .v3-em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .v3-msg {
+      padding: 16px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.012em;
+    }
+    .v3-msg em { color: var(--color-red); font-style: normal; font-weight: 800; }
+    .v3-msg__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+    .v3-pict-wrap {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      background: var(--color-bg-cream);
+      display: inline-flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .v3-pict-wrap--red { background: var(--color-red); }
+    .v3-pict-wrap svg {
+      width: 32px; height: 32px;
+      fill: none;
+      stroke: var(--color-red);
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .v3-pict-wrap--red svg { stroke: var(--color-paper); }
+
+    /* ===== 강의 인용 박스 (Step 2 v3 패턴) ===== */
+    .v3-lecture {
+      padding: 14px 22px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+      letter-spacing: -0.008em;
+      display: flex; align-items: center; gap: 14px;
+    }
+    .v3-lecture__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto; flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== 27 pir-frame (.s27-*) — PIR 프레임 + 7개 분석 영역 표 ===== */
+    .s27-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .s27-table {
+      display: grid;
+      grid-template-columns: 1.4fr 2fr 1.3fr;
+      border-top: 1px solid var(--color-line);
+      border-left: 1px solid var(--color-line);
+      align-self: start;
+    }
+    .s27-row {
+      display: contents;
+    }
+    .s27-cell {
+      padding: 14px 20px;
+      border-right: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      display: flex; align-items: center;
+    }
+    .s27-row--head .s27-cell {
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 12px 20px;
+    }
+    .s27-row--active .s27-cell {
+      background: var(--color-red-pale);
+      border-left: 4px solid var(--color-red);
+    }
+    .s27-row--active .s27-cell:first-child {
+      border-left: 4px solid var(--color-red);
+      margin-left: -4px;
+    }
+    .s27-row--mute .s27-cell {
+      color: var(--color-ink-mute);
+      font-weight: 400;
+    }
+    .s27-cell__label {
+      font-weight: 700;
+      color: var(--color-ink-strong);
+    }
+    .s27-cell__src {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 600;
+      color: var(--color-ink-soft);
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== 28 quant-results-1 (.s28-*) — 다운타임 + 성능 + 비즈니스 의미 4 ===== */
+    .s28-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .s28-kpi-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+    .s28-kpi {
+      padding: 24px 28px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      display: grid;
+      grid-template-rows: auto auto auto auto auto;
+      gap: 8px;
+      position: relative;
+    }
+    .s28-kpi__head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .s28-kpi__label {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 700;
+      color: var(--color-red);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .s28-kpi__value {
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .s28-kpi__num {
+      font-family: var(--font-mono);
+      font-size: 130px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .s28-kpi__unit {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 700;
+      color: var(--color-ink-strong);
+    }
+    .s28-kpi__sub {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.35;
+    }
+    .s28-kpi__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      padding-top: 8px;
+      border-top: 1px solid var(--color-line-soft);
+      letter-spacing: 0.04em;
+    }
+    .s28-meaning-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px; align-items: stretch;
+    }
+    .s28-meaning {
+      padding: 14px 16px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 8px;
+    }
+    .s28-meaning__head {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .s28-meaning__title {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.2;
+    }
+    .s28-meaning__body {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.4;
+    }
+
+    /* ===== 29 quant-results-2 (.s29-*) — 조회 + 통합 범위 4축 ===== */
+    .s29-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .s29-top {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr;
+      gap: 20px; align-items: stretch;
+    }
+    .s29-query {
+      padding: 24px 28px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      display: grid;
+      grid-template-rows: auto auto auto auto;
+      gap: 8px;
+    }
+    .s29-query__head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .s29-query__label {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 700;
+      color: var(--color-red);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .s29-query__value {
+      display: flex; align-items: baseline; gap: 8px;
+    }
+    .s29-query__num {
+      font-family: var(--font-mono);
+      font-size: 130px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: -0.04em;
+      line-height: 1;
+    }
+    .s29-query__unit {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 700;
+      color: var(--color-ink-strong);
+    }
+    .s29-query__sub {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.35;
+    }
+    .s29-query__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      padding-top: 8px;
+      border-top: 1px solid var(--color-line-soft);
+      letter-spacing: 0.04em;
+    }
+    .s29-quote {
+      padding: 20px 24px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      display: grid;
+      grid-template-rows: auto auto auto auto;
+      gap: 10px; align-content: center;
+    }
+    .s29-quote__head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .s29-quote__label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700;
+      color: var(--color-ink-soft);
+      letter-spacing: 0.1em; text-transform: uppercase;
+    }
+    .s29-quote__text {
+      font-family: var(--font-sans);
+      font-size: 21px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.012em;
+    }
+    .s29-quote__text em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s29-quote__sub {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+    }
+    .s29-quote__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.04em;
+    }
+    .s29-axes {
+      display: grid;
+      grid-template-columns: auto 1fr 1fr 1fr 1fr;
+      gap: 12px; align-items: stretch;
+    }
+    .s29-axes__label {
+      display: flex; align-items: center;
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding-right: 6px;
+    }
+    .s29-axis {
+      padding: 18px 20px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      display: grid;
+      grid-template-rows: auto auto auto 1fr;
+      gap: 10px;
+    }
+    .s29-axis__head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .s29-axis__title {
+      font-family: var(--font-sans);
+      font-size: 30px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .s29-axis__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 700;
+      color: var(--color-ink-soft);
+      line-height: 1.3;
+    }
+    .s29-axis__body {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.45;
+    }
+    .s29-axis__body em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* ===== 30 qual-5values (.s30-*) — 정성 5가치 + 박제성 인용 ===== */
+    .s30-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .s30-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    .s30-card {
+      padding: 18px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 10px;
+    }
+    .s30-card--active {
+      background: var(--color-red-pale);
+      border: 1px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+      border-left: 6px solid var(--color-red);
+    }
+    .s30-card__head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .s30-card__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 18px; font-weight: 800;
+    }
+    .s30-card__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+    .s30-card--active .s30-card__title {
+      color: var(--color-red-deep);
+    }
+    .s30-card__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 700;
+      color: var(--color-ink-soft);
+      line-height: 1.3;
+    }
+    .s30-card__body {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.45;
+    }
+    .s30-card__body em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .s30-card__src {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 600;
+      color: var(--color-ink-mute);
+      padding-top: 8px;
+      border-top: 1px solid var(--color-line-soft);
+      letter-spacing: 0.04em;
+    }
+    .s30-quote {
+      padding: 16px 24px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 18px;
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+      letter-spacing: -0.012em;
+    }
+    .s30-quote em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s30-quote__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto; flex-shrink: 0;
+      letter-spacing: 0.06em;
+    }
+
+    /* ===== 31 goal-matching (.s31-*) — 4×4 표 + 챕터 2 §1 회수 + 보조 논지 1·4 매핑 ===== */
+    .s31-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+    }
+    .s31-recall {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .s31-recall__text {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 700;
+      color: var(--color-ink);
+      letter-spacing: -0.012em;
+    }
+    .s31-recall__text em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s31-table {
+      display: grid;
+      grid-template-columns: 1.2fr 2.4fr 0.7fr 1.8fr;
+      border-top: 1px solid var(--color-line);
+      border-left: 1px solid var(--color-line);
+      align-self: start;
+    }
+    .s31-row { display: contents; }
+    .s31-cell {
+      padding: 14px 18px;
+      border-right: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      display: flex; align-items: center;
+    }
+    .s31-row--head .s31-cell {
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 12px 18px;
+    }
+    .s31-row--active .s31-cell {
+      background: var(--color-red-pale);
+    }
+    .s31-row--active .s31-cell:first-child {
+      border-left: 4px solid var(--color-red);
+      margin-left: -4px;
+    }
+    .s31-cell__label {
+      font-weight: 800;
+      color: var(--color-ink-strong);
+    }
+    .s31-cell__ok {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+    }
+    .s31-cell em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s31-cell__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.04em;
+      margin-left: 8px;
+    }
+
+    /* ===== 32 followup-2018 (.s32-*) — 이사회 의결 3 + DT 로드맵 4 + 보조 논지 3 매핑 ===== */
+    .s32-main {
+      display: grid;
+      grid-template-rows: auto auto auto auto 1fr auto;
+      gap: 16px;
+      height: 100%;
+    }
+    .s32-label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .s32-cards {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      gap: 12px;
+      align-items: stretch;
+    }
+    .s32-card {
+      padding: 16px 20px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 8px;
+    }
+    .s32-card--active {
+      background: var(--color-red-pale);
+      border: 1px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+      border-left: 6px solid var(--color-red);
+    }
+    .s32-card__head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .s32-card__date {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      color: var(--color-red);
+      letter-spacing: 0.06em;
+    }
+    .s32-card__title {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.02em;
+      line-height: 1.15;
+    }
+    .s32-card--active .s32-card__title { color: var(--color-red-deep); }
+    .s32-card__body {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.45;
+    }
+    .s32-card__body em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .s32-card-chev {
+      display: flex; align-items: center;
+      font-family: var(--font-mono);
+      font-size: 36px;
+      color: var(--color-graphite);
+    }
+    .s32-roadmap {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+      gap: 10px;
+      align-items: stretch;
+      padding: 14px 18px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+    }
+    .s32-rd-card {
+      padding: 10px 14px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: grid;
+      gap: 6px;
+    }
+    .s32-rd-card--active {
+      border-left: 4px solid var(--color-red);
+    }
+    .s32-rd-card__year {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: 0.04em;
+    }
+    .s32-rd-card--active .s32-rd-card__year { color: var(--color-red); }
+    .s32-rd-card__text {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.4;
+    }
+    .s32-rd-card__text em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .s32-rd-chev {
+      display: flex; align-items: center;
+      font-family: var(--font-mono);
+      font-size: 24px;
+      color: var(--color-graphite);
+    }
+
+    /* ===== 33 vision-bench (.s33-*) — 비전 격상 + 5행 벤치마크 표 + 학술 보강 사이드 ===== */
+    .s33-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto auto;
+      gap: 14px;
+      height: 100%;
+    }
+    .s33-vision {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+    .s33-vision-card {
+      padding: 14px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 16px;
+    }
+    .s33-vision-card--active {
+      border-left: 6px solid var(--color-red);
+      background: var(--color-red-pale);
+    }
+    .s33-vision__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .s33-vision-card--active .s33-vision__num { background: var(--color-red); }
+    .s33-vision__text {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.012em;
+    }
+    .s33-vision__text em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s33-vision-chev {
+      display: flex; align-items: center;
+      font-family: var(--font-mono);
+      font-size: 36px;
+      color: var(--color-graphite);
+    }
+    .s33-bench {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 2.2fr;
+      border-top: 1px solid var(--color-line);
+      border-left: 1px solid var(--color-line);
+      align-self: start;
+    }
+    .s33-row { display: contents; }
+    .s33-cell {
+      padding: 12px 18px;
+      border-right: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      display: flex; align-items: center;
+    }
+    .s33-row--head .s33-cell {
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      padding: 10px 18px;
+    }
+    .s33-row--active .s33-cell {
+      background: var(--color-red-pale);
+    }
+    .s33-row--active .s33-cell:first-child {
+      border-left: 4px solid var(--color-red);
+      margin-left: -4px;
+    }
+    .s33-cell__label {
+      font-weight: 800;
+      color: var(--color-ink-strong);
+    }
+    .s33-cell em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s33-aside {
+      padding: 12px 20px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      display: flex; align-items: center; gap: 14px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.4;
+    }
+    .s33-aside em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .s33-aside__src {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto; flex-shrink: 0;
+      letter-spacing: 0.04em;
+    }
+
+    /* ===== 34 pir-conclusion (.s34-*) — 5영역 평가 + 강의 PIR 3대 + 한계 5건 + 결론 회수 ===== */
+    .s34-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto 1fr auto auto;
+      gap: 12px;
+      height: 100%;
+    }
+    .s34-section-label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 700;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    .s34-five {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+    .s34-five-card {
+      padding: 12px 14px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      display: grid;
+      grid-template-rows: auto auto 1fr;
+      gap: 6px;
+      text-align: center;
+    }
+    .s34-five-card--active {
+      background: var(--color-red-pale);
+      border: 1px solid var(--color-red);
+      border-top: 4px solid var(--color-red);
+      border-left: 6px solid var(--color-red);
+    }
+    .s34-five__ok {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 42px; height: 42px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+      margin: 0 auto;
+    }
+    .s34-five__title {
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.2;
+      letter-spacing: -0.012em;
+    }
+    .s34-five-card--active .s34-five__title { color: var(--color-red-deep); }
+    .s34-five__body {
+      font-family: var(--font-sans);
+      font-size: 12px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.4;
+    }
+    .s34-lecture {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      align-items: stretch;
+    }
+    .s34-lec-card {
+      padding: 12px 16px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 6px;
+    }
+    .s34-lec__head {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .s34-lec__ok {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 15px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .s34-lec__title {
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.25;
+    }
+    .s34-lec__body {
+      font-family: var(--font-sans);
+      font-size: 13px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.45;
+    }
+    .s34-lec__body em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .s34-limit {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 8px;
+      align-items: stretch;
+    }
+    .s34-lim-card {
+      padding: 8px 12px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 4px;
+    }
+    .s34-lim__title {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .s34-lim__body {
+      font-family: var(--font-sans);
+      font-size: 12px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.35;
+    }
+
+    /* ===== 35 step4-intro-overview (.s35i-*) — 좌 질문 + 우 6 흐름 카드 + 하단 thesis ===== */
+    .s35i-main { display: grid; grid-template-rows: auto auto 1fr auto; gap: 18px; height: 100%; }
+    .s35i-body { display: grid; grid-template-columns: 0.95fr 1.6fr; gap: 22px; align-items: stretch; }
+    .s35i-q {
+      padding: 26px 28px;
+      background: var(--color-bg-cream);
+      border-left: 8px solid var(--color-red);
+      display: flex; flex-direction: column; justify-content: space-between; gap: 14px;
+    }
+    .s35i-q__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--color-red);
+      text-transform: uppercase;
+    }
+    .s35i-q__head {
+      font-family: var(--font-sans);
+      font-size: 32px; font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.3;
+    }
+    .s35i-q__head em { color: var(--color-red); font-style: normal; }
+    .s35i-q__sub {
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.55;
+    }
+    .s35i-flow {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: repeat(2, 1fr);
+      gap: 12px;
+    }
+    .s35i-card {
+      padding: 20px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      display: grid; gap: 10px;
+      align-content: start;
+    }
+    .s35i-card.is-active {
+      border-top-color: var(--color-red);
+      background: var(--color-bg-cream);
+    }
+    .s35i-card__no {
+      font-family: var(--font-mono);
+      font-size: 15px; font-weight: 800;
+      color: var(--color-graphite);
+      letter-spacing: 0.1em;
+    }
+    .s35i-card.is-active .s35i-card__no { color: var(--color-red); }
+    .s35i-card__title {
+      font-family: var(--font-sans);
+      font-size: 24px; font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.3;
+    }
+    .s35i-card__kw {
+      font-family: var(--font-sans);
+      font-size: 19px; font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.45;
+    }
+    .s35i-card__kw em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .s35i-thesis {
+      padding: 18px 24px;
+      background: var(--color-bg-cream);
+      border-left: 6px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.5;
+    }
+    .s35i-thesis em { color: var(--color-red); font-style: normal; }
+
+    /* ===== 43 한계 보조 축소 (.s43-mini-*) ===== */
+    .s43-mini-wrap {
+      margin-top: 10px;
+      padding: 14px 18px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+    }
+    .s43-mini-label {
+      font-family: var(--font-mono);
+      font-size: 15px; font-weight: 800;
+      color: var(--color-graphite);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .s43-mini-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 10px;
+    }
+    .s43-mini-cell {
+      padding: 12px 14px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: grid; gap: 6px;
+    }
+    .s43-mini-cell__no {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: 0.06em;
+    }
+    .s43-mini-cell__body {
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 600;
+      color: var(--color-ink);
+      line-height: 1.4;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+
+    <!-- ============= SLIDE 35 · step4-intro-overview v2 (Step 4 안내 — 좌 질문 + 우 6 흐름 카드 + 하단 thesis) ============= -->
+    <section class="slide tone-b active" data-slide="1">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">35</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s35i-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 01</span>
+            <span class="eb-text">구축 성과 검증 — PIR 6대 흐름 안내</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.18s">
+            Step 4는 <span class="v3-em">구축 성과가 실제로 검증됐는가</span>를 살핀다
+          </h1>
+          <div class="s35i-body">
+            <div class="s35i-q reveal" style="--rev-delay:0.3s">
+              <span class="s35i-q__label">Core Question</span>
+              <div class="s35i-q__head">
+                구축은 끝났다.<br /><em>실제 성과로 이어졌는가?</em>
+              </div>
+              <div class="s35i-q__sub">
+                완료 보고가 아닌, 공개자료 범위 안에서 4단계 PIR 프레임으로 정량·정성·후속·한계까지 균형 검증한다.
+              </div>
+            </div>
+            <div class="s35i-flow reveal" style="--rev-delay:0.42s">
+              <div class="s35i-card">
+                <span class="s35i-card__no">01</span>
+                <div class="s35i-card__title">정량 성과</div>
+                <div class="s35i-card__kw">다운타임 <em>114h → 52h</em> · 성능 <em>90.5%</em></div>
+              </div>
+              <div class="s35i-card">
+                <span class="s35i-card__no">02</span>
+                <div class="s35i-card__title">정성 가치</div>
+                <div class="s35i-card__kw">3사 시너지 · 디지털 코어 · MDM <em>5가지</em></div>
+              </div>
+              <div class="s35i-card">
+                <span class="s35i-card__no">03</span>
+                <div class="s35i-card__title">목표 달성</div>
+                <div class="s35i-card__kw">초기 <em>4대 목표</em> 모두 달성</div>
+              </div>
+              <div class="s35i-card">
+                <span class="s35i-card__no">04</span>
+                <div class="s35i-card__title">후속 입증</div>
+                <div class="s35i-card__kw"><em>2018 이사회</em> 추가 의결 3건</div>
+              </div>
+              <div class="s35i-card">
+                <span class="s35i-card__no">05</span>
+                <div class="s35i-card__title">벤치마크</div>
+                <div class="s35i-card__kw">국내 화학 <em>선구 도입</em> 사례</div>
+              </div>
+              <div class="s35i-card is-active">
+                <span class="s35i-card__no">06</span>
+                <div class="s35i-card__title">한계 인식</div>
+                <div class="s35i-card__kw">ROI 비공개 · 만족도 측정 미공개</div>
+              </div>
+            </div>
+          </div>
+          <div class="s35i-thesis reveal" style="--rev-delay:0.55s">
+            Step 4의 핵심은 "성과가 있었다"가 아니라, <em>공개자료로 확인 가능한 범위 안에서 성과·후속·한계를 균형 있게 검증</em>하는 것이다.
+          </div>
+        </div>
+      </main>
+      <div class="hint">F: 전체화면 · R: 애니메이션 재생 · ←→: 슬라이드 이동 · 35/52</div>
+    </section>
+
+    <!-- ============= SLIDE 36 · pir-frame v2 (PIR 프레임 + 강의 인용 + 7개 분석 항목 표) ============= -->
+    <section class="slide tone-c" data-slide="2">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">36</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s27-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 02</span>
+            <span class="eb-text">PIR 프레임 · 데이터 가용성</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            정량 4지표 + 정성 표현 + 후속 효과 — <span class="v3-em">4단계 PIR 프레임</span>으로 검증
+          </h1>
+          <div class="v3-lecture reveal" style="--rev-delay:0.32s">
+            <span>강의 자료 19p — 구현 후 검토는 시스템·요구사항 달성 + <em>사업 효익 실현</em> + <em>경영 목표 부합</em> 검토</span>
+            <span class="v3-lecture__src">강의 자료 19p</span>
+          </div>
+          <div class="s27-table reveal" style="--rev-delay:0.45s">
+            <div class="s27-row s27-row--head">
+              <div class="s27-cell">분석 영역</div>
+              <div class="s27-cell">공개 자료</div>
+              <div class="s27-cell">데이터 출처</div>
+            </div>
+            <div class="s27-row s27-row--active">
+              <div class="s27-cell"><span class="s27-cell__label">① 다운타임 단축</span></div>
+              <div class="s27-cell">진단 114h → 실제 52h (-54%)</div>
+              <div class="s27-cell"><span class="s27-cell__src">박제성 상무 인터뷰</span></div>
+            </div>
+            <div class="s27-row s27-row--active">
+              <div class="s27-cell"><span class="s27-cell__label">② 프로그램 성능 개선</span></div>
+              <div class="s27-cell">주요 비즈니스 프로그램 90.5% 개선</div>
+              <div class="s27-cell"><span class="s27-cell__src">박제성 상무 인터뷰</span></div>
+            </div>
+            <div class="s27-row s27-row--active">
+              <div class="s27-cell"><span class="s27-cell__label">③ 조회 속도 개선</span></div>
+              <div class="s27-cell">1년 40만건 매출대장 = 2분</div>
+              <div class="s27-cell"><span class="s27-cell__src">박제성 상무 인터뷰</span></div>
+            </div>
+            <div class="s27-row s27-row--active">
+              <div class="s27-cell"><span class="s27-cell__label">④ 통합 범위</span></div>
+              <div class="s27-cell">10모듈 · 3사 · 6국 거점 · 110국 수출</div>
+              <div class="s27-cell"><span class="s27-cell__src">박제성 상무 인터뷰 + 롯데케미칼 사업보고서</span></div>
+            </div>
+            <div class="s27-row s27-row--mute">
+              <div class="s27-cell"><span class="s27-cell__label">⑤ 투자 규모 · ROI</span></div>
+              <div class="s27-cell">비공개</div>
+              <div class="s27-cell"><span class="s27-cell__src">사업보고서 별도 공시 없음</span></div>
+            </div>
+            <div class="s27-row s27-row--active">
+              <div class="s27-cell"><span class="s27-cell__label">⑥ 사용자 만족도</span></div>
+              <div class="s27-cell">정성 표현 ("회계부서 박수")</div>
+              <div class="s27-cell"><span class="s27-cell__src">박제성 상무 인터뷰</span></div>
+            </div>
+            <div class="s27-row s27-row--active">
+              <div class="s27-cell"><span class="s27-cell__label">⑦ 후속 디지털 투자</span></div>
+              <div class="s27-cell">2018+ 이사회 의결 기록 (공개)</div>
+              <div class="s27-cell"><span class="s27-cell__src">2018 정정 사업보고서 정정 사업보고서</span></div>
+            </div>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.9s">
+            <span>본 사례는 <em>정량 4지표 + 정성 + 후속 효과</em> 충실한 PIR 자료 보유 — 박제성 인터뷰 1차 자료 + 이사회 의결 객관 기록 다층 검증</span>
+            <span class="v3-msg__src">출처 박제성 상무 인터뷰 사업보고서 2018 정정 사업보고서 · docx Step 4 §1</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 37 · quant-results-1 v2 (다운타임 + 성능 + 비즈니스 의미 4) ============= -->
+    <section class="slide tone-c" data-slide="3">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">37</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s28-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 03</span>
+            <span class="eb-text">정량 검증 1 — 다운타임 · 성능</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            다운타임 <span class="v3-em">114h → 52h (-54%)</span> + 성능 <span class="v3-em">90.5%↑</span> — 정량 검증 1
+          </h1>
+          <div class="s28-kpi-pair reveal" style="--rev-delay:0.35s">
+            <article class="s28-kpi">
+              <div class="s28-kpi__head">
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <!-- 시계 + 단축 SVG -->
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="17" r="11" /><polyline points="16 11 16 17 21 19" /><line x1="16" y1="3" x2="16" y2="6" /><line x1="13" y1="3" x2="19" y2="3" /></svg>
+                </span>
+                <span class="s28-kpi__label">Downtime · 다운타임</span>
+              </div>
+              <div class="s28-kpi__value">
+                <span class="s28-kpi__num">52</span>
+                <span class="s28-kpi__unit">시간</span>
+              </div>
+              <p class="s28-kpi__sub">진단 114h → 실제 52h · -54% · 약 <strong style="color:var(--color-red)">62h 회피</strong></p>
+              <span class="s28-kpi__src">출처 박제성 상무 인터뷰 · SAP Value Assurance 공식 자료</span>
+            </article>
+            <article class="s28-kpi">
+              <div class="s28-kpi__head">
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <!-- 그래프 상승 SVG -->
+                  <svg viewBox="0 0 32 32"><polyline points="4 24 11 18 18 22 28 8" /><polyline points="22 8 28 8 28 14" /></svg>
+                </span>
+                <span class="s28-kpi__label">Performance · 성능</span>
+              </div>
+              <div class="s28-kpi__value">
+                <span class="s28-kpi__num">90.5</span>
+                <span class="s28-kpi__unit">%↑</span>
+              </div>
+              <p class="s28-kpi__sub">주요 비즈니스 프로그램 평균 개선치 · S/4HANA <strong style="color:var(--color-red)">인메모리</strong> + 코드 단순화</p>
+              <span class="s28-kpi__src">출처 박제성 상무 인터뷰</span>
+            </article>
+          </div>
+          <div class="s28-meaning-row reveal" style="--rev-delay:0.65s">
+            <article class="s28-meaning">
+              <div class="s28-meaning__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 플랜트 SVG (생산) -->
+                  <svg viewBox="0 0 32 32"><path d="M 4 28 L 4 14 L 11 18 L 11 12 L 19 16 L 19 10 L 28 14 L 28 28 Z" /><line x1="8" y1="22" x2="8" y2="26" /><line x1="15" y1="22" x2="15" y2="26" /><line x1="22" y1="22" x2="22" y2="26" /></svg>
+                </span>
+                <h4 class="s28-meaning__title">생산 회피</h4>
+              </div>
+              <p class="s28-meaning__body">NCC 24h 연속 가동 + 다운스트림 폴리머·모노머 공장 62h 추가 가동 확보</p>
+            </article>
+            <article class="s28-meaning">
+              <div class="s28-meaning__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 선박 SVG (출하) -->
+                  <svg viewBox="0 0 32 32"><path d="M 4 22 L 28 22 L 25 28 L 7 28 Z" /><line x1="16" y1="22" x2="16" y2="6" /><line x1="16" y1="6" x2="24" y2="14" /><line x1="16" y1="6" x2="8" y2="14" /></svg>
+                </span>
+                <h4 class="s28-meaning__title">출하 회피</h4>
+              </div>
+              <p class="s28-meaning__body">110국 수출 채널 주문·물류 지연 회피 — LC·선적 일정 기반 거래 신뢰 유지</p>
+            </article>
+            <article class="s28-meaning">
+              <div class="s28-meaning__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 방패 + 체크 SVG (안전) -->
+                  <svg viewBox="0 0 32 32"><path d="M 16 4 L 26 8 L 26 18 C 26 23 22 27 16 29 C 10 27 6 23 6 18 L 6 8 Z" /><polyline points="11 16 15 20 22 13" /></svg>
+                </span>
+                <h4 class="s28-meaning__title">안전 회피</h4>
+              </div>
+              <p class="s28-meaning__body">화학 공정 정지·재가동 시점 안전사고 리스크 상승 — 다운타임 단축 = 안전 리스크 축소</p>
+            </article>
+            <article class="s28-meaning">
+              <div class="s28-meaning__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 트로피 SVG (우위) -->
+                  <svg viewBox="0 0 32 32"><path d="M 10 6 L 22 6 L 22 14 C 22 18 19 21 16 21 C 13 21 10 18 10 14 Z" /><line x1="10" y1="9" x2="6" y2="9" /><path d="M 6 9 L 6 13 C 6 15 8 16 10 16" /><line x1="22" y1="9" x2="26" y2="9" /><path d="M 26 9 L 26 13 C 26 15 24 16 22 16" /><line x1="16" y1="21" x2="16" y2="26" /><line x1="11" y1="28" x2="21" y2="28" /></svg>
+                </span>
+                <h4 class="s28-meaning__title">동종 대비 우위</h4>
+              </div>
+              <p class="s28-meaning__body">삼성전기 2022년 75%↓ 대비 — 2017 시점 54%↓ 당시 기술 환경 우수</p>
+            </article>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.92s">
+            <span>S/4HANA 인메모리 + 코드 단순화 → 디스크 I/O 병목 해소 → <em>야간 배치 → 실시간 처리</em> + 다국적 정합성 검증 가속</span>
+            <span class="v3-msg__src">출처 박제성 상무 인터뷰 · docx Step 4 §2.2</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 38 · quant-results-2 v2 (조회 + 통합 4축) ============= -->
+    <section class="slide tone-c" data-slide="4">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">38</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s29-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 04</span>
+            <span class="eb-text">정량 검증 2 — 조회 성능 · 통합 범위</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            조회 <span class="v3-em">40만건/2분</span> + 통합 <span class="v3-em">10모듈×3사×6국×110국</span> — 정량 검증 2
+          </h1>
+          <div class="s29-top reveal" style="--rev-delay:0.35s">
+            <article class="s29-query">
+              <div class="s29-query__head">
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <!-- 검색 + 시계 SVG -->
+                  <svg viewBox="0 0 32 32"><circle cx="13" cy="13" r="8" /><line x1="19" y1="19" x2="27" y2="27" /><polyline points="13 9 13 13 16 15" /></svg>
+                </span>
+                <span class="s29-query__label">Query · 조회 속도</span>
+              </div>
+              <div class="s29-query__value">
+                <span class="s29-query__num">2</span>
+                <span class="s29-query__unit">분</span>
+              </div>
+              <p class="s29-query__sub">1년 <strong style="color:var(--color-red)">40만건</strong> 매출대장 조회 — 회계·재무 부서 업무 시간 대폭 단축</p>
+              <span class="s29-query__src">출처 박제성 상무 인터뷰 · 비교 — 삼성전자 N-ERP 2022 "주문 조회 20분→3~4분" (정량 비교 한계 명시)</span>
+            </article>
+            <article class="s29-quote">
+              <div class="s29-quote__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 박수 SVG -->
+                  <svg viewBox="0 0 32 32"><path d="M 10 22 L 10 14 C 10 12 12 11 13 12 L 13 18 M 13 18 L 13 9 C 13 7 15 6 16 7 L 16 18 M 16 18 L 16 8 C 16 6 18 5 19 6 L 19 18 M 19 18 L 19 10 C 19 8 21 7 22 8 L 22 22 C 22 25 19 28 16 28 C 13 28 10 25 10 22 Z" /></svg>
+                </span>
+                <span class="s29-quote__label">사용자 만족</span>
+              </div>
+              <p class="s29-quote__text">"회계부서에서도 많은 업무 시간이 단축되면서 <em>프로젝트 팀에 박수를 보냈다</em>"</p>
+              <p class="s29-quote__sub">ERP 도입 흔한 사용자 저항 → 자발적 만족 — 변경관리 성공 신호</p>
+              <span class="s29-quote__src">출처 박제성 상무 인터뷰</span>
+            </article>
+          </div>
+          <div class="s29-axes reveal" style="--rev-delay:0.6s">
+            <div class="s29-axes__label">통합<br/>범위<br/>4축</div>
+            <article class="s29-axis">
+              <div class="s29-axis__head">
+                <span class="num-circle" style="width:46px;height:46px;font-size:18px">10</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 블록·모듈 SVG -->
+                  <svg viewBox="0 0 32 32"><rect x="4" y="4" width="10" height="10" /><rect x="18" y="4" width="10" height="10" /><rect x="4" y="18" width="10" height="10" /><rect x="18" y="18" width="10" height="10" /></svg>
+                </span>
+              </div>
+              <h3 class="s29-axis__title">10 모듈</h3>
+              <p class="s29-axis__sub">핵심 + 컴플라이언스</p>
+              <p class="s29-axis__body">구매·생산·설비·품질·영업·관리회계·재무자금·인사 + <em>GRC·EHS</em> — 일반 ERP 7~8개 모듈 초과</p>
+            </article>
+            <article class="s29-axis">
+              <div class="s29-axis__head">
+                <span class="num-circle" style="width:46px;height:46px;font-size:18px">3</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 3원 통합 SVG -->
+                  <svg viewBox="0 0 32 32"><circle cx="10" cy="12" r="6" /><circle cx="22" cy="12" r="6" /><circle cx="16" cy="22" r="6" fill="var(--color-red)" stroke="none" opacity="0.85" /></svg>
+                </span>
+              </div>
+              <h3 class="s29-axis__title">3 사</h3>
+              <p class="s29-axis__sub">M&amp;A 통합 운영</p>
+              <p class="s29-axis__body">롯데케미칼·롯데정밀화학·롯데첨단소재 — 2016 M&amp;A 약 <em>2.8조</em> 인수 자산 단일 디지털 코어 통합</p>
+            </article>
+            <article class="s29-axis">
+              <div class="s29-axis__head">
+                <span class="num-circle" style="width:46px;height:46px;font-size:18px">6</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 지구 + 핀 SVG -->
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" /><ellipse cx="16" cy="16" rx="5" ry="13" /><line x1="3" y1="16" x2="29" y2="16" /><circle cx="9" cy="10" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="23" cy="13" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="20" cy="22" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+              </div>
+              <h3 class="s29-axis__title">6 국 거점</h3>
+              <p class="s29-axis__sub">글로벌 생산</p>
+              <p class="s29-axis__body">말레이시아·파키스탄·영국·미국·중국·한국 — 다국가 회계·다통화·다언어·다규제 단일 플랫폼</p>
+            </article>
+            <article class="s29-axis">
+              <div class="s29-axis__head">
+                <span class="num-circle" style="width:46px;height:46px;font-size:16px">110</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 배 + 세계 SVG -->
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" /><path d="M 4 16 Q 10 10 16 16 T 28 16" /><path d="M 4 16 Q 10 22 16 16 T 28 16" /><circle cx="16" cy="16" r="2" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+              </div>
+              <h3 class="s29-axis__title">110 국 수출</h3>
+              <p class="s29-axis__sub">글로벌 수출 채널</p>
+              <p class="s29-axis__body">REACH(EU)·TSCA(미)·화평법(韓) 등 국가별 규제 대응 + LC·선적·물류 — <em>본사 실시간 가시성</em></p>
+            </article>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.92s">
+            <span><em>3중 다차원 통합</em> (10모듈×3사×6국×110국) 7개월 완수 — 삼성전자 N-ERP·LG화학 등 단일 회사 다거점 대비 복잡도 매우 높음</span>
+            <span class="v3-msg__src">출처 박제성 상무 인터뷰 사업보고서 · docx Step 4 §2.4</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 39 · qual-5values v2 (정성 5가치 + 박제성 인용 + 디지털 코어 강조) ============= -->
+    <section class="slide tone-c" data-slide="5">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">39</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s30-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 05</span>
+            <span class="eb-text">정성 가치 5가지 — 디지털 코어 강조</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            정성 5가치 — <span class="v3-em">3사 시너지 · 글로벌 · 디지털 코어 · MDM · 만족</span>
+          </h1>
+          <div class="s30-cards reveal" style="--rev-delay:0.4s">
+            <article class="s30-card s30-card--active">
+              <div class="s30-card__head">
+                <span class="s30-card__num">1</span>
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <!-- 3원 통합 SVG (시너지) -->
+                  <svg viewBox="0 0 32 32"><circle cx="10" cy="12" r="6" /><circle cx="22" cy="12" r="6" /><circle cx="16" cy="22" r="6" /></svg>
+                </span>
+                <h3 class="s30-card__title">3사 시너지</h3>
+              </div>
+              <p class="s30-card__sub">M&amp;A 통합 운영 실현</p>
+              <p class="s30-card__body">폴리머 + 정밀화학·고기능 소재 포트폴리오 다각화 ERP 통합 운영 실현. <em>3사 본연 경쟁력 + 각 사 특화 프로세스 유지</em> (박제성 인용)</p>
+              <span class="s30-card__src">박제성 상무 인터뷰</span>
+            </article>
+            <article class="s30-card">
+              <div class="s30-card__head">
+                <span class="s30-card__num">2</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 지구 + 네트워크 SVG -->
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" /><line x1="4" y1="16" x2="28" y2="16" /><ellipse cx="16" cy="16" rx="6" ry="12" /><circle cx="8" cy="12" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="22" cy="20" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
+                </span>
+                <h3 class="s30-card__title">글로벌 운영</h3>
+              </div>
+              <p class="s30-card__sub">단일 플랫폼 · 실시간 가시성</p>
+              <p class="s30-card__body">한국 본사 + 6국 거점 + 110국 수출 단일 플랫폼 — 다국가 회계·다통화·다언어·다규제 본사 가시성 확보·의사결정 사이클 단축</p>
+              <span class="s30-card__src">박제성 상무 인터뷰 사업보고서</span>
+            </article>
+            <article class="s30-card s30-card--active">
+              <div class="s30-card__head">
+                <span class="s30-card__num">3</span>
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <!-- 코어 칩 SVG (디지털 코어) -->
+                  <svg viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="1" /><line x1="8" y1="14" x2="3" y2="14" /><line x1="8" y1="18" x2="3" y2="18" /><line x1="24" y1="14" x2="29" y2="14" /><line x1="24" y1="18" x2="29" y2="18" /><line x1="14" y1="8" x2="14" y2="3" /><line x1="18" y1="8" x2="18" y2="3" /><line x1="14" y1="24" x2="14" y2="29" /><line x1="18" y1="24" x2="18" y2="29" /></svg>
+                </span>
+                <h3 class="s30-card__title">디지털 코어</h3>
+              </div>
+              <p class="s30-card__sub">DT 기반 인프라</p>
+              <p class="s30-card__body">S/4HANA 인메모리 + 통합 데이터 호수 → 후속 AI·빅데이터·디지털 트윈 기반. <em>2018 DT 전략 → 2019 실행 → 2020 가속화</em> 로드맵 출발점</p>
+              <span class="s30-card__src">박제성 상무 인터뷰 2020 보도자료</span>
+            </article>
+            <article class="s30-card">
+              <div class="s30-card__head">
+                <span class="s30-card__num">4</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 코드 표준 SVG (MDM) -->
+                  <svg viewBox="0 0 32 32"><polyline points="11 9 5 16 11 23" /><polyline points="21 9 27 16 21 23" /><line x1="18" y1="6" x2="14" y2="26" /></svg>
+                </span>
+                <h3 class="s30-card__title">MDM 통합</h3>
+              </div>
+              <p class="s30-card__sub">기준정보 표준화</p>
+              <p class="s30-card__body">AS-IS 3사 각자 자재·거래처·계정·조직 코드 → TO-BE 그룹 표준 코드 체계. 장기 통합 보고·KPI 모니터링·M&amp;A 추가 시너지 분석 기반</p>
+              <span class="s30-card__src">박제성 상무 인터뷰 · docx Step 4 §3.4</span>
+            </article>
+            <article class="s30-card" style="grid-column: span 2">
+              <div class="s30-card__head">
+                <span class="s30-card__num">5</span>
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <!-- 박수 + 체크 SVG (만족) -->
+                  <svg viewBox="0 0 32 32"><path d="M 10 22 L 10 14 C 10 12 12 11 13 12 L 13 18 M 13 18 L 13 9 C 13 7 15 6 16 7 L 16 18 M 16 18 L 16 8 C 16 6 18 5 19 6 L 19 18 M 19 18 L 19 10 C 19 8 21 7 22 8 L 22 22 C 22 25 19 28 16 28 C 13 28 10 25 10 22 Z" /></svg>
+                </span>
+                <h3 class="s30-card__title">사용자 만족 · 변경관리</h3>
+              </div>
+              <p class="s30-card__sub">"회계부서 박수" — ERP 도입 흔한 사용자 저항 회피</p>
+              <p class="s30-card__body">13년 누적 SAP 사용자 경험 활용 + 본연 경쟁력 유지 (Customizing 트랙) + 회계 등 명백한 효율 개선 영역 빠른 가시적 성과 → 변경관리 성공</p>
+              <span class="s30-card__src">박제성 상무 인터뷰 · docx Step 4 §3.5 (2017 국내 ERP/CRM 클라우드 적용률 학술 보강)</span>
+            </article>
+          </div>
+          <div class="s30-quote reveal" style="--rev-delay:0.95s">
+            <span>박제성 인터뷰 — "유가에 흔들리지 않고 지속성장하기 위해 <em>디지털 코어를 탄탄히 해</em> 디지털 트랜스포메이션, 인텔리전트 엔터프라이즈로 가야 한다"</span>
+            <span class="s30-quote__src">출처 박제성 상무 인터뷰 박제성 정보전략담당 상무 인터뷰 (2019.09)</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 40 · goal-matching v2 (4대 초기 목표 회수) ============= -->
+    <section class="slide tone-c" data-slide="6">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">40</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s31-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 06</span>
+            <span class="eb-text">초기 목표 vs 달성도 매칭</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            도입 당시 <span class="v3-em">4대 초기 목표 모두 ○ 달성</span> — 비즈니스 가치 중심 검증
+          </h1>
+          <div class="s31-recall reveal" style="--rev-delay:0.32s">
+            <span class="red-box-label">초기 목표 회수</span>
+            <span class="s31-recall__text"><em>4대 비즈니스 목적</em> 검증 — 시스템 가동 X · 비즈니스 가치 창출 ○</span>
+          </div>
+          <div class="s31-table reveal" style="--rev-delay:0.45s">
+            <div class="s31-row s31-row--head">
+              <div class="s31-cell">초기 목표 (Step 2)</div>
+              <div class="s31-cell">관련 PIR 성과</div>
+              <div class="s31-cell">달성도</div>
+              <div class="s31-cell">평가 본문</div>
+            </div>
+            <div class="s31-row">
+              <div class="s31-cell"><span class="s31-cell__label">① 3사 시스템 통합 + 시너지</span></div>
+              <div class="s31-cell">10모듈 × 3사 × 6국 단일 S/4HANA 통합 (2017.11)·본연 경쟁력 유지 + 공통 프로세스 표준화</div>
+              <div class="s31-cell"><span class="s31-cell__ok">○</span></div>
+              <div class="s31-cell">단일 플랫폼 + 시너지 + 본연 가치 보존 <em>3중 균형</em><span class="s31-cell__src">박제성 상무 인터뷰 사업보고서</span></div>
+            </div>
+            <div class="s31-row">
+              <div class="s31-cell"><span class="s31-cell__label">② 글로벌 운영 지원</span></div>
+              <div class="s31-cell">한국 + 6국 거점 + 110국 수출 단일 플랫폼·다국가 회계·다통화·다언어·다규제 대응</div>
+              <div class="s31-cell"><span class="s31-cell__ok">○</span></div>
+              <div class="s31-cell">글로벌 다거점 <em>실시간 가시성</em> 확보<span class="s31-cell__src">박제성 상무 인터뷰 사업보고서</span></div>
+            </div>
+            <div class="s31-row">
+              <div class="s31-cell"><span class="s31-cell__label">③ 중복투자 리스크 제거</span></div>
+              <div class="s31-cell">롯데정보통신 통합 운영체계 + SAP 신규 플랫폼 단일화 + 2018+ 그룹공통시스템 후속 확장</div>
+              <div class="s31-cell"><span class="s31-cell__ok">○</span></div>
+              <div class="s31-cell">단일 플랫폼 + 그룹 차원 후속 확장 <em>이중 효과</em><span class="s31-cell__src">박제성 상무 인터뷰 2018 정정 사업보고서</span></div>
+            </div>
+            <div class="s31-row s31-row--active">
+              <div class="s31-cell"><span class="s31-cell__label">④ 디지털 코어 확보</span></div>
+              <div class="s31-cell">S/4HANA 인메모리 통합 데이터 호수 + 2018 DT 전략 → 2019+ 실행 → 2020 가속화 로드맵</div>
+              <div class="s31-cell"><span class="s31-cell__ok">○</span></div>
+              <div class="s31-cell">DT 기반 인프라 작동·후속 효과로 <em>사후 입증</em><span class="s31-cell__src">박제성 상무 인터뷰 2020 보도자료</span></div>
+            </div>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.9s">
+            <span>4대 목표 모두 <em>비즈니스 가치 중심</em> 달성 — '시스템 가동' X · '비즈니스 가치 창출' ○ — 다음 페이지 32 후속 효과 객관 입증</span>
+            <span class="v3-msg__src">출처 박제성 상무 인터뷰 사업보고서 2018 정정 사업보고서 2020 보도자료</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 41 · followup-2018 v2 (2018 이사회 의결 3 + DT 전략 4 로드맵) ============= -->
+    <section class="slide tone-c" data-slide="7">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">41</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s32-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 07</span>
+            <span class="eb-text">2018 이사회 의결 · DT 전략 로드맵</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            2018+ <span class="v3-em">이사회 의결 15+건 + DT 전략 수립</span> — 객관 사후 입증
+          </h1>
+          <span class="s32-label reveal" style="--rev-delay:0.32s">2018 이사회 의결 3 시점</span>
+          <div class="s32-cards reveal" style="--rev-delay:0.42s">
+            <article class="s32-card">
+              <div class="s32-card__head">
+                <span class="s32-card__date">2018.02.08 · 제3회</span>
+              </div>
+              <h3 class="s32-card__title">그룹공통시스템 + 디지털혁신협의체</h3>
+              <p class="s32-card__body">제7호 그룹공통시스템 사용 계약 + 제8호 디지털혁신협의체 협약. <em>S/4HANA 가동 3개월</em> 만에 그룹 차원 디지털 협력 가입</p>
+            </article>
+            <div class="s32-card-chev" aria-hidden="true">›</div>
+            <article class="s32-card">
+              <div class="s32-card__head">
+                <span class="s32-card__date">2018.05.28 · 제7회</span>
+              </div>
+              <h3 class="s32-card__title">환경·에너지 통합서비스</h3>
+              <p class="s32-card__body">제2호 롯데지주 환경·에너지 통합서비스 계약. 2010 자체 GEMS 구축 → 그룹 통합 환경관리 진화</p>
+            </article>
+            <div class="s32-card-chev" aria-hidden="true">›</div>
+            <article class="s32-card s32-card--active">
+              <div class="s32-card__head">
+                <span class="s32-card__date">2018.12.19 · 제14회</span>
+              </div>
+              <h3 class="s32-card__title">IT 시스템 10건 일괄 의결</h3>
+              <p class="s32-card__body">디지털 안전·영업 모바일·변경관리·대구 수처리 ERP·주52시간·파일서버·이메일·네트워크·<em>SAP 라이선스 추가 구매</em>·접근제어</p>
+            </article>
+          </div>
+          <span class="s32-label reveal" style="--rev-delay:0.55s">DT 전략 4 시점 로드맵</span>
+          <div class="s32-roadmap reveal" style="--rev-delay:0.65s">
+            <div class="s32-rd-card">
+              <span class="s32-rd-card__year">2017.11</span>
+              <span class="s32-rd-card__text">S/4HANA 가동</span>
+            </div>
+            <div class="s32-rd-chev" aria-hidden="true">›</div>
+            <div class="s32-rd-card s32-rd-card--active">
+              <span class="s32-rd-card__year">2018</span>
+              <span class="s32-rd-card__text"><em>DT 전략 선제 수립</em> · 본 사례 출발점</span>
+            </div>
+            <div class="s32-rd-chev" aria-hidden="true">›</div>
+            <div class="s32-rd-card">
+              <span class="s32-rd-card__year">2019</span>
+              <span class="s32-rd-card__text">실행과제 우선순위 개발</span>
+            </div>
+            <div class="s32-rd-chev" aria-hidden="true">›</div>
+            <div class="s32-rd-card s32-rd-card--active">
+              <span class="s32-rd-card__year">2020</span>
+              <span class="s32-rd-card__text"><em>DT 본격 가속화</em> · 보도자료 2020 보도자료 공식 확인</span>
+            </div>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.92s">
+            <span>2018+ 이사회 의결 + DT 로드맵 — 본 ERP 도입이 <em>그룹 디지털 전환의 의도된 출발점</em>임을 사후 객관 입증</span>
+            <span class="v3-msg__src">출처 2018 정정 사업보고서 2020 보도자료</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 42 · vision-bench v2 (비전 격상 + 5사 벤치마크 + 학술 보강) ============= -->
+    <section class="slide tone-c" data-slide="8">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">42</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s33-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 08</span>
+            <span class="eb-text">비전 격상 · 타사 벤치마크</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            비전 <span class="v3-em">톱10 → 톱7 격상</span> + S/4HANA 도입 <span class="v3-em">국내 대기업 중 선구적</span>
+          </h1>
+          <div class="s33-vision reveal" style="--rev-delay:0.35s">
+            <div class="s33-vision-card">
+              <span class="s33-vision__num">2019</span>
+              <p class="s33-vision__text">박제성 인터뷰 시점 — <em>글로벌 톱10 화학회사</em></p>
+            </div>
+            <div class="s33-vision-chev" aria-hidden="true">›</div>
+            <div class="s33-vision-card s33-vision-card--active">
+              <span class="s33-vision__num">2020</span>
+              <p class="s33-vision__text">신년사 — <em>2030 글로벌 톱7 화학회사</em> · 1년 사이 야심찬 목표 격상</p>
+            </div>
+          </div>
+          <div class="s33-bench reveal" style="--rev-delay:0.5s">
+            <div class="s33-row s33-row--head">
+              <div class="s33-cell">기업</div>
+              <div class="s33-cell">S/4HANA 가동</div>
+              <div class="s33-cell">특이사항</div>
+            </div>
+            <div class="s33-row s33-row--active">
+              <div class="s33-cell"><span class="s33-cell__label">롯데케미칼 (석유화학)</span></div>
+              <div class="s33-cell"><em>2017.11</em></div>
+              <div class="s33-cell">국내 대기업 매우 이른 시기·3사 통합 + 글로벌 6국 동시·다운타임 54%↓</div>
+            </div>
+            <div class="s33-row">
+              <div class="s33-cell"><span class="s33-cell__label">SK하이닉스 (반도체)</span></div>
+              <div class="s33-cell">2018.02</div>
+              <div class="s33-cell">반도체 업계 최초·롯데보다 3개월 늦음</div>
+            </div>
+            <div class="s33-row">
+              <div class="s33-cell"><span class="s33-cell__label">삼성전기 (전자부품)</span></div>
+              <div class="s33-cell">2022</div>
+              <div class="s33-cell">다운타임 75%↓·롯데보다 5년 늦음</div>
+            </div>
+            <div class="s33-row">
+              <div class="s33-cell"><span class="s33-cell__label">삼성전자 N-ERP (종합)</span></div>
+              <div class="s33-cell">2022</div>
+              <div class="s33-cell">공급계획 1h→10분·주문 조회 20분→3~4분</div>
+            </div>
+            <div class="s33-row">
+              <div class="s33-cell"><span class="s33-cell__label">LG화학 (석유화학·배터리)</span></div>
+              <div class="s33-cell">2022~ (LG CNS SI)</div>
+              <div class="s33-cell">그룹 ERP 표준화 2020~·SAP 일원화·롯데보다 5년 늦음</div>
+            </div>
+          </div>
+          <div class="s33-aside reveal" style="--rev-delay:0.78s">
+            <span>학술 보강 — 국내 ERP/CRM 클라우드 적용률 <em>21.5%</em> · 제조·건설 대기업 한정 <em>10.5%</em> — 2017 시점 본 사례 선구적 결정 근거</span>
+            <span class="s33-aside__src">출처 학술 보강 자료 · 2017 국내 ERP/CRM 클라우드 적용률 학술 보강</span>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.92s">
+            <span>정량 직접 비교 한계 (측정 기준·시스템 범위·산업 특성 차이) — <em>시기적 위치 + 도입 맥락 차이</em> 중심 비교</span>
+            <span class="v3-msg__src">출처 박제성 상무 인터뷰 사업보고서</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 43 · pir-conclusion v2 (5영역 ○ + 강의 PIR 3대 + 한계 5건 보조 축소 + 결론 회수) ============= -->
+    <section class="slide tone-c" data-slide="9">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">43</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s34-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 4 · 09</span>
+            <span class="eb-text">PIR 종합 검증 · 다음 질문으로</span>
+          </div>
+          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
+            PIR 종합 <span class="v3-em">5영역 ○</span> — 공개자료 안에서 성공 사례로 검증
+          </h1>
+          <div class="s34-five reveal" style="--rev-delay:0.35s">
+            <article class="s34-five-card">
+              <span class="s34-five__ok">○</span>
+              <h4 class="s34-five__title">정량 성과</h4>
+              <p class="s34-five__body">다운타임 54%↓ · 성능 90.5%↑ · 조회 40만건/2분 · 통합 10×3×6×110</p>
+            </article>
+            <article class="s34-five-card">
+              <span class="s34-five__ok">○</span>
+              <h4 class="s34-five__title">정성 성과</h4>
+              <p class="s34-five__body">3사 시너지 · 글로벌 · 디지털 코어 · MDM 통합 · 사용자 만족</p>
+            </article>
+            <article class="s34-five-card">
+              <span class="s34-five__ok">○</span>
+              <h4 class="s34-five__title">초기 목표 달성</h4>
+              <p class="s34-five__body">Step 2 4대 목표 모두 달성 (3사·글로벌·중복투자·DT)</p>
+            </article>
+            <article class="s34-five-card">
+              <span class="s34-five__ok">○</span>
+              <h4 class="s34-five__title">후속 효과</h4>
+              <p class="s34-five__body">2018+ 이사회 15+건 · DT 전략 → 2020 가속화</p>
+            </article>
+            <article class="s34-five-card s34-five-card--active">
+              <span class="s34-five__ok">○</span>
+              <h4 class="s34-five__title">시기적 위치</h4>
+              <p class="s34-five__body">국내 대기업 S/4HANA 도입 매우 이른 시기 — 선구적</p>
+            </article>
+          </div>
+          <span class="s34-section-label reveal" style="--rev-delay:0.55s">강의 PIR 3대 기준 정합 (강의 자료 19p)</span>
+          <div class="s34-lecture reveal" style="--rev-delay:0.62s">
+            <article class="s34-lec-card">
+              <div class="s34-lec__head">
+                <span class="s34-lec__ok">①</span>
+                <h4 class="s34-lec__title">시스템·요구사항 달성</h4>
+              </div>
+              <p class="s34-lec__body">10 핵심 모듈 단일 SAP S/4HANA 가동 · 다운타임 54%↓ · 성능 90.5%↑</p>
+            </article>
+            <article class="s34-lec-card">
+              <div class="s34-lec__head">
+                <span class="s34-lec__ok">②</span>
+                <h4 class="s34-lec__title">사업 효익 실현</h4>
+              </div>
+              <p class="s34-lec__body">3사 시너지 · 글로벌 가시성 · 중복투자 제거 · 회계부서 박수 — <em>보조 논지 4 회수 (SAP 중심 플랫폼)</em></p>
+            </article>
+            <article class="s34-lec-card">
+              <div class="s34-lec__head">
+                <span class="s34-lec__ok">③</span>
+                <h4 class="s34-lec__title">경영 목표 부합</h4>
+              </div>
+              <p class="s34-lec__body">Step 2 4대 목표 모두 달성 · 2030 글로벌 톱7 비전 정합</p>
+            </article>
+          </div>
+          <div class="s43-mini-wrap reveal" style="--rev-delay:0.78s">
+            <div class="s43-mini-label">검증 범위 한계 — 분석 신뢰도 보정 장치</div>
+            <div class="s43-mini-grid">
+              <div class="s43-mini-cell">
+                <span class="s43-mini-cell__no">한계 ①</span>
+                <div class="s43-mini-cell__body">ROI — 투자 규모 비공개</div>
+              </div>
+              <div class="s43-mini-cell">
+                <span class="s43-mini-cell__no">한계 ②</span>
+                <div class="s43-mini-cell__body">만족도 — NPS·CSAT 비공개</div>
+              </div>
+              <div class="s43-mini-cell">
+                <span class="s43-mini-cell__no">한계 ③</span>
+                <div class="s43-mini-cell__body">글로벌 — 6국 거점 적응 자료 부재</div>
+              </div>
+              <div class="s43-mini-cell">
+                <span class="s43-mini-cell__no">한계 ④</span>
+                <div class="s43-mini-cell__body">부정 효과 — 일시적 생산성 저하 자료 부재</div>
+              </div>
+              <div class="s43-mini-cell">
+                <span class="s43-mini-cell__no">한계 ⑤</span>
+                <div class="s43-mini-cell__body">독립 PIR — 외부 감사 결과 비공개</div>
+              </div>
+            </div>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.9s">
+            <span>공개자료의 한계는 있지만, 정량·정성·후속 의사결정을 함께 보면 본 사례는 <em>성과 검증 가능한 성공 사례</em>로 볼 수 있다. — 그렇다면 이 성공을 만든 조건은 무엇인가?</span>
+            <span class="v3-msg__src">출처 — 박제성 상무 인터뷰 · 사업보고서 · 2018 정정 사업보고서 · 2020 보도자료 · 강의 자료 19p</span>
+          </div>
+        </div>
+      </main>
+    </section>
+
+  </div>
+</div>
+
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">←→</span><span class="hint-txt">슬라이드</span>
+</div>
+
+<script src="../shared/script.js"></script>
+</body>
+</html>

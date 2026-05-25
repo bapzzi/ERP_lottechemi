@@ -1,7 +1,7 @@
 # 발표 본문 마스터 — 롯데케미칼 SAP S/4HANA 통합 ERP 사례
 
 **문서 명**: outline/presentation-content-master.md
-**버전**: v1.2 (2026.05.25 갱신·Step 2 v3.2~v3.3 누적 영역 동기화·chapter2-intro 신설·§1.9~§1.17 본문·§7·§8 정합)
+**버전**: v1.4 (2026.05.25 갱신·Step 4·5 9장 확정 차수 정합·각 안내 페이지 1장 신규 추가·본론 8장씩 페이지 번호 +1 시프트·자세한 본문 동기화 다음 차수 권장)
 **작성 주체**: Claude Code (외부 시점·본인 디렉션 정합)
 **관련 프로젝트**: 광운대학교 경영대학 ERP개론 팀프로젝트·1조
 
@@ -28,35 +28,47 @@
 | `docs/Step1_v4.md` ~ `Step5_v4.md` | **정합 검증용** (본인 pandoc 변환·Claude Code Read 가능) | 5건·docx 원본 인용 영역 검증 기준 |
 | `outline/presentation-content-master.md` | **발표 본문 기준** (본 문서·v1.0) | docx 대체·발표 직전 최종 검증·단일 진실 출처 |
 
-### 본 문서 누적 영역 (v1.0 신설 차수)
+### 본 문서 누적 출처 (v1.3 기준)
 
-- `outline/step-page-matrix.md` v10.5 §9-NEW 영역 (27장)
-- `dist/preview-step1.html` v10 빌드 본문 (Step 1 9장)
-- `dist/preview-step2.html` v3.1 빌드 본문 (Step 2 11장·12·16 + 09·10·11·13·14·15·17·18·19)
-- `spec/content-thesis.md` (§1 사례 정체성·§2 보조 논지·§4 표현 금지·§5 변경 이력)
-- `CLAUDE.md` v2.5 §13 가드 1~56
-- 본 세션 누적 영역 (docx → md 정합 검증·1·2·3순위 통합 반영)
+- `outline/step-page-matrix.md` v10.13 §9-NEW 본문 (49장 매핑 — Step 1 8장 + Step 2 11장 + Step 3 14장 + Step 4 8장 + Step 5 8장)
+- `dist/preview-step1.html` v14 빌드 본문 (Step 1 10장)
+- `dist/preview-step2.html` v3.3 빌드 본문 (Step 2 11장)
+- `dist/preview-step3.html` v1 빌드 본문 (Step 3 7장 — Step 3 v2 재구성 진입 시 14장 빌드 전환 예정)
+- `dist/preview-step4.html` v1 빌드 본문 (Step 4 8장)
+- `dist/preview-step5.html` v1 빌드 본문 (Step 5 8장)
+- `spec/content-thesis.md` v10.13 (§1 사례 정체성·§2 보조 논지·§4 표현 금지·§5 변경 이력)
+- `CLAUDE.md` v2.14 §13 가드 1~84
 
 ### 관련 문서
 
-- `outline/step-page-matrix.md` v10.5 — 강제 명시 영역 (시각·디자인)
-- `outline/slides.yml` v1.0 — 28장 골조 (Phase 2 산출물)
-- `spec/content-thesis.md` — 사례 정체성·보조 논지
+- `outline/step-page-matrix.md` v10.13 — 강제 명시 본문 (시각·디자인)
+- `outline/slides.yml` v1.0 — 발표 직전 49장으로 골조 보정 필요 (현재 28장 v1.0 영역은 Phase 2 초기 산출물·다음 차수 골조 보정 권장)
+- `spec/content-thesis.md` v10.13 — 사례 정체성·보조 논지
 - `spec/design-tokens.md` v1.6·`component-catalog.md` v1.6 — 시각 어휘
-- `CLAUDE.md` v2.5 — 가드 1~56·§13 세션 운영 가이드
+- `CLAUDE.md` v2.14 — 가드 1~84·§13 세션 운영 가이드
 - `SESSION_STATE.md` — 운영 메모·본인 환경 영역
 
 ### 갱신 규칙
 
-- 본 문서는 발표 본문 영역만 누적. 매트릭스·spec·dist 빌드 영역 변경 X.
+- 본 문서는 발표 본문만 누적. 매트릭스·spec·dist 빌드 변경 X.
 - 다음 차수 진입 시 본 문서 §10 변경 이력 갱신.
 - 발표 직전 본 문서 최종 정합 검증 권장.
 
 ---
 
-## §1. 슬라이드별 발표 본문 (현 빌드·매트릭스 §9-NEW 영역)
+## §1. 슬라이드별 발표 본문 (현 빌드·매트릭스 §9-NEW 정합)
 
-총 27장 — Step 1 8장 + Step 2 11장 + Step 3 7장 + Step 4·5 (미작성). 빌드 상태: ○ 빌드 완료·△ 매트릭스 반영·빌드 미반영·**X 미빌드**.
+**전체 49장 — Step 1 10장 + Step 2 11장 + Step 3 14장 + Step 4 8장 + Step 5 8장 + 도입부·챕터 진입·결론 8장** (v1.3 기준).
+
+빌드 상태: ○ 빌드 완료 / △ 매트릭스 반영·빌드 미반영 / **X 미빌드**.
+
+| Step | 슬라이드 | 빌드 상태 |
+|---|---|---|
+| 도입부·Step 1 | 01~10 | ○ (`preview-step1.html` v14) |
+| Step 2 | 11~19 (또는 09~19 기존 매핑) | ○ (`preview-step2.html` v3.3) |
+| **Step 3** | **20~33** | **△ — 기존 7장 빌드 (`preview-step3.html` v1·20·21·22·23·24·25·26)·신규 7장 (22 governance-triad·23 four-methodologies·25 seven-month-grounds·26 time-cost-scope·29 configuration-baseline·31 migration-test-vas·33 step3-conclusion) 미빌드·기존 5장 페이지 번호 시프트 필요·다음 차수 v2 재구성** |
+| Step 4 | 34~41 | ○ (`preview-step4.html` v1·페이지 번호 v10.13 시프트 +7·dist 헤더 시프트는 다음 차수) |
+| Step 5 | 42~49 | ○ (`preview-step5.html` v1·페이지 번호 v10.13 시프트 +7·dist 헤더 시프트는 다음 차수) |
 
 ---
 
@@ -653,7 +665,35 @@
 
 ---
 
-### 22. 22 methodology-evolution — Step 3 방법론 진화 + 비대칭성·새 디지털 코어 + 1610 + 4대 방법론 + 압축 일정 4근거 (v10.4·v10.5 통합)
+### 22. 22 governance-triad — Step 3 §2 거버넌스 3축 (v10.13 신규)
+
+**핵심 메시지**: "어느 한 주체로는 추진 불가능한 규모 — **롯데케미칼·롯데정보통신·SAP 본사 3축**이 발주·수행·기술 분담"
+
+**시각 구조**: 3축 카드 가로 1×3 + 3축 구조 의미 2 박스 + 박제성 인용 박스 + v3-msg 결론. Step 2 13 governance-triad와 구분 — Step 3 22는 구축 단계 거버넌스.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 22 governance-triad 영역 정합 — 발주(롯데케미칼·김교현 대표·박제성 상무) / 수행(롯데정보통신·그룹 SI) / 기술(SAP 본사·VAS) + 3축 구조 의미 2 (그룹 SI 장기 통제권·SAP 본사 직접 참여 전략적 판단) + 박제성 인용 "통합 운영체계·중복투자 리스크 제거".
+
+**출처**: 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료·다음 차수 Step 3 디자인 1차 재구성 진입 시 빌드)**
+
+---
+
+### 23. 23 four-methodologies — Step 3 §3.1 4대 구축 방법론 비교 + Roll-out 선정 (v10.13 신규)
+
+**핵심 메시지**: "**4대 구축 방법론 트레이드오프**에서 압축 일정과 3사 통합을 동시에 만족하는 유일한 해는 Roll-out"
+
+**시각 구조**: Step 2 13 four-alternatives 표 패턴 정합 — 5×5 표 (방법론·특징·장점·단점·적합도) + Roll-out 선정 강조 (card.is-active red rail 8px + SELECTED 배지) + Roll-out 3대 근거 가로 1×3 + v3-msg 결론.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 23 four-methodologies 영역 정합 — Big Bang △ (다운타임 리스크 과대) / Phased △ (7개월 단계 분할 불가) / Pilot × (시범 후 확산 불가) / **Roll-out ○ (롯데케미칼 기준 → 정밀화학·첨단소재)** + Roll-out 3 근거 (기준 법인 SAP 자산·영속성 분산·Brownfield 정합).
+
+**출처**: 롯데케미칼 사업보고서 · docx Step 3 §3
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료)**
+
+---
+
+### 24. 24 methodology-evolution — Step 3 §3.2 방법론 진화 + 비대칭성·새 디지털 코어 + 1610 (v10.4·v10.13 페이지 번호 시프트 22→24)
 
 **핵심 메시지**: "시스템 환경의 복잡도에 따라 **구축 방식도 진화** — Big Bang에서 Roll-out으로"
 
@@ -689,7 +729,35 @@
 
 ---
 
-### 23. 23 not-standardize-all — Step 3 GAP 진입 + 챕터 1 §8 회수 + AS-IS/TO-BE 6항목 (v10.5 신규)
+### 25. 25 seven-month-grounds — Step 3 §4.1 7개월 압축 4 근거 (v10.13 신규)
+
+**핵심 메시지**: "**7개월 압축** — SAP 표준 18~24개월 대비 1.5~3배 압축이 가능했던 4 근거"
+
+**시각 구조**: 비교 라벨 (18~24개월 → 7개월) + 4 근거 카드 2×2 + v3-msg 결론. 24 methodology-evolution v10.5 보조 영역에서 독립 분리.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 25 seven-month-grounds 영역 정합 — ① 통합형 컨버전 (Brownfield 성격·기존 자산 이관) / ② 13년 SAP 운영 경험 (2003 SMART·2010 GEMS·교육 부담 ↓) / ③ 그룹 SI 사전 협업 (외부 SI 공모 생략) / ④ SAP VAS (Fit-Gap·Migration Planning·Go-Live Readiness Check 표준 컴포넌트).
+
+**출처**: 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §4.1
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료)**
+
+---
+
+### 26. 26 time-cost-scope — Step 3 §4.1·§4.2·§4.3 PMBOK Iron Triangle 통제 (v10.13 신규)
+
+**핵심 메시지**: "PMBOK Iron Triangle — Time·Cost·Scope **3축 동시 통제**"
+
+**시각 구조**: 강의 PMBOK 정의 인용 박스 + 3축 카드 가로 1×3 (Time·Cost·Scope) + 본연 경쟁력 박스 + v3-msg 결론. Step 2 15 economic-feasibility와 구분 — Step 3 26은 PMBOK 3축 프레임.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 26 time-cost-scope 영역 정합 — Time (25번 4 근거 회수) / Cost (비용 회피형 관리·docx §4.2 정확 표현) / Scope (3축 균형·법인+모듈+프로세스·본연 경쟁력 유지 박제성 인용).
+
+**출처**: docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료)**
+
+---
+
+### 27. 27 not-standardize-all — Step 3 §5.1 GAP 진입 + 챕터 1 §8 회수 + AS-IS/TO-BE 6항목 (v10.5·v10.13 페이지 번호 시프트 23→27)
 
 **핵심 메시지**: "**모든 것을 표준화하지 않는다** — 표준화할 것과 남길 것의 구분"
 
@@ -717,7 +785,7 @@
 
 ---
 
-### 24. 24 gap-three-tracks — Step 3 GAP 3트랙 본문 (v10.4 신규·미빌드)
+### 28. 28 gap-three-tracks — Step 3 §5.2 GAP 3트랙 본문 (v10.4·v10.13 페이지 번호 시프트 24→28)
 
 **핵심 메시지**: "GAP 3트랙 — **BPR · Customizing · Add-on**"
 
@@ -737,7 +805,21 @@
 
 ---
 
-### 25. 25 sap-platform-hub — Step 3 SAP 중심 플랫폼 + 주변 6 시스템 (v10.4 신규·미빌드·content-thesis §2 보조 논지 4 매핑)
+### 29. 29 configuration-baseline — Step 3 §4.4 + §5.5 Configuration·Baseline·Scope Creep 통제 (v10.13 신규·강의 자료 29p·31p·13p·28p 직접 인용)
+
+**핵심 메시지**: "패키지 구현의 가장 큰 위험은 **설정 오류**이며·Baseline·변경관리로 Scope Creep 통제"
+
+**시각 구조**: 강의 자료 29p 인용 박스 + 좌우 split-narrative (Configuration 위험 vs 본 사례 통제) + Baseline 영역 cream 2 박스 (13p·28p) + v3-msg 결론. 사용자 디렉션 정합 — 28 GAP 흡수 X·독립 페이지·강의 자료 영역 강조.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 29 configuration-baseline 영역 정합 — 강의 자료 29p "가장 큰 위험요소" 정확 인용 + 강의 자료 31p Summary (자체 개발 vs 패키지 구매) + Configuration 영역 (10모듈 × 수천 파라미터) + 본 사례 통제 (13년 ECC 자산 컨버전 이관) + 강의 자료 13p Baseline 정의 + 강의 자료 28p Baseline 시점 (구매 지향 최종 선정).
+
+**출처**: 강의 자료 29p·31p·13p·28p · docx Step 3 §4.4·§5.5
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료·교수님 검수 가능 핵심 페이지)**
+
+---
+
+### 30. 30 sap-platform-hub — Step 3 §5.2 Add-on + 보강 D SAP 중심 플랫폼 + 주변 6 시스템 (v10.4·v10.13 페이지 번호 시프트 25→30·content-thesis §2 보조 논지 4 매핑)
 
 **핵심 메시지**: "S/4HANA는 단독 시스템이 아니라 **산업 운영 시스템을 연결하는 중심 플랫폼**"
 
@@ -763,7 +845,21 @@
 
 ---
 
-### 26. 26 downtime-kpi — Step 3 다운타임 KPI + SAP Value Assurance + 6대 리스크 매트릭스 + 다운타임 의미 4 + 테스트 5종 (v10.4·v10.5 통합)
+### 31. 31 migration-test-vas — Step 3 §6.4 + §6.5 + §6.6 Migration 구분 + 테스트 5종 + SAP VAS 3 + Rollback 보조 (v10.13 신규)
+
+**핵심 메시지**: "구축 Roll-out × Migration Big Bang **2축 결합** + 테스트 5종 + VAS 3 사전 검증"
+
+**시각 구조 (3단)**: 상단 Migration 구분 좌우 2축 카드 (구축 Roll-out vs Migration Big Bang) + 중단 테스트 5종 가로 1×5 작게 + 하단 SAP VAS 3 가로 1×3 + Rollback Plan 하단 보조 라벨 (사용자 디렉션 정합 — 독립 슬라이드 X). 표 빽빽 X.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 31 migration-test-vas 영역 정합 — Migration 차원 분리 (docx §6.4 "동일 Big Bang 용어 두 차원") + 테스트 5종 (단위·인터페이스·시스템·UAT·사교성·UAT 강조 "회계부서 박수") + VAS 3 (사전·반복·사후·Fit-Gap·Migration Planning·Go-Live Readiness Check) + Rollback Plan 보조 (docx §6.6 자료 공개 영역 제한 명시).
+
+**출처**: 박제성 상무 인터뷰 · SAP Value Assurance 공식 자료 · 강의 자료 14~17p · docx Step 3 §6
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료·31번 과밀 주의·디자인 단계 카드 크기 조절)**
+
+---
+
+### 32. 32 downtime-kpi — Step 3 §6 다운타임 KPI + 비즈니스 의미 4 + 6대 리스크 매트릭스 (v10.4·v10.13 페이지 번호 시프트 26→32·테스트 5종 + VAS 3은 31로 이동)
 
 **핵심 메시지**: "리스크 통제 KPI — 다운타임 **114h → 52h**·-54%·약 62시간 단축"
 
@@ -806,7 +902,63 @@
 
 ---
 
-### 27. 27 conclusion (Step 4·5 미작성 영역)
+### 33. 33 step3-conclusion — Step 3 결론·방법론·범위·검증·플랫폼 회수 (v10.13 신규·Step 3 마감 영역)
+
+**핵심 메시지**: "Step 3의 핵심은 빠른 구축이 아니라·**방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조**"
+
+**시각 구조**: Step 1 v13 slide 10 step1-conclusion 패턴 정합 — 4 회수 카드 2×2 (방법론·범위·검증·플랫폼) + thesis 박스 cream + red border-left 6px (큰 면) + Step 4 예고 작은 박스.
+
+**본문 영역**: 자세한 본문은 매트릭스 §9-NEW 33 step3-conclusion 영역 정합 — ① 방법론 진화 (RECALL · 22·23·24) / ② 범위 균형 (RECALL · 27·28) / ③ 사전 검증 (RECALL · 31·32) / ④ 플랫폼 통합 (RECALL · 22·30·card.is-active·보조 논지 4 회수).
+
+**thesis 박스 결론 문장 정확 인용**: "Step 3의 핵심은 빠른 구축이 아니라, **방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조**다."
+
+**Step 4 예고 연결 문장**: "**이제 남은 질문은 구축이 실제 성과로 이어졌는가이다** → Step 4 PIR (Post-Implementation Review)"
+
+**출처**: docx Step 3 §7 4대 원칙 회수
+
+**빌드 상태**: **X (미빌드·매트릭스 §9-NEW v10.13 신규 작성 완료·Step 3 마감 결론 페이지)**
+
+---
+
+### 35~52. Step 4·5 영역 (v10.14 9장 확장 + 안내 페이지 신규·자세한 본문 동기화 다음 차수 권장)
+
+**Step 4 9장 (35~43)** — 안내 + 본론 8 (v10.13 → v10.14 페이지 번호 시프트 +1):
+- **35 step4-intro-overview** (신규) — 안내·"구축은 끝났다. 실제 성과로 이어졌는가?"·좌 질문 박스 + 우 6단 흐름 카드 (정량 4·정성 5·목표 4·후속·벤치·한계) + 하단 thesis
+- 36 pir-frame (구 34) — PIR 정의 19p + 7개 분석 영역 + ROI 비공개 명시
+- 37 quant-results-1 (구 35) — 다운타임 114h→52h + 성능 90.5%↑ + 의미 4
+- 38 quant-results-2 (구 36) — 조회 40만건 2분 + 통합 10×3×6×110 + 회계부서 박수
+- 39 qual-5values (구 37) — 정성 5가치 + 박제성 "디지털 코어를 탄탄히"
+- 40 goal-matching (구 38) — Step 2 4대 목표 모두 ○ + 4번째 (DT) 강조
+- 41 followup-2018 (구 39) — 2018 이사회 3 시점 + DT 로드맵
+- 42 vision-bench (구 40) — 비전 톱10→톱7 + 5개사 비교 + 학술 보강
+- 43 pir-conclusion (구 41) — PIR 5영역 ○ + 강의 3대 기준 + **한계 5건 작은 보조 표** + Step 5 예고
+
+**Step 5 9장 (44~52)** — 안내 + 본론 8 (v10.13 → v10.14 페이지 번호 시프트 +1):
+- **44 step5-intro-overview** (신규) — 안내·"그래서 우리는 무엇을 배우는가?"·좌 질문 박스 + 우 6단 흐름 카드 (CSF 5·압축 3·한계 4·시사 3·통찰 3·향후 4·결론) + 하단 thesis
+- 45 csf-frame (구 42) — 강의 5대 차이 표 + 결론 토대
+- 46 csf-5values (구 43) — CSF 5가지 + 단일 의사결정 철학·CSF 1·3 강조
+- 47 csf-3-pres (구 44) — 발표용 CSF 3 + 강의 정합 매핑
+- 48 limits-4 (구 45) — 한계 4 (타 기업 적용 트레이드오프 관점)
+- 49 implications-3 (구 46) — 시사점 3
+- 50 insights-3 (구 47) — 본질 통찰 3 + 보조 논지 4 회수
+- 51 future-4 (구 48) — 향후 과제 4 + 2030 톱7
+- 52 final-conclusion (구 49) — **핀잡 메시지 시각 주인공** + 출처 작은 source-line (자료명 5건 압축·별도 출처 페이지 X)
+
+**Step 4 한계 vs Step 5 한계 관점 분리**: Step 4 43 = PIR 분석 검증 가능 범위·Step 5 48 = 타 기업 적용·사례 일반화 트레이드오프.
+
+**전체 발표 합계**: 도입부 2장 + 챕터 진입 5장 + Step 1 10장 + Step 2 11장 + **Step 3 15장** (v3 안내 포함) + **Step 4 9장** + **Step 5 9장** = **약 51장** (v10.14 본 차수 정합·도입부·챕터 진입 영역 별도 본인 결정 영역).
+
+**Step 4·5 본문 자세한 동기화 다음 차수 권장**: 본 §1 표만 9장 정합·각 페이지 자세한 발표 본문은 매트릭스 §9-NEW 영역 정합 후 동기화 (자세한 본문 갱신은 v1.5 권장).
+
+**Step 4·5 영역 본문 동기화**: 본 차수 미진입. 매트릭스 §12-4 매핑 표 + content-thesis §5 변경 이력 v10.13 라인에 페이지 번호 시프트 기록 완료. master Step 4·5 영역 자세한 본문 페이지 번호 시프트 + content-thesis §3 매핑 표 페이지 번호 갱신은 다음 차수 본인 결정 영역 권장 (발표 직전 일괄 보정 차수 또는 Step 4·5 디자인 재구성 차수).
+
+---
+
+<!-- v1.0~v1.2 잔존 §27 "Step 4·5 미작성 영역 예고" 부분은 v1.3에서 폐기 — Step 3 14장 확장으로 페이지 번호 27은 not-standardize-all로 시프트되었고, Step 4·5는 본 §1 표 마지막에서 34~49로 정합. 결론 영역은 49 final-conclusion(Step 5 §7)으로 매핑 완료. 이 자리 자체는 다음 차수 master 재정리 시점에 삭제 또는 새 §50 영역으로 재정의 결정. -->
+
+### 50. (v1.3에서 비어 있음 — v1.0~v1.2 §27 conclusion 안내 폐기)
+
+본 자리는 v1.0~v1.2 시점 "27 conclusion (Step 4·5 미작성 예고)"였으나, v1.3 Step 3 14장 확장으로 페이지 번호 27은 27 not-standardize-all로 시프트되었다. 발표 결론은 49 final-conclusion(Step 5 §7)으로 매핑된다. 본 §50 자리는 다음 차수 master 재정리 시점에 삭제 또는 새 영역으로 재정의 권장.
 
 **상태**: **미작성 — Step 4·5 §9-NEW 미작성·다음 차수 진입 영역 (가드 39·50)**
 
