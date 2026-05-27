@@ -2319,60 +2319,121 @@
         <div class="head-page"><span class="hp-num">35</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s35i-main">
+        <div class="s35i-main" style="display:flex;flex-direction:column;gap:14px;height:100%;overflow:hidden">
+
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 4 · 01</span>
             <span class="eb-text">구축 성과 검증 — PIR 6대 흐름 안내</span>
           </div>
-          <h1 class="v3-headline reveal" style="--rev-delay:0.18s">
-            Step 4는 <span class="v3-em">구축 성과가 실제로 검증됐는가</span>를 살핀다
-          </h1>
-          <div class="s35i-body">
-            <div class="s35i-q reveal" style="--rev-delay:0.3s">
-              <span class="s35i-q__label">Core Question</span>
-              <div class="s35i-q__head">
-                구축은 끝났다.<br /><em>실제 성과로 이어졌는가?</em>
+
+          <!-- 본문 — 좌 32 (STEP 4 hero) / 우 68 (6 카드 세로 list) -->
+          <div style="display:grid;grid-template-columns:32% 68%;gap:32px;flex:1 1 auto;min-height:0;align-items:stretch">
+
+            <!-- 좌측 — STEP 4 hero (Step 1·5 첫 페이지 패턴 정합·큰 "4" + STEP 4 라벨 + 제목) -->
+            <aside style="display:flex;flex-direction:column;padding-left:24px;border-left:8px solid var(--color-red);min-height:0;height:100%;position:relative">
+
+              <!-- 상단 묶음 — STEP 4 라벨 + 큰 "4" + 제목 -->
+              <div class="reveal" style="--rev-delay:0.2s;display:flex;flex-direction:column;gap:14px">
+                <!-- STEP 4 라벨 (red-box·큰·Step 1·5 정합) -->
+                <span style="display:inline-flex;align-self:flex-start;align-items:center;padding:8px 18px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:18px;font-weight:800;letter-spacing:0.16em;border-radius:3px">STEP 4</span>
+                <!-- 큰 "4" watermark -->
+                <div style="font-family:var(--font-mono);font-size:240px;font-weight:900;color:var(--color-red);line-height:0.82;letter-spacing:-0.04em">4</div>
+                <span style="font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.2em;color:var(--color-red);text-transform:uppercase;margin-top:4px">Post-Implementation Review</span>
+                <h2 style="margin:0;font-family:var(--font-sans);font-size:32px;font-weight:900;color:var(--color-ink-strong);line-height:1.22;letter-spacing:-0.018em">
+                  구축은 끝났다.<br/>
+                  실제 <em style="font-style:normal;font-weight:900;color:var(--color-red)">성과로 이어졌는가</em>?
+                </h2>
+                <span style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;margin-top:2px">정량 · 정성 · 후속 · 한계 균형 검증</span>
               </div>
-              <div class="s35i-q__sub">
-                완료 보고가 아닌, 공개자료 범위 안에서 4단계 PIR 프레임으로 정량·정성·후속·한계까지 균형 검증한다.
+
+              <!-- 하단 PIR 4 Flow visual -->
+              <div class="reveal" style="--rev-delay:1.15s;margin-top:auto;display:flex;flex-direction:column;gap:8px;padding:12px 16px;background:var(--color-paper);border:1px solid var(--color-line);border-left:4px solid var(--color-red)">
+                <span style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:0.16em;color:var(--color-red);text-transform:uppercase">PIR 4 Flow</span>
+                <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap">
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-ink-strong)">정량</span>
+                  <span style="color:var(--color-red);font-family:var(--font-mono);font-size:13px;font-weight:900">→</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-ink-strong)">정성</span>
+                  <span style="color:var(--color-red);font-family:var(--font-mono);font-size:13px;font-weight:900">→</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-ink-strong)">후속</span>
+                  <span style="color:var(--color-red);font-family:var(--font-mono);font-size:13px;font-weight:900">→</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-ink-strong)">한계</span>
+                </div>
               </div>
-            </div>
-            <div class="s35i-flow reveal" style="--rev-delay:0.42s">
-              <div class="s35i-card">
-                <span class="s35i-card__no">01</span>
-                <div class="s35i-card__title">정량 성과</div>
-                <div class="s35i-card__kw">다운타임 <em class="nowrap">114h → 52h</em> · 성능 <em class="nowrap">90.5%</em></div>
-              </div>
-              <div class="s35i-card">
-                <span class="s35i-card__no">02</span>
-                <div class="s35i-card__title">정성 가치</div>
-                <div class="s35i-card__kw"><em>3사 시너지</em> · 디지털 코어 · MDM</div>
-              </div>
-              <div class="s35i-card">
-                <span class="s35i-card__no">03</span>
-                <div class="s35i-card__title">목표 달성</div>
-                <div class="s35i-card__kw">초기 <em>4대 목표</em> 모두 달성</div>
-              </div>
-              <div class="s35i-card">
-                <span class="s35i-card__no">04</span>
-                <div class="s35i-card__title">후속 입증</div>
-                <div class="s35i-card__kw"><em class="nowrap">2018 이사회</em> 추가 의결 3건</div>
-              </div>
-              <div class="s35i-card">
-                <span class="s35i-card__no">05</span>
-                <div class="s35i-card__title">벤치마크</div>
-                <div class="s35i-card__kw">국내 화학 <em>선구 도입</em> 사례</div>
-              </div>
-              <div class="s35i-card is-active">
-                <span class="s35i-card__no">06</span>
-                <div class="s35i-card__title">한계 인식</div>
-                <div class="s35i-card__kw">ROI · 만족도 <em>미공개 영역</em> 명시</div>
-              </div>
+            </aside>
+
+            <!-- 우측 — 6 카드 세로 list (Step 1·5 첫 페이지 패턴 정합·flex column·flex 균등·우측 padding 영역 잘림 회피) -->
+            <div style="display:flex;flex-direction:column;gap:10px;min-height:0;padding-right:12px">
+
+              <!-- 01 정량 성과 → pages 37·38 -->
+              <article class="reveal" style="--rev-delay:0.35s;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">01</span>
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">정량 성과</h3>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;word-break:keep-all">다운타임 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">-54%</em> · 성능 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">90.5%↑</em> · 조회 40만건/2분 · 통합 10×3×6×110</p>
+                </div>
+                <span style="padding:5px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px;white-space:nowrap;flex-shrink:0">→ 37·38</span>
+              </article>
+
+              <!-- 02 정성 가치 → page 39 -->
+              <article class="reveal" style="--rev-delay:0.47s;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">02</span>
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">정성 가치</h3>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;word-break:keep-all"><em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">3사 시너지</em> · 글로벌 · 디지털 코어 · MDM · 회계부서 박수</p>
+                </div>
+                <span style="padding:5px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px;white-space:nowrap;flex-shrink:0">→ 39</span>
+              </article>
+
+              <!-- 03 목표 달성 → page 40 -->
+              <article class="reveal" style="--rev-delay:0.59s;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">03</span>
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">목표 달성</h3>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;word-break:keep-all">Step 2 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">4대 목표 모두 ○ 달성</em> (3사·글로벌·중복·DT)</p>
+                </div>
+                <span style="padding:5px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px;white-space:nowrap;flex-shrink:0">→ 40</span>
+              </article>
+
+              <!-- 04 후속 입증 → page 41·42 -->
+              <article class="reveal" style="--rev-delay:0.71s;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">04</span>
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">후속 입증</h3>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;word-break:keep-all">2018 이사회 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">15+건</em> · DT 전략 → 2020 가속화 · 2030 톱7</p>
+                </div>
+                <span style="padding:5px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px;white-space:nowrap;flex-shrink:0">→ 41·42</span>
+              </article>
+
+              <!-- 05 벤치마크 → page 43 -->
+              <article class="reveal" style="--rev-delay:0.83s;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">05</span>
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">벤치마크</h3>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;word-break:keep-all">국내 대기업 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">선구적</em> · 동종 5년 격차 (삼성·LG 2022)</p>
+                </div>
+                <span style="padding:5px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px;white-space:nowrap;flex-shrink:0">→ 43</span>
+              </article>
+
+              <!-- 06 종합 + 한계 → page 44·45 (active red·강조·Step 4 결론) -->
+              <article class="reveal" style="--rev-delay:0.95s;display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:center;padding:14px 22px;background:var(--color-paper);border:2px solid var(--color-red);border-left:6px solid var(--color-red);min-height:0;flex:1 1 0;box-shadow:0 4px 14px rgba(214,30,30,0.1)">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">06</span>
+                <div style="display:flex;flex-direction:column;gap:3px;min-width:0">
+                  <div style="display:flex;align-items:center;gap:10px">
+                    <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.018em">종합 + 한계</h3>
+                    <span style="padding:2px 8px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:0.08em;border-radius:2px">Step 4 결론</span>
+                  </div>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.45;word-break:keep-all">PIR <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">5영역 ○</em> + 강의 PIR 3대 정합 · 한계 5건 인식</p>
+                </div>
+                <span style="padding:5px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px;white-space:nowrap;flex-shrink:0">→ 44·45</span>
+              </article>
             </div>
           </div>
-          <div class="s35i-thesis reveal" style="--rev-delay:0.55s">
-            Step 4의 핵심은 "성과가 있었다"가 아니라, 공개자료로 확인 가능한 범위 안에서 <em>성과·후속·한계를 균형 있게 검증</em>하는 것이다.
+
+          <!-- 하단 thesis -->
+          <div class="reveal" style="--rev-delay:1.3s;display:flex;align-items:center;gap:18px;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:8px solid var(--color-red);flex-shrink:0">
+            <span style="font-family:var(--font-sans);font-size:17px;font-weight:800;line-height:1.45;color:var(--color-ink-strong)">Step 4의 핵심은 "성과가 있었다"가 아니라, 공개자료 범위에서 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">성과·후속·한계를 균형 있게 검증</em>하는 것이다</span>
+            <span style="margin-left:auto;font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--color-ink-mute);letter-spacing:0.06em;flex-shrink:0;white-space:nowrap">강의 PIR 19p 정합</span>
           </div>
         </div>
       </main>
@@ -2457,10 +2518,6 @@
                 <span class="s27-cell--src-meta">2018 정정 사업보고서</span>
               </div>
             </div>
-          </div>
-          <div class="v3-msg reveal" style="--rev-delay:0.9s">
-            <span>본 사례는 <em>정량 4지표</em>와 <em>정성·후속 효과</em>를 함께 보유한 PIR 자료로, 공개 범위 안에서 다층 검증이 가능하다.</span>
-            <span class="v3-msg__src">출처: 박제성 상무 인터뷰 · 사업보고서 · 강의 자료 19p</span>
           </div>
         </div>
       </main>

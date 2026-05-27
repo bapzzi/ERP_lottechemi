@@ -2883,6 +2883,73 @@
       font-weight: 800;
     }
 
+    /* 27 Iron Triangle 동적 디자인 — 신규 keyframe (cream 배경 X·삼각형 draw·정점 entry+pulse·중앙 fade) */
+    @keyframes s27TriangleDraw {
+      from { stroke-dashoffset: 920; }
+      to   { stroke-dashoffset: 0; }
+    }
+    @keyframes s27VertexIn {
+      0%   { opacity: 0; transform: scale(0); }
+      70%  { opacity: 1; transform: scale(1.15); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    @keyframes s27VertexPulse {
+      0%, 100% { filter: drop-shadow(0 0 0 transparent); transform: scale(1); }
+      50%      { filter: drop-shadow(0 0 14px rgba(230, 0, 18, 0.55)); transform: scale(1.05); }
+    }
+    @keyframes s27CenterIn {
+      from { opacity: 0; transform: translateY(8px) scale(0.94); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes s27DotFlow {
+      0%   { opacity: 0; }
+      15%  { opacity: 1; }
+      85%  { opacity: 1; }
+      100% { opacity: 0; }
+    }
+
+    /* 삼각형 외곽 path */
+    .s27-triangle-path {
+      stroke-dasharray: 920;
+      stroke-dashoffset: 920;
+      animation: s27TriangleDraw 1.4s cubic-bezier(0.2, 0.7, 0.2, 1) 0.4s forwards;
+    }
+
+    /* T·C·S 정점 그룹 (outer ring + inner circle + text) */
+    .s27-vertex {
+      transform-origin: center;
+      transform-box: fill-box;
+      opacity: 0;
+    }
+    .s27-vertex--t {
+      animation: s27VertexIn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 0.9s forwards,
+                 s27VertexPulse 2.6s ease-in-out 2.4s infinite;
+    }
+    .s27-vertex--c {
+      animation: s27VertexIn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.1s forwards,
+                 s27VertexPulse 2.6s ease-in-out 2.6s infinite;
+    }
+    .s27-vertex--s {
+      animation: s27VertexIn 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) 1.3s forwards,
+                 s27VertexPulse 2.6s ease-in-out 2.8s infinite;
+    }
+
+    /* 중앙 메시지 */
+    .s27-center {
+      opacity: 0;
+      transform-origin: center;
+      transform-box: fill-box;
+      animation: s27CenterIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 1.8s forwards;
+    }
+
+    /* 정점 → 중앙 dot flow (3 dots·각 정점에서 중앙으로 흐름) */
+    .s27-dot-flow {
+      animation: s27DotFlow 2.2s ease-in-out infinite;
+    }
+    .s27-dot-flow--t { animation-delay: 2.4s; }
+    .s27-dot-flow--c { animation-delay: 2.7s; }
+    .s27-dot-flow--s { animation-delay: 3.0s; }
+
     /* 20 step3-intro 전면 리빌딩 — 신규 keyframe */
     @keyframes s20bBigNum {
       0%   { opacity: 0; transform: translateY(-12px) scale(0.94); }
@@ -3326,7 +3393,7 @@
             <span class="eb-text">방법론 진화</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            17년 SAP 운영 경험의 진화 — <span class="v3-em">단일 법인 Big Bang에서 3사 통합 Roll-out으로</span>
+            13년 SAP 운영 경험의 진화 — <span class="v3-em">단일 법인 Big Bang에서 3사 통합 Roll-out으로</span>
           </h1>
           <div class="s22-timeline-row reveal" style="--rev-delay:0.4s">
             <article class="s22-tl-card">
@@ -3678,37 +3745,59 @@
           </div>
           <div class="s26-cards reveal" style="--rev-delay:0.5s;display:grid;grid-template-columns:0.42fr 0.58fr;gap:24px;align-items:stretch;min-height:0">
 
-            <!-- 좌 — PMBOK Iron Triangle SVG 도식 (T·C·S 정점 + 중앙 메시지) -->
-            <div style="display:flex;align-items:center;justify-content:center;padding:20px 24px;background:var(--color-bg-cream);border:1px solid var(--color-red-soft);border-left:5px solid var(--color-red);position:relative;min-height:0">
+            <!-- 좌 — PMBOK Iron Triangle SVG 도식 (cream 배경 X·paper·동적 애니메이션) -->
+            <div style="display:flex;align-items:center;justify-content:center;padding:20px 24px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);position:relative;min-height:0;overflow:visible">
               <svg viewBox="0 0 400 380" style="width:100%;height:auto;max-height:100%;display:block" aria-hidden="true">
-                <!-- 삼각형 외곽 (얇고 부드러운 stroke·opacity 0.7) -->
-                <polygon points="200,55 60,330 340,330" style="fill:none;stroke:var(--color-red);stroke-width:2;stroke-linejoin:round;opacity:0.7" />
+                <!-- 삼각형 외곽 — stroke draw 애니메이션 (1.4s·dashoffset 920→0) -->
+                <polygon class="s27-triangle-path" points="200,55 60,330 340,330" style="fill:none;stroke:var(--color-red);stroke-width:2.5;stroke-linejoin:round;opacity:0.85" />
 
-                <!-- T 정점 (상단) — outer ring + inner circle -->
-                <circle cx="200" cy="55" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
-                <circle cx="200" cy="55" r="32" style="fill:var(--color-red)" />
-                <text x="200" y="66" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">T</text>
-                <text x="200" y="116" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Time</text>
-                <text x="200" y="138" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">시간 — 7개월</text>
+                <!-- 정점 → 중앙 dot flow 3 영역 (정점에서 중앙으로 흐르는 빨간 dot·무한 pulse) -->
+                <circle class="s27-dot-flow s27-dot-flow--t" cx="200" cy="55" r="4" style="fill:var(--color-red)">
+                  <animate attributeName="cx" values="200;200" dur="2.2s" repeatCount="indefinite" />
+                  <animate attributeName="cy" values="95;220" dur="2.2s" repeatCount="indefinite" begin="2.4s" />
+                </circle>
+                <circle class="s27-dot-flow s27-dot-flow--c" cx="60" cy="330" r="4" style="fill:var(--color-red)">
+                  <animate attributeName="cx" values="100;200" dur="2.2s" repeatCount="indefinite" begin="2.7s" />
+                  <animate attributeName="cy" values="300;220" dur="2.2s" repeatCount="indefinite" begin="2.7s" />
+                </circle>
+                <circle class="s27-dot-flow s27-dot-flow--s" cx="340" cy="330" r="4" style="fill:var(--color-red)">
+                  <animate attributeName="cx" values="300;200" dur="2.2s" repeatCount="indefinite" begin="3.0s" />
+                  <animate attributeName="cy" values="300;220" dur="2.2s" repeatCount="indefinite" begin="3.0s" />
+                </circle>
 
-                <!-- C 정점 (좌하) — 라벨·sub 위로 18px (Cost 글자·원 안 겹침 해소) -->
-                <circle cx="60" cy="330" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
-                <circle cx="60" cy="330" r="32" style="fill:var(--color-red)" />
-                <text x="60" y="341" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">C</text>
-                <text x="60" y="278" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Cost</text>
-                <text x="60" y="258" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">비용 — 회피형</text>
+                <!-- T 정점 (상단) — outer ring + inner circle + text·sequential entry + 무한 pulse -->
+                <g class="s27-vertex s27-vertex--t">
+                  <circle cx="200" cy="55" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
+                  <circle cx="200" cy="55" r="32" style="fill:var(--color-red)" />
+                  <text x="200" y="66" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">T</text>
+                  <text x="200" y="116" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Time</text>
+                  <text x="200" y="138" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">시간 — 7개월</text>
+                </g>
 
-                <!-- S 정점 (우하) — 동일 처리 -->
-                <circle cx="340" cy="330" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
-                <circle cx="340" cy="330" r="32" style="fill:var(--color-red)" />
-                <text x="340" y="341" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">S</text>
-                <text x="340" y="278" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Scope</text>
-                <text x="340" y="258" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">범위 — 3축 균형</text>
+                <!-- C 정점 (좌하) -->
+                <g class="s27-vertex s27-vertex--c">
+                  <circle cx="60" cy="330" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
+                  <circle cx="60" cy="330" r="32" style="fill:var(--color-red)" />
+                  <text x="60" y="341" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">C</text>
+                  <text x="60" y="278" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Cost</text>
+                  <text x="60" y="258" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">비용 — 회피형</text>
+                </g>
 
-                <!-- 중앙 메시지 (본 사례) — 위치 미세 조정 -->
-                <text x="200" y="220" text-anchor="middle" style="fill:var(--color-red);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.16em">본 사례</text>
-                <text x="200" y="252" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:22px;font-weight:900;letter-spacing:-0.018em">3 축 동시 만족</text>
-                <text x="200" y="278" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">어느 하나도 희생 X</text>
+                <!-- S 정점 (우하) -->
+                <g class="s27-vertex s27-vertex--s">
+                  <circle cx="340" cy="330" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
+                  <circle cx="340" cy="330" r="32" style="fill:var(--color-red)" />
+                  <text x="340" y="341" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">S</text>
+                  <text x="340" y="278" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Scope</text>
+                  <text x="340" y="258" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">범위 — 3축 균형</text>
+                </g>
+
+                <!-- 중앙 메시지 (본 사례) — fade + scale entry (1.8s) -->
+                <g class="s27-center">
+                  <text x="200" y="220" text-anchor="middle" style="fill:var(--color-red);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.16em">본 사례</text>
+                  <text x="200" y="252" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:22px;font-weight:900;letter-spacing:-0.018em">3 축 동시 만족</text>
+                  <text x="200" y="278" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">어느 하나도 희생 X</text>
+                </g>
               </svg>
             </div>
 
