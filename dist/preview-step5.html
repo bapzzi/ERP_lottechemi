@@ -895,6 +895,1815 @@
       color: var(--color-ink);
       margin-right: 8px;
     }
+
+    /* ========== Step 5 v2 — 44·47·52 재구성 (Step 4 v7 패턴 정합·가드 6·8·11·45·49·53·81·§4-3·§4-4·§4-5) ========== */
+
+    /* ===== 44 (s44i) — 좌 질문 박스 상단 정렬 + 우 세로 2×3 흐름 카드 (Step 4 35 패턴) ===== */
+    .slide .s44i-body {
+      grid-template-columns: 0.85fr 1.5fr !important;
+      gap: 24px !important;
+    }
+    .slide .s44i-q {
+      padding: 28px 30px !important;
+      justify-content: flex-start !important;
+      align-items: flex-start !important;
+      gap: 18px !important;
+    }
+    .slide .s44i-q__label {
+      font-size: 14px !important;
+      letter-spacing: 0.14em !important;
+    }
+    .slide .s44i-q__head {
+      font-size: 40px !important;
+      font-weight: 900 !important;
+      line-height: 1.2 !important;
+      letter-spacing: -0.02em !important;
+    }
+    .slide .s44i-q__sub {
+      font-size: 20px !important;
+      font-weight: 600 !important;
+      line-height: 1.5 !important;
+      color: var(--color-ink) !important;
+      letter-spacing: -0.005em !important;
+    }
+    /* 우측 세로 flow list — 2열 3행 */
+    .slide .s44i-flow {
+      grid-template-columns: 1fr 1fr !important;
+      grid-template-rows: 1fr 1fr 1fr !important;
+      gap: 10px !important;
+      align-content: stretch !important;
+    }
+    .slide .s44i-card {
+      display: grid !important;
+      grid-template-columns: 56px 1fr !important;
+      grid-template-rows: auto auto !important;
+      align-items: center !important;
+      column-gap: 16px !important;
+      row-gap: 4px !important;
+      padding: 14px 18px !important;
+    }
+    .slide .s44i-card__no {
+      grid-row: 1 / 3 !important;
+      grid-column: 1 !important;
+      display: inline-flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      width: 56px !important;
+      height: 56px !important;
+      border-radius: 50% !important;
+      background: var(--color-graphite) !important;
+      color: var(--color-paper) !important;
+      font-family: var(--font-mono);
+      font-size: 18px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.02em !important;
+      align-self: center !important;
+    }
+    .slide .s44i-card.is-active .s44i-card__no { background: var(--color-red) !important; }
+    .slide .s44i-card__title {
+      grid-row: 1 !important;
+      grid-column: 2 !important;
+      font-size: 22px !important;
+      font-weight: 800 !important;
+      line-height: 1.15 !important;
+      align-self: end !important;
+    }
+    .slide .s44i-card__kw {
+      grid-row: 2 !important;
+      grid-column: 2 !important;
+      font-size: 16px !important;
+      font-weight: 500 !important;
+      line-height: 1.4 !important;
+      color: var(--color-ink-soft) !important;
+      align-self: start !important;
+    }
+    .slide .s44i-card__kw em {
+      color: var(--color-red) !important;
+      font-weight: 700 !important;
+      font-style: normal !important;
+    }
+    .slide .s44i-thesis {
+      font-size: 22px !important;
+      line-height: 1.55 !important;
+      padding: 20px 28px !important;
+      font-weight: 700 !important;
+    }
+    /* 44 sequential pop 애니메이션 (Step 4 v6 정합) */
+    @keyframes s44iCardPop {
+      0% { opacity: 0; transform: scale(0.7) translateY(8px); }
+      60% { transform: scale(1.04) translateY(0); }
+      100% { opacity: 1; transform: scale(1) translateY(0); }
+    }
+    .slide .s44i-flow .s44i-card {
+      opacity: 0;
+      animation: s44iCardPop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+      transform-origin: center;
+      will-change: transform, opacity;
+    }
+    .slide .s44i-flow .s44i-card:nth-child(1) { animation-delay: 0.5s; }
+    .slide .s44i-flow .s44i-card:nth-child(2) { animation-delay: 0.62s; }
+    .slide .s44i-flow .s44i-card:nth-child(3) { animation-delay: 0.74s; }
+    .slide .s44i-flow .s44i-card:nth-child(4) { animation-delay: 0.86s; }
+    .slide .s44i-flow .s44i-card:nth-child(5) { animation-delay: 0.98s; }
+    .slide .s44i-flow .s44i-card:nth-child(6) { animation-delay: 1.10s; }
+
+    /* ===== 47 (s37) — 카드 제목·본문 강제 룰 복원 + 핵심 회수 라벨 (Step 4 v3·v5 정합) ===== */
+    .slide .s37-card__title { font-size: 30px !important; line-height: 1.15 !important; }
+    .slide .s37-card__sub {
+      font-size: 16px !important;
+      font-weight: 700 !important;
+      color: var(--color-ink-soft) !important;
+      letter-spacing: -0.005em !important;
+    }
+    .slide .s37-card__body {
+      font-size: 17px !important;
+      line-height: 1.5 !important;
+      word-break: keep-all !important;
+    }
+    .slide .s37-card__body em {
+      color: var(--color-red);
+      font-weight: 700;
+      font-style: normal;
+    }
+    .slide .s37-card {
+      padding: 18px 20px !important;
+      gap: 8px !important;
+    }
+    .slide .s37-cards {
+      gap: 14px !important;
+    }
+    .slide .s37-lecmap {
+      margin-top: 6px !important;
+      padding: 10px 14px !important;
+      background: var(--color-bg-cream) !important;
+      border-left: 3px solid var(--color-graphite) !important;
+      font-family: var(--font-sans) !important;
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: var(--color-ink) !important;
+      line-height: 1.45 !important;
+      letter-spacing: -0.005em !important;
+    }
+    .slide .s37-lecmap__label {
+      display: inline-block !important;
+      margin-right: 8px !important;
+      padding: 2px 8px !important;
+      font-family: var(--font-mono) !important;
+      font-size: 10px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase !important;
+      background: var(--color-graphite) !important;
+      color: var(--color-paper) !important;
+      border-radius: 2px !important;
+    }
+    /* 47 핵심 회수 라벨 (Step 4 v5 .s30-card__role-label 패턴) */
+    .slide .s37-card__role-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      margin-bottom: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      background: var(--color-red);
+      color: var(--color-paper);
+    }
+    /* 47 source-line 분리 */
+    .slide .s47-source-line {
+      margin-top: 6px;
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== 52 (s42) — 핀잡 임팩트 강화 + 회수 3핵심 + 학습 가치 + source-line (Step 4 v7 패턴) ===== */
+    .slide .s42-main {
+      display: grid !important;
+      grid-template-rows: auto 1fr auto auto auto !important;
+      gap: 18px !important;
+      align-content: start !important;
+      height: 100% !important;
+    }
+    .slide .s42-pinjab {
+      padding: 36px 44px !important;
+      background: var(--color-paper) !important;
+      border: 1px solid var(--color-red-soft) !important;
+      border-left: 8px solid var(--color-red) !important;
+      display: grid !important;
+      grid-template-columns: auto 1fr !important;
+      gap: 28px !important;
+      align-items: center !important;
+    }
+    .slide .s42-pinjab__icon {
+      width: 72px;
+      height: 72px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-red-pale);
+      border-radius: 50%;
+      color: var(--color-red);
+      flex-shrink: 0;
+    }
+    .slide .s42-pinjab__icon svg {
+      width: 40px;
+      height: 40px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .slide .s42-pinjab__text {
+      font-family: var(--font-sans);
+      font-size: 28px;
+      font-weight: 800;
+      letter-spacing: -0.018em;
+      line-height: 1.4;
+      color: var(--color-ink-strong);
+    }
+    .slide .s42-pinjab__text em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 900;
+    }
+    /* 회수 3핵심 — pill chip grid */
+    .slide .s42-recall {
+      display: grid !important;
+      grid-template-columns: 1fr auto 1fr auto 1fr !important;
+      align-items: center !important;
+      gap: 14px !important;
+      padding: 18px 28px !important;
+      background: var(--color-bg-cream) !important;
+      border-left: 4px solid var(--color-ink-soft) !important;
+    }
+    .slide .s42-recall > span:not(.s42-recall__arrow) {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+      line-height: 1.4;
+      text-align: center;
+    }
+    .slide .s42-recall em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .slide .s42-recall__arrow {
+      color: var(--color-red);
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 800;
+    }
+    /* 학습 가치 영역 */
+    .slide .s42-learning {
+      padding: 16px 22px !important;
+      background: var(--color-paper) !important;
+      border: 1px solid var(--color-line) !important;
+      border-left: 4px solid var(--color-graphite) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 6px !important;
+    }
+    .slide .s42-learning > span:first-child {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .slide .s42-learning em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .slide .s42-learning__src {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.04em;
+    }
+    /* 52 source-line 정합 (작게·우측 정렬) */
+    .slide .s52-source-line {
+      margin-top: 0 !important;
+      padding: 12px 18px !important;
+      background: var(--color-bg) !important;
+      border-top: 1px solid var(--color-line) !important;
+      border-left: none !important;
+      font-family: var(--font-mono) !important;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      color: var(--color-ink-mute) !important;
+      line-height: 1.55 !important;
+      letter-spacing: 0.04em !important;
+      text-align: right !important;
+    }
+    .slide .s52-source-line strong {
+      font-weight: 800 !important;
+      color: var(--color-ink-soft) !important;
+      margin-right: 6px !important;
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .slide .s44i-flow .s44i-card {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ========== Step 5 v3 — 44·45·46·47 발표 흐름 강화 (Step 1~4 mini-flow·5→3 압축·philosophy 강화) ========== */
+
+    /* ===== 44 (s44i) — 좌 질문 박스에 Step 1~4 mini-flow 추가 ===== */
+    .slide .s44i-mini-flow {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 6px;
+      margin-top: 16px;
+      padding: 14px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-ink-soft);
+    }
+    .slide .s44i-mini-flow__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-mute);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .slide .s44i-mini-flow__row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 13px;
+      line-height: 1.4;
+      color: var(--color-ink);
+    }
+    .slide .s44i-mini-flow__step {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: 0.04em;
+      flex-shrink: 0;
+      min-width: 48px;
+    }
+    .slide .s44i-mini-flow__text {
+      font-weight: 600;
+      color: var(--color-ink-strong);
+    }
+    .slide .s44i-mini-flow__row--accent .s44i-mini-flow__text {
+      color: var(--color-red);
+      font-weight: 800;
+    }
+
+    /* 44 thesis strip 강화 — conclusion 영역 */
+    .slide .s44i-thesis {
+      padding: 24px 32px !important;
+      font-size: 24px !important;
+      border-left: 8px solid var(--color-red) !important;
+      background: var(--color-paper) !important;
+      border-top: 1px solid var(--color-red-soft) !important;
+      border-right: 1px solid var(--color-red-soft) !important;
+      border-bottom: 1px solid var(--color-red-soft) !important;
+    }
+
+    /* ===== 45 (s35) — Step 1~4 mini-map + 표 active 행 강조 ===== */
+    .slide .s35-main {
+      grid-template-rows: auto auto auto auto auto auto !important;
+      gap: 14px !important;
+      align-content: start !important;
+    }
+    /* Step 1~4 horizontal mini-map */
+    .slide .s45-stepmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr) auto 1fr;
+      gap: 0;
+      align-items: stretch;
+      margin-bottom: 2px;
+    }
+    .slide .s45-stepmap__item {
+      padding: 12px 14px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-right: none;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slide .s45-stepmap__item:last-of-type {
+      border-right: 1px solid var(--color-line);
+    }
+    .slide .s45-stepmap__step {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-red);
+      text-transform: uppercase;
+    }
+    .slide .s45-stepmap__text {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.35;
+      letter-spacing: -0.005em;
+    }
+    .slide .s45-stepmap__arrow {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 0 12px;
+      font-family: var(--font-mono);
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--color-red);
+      background: var(--color-paper);
+      border-top: 1px solid var(--color-line);
+      border-bottom: 1px solid var(--color-line);
+    }
+    .slide .s45-stepmap__target {
+      padding: 12px 14px;
+      background: var(--color-red-pale);
+      border: 1px solid var(--color-red-soft);
+      border-left: 4px solid var(--color-red);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slide .s45-stepmap__target .s45-stepmap__step {
+      color: var(--color-red-deep);
+    }
+    .slide .s45-stepmap__target .s45-stepmap__text {
+      color: var(--color-red-deep);
+      font-weight: 800;
+    }
+
+    /* 45 표 본문 글자 키움 + 핵심 행 강조 */
+    .slide .s35-table {
+      grid-template-columns: 0.6fr 1.4fr 1.4fr !important;
+    }
+    .slide .s35-cell {
+      padding: 12px 16px !important;
+      font-size: 15px !important;
+      line-height: 1.45 !important;
+    }
+    .slide .s35-row--head .s35-cell {
+      font-size: 13px !important;
+      padding: 10px 16px !important;
+    }
+    .slide .s35-row--active .s35-cell {
+      background: var(--color-red-pale) !important;
+      font-weight: 600 !important;
+    }
+    .slide .s35-row--active .s35-cell:first-child {
+      border-left: 4px solid var(--color-red) !important;
+      margin-left: -4px !important;
+    }
+    .slide .s35-row--active .s35-cell em {
+      color: var(--color-red-deep);
+      font-weight: 800;
+    }
+    /* 45 conclusion badge */
+    .slide .s45-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-red-soft);
+      border-left: 4px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+      align-self: flex-start;
+    }
+    .slide .s45-badge em {
+      color: var(--color-red);
+      font-weight: 800;
+      font-style: normal;
+    }
+    /* 45 source-line */
+    .slide .s45-source-line {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== 46 (s36) — philosophy bar 글자 키움 + label rail ===== */
+    .slide .s36-philosophy {
+      padding: 18px 24px !important;
+      background: var(--color-paper) !important;
+      border: 1px solid var(--color-line) !important;
+      border-left: 6px solid var(--color-red) !important;
+      display: grid !important;
+      grid-template-columns: auto 1fr !important;
+      gap: 18px !important;
+      align-items: center !important;
+    }
+    .slide .s36-philosophy__label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+      text-transform: uppercase;
+      padding-right: 18px;
+      border-right: 1px solid var(--color-line);
+      min-width: 110px;
+    }
+    .slide .s36-philosophy > span:not(.s36-philosophy__label):not(.s36-philosophy__src) {
+      font-family: var(--font-sans) !important;
+      font-size: 18px !important;
+      font-weight: 600 !important;
+      color: var(--color-ink-strong) !important;
+      line-height: 1.5 !important;
+      letter-spacing: -0.005em !important;
+    }
+    .slide .s36-philosophy > span:not(.s36-philosophy__label):not(.s36-philosophy__src) em {
+      color: var(--color-red);
+      font-weight: 800;
+      font-style: normal;
+    }
+    .slide .s36-philosophy__src {
+      display: none !important;
+    }
+    /* 46 source-line */
+    .slide .s46-source-line {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== 47 (s37) — 5→3 압축 시각화 + 흡수 처리 영역 ===== */
+    /* 5→3 압축 diagram */
+    .slide .s47-merge {
+      display: grid;
+      grid-template-columns: 1.4fr auto 1fr;
+      gap: 18px;
+      align-items: center;
+      padding: 16px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+    }
+    .slide .s47-merge__from {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .slide .s47-merge__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-mute);
+      text-transform: uppercase;
+    }
+    .slide .s47-merge__pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .slide .s47-merge__pill {
+      padding: 4px 10px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      border-radius: 12px;
+      letter-spacing: -0.005em;
+    }
+    .slide .s47-merge__pill--absorbed {
+      background: var(--color-bg);
+      color: var(--color-ink-mute);
+      text-decoration: line-through;
+      text-decoration-color: var(--color-ink-faint);
+    }
+    .slide .s47-merge__arrow {
+      font-family: var(--font-mono);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-red);
+      line-height: 1;
+    }
+    .slide .s47-merge__to {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .slide .s47-merge__to .s47-merge__label {
+      color: var(--color-red);
+    }
+    .slide .s47-merge__three {
+      display: flex;
+      gap: 6px;
+    }
+    .slide .s47-merge__three-item {
+      padding: 4px 10px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 12px;
+      letter-spacing: -0.005em;
+    }
+
+    /* 47 카드 — 회수 라벨 + 강의 정합 badge */
+    .slide .s37-card__recall {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 3px 9px;
+      margin-bottom: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      border-radius: 2px;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+    }
+
+    /* 47 흡수 처리 영역 (제외 X·배경 조건) */
+    .slide .s47-absorbed {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 4px;
+    }
+    .slide .s47-absorbed__item {
+      padding: 12px 16px;
+      background: var(--color-bg-cream);
+      border-left: 3px solid var(--color-ink-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slide .s47-absorbed__title {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+    }
+    .slide .s47-absorbed__sub {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.45;
+    }
+    .slide .s47-absorbed__sub em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    /* reduced motion 추가 영역 */
+    @media (prefers-reduced-motion: reduce) {
+      .slide .s44i-mini-flow,
+      .slide .s45-stepmap,
+      .slide .s47-merge {
+        transition: none !important;
+      }
+    }
+
+    /* ========== Step 5 v4 — 44 pi-style 적용 + 45 공백 회수 + 47 merge 확장·애니메이션 ========== */
+
+    /* ===== 44 — Step 1 slide 3 pi-style 정합 (좌 큰 헤드라인 + 우 6 카드 세로) ===== */
+    .slide .s44-pi-main {
+      display: grid !important;
+      grid-template-columns: 0.42fr 0.58fr !important;
+      gap: 56px !important;
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+    }
+    .slide .s44-pi-hero {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      padding: 8px 0 0;
+      position: relative;
+    }
+    .slide .s44-pi-hero__label {
+      margin-bottom: 28px;
+    }
+    .slide .s44-pi-hero__label .red-box-label {
+      padding: 12px 28px !important;
+      font-size: 20px !important;
+      letter-spacing: 0.12em !important;
+    }
+    .slide .s44-pi-hero__title {
+      font-family: var(--font-sans);
+      font-size: 72px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      line-height: 1.1;
+      color: var(--color-ink-strong);
+      margin-bottom: 32px;
+    }
+    .slide .s44-pi-hero__title-em {
+      color: var(--color-red);
+    }
+    .slide .s44-pi-hero__side {
+      font-family: var(--font-sans);
+      font-size: 17px;
+      font-weight: 600;
+      line-height: 1.6;
+      color: var(--color-ink-soft);
+      letter-spacing: -0.005em;
+      margin-top: auto;
+      padding-top: 24px;
+      border-top: 1px solid var(--color-line);
+    }
+    .slide .s44-pi-hero__side em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .slide .s44-pi-right {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      min-height: 0;
+    }
+    .slide .s44-pi-right__label {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-ink-mute);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+    .slide .s44-pi-card {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      padding: 16px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      flex: 1 1 0;
+      min-height: 0;
+    }
+    .slide .s44-num-circle {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 15px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .slide .s44-pi-card-text {
+      font-family: var(--font-sans);
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      line-height: 1.3;
+    }
+    .slide .s44-pi-card--conclusion {
+      background: var(--color-red-pale);
+      border-color: var(--color-red-soft);
+    }
+    .slide .s44-pi-card--conclusion .s44-pi-card-text {
+      color: var(--color-red-deep);
+    }
+    .slide .s44-pi-card__tag {
+      display: inline-block;
+      margin-left: 10px;
+      padding: 4px 10px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--color-paper);
+      background: var(--color-red);
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+
+    /* ===== 45 — 공백 회수 + 기존 요소 키움 ===== */
+    .slide .s35-main {
+      grid-template-rows: auto auto auto auto auto auto auto !important;
+      gap: 12px !important;
+      align-content: stretch !important;
+    }
+    .slide .s45-stepmap {
+      grid-template-columns: repeat(4, 1fr) auto 1fr !important;
+    }
+    .slide .s45-stepmap__item,
+    .slide .s45-stepmap__target {
+      padding: 16px 18px !important;
+    }
+    .slide .s45-stepmap__step {
+      font-size: 13px !important;
+    }
+    .slide .s45-stepmap__text {
+      font-size: 16px !important;
+      line-height: 1.4 !important;
+    }
+    .slide .s45-stepmap__arrow {
+      font-size: 30px !important;
+      padding: 0 16px !important;
+    }
+    /* 45 표 본문 키움 */
+    .slide .s35-cell {
+      padding: 14px 18px !important;
+      font-size: 17px !important;
+      line-height: 1.5 !important;
+    }
+    .slide .s35-row--head .s35-cell {
+      font-size: 14px !important;
+      padding: 12px 18px !important;
+    }
+    /* 45 conclusion badge 키움 */
+    .slide .s45-badge {
+      padding: 14px 24px !important;
+      font-size: 17px !important;
+      align-self: stretch !important;
+    }
+    .slide .s45-badge em {
+      font-size: 19px;
+    }
+    /* 45 v3-msg 키움 */
+    .slide .s35-main > .v3-msg {
+      padding: 18px 28px !important;
+      font-size: 20px !important;
+    }
+
+    /* ===== 47 — 5→3 압축 diagram 확장 + sequential animation ===== */
+    .slide .s47-merge {
+      grid-template-columns: 1.5fr auto 1fr !important;
+      gap: 24px !important;
+      padding: 24px 32px !important;
+      border-left: 6px solid var(--color-red) !important;
+      min-height: 140px !important;
+      align-items: stretch !important;
+    }
+    .slide .s47-merge__from,
+    .slide .s47-merge__to {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: center !important;
+      gap: 12px !important;
+    }
+    .slide .s47-merge__label {
+      font-size: 13px !important;
+      letter-spacing: 0.1em !important;
+      font-weight: 800 !important;
+    }
+    .slide .s47-merge__pills {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 8px !important;
+    }
+    .slide .s47-merge__pill {
+      padding: 10px 16px !important;
+      font-size: 15px !important;
+      font-weight: 700 !important;
+      border-radius: 24px !important;
+      text-align: center !important;
+      background: var(--color-bg-cream) !important;
+      border: 1px solid var(--color-line) !important;
+    }
+    .slide .s47-merge__pill--absorbed {
+      background: var(--color-bg) !important;
+      color: var(--color-ink-mute) !important;
+      border: 1px dashed var(--color-ink-faint) !important;
+      text-decoration: line-through !important;
+      text-decoration-color: var(--color-ink-faint) !important;
+    }
+    .slide .s47-merge__arrow {
+      font-size: 56px !important;
+      color: var(--color-red) !important;
+      display: flex !important;
+      align-items: center !important;
+      justify-content: center !important;
+      min-width: 64px !important;
+    }
+    .slide .s47-merge__three {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 8px !important;
+    }
+    .slide .s47-merge__three-item {
+      padding: 12px 16px !important;
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      border-radius: 24px !important;
+      text-align: center !important;
+      background: var(--color-red) !important;
+      color: var(--color-paper) !important;
+      letter-spacing: -0.005em !important;
+    }
+
+    /* 47 — 5 pill sequential reveal animation */
+    @keyframes s47PillIn {
+      0% { opacity: 0; transform: translateY(8px) scale(0.92); }
+      60% { transform: translateY(0) scale(1.04); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes s47ArrowIn {
+      0% { opacity: 0; transform: translateX(-12px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes s47ThreeIn {
+      0% { opacity: 0; transform: scale(0.7); }
+      60% { transform: scale(1.08); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .slide .s47-merge.reveal .s47-merge__pill {
+      opacity: 0;
+      animation: s47PillIn 0.45s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    .slide .s47-merge.reveal .s47-merge__pills .s47-merge__pill:nth-child(1) { animation-delay: 0.5s; }
+    .slide .s47-merge.reveal .s47-merge__pills .s47-merge__pill:nth-child(2) { animation-delay: 0.62s; }
+    .slide .s47-merge.reveal .s47-merge__pills .s47-merge__pill:nth-child(3) { animation-delay: 0.74s; }
+    .slide .s47-merge.reveal .s47-merge__pills .s47-merge__pill:nth-child(4) { animation-delay: 0.86s; }
+    .slide .s47-merge.reveal .s47-merge__pills .s47-merge__pill:nth-child(5) { animation-delay: 0.98s; }
+    .slide .s47-merge.reveal .s47-merge__arrow {
+      opacity: 0;
+      animation: s47ArrowIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) 1.15s both;
+    }
+    .slide .s47-merge.reveal .s47-merge__three-item {
+      opacity: 0;
+      animation: s47ThreeIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+    }
+    .slide .s47-merge.reveal .s47-merge__three .s47-merge__three-item:nth-child(1) { animation-delay: 1.4s; }
+    .slide .s47-merge.reveal .s47-merge__three .s47-merge__three-item:nth-child(2) { animation-delay: 1.55s; }
+    .slide .s47-merge.reveal .s47-merge__three .s47-merge__three-item:nth-child(3) { animation-delay: 1.70s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide .s47-merge.reveal .s47-merge__pill,
+      .slide .s47-merge.reveal .s47-merge__arrow,
+      .slide .s47-merge.reveal .s47-merge__three-item {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+
+    /* ========== Step 5 v5 — 44 페이지 Step 1 안내 패턴 정확 정합 (카드 키움·하단 공백 회수·thesis 흡수) ========== */
+
+    /* main 영역 — flex column 안정 배치 */
+    .slide .s44i-main {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      height: 100% !important;
+    }
+
+    /* pi-main grid 비율 재정합 — 0.36 : 0.64 (Step 1 영역 정합) */
+    .slide .s44-pi-main {
+      grid-template-columns: 0.36fr 0.64fr !important;
+      gap: 48px !important;
+      flex: 1 1 auto !important;
+      min-height: 0 !important;
+      align-items: stretch !important;
+    }
+
+    /* 좌측 영역 — 중상단 안정 배치 */
+    .slide .s44-pi-hero {
+      display: flex !important;
+      flex-direction: column !important;
+      justify-content: flex-start !important;
+      padding: 8px 0 0 !important;
+      gap: 0 !important;
+    }
+    .slide .s44-pi-hero__label {
+      margin-bottom: 24px !important;
+    }
+    .slide .s44-pi-hero__title {
+      font-size: 68px !important;
+      line-height: 1.1 !important;
+      margin-bottom: 16px !important;
+    }
+
+    /* 좌측 강조 문장 (신설·헤드라인 아래) */
+    .slide .s44-pi-hero__lead {
+      font-family: var(--font-sans);
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--color-ink);
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+      margin-bottom: 18px;
+    }
+    .slide .s44-pi-hero__lead em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    /* 좌측 구분선 */
+    .slide .s44-pi-hero__divider {
+      height: 1px;
+      background: var(--color-line);
+      margin: 2px 0 18px;
+      width: 60%;
+    }
+
+    /* 좌측 설명 — 기존 side 영역 키움·thesis 흡수 */
+    .slide .s44-pi-hero__side {
+      font-family: var(--font-sans);
+      font-size: 20px !important;
+      font-weight: 600 !important;
+      line-height: 1.6 !important;
+      color: var(--color-ink-soft) !important;
+      letter-spacing: -0.005em !important;
+      margin-top: 0 !important;
+      padding-top: 0 !important;
+      border-top: none !important;
+    }
+    .slide .s44-pi-hero__side em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    /* 우측 영역 — 6 카드 동일 높이 stretch */
+    .slide .s44-pi-right {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 8px !important;
+      min-height: 0 !important;
+      height: 100% !important;
+    }
+    .slide .s44-pi-right__label {
+      font-family: var(--font-mono) !important;
+      font-size: 13px !important;
+      font-weight: 700 !important;
+      letter-spacing: 0.1em !important;
+      color: var(--color-ink-mute) !important;
+      text-transform: uppercase !important;
+      margin-bottom: 4px !important;
+      flex-shrink: 0 !important;
+    }
+
+    /* 우측 카드 — 큰 영역·동일 높이 stretch */
+    .slide .s44-pi-card {
+      display: flex !important;
+      align-items: center !important;
+      gap: 22px !important;
+      padding: 18px 26px !important;
+      background: var(--color-paper) !important;
+      border: 1px solid var(--color-line) !important;
+      border-left: 5px solid var(--color-red) !important;
+      flex: 1 1 0 !important;
+      min-height: 0 !important;
+    }
+    .slide .s44-num-circle {
+      width: 52px !important;
+      height: 52px !important;
+      font-size: 17px !important;
+    }
+
+    /* 카드 본문 — 2단 (제목 + 설명) */
+    .slide .s44-pi-card__body {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    .slide .s44-pi-card__title {
+      font-family: var(--font-sans);
+      font-size: 30px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.2;
+    }
+    .slide .s44-pi-card__sub {
+      font-family: var(--font-sans);
+      font-size: 19px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      letter-spacing: -0.005em;
+      line-height: 1.4;
+    }
+    .slide .s44-pi-card__sub em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+
+    /* 01·05 소량 강조 — 작은 red keyword 영역 (제목은 기본·sub만 red em 활용) */
+
+    /* 06 카드 — cream 강조 + Step 5 결론 배지 */
+    .slide .s44-pi-card--conclusion {
+      background: var(--color-red-pale) !important;
+      border-color: var(--color-red-soft) !important;
+      border-left: 5px solid var(--color-red) !important;
+    }
+    .slide .s44-pi-card--conclusion .s44-pi-card__title {
+      color: var(--color-red-deep);
+    }
+    .slide .s44-pi-card--conclusion .s44-pi-card__sub {
+      color: var(--color-red-deep);
+      opacity: 0.85;
+    }
+    .slide .s44-pi-card__tag {
+      display: inline-block !important;
+      margin-left: auto !important;
+      padding: 6px 14px !important;
+      font-family: var(--font-mono);
+      font-size: 12px !important;
+      font-weight: 800 !important;
+      letter-spacing: 0.06em !important;
+      color: var(--color-paper) !important;
+      background: var(--color-red) !important;
+      border-radius: 2px !important;
+      flex-shrink: 0;
+      align-self: center;
+    }
+
+    /* 기존 v4 s44-pi-card-text 영역 회수 (HTML 영역 영역 정합 X 시 fallback) */
+    .slide .s44-pi-card-text {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      line-height: 1.3;
+    }
+
+    /* ========== Step 5 v6 — 48~52 발표 흐름 재정합 + 53 신규 Q&A 페이지 ========== */
+
+    /* ===== 48 (s38) — 한계 → 적용 체크포인트 영역 ===== */
+    .slide .s38-purpose {
+      padding: 12px 22px;
+      background: var(--color-bg);
+      border-left: 4px solid var(--color-ink-soft);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      letter-spacing: -0.005em;
+      line-height: 1.5;
+    }
+    .slide .s38-purpose strong {
+      color: var(--color-ink-strong);
+      font-weight: 700;
+    }
+    .slide .s38-card__check {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      padding: 3px 9px;
+      margin-bottom: 4px;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      border-radius: 2px;
+    }
+    .slide .s38-card--active .s38-card__check {
+      background: var(--color-red);
+    }
+    .slide .s38-card__split {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .slide .s38-card__split-row {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+      padding: 8px 12px;
+      background: var(--color-bg);
+      border-left: 3px solid var(--color-ink-faint);
+    }
+    .slide .s38-card__split-row--apply {
+      border-left-color: var(--color-red);
+      background: var(--color-red-pale);
+    }
+    .slide .s38-card__split-label {
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-ink-mute);
+    }
+    .slide .s38-card__split-row--apply .s38-card__split-label {
+      color: var(--color-red);
+    }
+    .slide .s38-card__split-text {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.005em;
+    }
+    .slide .s48-source-line {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== 49 (s39) — 기업 유형별 적용 매트릭스 ===== */
+    .slide .s39-card {
+      padding: 22px 26px !important;
+      gap: 12px !important;
+    }
+    .slide .s39-card__target {
+      display: inline-flex;
+      align-items: center;
+      padding: 5px 12px;
+      margin-bottom: 6px;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+    .slide .s39-card--active .s39-card__target {
+      background: var(--color-red);
+    }
+    .slide .s39-card__why {
+      padding: 12px 16px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-graphite);
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .slide .s39-card__why em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    .slide .s39-card__apply {
+      padding: 12px 16px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-red-soft);
+      border-left: 4px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .slide .s39-card__apply-label {
+      display: inline-block;
+      margin-right: 8px;
+      padding: 3px 8px;
+      font-family: var(--font-mono);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: var(--color-red);
+      color: var(--color-paper);
+      border-radius: 2px;
+      vertical-align: middle;
+    }
+    .slide .s49-source-line {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== 50 (s40) — 수렴형 다이어그램 (중앙 코어 + 3 카드) ===== */
+    .slide .s50-converge {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 32px;
+      align-items: stretch;
+      flex: 1 1 auto;
+      min-height: 0;
+      position: relative;
+    }
+    .slide .s50-converge__card {
+      padding: 22px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 10px;
+      position: relative;
+    }
+    .slide .s50-converge__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px; height: 44px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .slide .s50-converge__title {
+      font-family: var(--font-sans);
+      font-size: 24px;
+      font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.2;
+    }
+    .slide .s50-converge__body {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-ink);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .slide .s50-converge__body em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 700;
+    }
+    .slide .s50-converge__arrow {
+      position: absolute;
+      bottom: -28px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--font-mono);
+      font-size: 28px;
+      font-weight: 800;
+      color: var(--color-red);
+      line-height: 1;
+    }
+    .slide .s50-core {
+      padding: 28px 36px;
+      background: var(--color-paper);
+      border: 2px solid var(--color-red);
+      border-left: 8px solid var(--color-red);
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 24px;
+      align-items: center;
+    }
+    .slide .s50-core__icon {
+      width: 72px; height: 72px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-red-pale);
+      border-radius: 50%;
+      color: var(--color-red);
+      flex-shrink: 0;
+    }
+    .slide .s50-core__icon svg {
+      width: 40px; height: 40px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+    .slide .s50-core__body {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .slide .s50-core__label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+      text-transform: uppercase;
+    }
+    .slide .s50-core__title {
+      font-family: var(--font-sans);
+      font-size: 32px;
+      font-weight: 900;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+    }
+    .slide .s50-core__title em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 900;
+    }
+    .slide .s50-core__sub {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-ink-soft);
+      letter-spacing: -0.005em;
+    }
+    .slide .s50-source-line {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+    /* 50 sequential reveal */
+    @keyframes s50CardIn {
+      0% { opacity: 0; transform: translateY(12px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    .slide .s50-converge.reveal .s50-converge__card {
+      opacity: 0;
+      animation: s50CardIn 0.55s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+    .slide .s50-converge.reveal .s50-converge__card:nth-child(1) { animation-delay: 0.4s; }
+    .slide .s50-converge.reveal .s50-converge__card:nth-child(2) { animation-delay: 0.55s; }
+    .slide .s50-converge.reveal .s50-converge__card:nth-child(3) { animation-delay: 0.70s; }
+    .slide .s50-converge.reveal .s50-converge__arrow {
+      opacity: 0;
+      animation: s50CardIn 0.45s cubic-bezier(0.2, 0.7, 0.2, 1) 1.0s both;
+    }
+
+    /* ===== 51 (s41) — 로드맵형 (4 단계 horizontal) ===== */
+    .slide .s51-roadmap {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      align-items: stretch;
+      position: relative;
+    }
+    .slide .s51-roadmap__step {
+      padding: 22px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-right: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      position: relative;
+    }
+    .slide .s51-roadmap__step:last-of-type {
+      border-right: 1px solid var(--color-line);
+    }
+    .slide .s51-roadmap__step--active {
+      background: var(--color-red-pale);
+      border-color: var(--color-red-soft);
+    }
+    .slide .s51-roadmap__num {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+    .slide .s51-roadmap__step--active .s51-roadmap__num {
+      background: var(--color-red);
+    }
+    .slide .s51-roadmap__title {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      line-height: 1.2;
+    }
+    .slide .s51-roadmap__step--active .s51-roadmap__title {
+      color: var(--color-red-deep);
+    }
+    .slide .s51-roadmap__body {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .slide .s51-roadmap__chev {
+      position: absolute;
+      top: 50%;
+      right: -14px;
+      transform: translateY(-50%);
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-paper);
+      color: var(--color-red);
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 800;
+      z-index: 2;
+      border-radius: 50%;
+      border: 1px solid var(--color-red-soft);
+    }
+    .slide .s51-roadmap__step:last-of-type .s51-roadmap__chev {
+      display: none;
+    }
+    .slide .s51-source-line {
+      text-align: right;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+    }
+
+    /* ===== 52 (s42) — 임팩트 결론 페이지 전면 재구성 ===== */
+    .slide .s52-impact {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 36px;
+      align-items: center;
+      padding: 40px 48px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-red-soft);
+      border-left: 12px solid var(--color-red);
+      flex: 1 1 auto;
+    }
+    .slide .s52-impact__icon {
+      width: 120px; height: 120px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--color-red-pale);
+      border-radius: 50%;
+      color: var(--color-red);
+      flex-shrink: 0;
+    }
+    .slide .s52-impact__icon svg {
+      width: 64px; height: 64px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 1.8;
+    }
+    .slide .s52-impact__body {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .slide .s52-impact__label {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--color-red);
+    }
+    .slide .s52-impact__text {
+      font-family: var(--font-sans);
+      font-size: 32px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+      letter-spacing: -0.018em;
+    }
+    .slide .s52-impact__text em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 900;
+    }
+    /* 52 회수 3핵심 — pill */
+    .slide .s52-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 12px;
+    }
+    .slide .s52-pills__item {
+      padding: 14px 18px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-red);
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .slide .s52-pills__num {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-red);
+    }
+    .slide .s52-pills__text {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+    }
+    .slide .s52-learning {
+      padding: 14px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-graphite);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+    }
+    .slide .s52-learning strong {
+      color: var(--color-ink-strong);
+      font-weight: 700;
+    }
+
+    /* 52 sequential animation */
+    @keyframes s52PillIn {
+      0% { opacity: 0; transform: translateY(8px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes s52ImpactIn {
+      0% { opacity: 0; transform: scale(0.96); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .slide .s52-pills.reveal .s52-pills__item {
+      opacity: 0;
+      animation: s52PillIn 0.5s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+    }
+    .slide .s52-pills.reveal .s52-pills__item:nth-child(1) { animation-delay: 0.3s; }
+    .slide .s52-pills.reveal .s52-pills__item:nth-child(2) { animation-delay: 0.45s; }
+    .slide .s52-pills.reveal .s52-pills__item:nth-child(3) { animation-delay: 0.60s; }
+    .slide .s52-impact.reveal {
+      opacity: 0;
+      animation: s52ImpactIn 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.85s both;
+    }
+
+    /* 52 신규 — 최종 결론 페이지 리빌딩 (cream 박스 X·중앙 선언 + 3 stamp·수렴 시각) */
+    @keyframes s52Underline {
+      0%   { width: 0; opacity: 0; }
+      40%  { opacity: 1; }
+      100% { width: 100%; opacity: 1; }
+    }
+    @keyframes s52StampIn {
+      0%   { opacity: 0; transform: translateY(40px) scale(0.94); }
+      60%  { opacity: 1; transform: translateY(-4px) scale(1.01); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes s52ChevronUp {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50%      { transform: translateY(-7px); opacity: 1; }
+    }
+    @keyframes s52KeyGlow {
+      0%, 100% { text-shadow: 0 0 0 transparent; }
+      50%      { text-shadow: 0 0 22px rgba(214, 30, 30, 0.4); }
+    }
+    @keyframes s52HeroFadeIn {
+      0%   { opacity: 0; transform: translateY(14px); }
+      100% { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ===== 53 (s53) — 신규 Q&A + 조원 역할 영역 ===== */
+    .slide .s53-main {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 24px !important;
+      height: 100% !important;
+    }
+    .slide .s53-hero {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 24px;
+      padding: 40px 0;
+    }
+    .slide .s53-hero__subtitle {
+      font-family: var(--font-mono);
+      font-size: 16px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      color: var(--color-red);
+      text-transform: uppercase;
+    }
+    .slide .s53-hero__title {
+      font-family: var(--font-sans);
+      font-size: 140px;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--color-ink-strong);
+      text-align: center;
+    }
+    .slide .s53-hero__title em {
+      color: var(--color-red);
+      font-style: normal;
+    }
+    .slide .s53-hero__meta {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 600;
+      color: var(--color-ink-soft);
+      letter-spacing: -0.005em;
+      text-align: center;
+      margin-top: 8px;
+    }
+    .slide .s53-roles {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+    }
+    .slide .s53-roles__item {
+      padding: 14px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+    .slide .s53-roles__step {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-red);
+    }
+    .slide .s53-roles__name {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+    }
+    .slide .s53-source-line {
+      padding: 10px 0;
+      border-top: 1px solid var(--color-line);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.04em;
+      line-height: 1.5;
+      text-align: right;
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .slide .s50-converge.reveal .s50-converge__card,
+      .slide .s50-converge.reveal .s50-converge__arrow,
+      .slide .s52-pills.reveal .s52-pills__item,
+      .slide .s52-impact.reveal {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
   </style>
 </head>
 <body>
@@ -920,58 +2729,70 @@
             <span class="red-box-label">STEP 5 · 01</span>
             <span class="eb-text">종합 → 일반화 → 결론 — 6대 흐름 안내</span>
           </div>
-          <h1 class="v3-headline reveal" style="--rev-delay:0.18s">
-            그래서 이 사례에서 <span class="v3-em">무엇을 배우는가</span>
-          </h1>
-          <div class="s44i-body">
-            <div class="s44i-q reveal" style="--rev-delay:0.3s">
-              <span class="s44i-q__label">Core Question</span>
-              <div class="s44i-q__head">
-                이 사례의 성공 요인은 무엇이고,<br /><em>다른 기업에는 어떤 교훈을 주는가?</em>
+          <div class="s44-pi-main">
+            <div class="s44-pi-hero">
+              <div class="s44-pi-hero__label">
+                <span class="red-box-label red-box-label--lg">STEP 5</span>
               </div>
-              <div class="s44i-q__sub">
-                Step 1~4 종합을 ERP "시스템 구축"이 아닌 <em>"통합 경영 플랫폼 선택"</em>으로 재해석한다.
+              <h1 class="s44-pi-hero__title">그래서<br /><span class="s44-pi-hero__title-em">최종 결론</span></h1>
+              <p class="s44-pi-hero__lead">
+                성공 요인에서<br /><em>최종 결론</em>까지
+              </p>
+              <div class="s44-pi-hero__divider"></div>
+              <p class="s44-pi-hero__side">
+                Step 5의 핵심은 성공 요인 나열이 아니라,<br />
+                ERP 도입을 <em>'통합 경영 플랫폼 선택'</em>으로 재해석하는 것이다.
+              </p>
+            </div>
+            <div class="s44-pi-right">
+              <div class="s44-pi-right__label">Step 5에서 다룰 내용 · 6장</div>
+              <div class="s44-pi-card reveal" style="--rev-delay:0.4s">
+                <span class="s44-num-circle">01</span>
+                <div class="s44-pi-card__body">
+                  <h3 class="s44-pi-card__title">핵심 성공 요인 5</h3>
+                  <p class="s44-pi-card__sub">기존 자산 · 목표 · <em>VAS</em> · SI · 균형</p>
+                </div>
+              </div>
+              <div class="s44-pi-card reveal" style="--rev-delay:0.5s">
+                <span class="s44-num-circle">02</span>
+                <div class="s44-pi-card__body">
+                  <h3 class="s44-pi-card__title">발표 압축 3</h3>
+                  <p class="s44-pi-card__sub">기존 자산 · 사전 통제 · 균형</p>
+                </div>
+              </div>
+              <div class="s44-pi-card reveal" style="--rev-delay:0.6s">
+                <span class="s44-num-circle">03</span>
+                <div class="s44-pi-card__body">
+                  <h3 class="s44-pi-card__title">한계 4</h3>
+                  <p class="s44-pi-card__sub">의도된 트레이드오프 인식</p>
+                </div>
+              </div>
+              <div class="s44-pi-card reveal" style="--rev-delay:0.7s">
+                <span class="s44-num-circle">04</span>
+                <div class="s44-pi-card__body">
+                  <h3 class="s44-pi-card__title">시사점 3</h3>
+                  <p class="s44-pi-card__sub">M&amp;A · 장치산업 · <span class="nowrap">2027 EOS</span></p>
+                </div>
+              </div>
+              <div class="s44-pi-card reveal" style="--rev-delay:0.8s">
+                <span class="s44-num-circle">05</span>
+                <div class="s44-pi-card__body">
+                  <h3 class="s44-pi-card__title">본질 통찰 3</h3>
+                  <p class="s44-pi-card__sub"><em>통합 경영 플랫폼</em> · 누적 진화 · 능동 관리</p>
+                </div>
+              </div>
+              <div class="s44-pi-card s44-pi-card--conclusion reveal" style="--rev-delay:0.9s">
+                <span class="s44-num-circle">06</span>
+                <div class="s44-pi-card__body">
+                  <h3 class="s44-pi-card__title">향후 + 최종 결론</h3>
+                  <p class="s44-pi-card__sub">클라우드 · AI · DT · <span class="nowrap">2030 톱7</span></p>
+                </div>
+                <span class="s44-pi-card__tag">Step 5 결론</span>
               </div>
             </div>
-            <div class="s44i-flow reveal" style="--rev-delay:0.42s">
-              <div class="s44i-card is-active">
-                <span class="s44i-card__no">01</span>
-                <div class="s44i-card__title">핵심 성공 요인 5</div>
-                <div class="s44i-card__kw">기존 자산 · 목표 · <em>VAS</em> · 그룹 SI · 균형</div>
-              </div>
-              <div class="s44i-card">
-                <span class="s44i-card__no">02</span>
-                <div class="s44i-card__title">발표용 압축 3</div>
-                <div class="s44i-card__kw">기존 자산 · 사전 통제 · <em>균형</em></div>
-              </div>
-              <div class="s44i-card">
-                <span class="s44i-card__no">03</span>
-                <div class="s44i-card__title">한계 4</div>
-                <div class="s44i-card__kw">의도된 트레이드오프 인식</div>
-              </div>
-              <div class="s44i-card">
-                <span class="s44i-card__no">04</span>
-                <div class="s44i-card__title">시사점 3</div>
-                <div class="s44i-card__kw">M&amp;A · 장치산업 · <em>2027 EOS</em></div>
-              </div>
-              <div class="s44i-card is-active">
-                <span class="s44i-card__no">05</span>
-                <div class="s44i-card__title">본질 통찰 3</div>
-                <div class="s44i-card__kw">통합 경영 플랫폼 · 누적 진화 · <em>능동 관리</em></div>
-              </div>
-              <div class="s44i-card is-active">
-                <span class="s44i-card__no">06</span>
-                <div class="s44i-card__title">향후 + 최종 결론</div>
-                <div class="s44i-card__kw">클라우드·AI·DT · <em>2030 톱7</em></div>
-              </div>
-            </div>
-          </div>
-          <div class="s44i-thesis reveal" style="--rev-delay:0.55s">
-            Step 5의 핵심은 성공 요인 나열이 아니라, ERP 도입을 <em>"시스템 구축"이 아닌 "통합 경영 플랫폼 선택"으로 재해석</em>하는 것이다.
           </div>
         </div>
       </main>
-      <div class="hint">F: 전체화면 · R: 애니메이션 재생 · ←→: 슬라이드 이동 · 44/52</div>
     </section>
 
     <!-- ============= SLIDE 45 · csf-frame v2 (결론 토대 + 강의 5대 차이 표 + 본 사례 적용) ============= -->
@@ -995,7 +2816,30 @@
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
             Step 1~4 종합 — <span class="v3-em">일관된 의사결정 패턴이 만든 구조적 성공</span>
           </h1>
-          <div class="v3-lecture reveal" style="--rev-delay:0.32s">
+          <div class="s45-stepmap reveal" style="--rev-delay:0.3s">
+            <div class="s45-stepmap__item">
+              <span class="s45-stepmap__step">Step 1</span>
+              <span class="s45-stepmap__text">M&amp;A·장치산업 제약</span>
+            </div>
+            <div class="s45-stepmap__item">
+              <span class="s45-stepmap__step">Step 2</span>
+              <span class="s45-stepmap__text">Make/Buy·SAP 선택</span>
+            </div>
+            <div class="s45-stepmap__item">
+              <span class="s45-stepmap__step">Step 3</span>
+              <span class="s45-stepmap__text">VAS·GAP 3트랙 실행</span>
+            </div>
+            <div class="s45-stepmap__item">
+              <span class="s45-stepmap__step">Step 4</span>
+              <span class="s45-stepmap__text">정량·정성 성과 검증</span>
+            </div>
+            <div class="s45-stepmap__arrow" aria-hidden="true">→</div>
+            <div class="s45-stepmap__target">
+              <span class="s45-stepmap__step">Step 5 도출</span>
+              <span class="s45-stepmap__text">강의 5대 차이 적용</span>
+            </div>
+          </div>
+          <div class="v3-lecture reveal" style="--rev-delay:0.4s">
             <span>강의 자료 31p — 개발 vs 구매 프로세스는 같은 목적지·각 단계 <em>핵심 역량 + 접근 방식 근본적 차이</em></span>
             <span class="v3-lecture__src">강의 자료 31p</span>
           </div>
@@ -1031,9 +2875,14 @@
               <div class="s35-cell">BPR/Customizing 균형·<em>13년 자산 + 그룹 SI + SAP 본사 직접 협상력</em>으로 보완</div>
             </div>
           </div>
+          <div class="s45-badge reveal" style="--rev-delay:0.85s">
+            <em>13년 누적 SAP 자산</em>이 5대 차이 모두를 바꾼 의사결정 차별화의 핵심
+          </div>
           <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span>강의 5대 차이 정합 — <em>13년 누적 SAP 자산</em>이 5대 차원 모두 본 사례 의사결정 차별화 영역 핵심</span>
-            <span class="v3-msg__src">출처 강의 자료 31p · 롯데케미칼 사업보고서 · 호남석유화학 SMART</span>
+            <span>강의 5대 차이 정합 — Step 1~4 종합에서 도출된 일관된 의사결정 패턴은 <em>다음 46 페이지 CSF 5가지</em>로 수렴한다.</span>
+          </div>
+          <div class="s45-source-line reveal" style="--rev-delay:0.96s">
+            출처 · 강의 자료 31p · 롯데케미칼 사업보고서 · 호남석유화학 SMART
           </div>
         </div>
       </main>
@@ -1061,8 +2910,8 @@
             핵심 성공 요인 <span class="v3-em">5가지</span> — 하나의 의사결정 철학 5측면 표현
           </h1>
           <div class="s36-philosophy reveal" style="--rev-delay:0.32s">
-            <span>단일 의사결정 철학 — 기존 자산을 진화의 디딤돌로 삼고, 비즈니스 목표에서 출발하여, <em>리스크를 사전 통제</em>하며, 그룹 자원을 적극 활용하면서, <em>표준화와 차별화를 능동적으로 균형</em></span>
-            <span class="s36-philosophy__src">단일 의사결정 철학 (5측면)</span>
+            <span class="s36-philosophy__label">Decision<br />Logic</span>
+            <span>단일 의사결정 철학 — 기존 자산을 진화의 디딤돌로 삼고, <em>리스크를 사전 통제</em>하며, <em>표준화와 차별화를 능동적으로 균형</em>한다 — Step 3·4 검증 사실 기반 도출</span>
           </div>
           <div class="s36-cards reveal" style="--rev-delay:0.45s">
             <article class="s36-card s36-card--active">
@@ -1132,8 +2981,10 @@
             </article>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.95s">
-            <span>5대 CSF — 독립 항목 X · <em>하나의 의사결정 철학 5측면 표현</em> · Step 3·4 검증 사실 기반</span>
-            <span class="v3-msg__src">출처 박제성 상무 인터뷰 · 사업보고서 2018 정정 사업보고서 호남석유화학 SMART SAP Value Assurance 공식 자료 · docx Step 5 §2</span>
+            <span>5대 CSF는 독립 항목 X — <em>하나의 의사결정 철학의 5측면 표현</em>. 발표용 3축으로 압축은 다음 47 페이지 영역.</span>
+          </div>
+          <div class="s46-source-line reveal" style="--rev-delay:0.98s">
+            출처 · 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료
           </div>
         </div>
       </main>
@@ -1158,65 +3009,97 @@
             <span class="eb-text">발표용 CSF 3개 — 강의 정합 매핑</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            발표 30분 압축 — <span class="v3-em">CSF 3개 + 강의 정합</span>
+            <span class="v3-em">5대 CSF를 3개 발표축으로</span> 압축한다
           </h1>
-          <div class="s37-label-row reveal" style="--rev-delay:0.32s">
-            <span class="red-box-label">강의 자료 정합</span>
-            <span class="s37-label-row__text">5대 CSF → 발표 압축 3개 · 강의 자료 Summary 프레임 정확 매핑</span>
+          <div class="s47-merge reveal" style="--rev-delay:0.32s">
+            <div class="s47-merge__from">
+              <span class="s47-merge__label">5대 CSF</span>
+              <div class="s47-merge__pills">
+                <span class="s47-merge__pill">기존 SAP 자산</span>
+                <span class="s47-merge__pill s47-merge__pill--absorbed">비즈니스 목표</span>
+                <span class="s47-merge__pill">SAP VAS·사전 통제</span>
+                <span class="s47-merge__pill s47-merge__pill--absorbed">그룹 SI</span>
+                <span class="s47-merge__pill">표준화·차별화 균형</span>
+              </div>
+            </div>
+            <span class="s47-merge__arrow" aria-hidden="true">→</span>
+            <div class="s47-merge__to">
+              <span class="s47-merge__label">발표 3축 — Q&amp;A 백업</span>
+              <div class="s47-merge__three">
+                <span class="s47-merge__three-item">기존 자산</span>
+                <span class="s47-merge__three-item">사전 통제</span>
+                <span class="s47-merge__three-item">균형</span>
+              </div>
+            </div>
           </div>
           <div class="s37-cards reveal" style="--rev-delay:0.42s">
             <article class="s37-card">
               <div class="s37-card__head">
                 <span class="s37-card__num">①</span>
                 <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- DB·자산 SVG -->
                   <svg viewBox="0 0 32 32"><ellipse cx="16" cy="8" rx="11" ry="4" /><path d="M 5 8 L 5 16 C 5 18 10 20 16 20 C 22 20 27 18 27 16 L 27 8" /><path d="M 5 16 L 5 24 C 5 26 10 28 16 28 C 22 28 27 26 27 24 L 27 16" /></svg>
                 </span>
                 <h3 class="s37-card__title">기존 SAP 자산 활용</h3>
               </div>
+              <span class="s37-card__role-label">핵심 회수 · 13년 누적 자산</span>
+              <span class="s37-card__recall">Step 1 환경 + Step 3 실행</span>
               <p class="s37-card__sub">Brownfield 성격 · 통합형 컨버전</p>
-              <p class="s37-card__body">13년 누적 SAP 자산 컨버전 이관 — 강의 자료 '핵심 구축 작업 Configuration' 영역 <em>가장 큰 위험요소 본질 회피</em></p>
+              <p class="s37-card__body"><em class="nowrap">13년 누적 SAP 자산</em>이 Brownfield 컨버전·Configuration 리스크를 본질 회피</p>
               <div class="s37-lecmap">
                 <span class="s37-lecmap__label">강의 정합</span>
-                핵심 구축 작업 Configuration 위험을 13년 누적 자산으로 통제
+                패키지 구현의 핵심 — Configuration 위험을 13년 자산으로 통제
               </div>
             </article>
             <article class="s37-card">
               <div class="s37-card__head">
                 <span class="s37-card__num">②</span>
                 <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 시계·VAS SVG -->
                   <svg viewBox="0 0 32 32"><circle cx="16" cy="17" r="11" /><polyline points="16 11 16 17 21 19" /><line x1="16" y1="3" x2="16" y2="6" /><line x1="13" y1="3" x2="19" y2="3" /></svg>
                 </span>
                 <h3 class="s37-card__title">리스크 사전 통제</h3>
               </div>
-              <p class="s37-card__sub">다운타임 114h → 52h</p>
-              <p class="s37-card__body">SAP Value Assurance Service 구조화 영역 활용 — 강의 자료 '구현 단계 비상 계획' [18p] 영역 <em>구조화 실행</em> · PIR 사업 효익 직접 연결</p>
+              <span class="s37-card__role-label">핵심 회수 · SAP VAS 구조화</span>
+              <span class="s37-card__recall">Step 3 검증 + Step 4 성과</span>
+              <p class="s37-card__sub">다운타임 <span class="nowrap">114h → 52h</span></p>
+              <p class="s37-card__body"><em class="nowrap">SAP Value Assurance</em>·테스트·다운타임 관리가 전환 리스크를 사전에 낮춤</p>
               <div class="s37-lecmap">
                 <span class="s37-lecmap__label">강의 정합</span>
-                구현 단계 비상 계획 [18p] SAP VAS 구조화
+                구현 단계 비상 계획(18p) + 사후 검토(PIR 19p) 직접 정합
               </div>
             </article>
             <article class="s37-card">
               <div class="s37-card__head">
                 <span class="s37-card__num">③</span>
                 <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 저울·균형 SVG -->
                   <svg viewBox="0 0 32 32"><line x1="16" y1="6" x2="16" y2="28" /><line x1="6" y1="28" x2="26" y2="28" /><polyline points="6 16 10 8 14 16 10 18 6 16" /><polyline points="18 16 22 8 26 16 22 18 18 16" /></svg>
                 </span>
                 <h3 class="s37-card__title">표준화·차별화 균형</h3>
               </div>
+              <span class="s37-card__role-label">핵심 회수 · 3트랙 능동 관리</span>
+              <span class="s37-card__recall">Step 2 선택 + Step 3 GAP</span>
               <p class="s37-card__sub">BPR · Customizing · Add-on 3트랙</p>
-              <p class="s37-card__body">본연 경쟁력 영역 Customizing 보존 — 강의 자료 TO-BE 기준 'Best Practice 수용' 무조건 X · M&amp;A 통합 사례 <em>가장 본질 의사결정</em></p>
+              <p class="s37-card__body">통합과 본연 경쟁력을 <em>동시에 유지</em> — Best Practice 강제 수용이 아닌 능동 균형</p>
               <div class="s37-lecmap">
                 <span class="s37-lecmap__label">강의 정합</span>
-                TO-BE 기준 Best Practice 수용 무조건 X · 균형형 수용
+                TO-BE 기준 — Best Practice 강제 수용 X · 균형형 수용
               </div>
             </article>
           </div>
-          <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span>발표 제외 2건 (명확한 비즈니스 목표 · 그룹 SI) — <em>Step 2 도입부 + Q&amp;A 백업 카드</em> 활용 영역</span>
-            <span class="v3-msg__src">출처 docx Step 5 §2.1 · 강의 자료 18p·23p·31p</span>
+          <div class="s47-absorbed reveal" style="--rev-delay:0.78s">
+            <div class="s47-absorbed__item">
+              <span class="s47-absorbed__title">흡수 처리 — 명확한 비즈니스 목표</span>
+              <span class="s47-absorbed__sub">발표 ①·③ 카드에 <em>배경 조건</em>으로 흡수 — Step 2 도입부 + Q&amp;A 백업 영역</span>
+            </div>
+            <div class="s47-absorbed__item">
+              <span class="s47-absorbed__title">흡수 처리 — 그룹 SI 장기 통제권</span>
+              <span class="s47-absorbed__sub">발표 ② 카드에 <em>배경 조건</em>으로 흡수 — Step 2 도입부 + Q&amp;A 백업 영역</span>
+            </div>
+          </div>
+          <div class="v3-msg reveal" style="--rev-delay:0.88s">
+            <span>발표 본문은 <em>3축으로 압축</em>·나머지 2개는 배경 조건과 Q&amp;A 근거로 회수.</span>
+          </div>
+          <div class="s47-source-line reveal" style="--rev-delay:0.96s">
+            출처 · 박제성 상무 인터뷰 · 강의 자료 18p·23p·31p
           </div>
         </div>
       </main>
@@ -1238,68 +3121,101 @@
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 5 · 05</span>
-            <span class="eb-text">사례 한계 4 — 일반화 적용 시 주의점</span>
+            <span class="eb-text">성공 사례의 한계 — 적용 전 체크포인트 4</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            다른 기업 적용 시 — <span class="v3-em">한계 + 의도된 트레이드오프</span>를 함께 본다
+            다른 기업에 적용할 때 — <span class="v3-em">그대로 복제하지 말고 조건을 봐야 한다</span>
           </h1>
-          <div class="s38-label-row reveal" style="--rev-delay:0.32s">
-            <span class="red-box-label">의도된 트레이드오프</span>
-            <span class="s38-label-row__text">실패 X · 구조적 제약 + 의도된 선택 — 비즈니스 영속성 리스크 통제 + 사용자 저항 최소화 위한 감수 비용</span>
+          <div class="s38-purpose reveal" style="--rev-delay:0.32s">
+            본 페이지는 롯데케미칼의 <strong>실패 요인이 아니라</strong>, 타 기업 적용 시 반드시 <strong>확인해야 할 조건 4가지</strong>를 정리한다.
           </div>
           <div class="s38-cards reveal" style="--rev-delay:0.45s">
             <article class="s38-card">
               <div class="s38-card__head">
                 <span class="s38-card__num">1</span>
                 <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 자물쇠·비공개 SVG -->
                   <svg viewBox="0 0 32 32"><rect x="7" y="14" width="18" height="14" rx="1" /><path d="M 11 14 L 11 10 C 11 7 13 5 16 5 C 19 5 21 7 21 10 L 21 14" /><circle cx="16" cy="21" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
                 </span>
-                <h3 class="s38-card__title">정량 ROI 비공개</h3>
+                <h3 class="s38-card__title">ROI 비공개</h3>
               </div>
-              <p class="s38-card__body">투자 규모·인력·ROI 산출 비공개 — 경제적 효과 정량 표현 한계·타사 비용·효과 비교 제약·정성·간접 표현 의존. <em>외부 분석 공통 한계</em></p>
-              <span class="s38-card__src">롯데케미칼 사업보고서 · 본 보고서 + 모든 외부 분석 공통</span>
+              <span class="s38-card__check">Check 1</span>
+              <div class="s38-card__split">
+                <div class="s38-card__split-row">
+                  <span class="s38-card__split-label">의미</span>
+                  <span class="s38-card__split-text">투자 규모·정량 ROI 공개되지 않았다</span>
+                </div>
+                <div class="s38-card__split-row s38-card__split-row--apply">
+                  <span class="s38-card__split-label">적용 시 확인</span>
+                  <span class="s38-card__split-text">우리 기업은 비용·효과를 얼마나 측정·공개할 수 있는가?</span>
+                </div>
+              </div>
             </article>
-            <article class="s38-card">
+            <article class="s38-card s38-card--active">
               <div class="s38-card__head">
                 <span class="s38-card__num">2</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 저울·트레이드오프 SVG -->
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
                   <svg viewBox="0 0 32 32"><line x1="16" y1="6" x2="16" y2="28" /><line x1="6" y1="28" x2="26" y2="28" /><polyline points="6 16 10 8 14 16 10 18 6 16" /><polyline points="18 16 22 8 26 16 22 18 18 16" /></svg>
                 </span>
                 <h3 class="s38-card__title">표준화 트레이드오프</h3>
               </div>
-              <p class="s38-card__body">Customizing 본연 경쟁력 보존 ↔ SAP Best Practice 미적용·향후 업그레이드 부담·그룹 차원 완전 표준화 미달성. <em>의도된 트레이드오프</em></p>
-              <span class="s38-card__src">GAP 3트랙 결정 정합</span>
+              <span class="s38-card__check">Check 2</span>
+              <div class="s38-card__split">
+                <div class="s38-card__split-row">
+                  <span class="s38-card__split-label">의미</span>
+                  <span class="s38-card__split-text">모든 업무 표준화 X · 본연 경쟁력은 보존</span>
+                </div>
+                <div class="s38-card__split-row s38-card__split-row--apply">
+                  <span class="s38-card__split-label">적용 시 확인</span>
+                  <span class="s38-card__split-text">표준화할 업무와 보존할 업무를 구분했는가?</span>
+                </div>
+              </div>
             </article>
-            <article class="s38-card s38-card--active">
+            <article class="s38-card">
               <div class="s38-card__head">
                 <span class="s38-card__num">3</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 구름·서버 SVG -->
+                <span class="v3-pict-wrap" aria-hidden="true">
                   <svg viewBox="0 0 32 32"><path d="M 7 18 C 4 18 4 13 8 13 C 8 9 14 8 16 12 C 19 10 24 12 23 16 C 27 16 27 21 23 21 L 9 21 C 6 21 5 18 7 18 Z" /><line x1="12" y1="25" x2="20" y2="25" /></svg>
                 </span>
                 <h3 class="s38-card__title">온프레미스 vs 클라우드</h3>
               </div>
-              <p class="s38-card__body">2017 합리적 선택 → 2018+ <em>SAP Cloud-First</em> 전환·장기 정합성 검토 필요. 2018 디지털혁신협의체 + 2020 DT 가속화로 부분 보완</p>
-              <span class="s38-card__src">2018 정정 사업보고서 학술 보강 자료 2020 보도자료</span>
+              <span class="s38-card__check">Check 3</span>
+              <div class="s38-card__split">
+                <div class="s38-card__split-row">
+                  <span class="s38-card__split-label">의미</span>
+                  <span class="s38-card__split-text">2017 당시 선택은 온프레미스 중심</span>
+                </div>
+                <div class="s38-card__split-row s38-card__split-row--apply">
+                  <span class="s38-card__split-label">적용 시 확인</span>
+                  <span class="s38-card__split-text">현재는 클라우드 전환 비용·조직 저항까지 검토했는가?</span>
+                </div>
+              </div>
             </article>
             <article class="s38-card">
               <div class="s38-card__head">
                 <span class="s38-card__num">4</span>
                 <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 사람·물음표 SVG -->
-                  <svg viewBox="0 0 32 32"><circle cx="13" cy="11" r="4" /><path d="M 6 26 C 6 20 9 17 13 17 C 17 17 20 20 20 26" /><text x="22" y="14" font-family="JetBrains Mono" font-size="10" font-weight="800" fill="var(--color-red)" stroke="none">?</text></svg>
+                  <svg viewBox="0 0 32 32"><circle cx="13" cy="11" r="4" /><path d="M 6 26 C 6 20 9 17 13 17 C 17 17 20 20 20 26" /></svg>
                 </span>
-                <h3 class="s38-card__title">인수 회사 적응 비가시성</h3>
+                <h3 class="s38-card__title">인수회사 적응 비가시성</h3>
               </div>
-              <p class="s38-card__body">"회계부서 박수" = 본사 추정·정밀화학·첨단소재 직원 자료 부재. M&amp;A 통합형 ERP 가장 민감 영역·<em>본연 경쟁력 유지 원칙</em> 사전 통제 영역 추정</p>
-              <span class="s38-card__src">박제성 상무 인터뷰 · 가드 11 정합 · 학자명 노출 X</span>
+              <span class="s38-card__check">Check 4</span>
+              <div class="s38-card__split">
+                <div class="s38-card__split-row">
+                  <span class="s38-card__split-label">의미</span>
+                  <span class="s38-card__split-text">직원 적응·변경관리 성과 정량 공개 제한</span>
+                </div>
+                <div class="s38-card__split-row s38-card__split-row--apply">
+                  <span class="s38-card__split-label">적용 시 확인</span>
+                  <span class="s38-card__split-text">사용자 교육·현장 저항을 어떻게 관리할 것인가?</span>
+                </div>
+              </div>
             </article>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span>한계 4건 모두 <em>의도된 트레이드오프 또는 구조적 제약</em> — 본 사례 성공 가치 + 일반화 가능성 함께 강화</span>
-            <span class="v3-msg__src">출처 docx Step 5 §3 · 박제성 상무 인터뷰 · 사업보고서 2018 정정 사업보고서 학술 보강 자료 2020 보도자료</span>
+            <span>한계 4건은 <em>실패 요인이 아니라</em>, 타 기업 적용 전 반드시 <em>확인해야 할 조건</em>이다.</span>
+          </div>
+          <div class="s48-source-line reveal" style="--rev-delay:0.96s">
+            출처 · 롯데케미칼 사업보고서 · 박제성 상무 인터뷰 · 2018 정정 사업보고서 · 학술 보강 자료
           </div>
         </div>
       </main>
@@ -1317,74 +3233,72 @@
         <div class="head-page"><span class="hp-num">49</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s39-main">
+        <div class="s39-main" style="display:flex;flex-direction:column;gap:18px;height:100%;overflow:hidden">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 5 · 06</span>
             <span class="eb-text">타 기업 적용 시사점 3 — 누구에게 유효한가</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            타 기업 적용 시사점 <span class="v3-em">3가지</span> — 상황별 차별 적용
+            타 기업에 적용할 때 시사점은? — <span class="v3-em">3가지 조건</span>
           </h1>
-          <div class="s39-intro reveal" style="--rev-delay:0.32s">
-            본 사례 시사점은 모든 기업에 일률적 적용 X — <em>특정 의사결정 상황</em>에 처한 기업들에게 차별적 유의미
+
+          <!-- intro 강화 (cream + red 좌측바 6px·font 18px·700) -->
+          <div class="s39-intro reveal" style="--rev-delay:0.32s;padding:18px 28px;background:var(--color-bg-cream);border-left:6px solid var(--color-red);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.5;letter-spacing:-0.008em">
+            본 사례는 모든 기업의 정답이 아니라, <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">특정 조건을 가진 기업</em>에 더 강하게 작동하는 참고 사례다.
           </div>
-          <div class="s39-cards reveal" style="--rev-delay:0.45s">
-            <article class="s39-card s39-card--active">
-              <div class="s39-card__head">
-                <span class="s39-card__num">1</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 3원 통합 SVG -->
-                  <svg viewBox="0 0 32 32"><circle cx="10" cy="12" r="6" /><circle cx="22" cy="12" r="6" /><circle cx="16" cy="22" r="6" /></svg>
-                </span>
-                <h3 class="s39-card__title">M&amp;A 통합 압력</h3>
+
+          <!-- 3 카드 큰 재구성 (가로 3열·각 카드 헤더·제목·본문·적용 포인트 박스) -->
+          <div class="s39-cards reveal" style="--rev-delay:0.45s;display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;min-height:0;flex:1 1 auto">
+
+            <!-- 카드 1 — M&A 통합 기업 (active·red top) -->
+            <article style="display:flex;flex-direction:column;gap:14px;padding:22px 24px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);min-height:0">
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:22px;font-weight:800;flex-shrink:0">1</span>
+                <span style="padding:6px 14px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px">M&amp;A 통합 기업</span>
               </div>
-              <p class="s39-card__sub">인수자 SAP 자산 보유 기업</p>
-              <ul class="s39-card__list">
-                <li><em>기존 ERP 자산 활용</em> — 인수자 측 검증된 SAP 자산 Roll-out > 신규 그린필드 (일정·비용·리스크 우월)</li>
-                <li><em>본연 경쟁력 유지</em> 능동 선택 — 인수 회사 차별화 프로세스·인재·고객 관계 훼손 X·M&amp;A 본래 목적 재확인</li>
-                <li><em>그룹 자원 적극 활용</em> — 그룹 SI·법무·재무 자원 통합 > 외부 컨설팅 의존 (장기 통제권 우월·역량 검증 선행)</li>
-              </ul>
-              <span class="s39-card__src">박제성 상무 인터뷰 · 사업보고서</span>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.018em">M&amp;A 통합 압력</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-soft);line-height:1.65;word-break:keep-all">인수·합병 이후 시스템과 프로세스가 분산된 기업 — 롯데케미칼은 3사 병존 구조를 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">단일 디지털 코어</em>로 묶었다.</p>
+              <div style="margin-top:auto;padding:14px 18px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;color:var(--color-red);text-transform:uppercase">적용 포인트</span>
+                <span style="font-family:var(--font-sans);font-size:15px;font-weight:800;color:var(--color-ink-strong);line-height:1.45;word-break:keep-all">기준정보·프로세스·권한 체계를 먼저 통합해야 한다.</span>
+              </div>
             </article>
-            <article class="s39-card">
-              <div class="s39-card__head">
-                <span class="s39-card__num">2</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 플랜트·시계 SVG (장치산업) -->
-                  <svg viewBox="0 0 32 32"><path d="M 4 28 L 4 14 L 11 18 L 11 12 L 19 16 L 19 10 L 28 14 L 28 28 Z" /><circle cx="22" cy="6" r="3" fill="var(--color-red)" stroke="none" /></svg>
-                </span>
-                <h3 class="s39-card__title">장치산업 다운타임</h3>
+
+            <!-- 카드 2 — 장치산업·연속 공정 (일반·graphite top) -->
+            <article style="display:flex;flex-direction:column;gap:14px;padding:22px 24px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-graphite);min-height:0">
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:22px;font-weight:800;flex-shrink:0">2</span>
+                <span style="padding:6px 14px;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px">장치산업·연속 공정</span>
               </div>
-              <p class="s39-card__sub">화학·정유·제철·발전·반도체</p>
-              <ul class="s39-card__list">
-                <li><em>다운타임 통제 최우선</em> 리스크 — 진단 수치 그대로 받지 말고 단축 방안 적극 강구</li>
-                <li>SAP <em>Value Assurance Service</em> 같은 구조화 서비스 활용 — 자체 방법론 X·패키지 공급사 검증 절차 ROI 우월</li>
-                <li>기존 시스템 안정 운영 시 <em>통합형 컨버전</em>(Brownfield 성격) > Greenfield 신규 우선 검토</li>
-              </ul>
-              <span class="s39-card__src">박제성 상무 인터뷰 · SAP Value Assurance 공식 자료 · Step 1 §4 정합</span>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">장치산업 다운타임</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-soft);line-height:1.65;word-break:keep-all">화학·정유·제철·반도체처럼 다운타임 비용이 큰 기업 — 1분 정지도 손실로 이어지는 환경에서는 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">전환 리스크 관리</em>가 핵심이다.</p>
+              <div style="margin-top:auto;padding:14px 18px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;color:var(--color-red);text-transform:uppercase">적용 포인트</span>
+                <span style="font-family:var(--font-sans);font-size:15px;font-weight:800;color:var(--color-ink-strong);line-height:1.45;word-break:keep-all">테스트·컷오버·Rollback 기준을 먼저 설계해야 한다.</span>
+              </div>
             </article>
-            <article class="s39-card s39-card--active">
-              <div class="s39-card__head">
-                <span class="s39-card__num">3</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 캘린더·전환 SVG (2027 EOS) -->
-                  <svg viewBox="0 0 32 32"><rect x="5" y="8" width="22" height="20" rx="1" /><line x1="5" y1="13" x2="27" y2="13" /><line x1="10" y1="5" x2="10" y2="11" /><line x1="22" y1="5" x2="22" y2="11" /><polyline points="12 20 16 23 20 18" /></svg>
-                </span>
-                <h3 class="s39-card__title">2027 ECC EOS 대비</h3>
+
+            <!-- 카드 3 — 2027 ECC EOS 대비 (active·red top) -->
+            <article style="display:flex;flex-direction:column;gap:14px;padding:22px 24px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);min-height:0">
+              <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:22px;font-weight:800;flex-shrink:0">3</span>
+                <span style="padding:6px 14px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px">2027 ECC EOS 전환 기업</span>
               </div>
-              <p class="s39-card__sub">국내 대기업 ECC 보유 기업</p>
-              <ul class="s39-card__list">
-                <li><em>조기 검토</em> = 일정 여유 + 리스크 통제 (롯데 2017 = EOS 10년 전 완료·2022~ 기업 압축 일정)</li>
-                <li>신규 그린필드 부담 큰 영역 — 기존 ECC 자산 기반 <em>통합형 컨버전</em>(Brownfield 성격) 우선 검토</li>
-                <li>클라우드 vs 온프레미스 신중 결정 — SAP <em>Cloud-First</em> 전략 정합 검토 필수</li>
-              </ul>
-              <span class="s39-card__src">docx Step 5 §4-3</span>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.018em">2027 ECC EOS 대비</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-soft);line-height:1.65;word-break:keep-all">SAP ECC를 보유하고 S/4HANA 전환을 앞둔 기업 — 단순 버전 업그레이드가 아니라 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">클라우드·AI·데이터 구조</em>까지 함께 결정해야 한다.</p>
+              <div style="margin-top:auto;padding:14px 18px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:6px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;color:var(--color-red);text-transform:uppercase">적용 포인트</span>
+                <span style="font-family:var(--font-sans);font-size:15px;font-weight:800;color:var(--color-ink-strong);line-height:1.45;word-break:keep-all">Brownfield·Greenfield·Cloud 전환 전략을 조직 여건에 맞게 비교해야 한다.</span>
+              </div>
             </article>
           </div>
+
           <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span>강의 자료 31p 정합 — <em>가장 큰 리스크 (Lock-in · Scope Creep)</em> 통제가 모든 시사점 공통 핵심</span>
-            <span class="v3-msg__src">출처 docx Step 5 §4 · 강의 자료 31p</span>
+            <span>이 사례의 가치는 <em>복제 가능한 정답</em>이 아니라, 기업 조건에 맞춰 <em>변형할 수 있는 적용 프레임</em>이다.</span>
+          </div>
+          <div class="s49-source-line reveal" style="--rev-delay:0.96s">
+            출처 · 박제성 상무 인터뷰 · 사업보고서 · 강의 자료 31p
           </div>
         </div>
       </main>
@@ -1402,63 +3316,150 @@
         <div class="head-page"><span class="hp-num">50</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s40-main">
+        <div class="s40-main" style="display:flex;flex-direction:column;gap:16px;height:100%;overflow:hidden">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 5 · 07</span>
-            <span class="eb-text">본질적 통찰 3 — 발표 마감 직전 논리적 정점</span>
+            <span class="eb-text">본질적 통찰 3 — 단일 디지털 코어로 수렴</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            본 사례 <span class="v3-em">본질적 통찰 3가지</span> — 단일 디지털 코어 회수
+            3가지 통찰이 <span class="v3-em">단일 디지털 코어</span>로 수렴한다
           </h1>
-          <div class="s40-recall reveal" style="--rev-delay:0.32s">
-            <span class="red-box-label">본질 회수</span>
-            <span class="s40-recall__text">앞서 본 hub-spoke + 통합 4축 + PIR 종합 검증 — <em>하나의 디지털 코어로 수렴</em></span>
+
+          <!-- intro 박스 -->
+          <div class="reveal" style="--rev-delay:0.32s;padding:14px 24px;background:var(--color-bg-cream);border-left:6px solid var(--color-red);font-family:var(--font-sans);font-size:17px;font-weight:700;color:var(--color-ink-strong);line-height:1.55;letter-spacing:-0.008em">
+            앞에서 본 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">세 가지 결론</em>은 결국 하나로 모인다.
           </div>
-          <div class="s40-cards reveal" style="--rev-delay:0.45s">
-            <article class="s40-card">
-              <div class="s40-card__head">
-                <span class="s40-card__num">5.1</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 코어 칩·플랫폼 SVG -->
-                  <svg viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="1" /><line x1="8" y1="14" x2="3" y2="14" /><line x1="8" y1="18" x2="3" y2="18" /><line x1="24" y1="14" x2="29" y2="14" /><line x1="24" y1="18" x2="29" y2="18" /><line x1="14" y1="8" x2="14" y2="3" /><line x1="18" y1="8" x2="18" y2="3" /><line x1="14" y1="24" x2="14" y2="29" /><line x1="18" y1="24" x2="18" y2="29" /></svg>
-                </span>
-                <h3 class="s40-card__title">ERP = 통합 경영 플랫폼</h3>
+
+          <!-- 본문 영역 (3 카드 + 코어 수렴) -->
+          <div class="reveal" style="--rev-delay:0.45s;display:flex;flex-direction:column;gap:14px;flex:1 1 auto;min-height:0">
+
+            <!-- 3 카드 가로 grid·내부 3구역 균등 배치 (상·중·하) -->
+            <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;min-height:0;flex:1 1 auto">
+
+              <!-- 카드 1 — 운영 기준 통합 -->
+              <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:20px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);min-height:0">
+                <!-- 상단: 번호 + chip -->
+                <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">1</span>
+                  <span style="padding:4px 10px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">통찰 1</span>
+                </div>
+                <!-- 중앙: 큰 키워드 + 본문 -->
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:8px 0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:34px;font-weight:900;color:var(--color-red-deep);line-height:1.15;letter-spacing:-0.024em">운영 기준 통합</h3>
+                  <p style="margin:0;font-family:var(--font-sans);font-size:22px;font-weight:700;color:var(--color-ink-strong);line-height:1.45;word-break:keep-all">시스템 교체 X<br/><em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">하나의 운영 기준</em>으로 묶는 선택</p>
+                </div>
+                <!-- 하단: 결과 chip -->
+                <div style="padding:12px 16px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:3px">
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;color:var(--color-red);text-transform:uppercase">결과 1</span>
+                  <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-red-deep);line-height:1.25">하나의 운영 기준</span>
+                </div>
+              </article>
+
+              <!-- 카드 2 — 누적 진화 (미니 타임라인 도식) -->
+              <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:20px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);min-height:0">
+                <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">2</span>
+                  <span style="padding:4px 10px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">통찰 2</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;text-align:center;padding:8px 0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:34px;font-weight:900;color:var(--color-red-deep);line-height:1.15;letter-spacing:-0.024em">누적 진화</h3>
+                  <!-- 미니 타임라인 (4 dot + 연도 + 시스템명) -->
+                  <div style="display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:6px;align-items:center;width:100%">
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                      <span style="width:10px;height:10px;border-radius:50%;background:var(--color-graphite)"></span>
+                      <span style="font-family:var(--font-mono);font-size:13px;font-weight:800;color:var(--color-graphite)">2003</span>
+                      <span style="font-family:var(--font-sans);font-size:13px;font-weight:700;color:var(--color-ink-strong)">SMART</span>
+                    </div>
+                    <span style="font-family:var(--font-mono);font-size:14px;color:var(--color-red);font-weight:900">›</span>
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                      <span style="width:10px;height:10px;border-radius:50%;background:var(--color-graphite)"></span>
+                      <span style="font-family:var(--font-mono);font-size:13px;font-weight:800;color:var(--color-graphite)">2010</span>
+                      <span style="font-family:var(--font-sans);font-size:13px;font-weight:700;color:var(--color-ink-strong)">GEMS</span>
+                    </div>
+                    <span style="font-family:var(--font-mono);font-size:14px;color:var(--color-red);font-weight:900">›</span>
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                      <span style="width:12px;height:12px;border-radius:50%;background:var(--color-red)"></span>
+                      <span style="font-family:var(--font-mono);font-size:13px;font-weight:800;color:var(--color-red-deep)">2017</span>
+                      <span style="font-family:var(--font-sans);font-size:13px;font-weight:900;color:var(--color-red-deep)">S/4HANA</span>
+                    </div>
+                    <span style="font-family:var(--font-mono);font-size:14px;color:var(--color-red);font-weight:900">›</span>
+                    <div style="display:flex;flex-direction:column;align-items:center;gap:4px">
+                      <span style="width:10px;height:10px;border-radius:50%;background:var(--color-graphite)"></span>
+                      <span style="font-family:var(--font-mono);font-size:13px;font-weight:800;color:var(--color-graphite)">2018</span>
+                      <span style="font-family:var(--font-sans);font-size:13px;font-weight:700;color:var(--color-ink-strong)">DT</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding:12px 16px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:3px">
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;color:var(--color-red);text-transform:uppercase">결과 2</span>
+                  <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-red-deep);line-height:1.25">단계적 진화</span>
+                </div>
+              </article>
+
+              <!-- 카드 3 — 트레이드오프 관리 (3 대비쌍 row) -->
+              <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:20px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);min-height:0">
+                <div style="display:flex;align-items:center;gap:8px;justify-content:center">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:16px;font-weight:800;flex-shrink:0">3</span>
+                  <span style="padding:4px 10px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">통찰 3</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:8px 0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:30px;font-weight:900;color:var(--color-red-deep);line-height:1.15;letter-spacing:-0.024em">트레이드오프 관리</h3>
+                  <!-- 3 대비쌍 row -->
+                  <div style="display:flex;flex-direction:column;gap:6px;width:100%">
+                    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:8px 10px;background:var(--color-bg-cream);border:1px solid var(--color-line-soft)">
+                      <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-graphite);text-align:right">Big Bang</span>
+                      <span style="font-family:var(--font-mono);font-size:12px;font-weight:800;color:var(--color-red);padding:0 4px">vs</span>
+                      <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-red-deep);text-align:left">Roll-out</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:8px 10px;background:var(--color-bg-cream);border:1px solid var(--color-line-soft)">
+                      <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-graphite);text-align:right">표준화</span>
+                      <span style="font-family:var(--font-mono);font-size:12px;font-weight:800;color:var(--color-red);padding:0 4px">vs</span>
+                      <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-red-deep);text-align:left">차별화</span>
+                    </div>
+                    <div style="display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;padding:8px 10px;background:var(--color-bg-cream);border:1px solid var(--color-line-soft)">
+                      <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-graphite);text-align:right">외부 SI</span>
+                      <span style="font-family:var(--font-mono);font-size:12px;font-weight:800;color:var(--color-red);padding:0 4px">vs</span>
+                      <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-red-deep);text-align:left">그룹 SI</span>
+                    </div>
+                  </div>
+                </div>
+                <div style="padding:12px 16px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:3px">
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;color:var(--color-red);text-transform:uppercase">결과 3</span>
+                  <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-red-deep);line-height:1.25">상황 맞춤 통제</span>
+                </div>
+              </article>
+            </div>
+
+            <!-- 코어 수렴 박스 (아이콘·라벨·큰 제목·sub 분리) -->
+            <div style="display:grid;grid-template-columns:auto 1fr auto;gap:20px;align-items:center;padding:20px 28px;background:var(--color-bg-cream);border:1px solid var(--color-red-soft);border-left:8px solid var(--color-red)">
+              <div style="width:72px;height:72px;display:inline-flex;align-items:center;justify-content:center;background:var(--color-red);border-radius:50%;color:var(--color-paper);flex-shrink:0">
+                <svg viewBox="0 0 32 32" width="42" height="42" aria-hidden="true">
+                  <rect x="8" y="8" width="16" height="16" rx="1" fill="none" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="8" y1="14" x2="3" y2="14" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="8" y1="18" x2="3" y2="18" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="24" y1="14" x2="29" y2="14" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="24" y1="18" x2="29" y2="18" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="14" y1="8" x2="14" y2="3" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="18" y1="8" x2="18" y2="3" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="14" y1="24" x2="14" y2="29" stroke="currentColor" stroke-width="2.2" />
+                  <line x1="18" y1="24" x2="18" y2="29" stroke="currentColor" stroke-width="2.2" />
+                </svg>
               </div>
-              <p class="s40-card__sub">IT 프로젝트 X · 디지털 코어</p>
-              <p class="s40-card__body">강의 23p "누구 제품을 사서 어떻게 우리 몸에 맞을까" → SAP 정해진·<em>'어떻게 맞을까'에 집중</em>. 박제성 "디지털 코어를 탄탄히 해 디지털 트랜스포메이션, 인텔리전트 엔터프라이즈로"</p>
-              <span class="s40-card__src">박제성 상무 인터뷰 · 강의 23p (25 hub-spoke 정합)</span>
-            </article>
-            <article class="s40-card">
-              <div class="s40-card__head">
-                <span class="s40-card__num">5.2</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 계단·시간 SVG -->
-                  <svg viewBox="0 0 32 32"><polyline points="4 28 4 22 10 22 10 16 16 16 16 10 22 10 22 4 28 4" /><polyline points="4 28 28 28" /></svg>
-                </span>
-                <h3 class="s40-card__title">누적 진화의 결과</h3>
+              <div style="display:flex;flex-direction:column;gap:3px">
+                <span style="font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.16em;text-transform:uppercase;color:var(--color-red)">수렴 지점 · CONVERGE</span>
+                <h2 style="margin:0;font-family:var(--font-sans);font-size:32px;font-weight:900;color:var(--color-red-deep);line-height:1.15;letter-spacing:-0.024em">단일 디지털 코어</h2>
+                <span style="font-family:var(--font-sans);font-size:17px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">SAP S/4HANA 중심 플랫폼</span>
               </div>
-              <p class="s40-card__sub">17년 디지털 자산 누적</p>
-              <p class="s40-card__body">2003 SMART → 2010 GEMS → 2017 S/4HANA → 2018 그룹공통·디지털혁신협의체 → 2019 DT 실행 → 2020 가속화. <em>'다음 디지털 단계 연결'</em>이 진정한 평가 기준</p>
-              <span class="s40-card__src">롯데케미칼 사업보고서 2018 정정 사업보고서 호남석유화학 SMART 2020 보도자료</span>
-            </article>
-            <article class="s40-card">
-              <div class="s40-card__head">
-                <span class="s40-card__num">5.3</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 저울·균형점 SVG -->
-                  <svg viewBox="0 0 32 32"><line x1="16" y1="6" x2="16" y2="28" /><line x1="6" y1="28" x2="26" y2="28" /><polyline points="6 16 10 8 14 16 10 18 6 16" /><polyline points="18 16 22 8 26 16 22 18 18 16" /><circle cx="16" cy="6" r="2" fill="var(--color-red)" stroke="none" /></svg>
-                </span>
-                <h3 class="s40-card__title">트레이드오프 명시 관리</h3>
-              </div>
-              <p class="s40-card__sub">최적해 X · 능동적 균형</p>
-              <p class="s40-card__body">Big Bang vs Roll-out · BPR vs Customizing · 외부 SI vs 그룹 SI · 표준화 vs 차별화 — 어느 극단 X · <em>'구체적 상황 맞는 균형점'</em>. 합리성 = 트레이드오프 명시 관리</p>
-              <span class="s40-card__src">docx Step 5 §5.3 · Step 3 트레이드오프 정합</span>
-            </article>
+              <div style="padding:14px 18px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-sans);font-size:15px;font-weight:900;letter-spacing:-0.005em;border-radius:3px;line-height:1.3;text-align:center;flex-shrink:0">3 통찰<br/>↓<br/>1 코어</div>
+            </div>
           </div>
-          <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span>본질적 통찰 3건 모두 — <em>보조 논지 4 단일 디지털 코어</em> 회수 · 다음 페이지 41·42 향후 과제 + 최종 결론 정합</span>
-            <span class="v3-msg__src">출처 docx Step 5 §5 · content-thesis 보조 논지 4</span>
+
+          <div class="v3-msg reveal" style="--rev-delay:1.3s">
+            <span>ERP 도입의 본질은 시스템 구축이 아니라, <em>조직의 운영 기준을 하나로 재설계</em>하는 것이다.</span>
+          </div>
+          <div class="s50-source-line reveal" style="--rev-delay:1.4s">
+            출처 · 박제성 상무 인터뷰 · 강의 자료 23p · 롯데케미칼 사업보고서
           </div>
         </div>
       </main>
@@ -1476,72 +3477,118 @@
         <div class="head-page"><span class="hp-num">51</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s41-main">
+        <div class="s41-main" style="display:flex;flex-direction:column;gap:16px;height:100%;overflow:hidden">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 5 · 08</span>
-            <span class="eb-text">향후 과제 4 — 디지털 코어가 확장되는 방향</span>
+            <span class="eb-text">S/4HANA 이후 — 4단계 디지털 로드맵</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            다음 디지털 단계 <span class="v3-em">4가지 향후 과제</span>
+            S/4HANA는 종착점이 아니라 <span class="v3-em">디지털 확장의 출발점</span>이다
           </h1>
-          <div class="s41-cards reveal" style="--rev-delay:0.4s">
-            <article class="s41-card">
-              <div class="s41-card__head">
-                <span class="s41-card__num">1</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 구름·전환 SVG -->
-                  <svg viewBox="0 0 32 32"><path d="M 7 18 C 4 18 4 13 8 13 C 8 9 14 8 16 12 C 19 10 24 12 23 16 C 27 16 27 21 23 21 L 9 21 C 6 21 5 18 7 18 Z" /><polyline points="14 25 16 27 18 25" /><line x1="16" y1="21" x2="16" y2="27" /></svg>
-                </span>
-                <h3 class="s41-card__title">클라우드 전환</h3>
+
+          <!-- intro 박스 -->
+          <div class="reveal" style="--rev-delay:0.32s;padding:14px 24px;background:var(--color-bg-cream);border-left:6px solid var(--color-red);font-family:var(--font-sans);font-size:17px;font-weight:700;color:var(--color-ink-strong);line-height:1.55;letter-spacing:-0.008em">
+            단일 디지털 코어 위에 <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">4단계 확장</em>이 이어진다.
+          </div>
+
+          <!-- 4 step roadmap (가로 확장형·내부 3구역 균등 배치) -->
+          <div class="reveal" style="--rev-delay:0.45s;display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:8px;align-items:stretch;min-height:0;flex:1 1 auto">
+
+            <!-- step 1 -->
+            <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:18px 20px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-graphite);min-height:0">
+              <!-- 상단 -->
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:18px;font-weight:800;flex-shrink:0">1</span>
+                <span style="padding:4px 10px;background:var(--color-bg-cream);color:var(--color-graphite);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">STEP 1</span>
               </div>
-              <p class="s41-card__sub">SAP Cloud-First 정합</p>
-              <p class="s41-card__body">2017 온프레미스 → SAP Cloud-First 정합 검토. PPM 모델 (Push-Pull-Mooring) 적용 — <em>변화 거부 + 전환 비용</em> 통제 + 클라우드 매력도 부각</p>
-              <span class="s41-card__src">학술 보강 자료</span>
+              <!-- 중앙: 단계명 + 큰 핵심 변화 -->
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:8px 0">
+                <h3 style="margin:0;font-family:var(--font-sans);font-size:22px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">클라우드 전환</h3>
+                <span style="font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.25;letter-spacing:-0.018em;word-break:keep-all">Cloud-First<br/>재검토</span>
+              </div>
+              <!-- 하단: 결과 chip -->
+              <div style="padding:12px 14px;background:var(--color-bg-cream);border-left:4px solid var(--color-graphite);display:flex;flex-direction:column;gap:3px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;color:var(--color-ink-mute);text-transform:uppercase">결과 1</span>
+                <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-ink-strong);line-height:1.25">인프라 유연성</span>
+              </div>
             </article>
-            <article class="s41-card">
-              <div class="s41-card__head">
-                <span class="s41-card__num">2</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- AI·뇌 SVG -->
-                  <svg viewBox="0 0 32 32"><path d="M 11 8 C 8 8 6 11 7 14 C 5 16 6 20 9 21 C 9 24 13 26 16 24 C 19 26 23 24 23 21 C 26 20 27 16 25 14 C 26 11 24 8 21 8 C 19 5 13 5 11 8 Z" /><circle cx="13" cy="14" r="1" fill="var(--color-red)" stroke="none" /><circle cx="19" cy="14" r="1" fill="var(--color-red)" stroke="none" /><line x1="16" y1="18" x2="16" y2="22" /></svg>
-                </span>
-                <h3 class="s41-card__title">AI · 빅데이터 본격 활용</h3>
+
+            <!-- chevron 1 -->
+            <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--color-red)">
+              <svg width="28" height="36" viewBox="0 0 28 36" aria-hidden="true">
+                <path d="M 6 6 L 20 18 L 6 30" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- step 2 -->
+            <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:18px 20px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-graphite);min-height:0">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:18px;font-weight:800;flex-shrink:0">2</span>
+                <span style="padding:4px 10px;background:var(--color-bg-cream);color:var(--color-graphite);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">STEP 2</span>
               </div>
-              <p class="s41-card__sub">인텔리전트 엔터프라이즈</p>
-              <p class="s41-card__body">S/4HANA 인메모리 통합 데이터 호수 → AI·머신러닝·빅데이터 분석 기반. 박제성 <em>'인텔리전트 엔터프라이즈'</em> 비전 영역</p>
-              <span class="s41-card__src">박제성 상무 인터뷰</span>
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:8px 0">
+                <h3 style="margin:0;font-family:var(--font-sans);font-size:22px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">AI · 빅데이터</h3>
+                <span style="font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.25;letter-spacing:-0.018em;word-break:keep-all">분석·예측<br/>의사결정</span>
+              </div>
+              <div style="padding:12px 14px;background:var(--color-bg-cream);border-left:4px solid var(--color-graphite);display:flex;flex-direction:column;gap:3px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;color:var(--color-ink-mute);text-transform:uppercase">결과 2</span>
+                <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-ink-strong);line-height:1.25">예측 의사결정</span>
+              </div>
             </article>
-            <article class="s41-card">
-              <div class="s41-card__head">
-                <span class="s41-card__num">3</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 네트워크·IoT SVG -->
-                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="3" /><circle cx="6" cy="6" r="2" /><circle cx="26" cy="6" r="2" /><circle cx="6" cy="26" r="2" /><circle cx="26" cy="26" r="2" /><line x1="14" y1="14" x2="8" y2="8" /><line x1="18" y1="14" x2="24" y2="8" /><line x1="14" y1="18" x2="8" y2="24" /><line x1="18" y1="18" x2="24" y2="24" /></svg>
-                </span>
-                <h3 class="s41-card__title">디지털 트윈 · IoT 통합</h3>
+
+            <!-- chevron 2 -->
+            <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--color-red)">
+              <svg width="28" height="36" viewBox="0 0 28 36" aria-hidden="true">
+                <path d="M 6 6 L 20 18 L 6 30" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- step 3 -->
+            <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:18px 20px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-graphite);min-height:0">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:18px;font-weight:800;flex-shrink:0">3</span>
+                <span style="padding:4px 10px;background:var(--color-bg-cream);color:var(--color-graphite);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">STEP 3</span>
               </div>
-              <p class="s41-card__sub">공정 데이터 + 경영 데이터</p>
-              <p class="s41-card__body">장치산업 공정 데이터 (PIS·SCADA·RTDB) + 경영 데이터 (S/4HANA) 통합 → 디지털 트윈 기반. 본 ERP <em>가장 큰 후속 잠재 가치</em> 영역</p>
-              <span class="s41-card__src">학술 보강 자료</span>
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:8px 0">
+                <h3 style="margin:0;font-family:var(--font-sans);font-size:22px;font-weight:900;color:var(--color-ink-strong);line-height:1.2;letter-spacing:-0.018em">디지털 트윈 · IoT</h3>
+                <span style="font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.25;letter-spacing:-0.018em;word-break:keep-all">실시간 운영<br/>최적화</span>
+              </div>
+              <div style="padding:12px 14px;background:var(--color-bg-cream);border-left:4px solid var(--color-graphite);display:flex;flex-direction:column;gap:3px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;color:var(--color-ink-mute);text-transform:uppercase">결과 3</span>
+                <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-ink-strong);line-height:1.25">실시간 최적화</span>
+              </div>
             </article>
-            <article class="s41-card">
-              <div class="s41-card__head">
-                <span class="s41-card__num">4</span>
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 트로피·비전 SVG -->
-                  <svg viewBox="0 0 32 32"><path d="M 10 6 L 22 6 L 22 14 C 22 18 19 21 16 21 C 13 21 10 18 10 14 Z" /><line x1="10" y1="9" x2="6" y2="9" /><path d="M 6 9 L 6 13 C 6 15 8 16 10 16" /><line x1="22" y1="9" x2="26" y2="9" /><path d="M 26 9 L 26 13 C 26 15 24 16 22 16" /><line x1="16" y1="21" x2="16" y2="26" /><line x1="11" y1="28" x2="21" y2="28" /></svg>
-                </span>
-                <h3 class="s41-card__title">2030 글로벌 톱7 지원</h3>
+
+            <!-- chevron 3 -->
+            <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--color-red)">
+              <svg width="28" height="36" viewBox="0 0 28 36" aria-hidden="true">
+                <path d="M 6 6 L 20 18 L 6 30" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+
+            <!-- step 4 (목표·active red) -->
+            <article style="display:grid;grid-template-rows:auto 1fr auto;gap:12px;padding:18px 20px;background:var(--color-bg-cream);border:1px solid var(--color-red-soft);border-top:5px solid var(--color-red);min-height:0;position:relative">
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:18px;font-weight:800;flex-shrink:0">4</span>
+                <span style="padding:4px 10px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;border-radius:3px">목표</span>
               </div>
-              <p class="s41-card__sub">추가 M&amp;A · 해외 확장 · 신사업</p>
-              <p class="s41-card__body">2030 비전 (글로벌 톱7 화학회사) — 추가 M&amp;A·해외 확장·신사업 진입 지원 영역 후속 의사결정. <em>CSF 5 동일 패턴</em> 적용 가이드라인</p>
-              <span class="s41-card__src">학술 보강 자료</span>
+              <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:8px 0">
+                <h3 style="margin:0;font-family:var(--font-sans);font-size:22px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.018em">2030 글로벌 톱7</h3>
+                <span style="font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.25;letter-spacing:-0.018em;word-break:keep-all">디지털 기반<br/>확장</span>
+              </div>
+              <div style="padding:12px 14px;background:var(--color-red);color:var(--color-paper);display:flex;flex-direction:column;gap:3px;border-radius:3px">
+                <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.1em;opacity:0.85;text-transform:uppercase">최종 결과</span>
+                <span style="font-family:var(--font-sans);font-size:18px;font-weight:900;line-height:1.25">글로벌 확장 지원</span>
+              </div>
             </article>
           </div>
+
           <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span><em>CSF 5 영역 동일 의사결정 패턴</em> — 향후 어떤 디지털 결정에도 유효 가이드라인. '기존 자산 + 비즈니스 목표 + 리스크 사전 통제 + 그룹 자원 + 표준화·차별화 균형'</span>
-            <span class="v3-msg__src">CSF 5 회수 — 동일 의사결정 패턴</span>
+            <span>단일 디지털 코어는 끝이 아니라, <em>클라우드 · AI · 공정 데이터</em>로 확장되는 <em>출발점</em>이다.</span>
+          </div>
+          <div class="s51-source-line reveal" style="--rev-delay:0.96s">
+            출처 · 박제성 상무 인터뷰 · 2020 보도자료 · 학술 보강 자료
           </div>
         </div>
       </main>
@@ -1559,33 +3606,158 @@
         <div class="head-page"><span class="hp-num">52</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s42-main">
+        <div class="s42-main" style="display:flex;flex-direction:column;gap:14px;height:100%;overflow:hidden">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 5 · 09</span>
-            <span class="eb-text">최종 결론 — 발표 마감</span>
+            <span class="eb-text">최종 결론 — 롯데케미칼 사례</span>
           </div>
-          <div class="s42-pinjab reveal" style="--rev-delay:0.25s">
-            <span class="s42-pinjab__icon" aria-hidden="true">
-              <!-- 코어 칩 SVG (보조 논지 4 hub-spoke 최종 회수) -->
-              <svg viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="1" /><line x1="8" y1="14" x2="3" y2="14" /><line x1="8" y1="18" x2="3" y2="18" /><line x1="24" y1="14" x2="29" y2="14" /><line x1="24" y1="18" x2="29" y2="18" /><line x1="14" y1="8" x2="14" y2="3" /><line x1="18" y1="8" x2="18" y2="3" /><line x1="14" y1="24" x2="14" y2="29" /><line x1="18" y1="24" x2="18" y2="29" /></svg>
+
+          <!-- 메인 결론 (cream 박스 X·흰 배경 위 큰 선언·중앙·red underline sweep·key glow) -->
+          <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;flex:1 1 auto;min-height:0;gap:22px;padding:18px 0;animation:s52HeroFadeIn 0.9s cubic-bezier(0.2,0.7,0.2,1) 1.2s both">
+
+            <!-- 라벨 (좌우 짧은 선 + Final Conclusion mono) -->
+            <span style="display:inline-flex;align-items:center;gap:14px;font-family:var(--font-mono);font-size:14px;font-weight:800;letter-spacing:0.22em;text-transform:uppercase;color:var(--color-red)">
+              <span style="display:inline-block;width:32px;height:2px;background:var(--color-red)"></span>
+              Final Conclusion · 롯데케미칼 사례 결론
+              <span style="display:inline-block;width:32px;height:2px;background:var(--color-red)"></span>
             </span>
-            <p class="s42-pinjab__text">ERP 전환의 본질은 시스템 교체가 아니라, <em>기존 자산을 기반으로 조직의 운영 기준을 다시 설계하는</em> <em>통합 경영 플랫폼 선택</em>이다.</p>
+
+            <!-- 큰 결론 문장 -->
+            <h1 style="margin:0;font-family:var(--font-sans);font-size:58px;font-weight:900;color:var(--color-ink-strong);line-height:1.24;letter-spacing:-0.028em">
+              롯데케미칼은 시스템을 교체한 것이 아니라,<br/>
+              <span style="position:relative;display:inline-block">
+                <em style="font-style:normal;font-weight:900;color:var(--color-red-deep);animation:s52KeyGlow 3.2s ease-in-out 2.8s infinite">통합 운영 기준</em>
+                <span aria-hidden="true" style="position:absolute;left:0;bottom:-10px;width:0;height:10px;background:var(--color-red);opacity:0;animation:s52Underline 0.85s cubic-bezier(0.2,0.7,0.2,1) 1.9s forwards"></span>
+              </span>을 다시 설계했다
+            </h1>
+
+            <!-- sub -->
+            <span style="font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-soft);letter-spacing:-0.008em;margin-top:14px">M&amp;A 이후 3사 통합 ERP · 7개월 · SAP S/4HANA 중심 · 다운타임 -54%</span>
           </div>
-          <div class="s42-recall reveal" style="--rev-delay:0.55s">
-            <span class="s42-recall__arrow">▸</span>
-            <span>기존 자산의 <em>진화적 활용</em></span>
-            <span class="s42-recall__arrow">▸</span>
-            <span>트레이드오프의 <em>능동적 관리</em></span>
-            <span class="s42-recall__arrow">▸</span>
-            <span>SAP 중심 <em>단일 디지털 코어</em></span>
+
+          <!-- 3 stamp 영역 (graphite 1px + red top 5px + chevron up 수렴 시각·sequential s52StampIn) -->
+          <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px;flex-shrink:0;padding-top:6px">
+
+            <!-- 01 기존 자산을 버리지 않았다 -->
+            <article style="position:relative;display:flex;flex-direction:column;gap:8px;padding:18px 22px 14px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);animation:s52StampIn 0.6s cubic-bezier(0.2,0.7,0.2,1) 0.5s both">
+              <!-- 상단 chevron up 수렴 시각 -->
+              <span aria-hidden="true" style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:center;width:24px;height:18px;color:var(--color-red);animation:s52ChevronUp 2.4s ease-in-out 1.5s infinite">
+                <svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:18px">
+                  <polyline points="2 15 12 4 22 15" />
+                </svg>
+              </span>
+              <!-- 헤더 -->
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:14px;font-weight:800;flex-shrink:0">01</span>
+                <span style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:0.14em;color:var(--color-red);text-transform:uppercase">근거 1</span>
+              </div>
+              <!-- 키워드 -->
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.22;letter-spacing:-0.018em">기존 자산을 <em style="font-style:normal;color:var(--color-red-deep)">버리지 않았다</em></h3>
+              <!-- 본문 -->
+              <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5;word-break:keep-all">13년 SAP 자산을 통합형 컨버전으로 이전</p>
+              <!-- 결과 chip -->
+              <div style="display:inline-flex;align-self:flex-start;align-items:baseline;gap:8px;padding:7px 12px;background:var(--color-bg-cream);border-left:3px solid var(--color-red);margin-top:6px;line-height:1.2">
+                <span style="font-family:var(--font-mono);font-size:9px;font-weight:800;letter-spacing:0.1em;color:var(--color-red);text-transform:uppercase;flex-shrink:0">결과</span>
+                <span style="font-family:var(--font-sans);font-size:14px;font-weight:900;color:var(--color-red-deep)">7개월 압축 가능</span>
+              </div>
+            </article>
+
+            <!-- 02 표준화와 차별성을 동시에 관리했다 -->
+            <article style="position:relative;display:flex;flex-direction:column;gap:8px;padding:18px 22px 14px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);animation:s52StampIn 0.6s cubic-bezier(0.2,0.7,0.2,1) 0.7s both">
+              <span aria-hidden="true" style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:center;width:24px;height:18px;color:var(--color-red);animation:s52ChevronUp 2.4s ease-in-out 1.7s infinite">
+                <svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:18px">
+                  <polyline points="2 15 12 4 22 15" />
+                </svg>
+              </span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:14px;font-weight:800;flex-shrink:0">02</span>
+                <span style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:0.14em;color:var(--color-red);text-transform:uppercase">근거 2</span>
+              </div>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.22;letter-spacing:-0.018em">표준화와 차별성을 <em style="font-style:normal;color:var(--color-red-deep)">동시에 관리했다</em></h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5;word-break:keep-all">BPR + Customizing + Add-on 3트랙 균형</p>
+              <div style="display:inline-flex;align-self:flex-start;align-items:baseline;gap:8px;padding:7px 12px;background:var(--color-bg-cream);border-left:3px solid var(--color-red);margin-top:6px;line-height:1.2">
+                <span style="font-family:var(--font-mono);font-size:9px;font-weight:800;letter-spacing:0.1em;color:var(--color-red);text-transform:uppercase;flex-shrink:0">결과</span>
+                <span style="font-family:var(--font-sans);font-size:14px;font-weight:900;color:var(--color-red-deep)">표준화 + 본연 경쟁력 동시 확보</span>
+              </div>
+            </article>
+
+            <!-- 03 하나의 디지털 코어로 수렴했다 -->
+            <article style="position:relative;display:flex;flex-direction:column;gap:8px;padding:18px 22px 14px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);animation:s52StampIn 0.6s cubic-bezier(0.2,0.7,0.2,1) 0.9s both">
+              <span aria-hidden="true" style="position:absolute;top:-22px;left:50%;transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:center;width:24px;height:18px;color:var(--color-red);animation:s52ChevronUp 2.4s ease-in-out 1.9s infinite">
+                <svg viewBox="0 0 24 18" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="width:24px;height:18px">
+                  <polyline points="2 15 12 4 22 15" />
+                </svg>
+              </span>
+              <div style="display:flex;align-items:center;gap:10px">
+                <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:14px;font-weight:800;flex-shrink:0">03</span>
+                <span style="font-family:var(--font-mono);font-size:10px;font-weight:800;letter-spacing:0.14em;color:var(--color-red);text-transform:uppercase">근거 3</span>
+              </div>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:21px;font-weight:900;color:var(--color-ink-strong);line-height:1.22;letter-spacing:-0.018em">하나의 디지털 코어로 <em style="font-style:normal;color:var(--color-red-deep)">수렴했다</em></h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5;word-break:keep-all">S/4HANA + 비SAP 시스템 EAI 연계</p>
+              <div style="display:inline-flex;align-self:flex-start;align-items:baseline;gap:8px;padding:7px 12px;background:var(--color-bg-cream);border-left:3px solid var(--color-red);margin-top:6px;line-height:1.2">
+                <span style="font-family:var(--font-mono);font-size:9px;font-weight:800;letter-spacing:0.1em;color:var(--color-red);text-transform:uppercase;flex-shrink:0">결과</span>
+                <span style="font-family:var(--font-sans);font-size:14px;font-weight:900;color:var(--color-red-deep)">운영 기준 재설계</span>
+              </div>
+            </article>
           </div>
-          <div class="s42-learning reveal" style="--rev-delay:0.7s">
-            <span>강의 6단계 (타당성·요구사항·설계·구축·구현·PIR) 모두에서 <em>1차 자료 + 사후 검증</em>이 가능한 드문 모범 사례. SAP 컨설팅·SI·디지털 전환 진로 학습자의 직접 참고 사례.</span>
-            <span class="s42-learning__src">학습 가치 — 강의 6단계 전 구간 검증 가능</span>
+
+          <!-- 학습 가치 + 출처 (얇게·결론 겹침 회피) -->
+          <div class="reveal" style="--rev-delay:1.7s;display:grid;grid-template-columns:auto 1fr;gap:14px;align-items:center;padding:8px 18px;background:var(--color-paper);border:1px solid var(--color-line);border-left:4px solid var(--color-graphite);font-family:var(--font-sans);font-size:13px;color:var(--color-ink-soft);line-height:1.45;flex-shrink:0">
+            <strong style="font-family:var(--font-mono);font-size:11px;font-weight:800;color:var(--color-graphite);letter-spacing:0.08em;text-transform:uppercase">학습 가치</strong>
+            <span>강의 6단계 (타당성·요구사항·설계·구축·구현·PIR) 모두에서 1차 자료와 사후 검증이 가능한 드문 모범 사례</span>
           </div>
-          <div class="s52-source-line reveal" style="--rev-delay:0.85s">
-            <strong>출처</strong>박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료 · 2020 보도자료 · 강의 자료 19p · 31p
+
+          <div class="reveal" style="--rev-delay:1.85s;font-family:var(--font-mono);font-size:11px;font-weight:500;color:var(--color-ink-mute);letter-spacing:0.04em;line-height:1.45;padding:4px 0;flex-shrink:0">
+            <strong style="font-weight:800;color:var(--color-ink-soft);margin-right:8px">출처</strong>박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료 · 2020 보도자료 · 강의 자료 19p·31p
+          </div>
+        </div>
+      </main>
+    </section>
+
+    <!-- ============= SLIDE 53 · thanks-qna v1 (신규 — Q&A + 조원 역할 + 출처 마감) ============= -->
+    <section class="slide tone-a" data-slide="10">
+      <header class="slide-head">
+        <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
+        <div class="head-meta">
+          <span class="hm-item">광운대학교 경영대학</span><span class="hm-dot"></span>
+          <span class="hm-item">ERP개론</span><span class="hm-dot"></span>
+          <span class="hm-item">기업 통합 ERP 사례 분석</span>
+        </div>
+        <div class="head-page"><span class="hp-num">53</span></div>
+      </header>
+      <main class="slide-main-v6">
+        <div class="s53-main">
+          <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
+            <span class="eb-bar"></span>
+            <span class="red-box-label">STEP 5 · 10</span>
+            <span class="eb-text">발표 마감 · Q&amp;A</span>
+          </div>
+          <div class="s53-hero reveal" style="--rev-delay:0.25s">
+            <span class="s53-hero__subtitle">Lotte Chemical SAP S/4HANA Case Study</span>
+            <h1 class="s53-hero__title">감사합니다<br /><em>Q&amp;A</em></h1>
+            <p class="s53-hero__meta">롯데케미칼 SAP S/4HANA ERP 통합 사례 분석 · 광운대학교 경영대학 ERP개론 1팀</p>
+          </div>
+          <div class="s53-roles reveal" style="--rev-delay:0.6s">
+            <div class="s53-roles__item">
+              <span class="s53-roles__step">Step 1 · 2</span>
+              <span class="s53-roles__name">성슬기</span>
+            </div>
+            <div class="s53-roles__item">
+              <span class="s53-roles__step">Step 3</span>
+              <span class="s53-roles__name">김민아</span>
+            </div>
+            <div class="s53-roles__item">
+              <span class="s53-roles__step">Step 4 · 5</span>
+              <span class="s53-roles__name">김동현</span>
+            </div>
+            <div class="s53-roles__item">
+              <span class="s53-roles__step">발표자료 제작</span>
+              <span class="s53-roles__name">신해원</span>
+            </div>
+          </div>
+          <div class="s53-source-line reveal" style="--rev-delay:0.8s">
+            <strong>출처</strong>박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료 · 2020 보도자료 · 강의 자료 · 학술 보강 자료
           </div>
         </div>
       </main>
