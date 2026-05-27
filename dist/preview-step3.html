@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>롯데케미칼 SAP S/4HANA 사례 — Step 3 빌드 v1 (2장 · 20 chapter3-intro + 21 four-constraints)</title>
+  <title>롯데케미칼 SAP S/4HANA 사례 — Step 3 빌드 v4 (4장 · 20 step3-intro + 21 four-constraints + 22 governance-triad 실행 통제 재정의 + 23 four-methodologies 정합 복구)</title>
 
   <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
   <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
@@ -1890,6 +1890,1017 @@
     .s25-card2__title {
       font-size: 28px !important;
     }
+
+    /* =========================================================
+       Step 3 v4 — 20·21·22·23 본 차수 재구성 영역 (s20b·s21b·s22b prefix)
+       본인 디렉션 v10.15 정합·페이지 수 14장 유지·24 이후 미진입
+       기존 .s20·.s21·.s22·.s23 영역 영향 X (신규 prefix)
+       ========================================================= */
+
+    /* ===== 20 step3-intro v4 (.s20b-*) — 좌 질문 + 우 4 로드맵 + 하단 thesis ===== */
+    .s20b-main {
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      gap: 22px;
+      height: 100%;
+      overflow: hidden;
+    }
+    .s20b-body {
+      display: grid;
+      grid-template-columns: 38% 62%;
+      gap: 32px;
+      min-height: 0;
+    }
+    .s20b-question {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 22px;
+      padding: 32px 38px;
+      background: var(--color-paper);
+      border-left: 12px solid var(--color-red);
+    }
+    .s20b-question__bignum {
+      font-family: var(--font-mono);
+      font-size: 180px; font-weight: 900;
+      color: var(--color-red);
+      line-height: 0.85;
+      letter-spacing: -0.04em;
+      margin: 0;
+    }
+    .s20b-question__label {
+      font-family: var(--font-mono);
+      font-size: 14px; font-weight: 800;
+      letter-spacing: 0.12em;
+      color: var(--color-red);
+    }
+    .s20b-question__text {
+      font-family: var(--font-sans);
+      font-size: 44px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.18;
+      letter-spacing: -0.022em;
+      margin: 0;
+    }
+    .s20b-question__text em {
+      color: var(--color-red);
+      font-style: normal;
+    }
+    .s20b-question__sub {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 700;
+      color: var(--color-ink-soft);
+      line-height: 1.5;
+      margin: 0;
+    }
+    .s20b-roadmap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    .s20b-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 10px;
+      padding: 22px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+    }
+    .s20b-card__head {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .s20b-card__num {
+      width: 46px; height: 46px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 20px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .s20b-card__pict {
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--color-red);
+    }
+    .s20b-card__pict svg {
+      width: 32px; height: 32px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .s20b-card__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.15;
+      letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .s20b-card__sub {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 700;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .s20b-card__link {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.08em;
+      color: var(--color-red);
+      align-self: flex-end;
+    }
+    .s20b-thesis {
+      display: flex; align-items: center; gap: 18px;
+      padding: 18px 32px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .s20b-thesis em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 900;
+    }
+    .s20b-thesis__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+    }
+
+    /* ===== 21 four-constraints v4 (.s21b-*) — 4 시각 장치 차등화 ===== */
+    .s21b-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+      overflow: hidden;
+    }
+    .s21b-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    .s21b-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto auto;
+      gap: 10px;
+      padding: 22px 26px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+    }
+    .s21b-card__label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+    }
+    .s21b-card__title {
+      font-family: var(--font-sans);
+      font-size: 30px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.15;
+      letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .s21b-card__viz {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      min-height: 0;
+      padding: 6px 0;
+    }
+    .s21b-card__viz svg {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      display: block;
+    }
+    .s21b-card__key {
+      font-family: var(--font-mono);
+      font-size: 80px; font-weight: 800;
+      color: var(--color-red);
+      line-height: 1;
+      letter-spacing: -0.03em;
+      text-align: center;
+      margin: 0;
+    }
+    .s21b-card__key--row {
+      font-size: 26px;
+      font-family: var(--font-sans);
+      font-weight: 900;
+      letter-spacing: -0.01em;
+      display: flex; justify-content: center; align-items: baseline; gap: 8px;
+      flex-wrap: nowrap;
+      white-space: nowrap;
+    }
+    .s21b-card__key--row .s21b-key__red {
+      color: var(--color-red);
+    }
+    .s21b-card__key--row .s21b-key__graphite {
+      color: var(--color-graphite);
+    }
+    .s21b-card__entities {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 800;
+      color: var(--color-ink-strong);
+      text-align: center;
+      white-space: nowrap;
+      letter-spacing: -0.012em;
+      margin: 0;
+    }
+    .s21b-card__sub {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      text-align: center;
+      margin: 0;
+    }
+    /* 21 시각 장치 SVG 색상 영역 — var(--color-*) 토큰 사용·하드코딩 X */
+    .s21b-viz--timeline .s21b-bar-old {
+      fill: var(--color-graphite);
+      opacity: 0.25;
+    }
+    .s21b-viz--timeline .s21b-bar-new {
+      fill: var(--color-red);
+    }
+    .s21b-viz--timeline .s21b-tl-label {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      fill: var(--color-ink-mute);
+      letter-spacing: 0.05em;
+    }
+    .s21b-viz--pipeline .s21b-pipe {
+      fill: none;
+      stroke: var(--color-graphite);
+      stroke-width: 4;
+      stroke-linecap: round;
+    }
+    .s21b-viz--pipeline .s21b-dot {
+      fill: var(--color-red);
+    }
+    .s21b-viz--pipeline .s21b-cap {
+      fill: var(--color-graphite);
+    }
+    .s21b-viz--nodes .s21b-node {
+      fill: var(--color-paper);
+      stroke: var(--color-graphite);
+      stroke-width: 2;
+    }
+    .s21b-viz--nodes .s21b-node-label {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 800;
+      fill: var(--color-ink-strong);
+      text-anchor: middle;
+      letter-spacing: 0.05em;
+    }
+    .s21b-viz--nodes .s21b-chevron {
+      fill: var(--color-red);
+    }
+    .s21b-viz--nodes .s21b-core {
+      fill: var(--color-red);
+    }
+    .s21b-viz--nodes .s21b-core-label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      fill: var(--color-paper);
+      text-anchor: middle;
+      letter-spacing: 0.08em;
+    }
+    .s21b-viz--map .s21b-continent {
+      fill: none;
+      stroke: var(--color-graphite);
+      stroke-width: 1;
+      opacity: 0.6;
+    }
+    .s21b-viz--map .s21b-pin {
+      fill: var(--color-red);
+    }
+    .s21b-viz--map .s21b-dot-small {
+      fill: var(--color-graphite);
+      opacity: 0.4;
+    }
+
+    /* ===== 22 governance-triad v4 (.s22b-*) — 4 제약 RECALL 스트립 + 3축 카드 + 결론 ===== */
+    .s22b-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 16px;
+      height: 100%;
+      overflow: hidden;
+    }
+    /* 상단 4대 제약 RECALL 요약 스트립 (작게·본문 주인공 X) */
+    .s22b-strip {
+      display: grid;
+      grid-template-columns: auto repeat(4, 1fr);
+      gap: 10px;
+      padding: 10px 14px;
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-line-soft);
+      align-items: center;
+    }
+    .s22b-strip__label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-graphite);
+      padding-right: 6px;
+      border-right: 1px solid var(--color-line);
+    }
+    .s22b-chip {
+      display: flex; align-items: center; gap: 8px;
+      padding: 6px 12px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 14px; font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+    }
+    .s22b-chip__pict {
+      width: 22px; height: 22px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--color-graphite);
+      flex-shrink: 0;
+    }
+    .s22b-chip__pict svg {
+      width: 20px; height: 20px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    /* 중앙 본문 — 3축 카드 가로 1×3 (본문 주인공) */
+    .s22b-axes {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 18px;
+      min-height: 0;
+    }
+    .s22b-axis {
+      display: grid;
+      grid-template-rows: auto auto auto auto 1fr auto;
+      gap: 10px;
+      padding: 24px 26px 18px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+    }
+    .s22b-axis__head {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .s22b-axis__num {
+      width: 50px; height: 50px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 22px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .s22b-axis__pict {
+      width: 44px; height: 44px;
+      display: inline-flex; align-items: center; justify-content: center;
+      color: var(--color-red);
+    }
+    .s22b-axis__pict svg {
+      width: 36px; height: 36px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+    .s22b-axis__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+    }
+    .s22b-axis__title {
+      font-family: var(--font-sans);
+      font-size: 38px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.1;
+      letter-spacing: -0.022em;
+      margin: 0;
+    }
+    .s22b-axis__subject {
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.3;
+      margin: 0;
+    }
+    .s22b-axis__roles {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .s22b-axis__roles li {
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+      padding-left: 16px;
+      position: relative;
+    }
+    .s22b-axis__roles li::before {
+      content: "·";
+      position: absolute;
+      left: 4px;
+      color: var(--color-red);
+      font-weight: 900;
+    }
+    .s22b-axis__result {
+      padding-top: 10px;
+      border-top: 1px solid var(--color-red-soft);
+      font-family: var(--font-sans);
+      font-size: 17px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+    }
+    .s22b-axis__result-label {
+      display: block;
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+      margin-bottom: 4px;
+    }
+    .s22b-axis__result em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+    /* 하단 결론 박스 — 본인 디렉션 정확 어휘 */
+    .s22b-conclusion {
+      display: flex; align-items: center; gap: 18px;
+      padding: 20px 32px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 6px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.4;
+    }
+    .s22b-conclusion em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 900;
+    }
+    .s22b-conclusion__src {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 600;
+      color: var(--color-ink-mute);
+      margin-left: auto;
+      letter-spacing: 0.06em;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    /* =========================================================
+       Step 3 v5 — 21 디자인 리빌딩 (.s21c-*) — 중심 허브 + 4방향 압박 구조
+       본인 디렉션 + GPT 피드백 정합·shared/세계지도.png 활용
+       3×3 grid·좌상·우상·중앙 허브·좌하·우하
+       ========================================================= */
+    .s21c-main {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 18px;
+      height: 100%;
+      overflow: hidden;
+    }
+    .s21c-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr 1fr;
+      grid-template-rows: 1fr 1fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    /* 4 코너 카드 */
+    .s21c-card {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 10px;
+      padding: 20px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-red);
+      position: relative;
+    }
+    .s21c-card__label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+    }
+    .s21c-card__title {
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.15;
+      letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .s21c-card__viz {
+      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      min-height: 0;
+      padding: 4px 0;
+    }
+    .s21c-card__viz svg {
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      display: block;
+    }
+    .s21c-card__viz img {
+      width: 100%;
+      max-width: 280px;
+      height: auto;
+      display: block;
+      opacity: 0.78;
+    }
+    .s21c-card__viz--map {
+      position: relative;
+    }
+    .s21c-card__pins {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      pointer-events: none;
+    }
+    .s21c-card__pin {
+      position: absolute;
+      width: 18px; height: 18px;
+      border-radius: 50%;
+      background: var(--color-red);
+      border: 3px solid var(--color-paper);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      transform: translate(-50%, -50%);
+    }
+    .s21c-card__key {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .s21c-card__key em {
+      font-family: var(--font-mono);
+      font-size: 38px;
+      font-weight: 800;
+      font-style: normal;
+      color: var(--color-red);
+      letter-spacing: -0.02em;
+      display: inline-block;
+      margin-right: 6px;
+    }
+    .s21c-card__entities {
+      font-family: var(--font-sans);
+      font-size: 18px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.012em;
+      margin: 0;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    /* 카드 위치 — grid 영역 명시 */
+    .s21c-card--time { grid-column: 1; grid-row: 1; }
+    .s21c-card--continuity { grid-column: 3; grid-row: 1; }
+    .s21c-card--entity { grid-column: 1; grid-row: 2; }
+    .s21c-card--global { grid-column: 3; grid-row: 2; }
+    /* 중앙 허브 — grid 가운데 영역 (column 2·row 1~2 span) */
+    .s21c-hub {
+      grid-column: 2;
+      grid-row: 1 / span 2;
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      gap: 14px;
+      padding: 24px 24px;
+      background: var(--color-bg-cream);
+      border: 2px solid var(--color-red);
+      align-items: center;
+      justify-items: center;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 6px 24px rgba(214, 30, 30, 0.12);
+    }
+    .s21c-hub__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.14em;
+      color: var(--color-red);
+    }
+    .s21c-hub__key {
+      font-family: var(--font-mono);
+      font-size: 96px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: -0.04em;
+      line-height: 1;
+      margin: 0;
+    }
+    .s21c-hub__key-unit {
+      font-family: var(--font-sans);
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--color-red-deep);
+      margin-left: 4px;
+    }
+    .s21c-hub__msg {
+      font-family: var(--font-sans);
+      font-size: 24px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.25;
+      letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .s21c-hub__msg em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 900;
+    }
+    .s21c-hub__sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      margin: 0;
+    }
+    /* 4 방향 압박 화살표 (허브 ← 4 코너) */
+    .s21c-arrow {
+      position: absolute;
+      width: 40px; height: 40px;
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 28px; font-weight: 900;
+      color: var(--color-red);
+      background: var(--color-paper);
+      border-radius: 50%;
+      border: 3px solid var(--color-red);
+      z-index: 2;
+    }
+    .s21c-arrow--tl { top: -20px; left: -20px; }
+    .s21c-arrow--tr { top: -20px; right: -20px; }
+    .s21c-arrow--bl { bottom: -20px; left: -20px; }
+    .s21c-arrow--br { bottom: -20px; right: -20px; }
+
+    /* 21 시각 장치 SVG 색상 영역 (.s21c-*) */
+    .s21c-viz--timeline .s21c-bar-old {
+      fill: var(--color-graphite);
+      opacity: 0.22;
+    }
+    .s21c-viz--timeline .s21c-bar-new {
+      fill: var(--color-red);
+    }
+    .s21c-viz--timeline .s21c-tl-label {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 700;
+      fill: var(--color-ink-mute);
+      letter-spacing: 0.05em;
+    }
+    .s21c-viz--pipeline .s21c-pipe {
+      fill: none;
+      stroke: var(--color-graphite);
+      stroke-width: 3.5;
+      stroke-linecap: round;
+    }
+    .s21c-viz--pipeline .s21c-dot {
+      fill: var(--color-red);
+    }
+    .s21c-viz--pipeline .s21c-cap {
+      fill: var(--color-graphite);
+    }
+    .s21c-viz--nodes .s21c-node {
+      fill: var(--color-paper);
+      stroke: var(--color-graphite);
+      stroke-width: 2;
+    }
+    .s21c-viz--nodes .s21c-node-label {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 800;
+      fill: var(--color-ink-strong);
+      text-anchor: middle;
+      letter-spacing: 0.05em;
+    }
+    .s21c-viz--nodes .s21c-chevron {
+      fill: var(--color-red);
+    }
+    .s21c-viz--nodes .s21c-core {
+      fill: var(--color-red);
+    }
+    .s21c-viz--nodes .s21c-core-label {
+      font-family: var(--font-mono);
+      font-size: 11px; font-weight: 800;
+      fill: var(--color-paper);
+      text-anchor: middle;
+      letter-spacing: 0.08em;
+    }
+
+    /* ========== 21 본 차수 추가 영역 — 애니메이션·3사 병존 박스 ========== */
+    /* 일정 압축 — 빨간 막대 무한 펄스 (좌우 안쪽으로 압축·확장) */
+    @keyframes s21c-time-compress {
+      0%, 100% { transform: scaleX(1); }
+      50% { transform: scaleX(0.4); }
+    }
+    .s21c-viz--timeline .s21c-bar-new {
+      transform-box: fill-box;
+      transform-origin: center center;
+      animation: s21c-time-compress 2.8s ease-in-out infinite;
+    }
+    /* 연속 가동 — dot 좌→우 순환 흐름 (각 dot inline animation-delay) */
+    @keyframes s21c-pipe-flow {
+      0% { transform: translateX(-30px); opacity: 0; }
+      12% { opacity: 1; }
+      88% { opacity: 1; }
+      100% { transform: translateX(280px); opacity: 0; }
+    }
+    .s21c-viz--pipeline .s21c-dot {
+      transform-box: fill-box;
+      transform-origin: center;
+      animation: s21c-pipe-flow 3.6s linear infinite;
+    }
+    /* 3사 병존 박스 (CORE 노드 폐기·LC·LF·LA 독립 박스 + 충돌 표시·시스템 차이 시각화) */
+    .s21c-viz--nodes .s21c-entity-box {
+      fill: var(--color-paper);
+      stroke: var(--color-graphite);
+      stroke-width: 2;
+    }
+    .s21c-viz--nodes .s21c-entity-box--dash {
+      stroke-dasharray: 5 3;
+    }
+    .s21c-viz--nodes .s21c-entity-box--dot {
+      stroke-dasharray: 2 3;
+    }
+    .s21c-viz--nodes .s21c-entity-name {
+      font-family: var(--font-mono);
+      font-size: 18px;
+      font-weight: 800;
+      fill: var(--color-ink-strong);
+      text-anchor: middle;
+      letter-spacing: 0.08em;
+    }
+    .s21c-viz--nodes .s21c-entity-sub {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 700;
+      fill: var(--color-ink-soft);
+      text-anchor: middle;
+    }
+    .s21c-viz--nodes .s21c-entity-caption {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      fill: var(--color-ink-mute);
+      text-anchor: middle;
+      letter-spacing: 0.06em;
+    }
+    .s21c-viz--nodes .s21c-entity-clash {
+      font-family: var(--font-sans);
+      font-size: 22px;
+      font-weight: 900;
+      fill: var(--color-red);
+      text-anchor: middle;
+    }
+    /* 3사 병존 카드 viz 영역 1.5배 확대 (본 차수 디렉션·specificity 강화) */
+    .s21c-card--entity .s21c-card__viz svg {
+      max-width: 480px;
+    }
+    /* 23 Roll-out 선택 카드 강조 펄스 (본 차수 디렉션·box-shadow + 미세 scale 무한 반복) */
+    @keyframes s23c-selected-pulse {
+      0%, 100% {
+        box-shadow: 0 8px 24px rgba(214, 30, 30, 0.15);
+        transform: scale(1);
+      }
+      50% {
+        box-shadow: 0 14px 36px rgba(214, 30, 30, 0.42);
+        transform: scale(1.012);
+      }
+    }
+    .s23c-card--selected {
+      animation: s23c-selected-pulse 2.5s ease-in-out infinite;
+      transform-origin: center center;
+    }
+    /* 28 부분 보존 chip 강조 펄스 (본 차수 디렉션·paper 배경 + red 테두리 + ring pulse) */
+    @keyframes s23-preserve-pulse {
+      0%, 100% {
+        box-shadow: 0 0 0 0 rgba(214, 30, 30, 0.55);
+      }
+      50% {
+        box-shadow: 0 0 0 7px rgba(214, 30, 30, 0);
+      }
+    }
+    .s23-preserve-chip {
+      animation: s23-preserve-pulse 1.8s ease-in-out infinite;
+    }
+
+    /* =========================================================
+       Step 3 v5 — 23 four-methodologies 영역 강화 (.s23c-*) — 4 후보 카드 비교 + Roll-out 시각 위계
+       GPT 피드백 정합·4 조건 충족 배지 (7개월·3사·무중단·리스크 통제)·Roll-out SELECTED 활성화
+       ========================================================= */
+    .s23c-main {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 16px;
+      height: 100%;
+      overflow: hidden;
+    }
+    .s23c-criteria-bar {
+      display: grid;
+      grid-template-columns: auto repeat(4, 1fr);
+      gap: 12px;
+      padding: 12px 18px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-red);
+      align-items: center;
+    }
+    .s23c-criteria-bar__label {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+      padding-right: 6px;
+      border-right: 1px solid var(--color-line);
+    }
+    .s23c-criteria {
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.008em;
+    }
+    .s23c-criteria__num {
+      width: 22px; height: 22px;
+      border-radius: 50%;
+      background: var(--color-red);
+      color: var(--color-paper);
+      display: inline-flex; align-items: center; justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    /* 4 후보 카드 비교 */
+    .s23c-candidates {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr 1.4fr;
+      gap: 16px;
+      min-height: 0;
+    }
+    .s23c-card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      gap: 14px;
+      padding: 26px 24px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 4px solid var(--color-graphite);
+      opacity: 0.7;
+      position: relative;
+    }
+    .s23c-card--selected {
+      grid-column: 4;
+      border-top-color: var(--color-red);
+      border: 2px solid var(--color-red);
+      background: var(--color-paper);
+      opacity: 1;
+      box-shadow: 0 8px 24px rgba(214, 30, 30, 0.15);
+    }
+    .s23c-card__badge {
+      position: absolute;
+      top: -12px;
+      right: 16px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.12em;
+      padding: 5px 12px;
+      border-radius: 3px;
+    }
+    .s23c-card__label {
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em;
+      color: var(--color-ink-mute);
+    }
+    .s23c-card--selected .s23c-card__label { color: var(--color-red); }
+    .s23c-card__title {
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 900;
+      color: var(--color-ink-strong);
+      line-height: 1.15;
+      letter-spacing: -0.018em;
+      margin: 0;
+    }
+    .s23c-card--selected .s23c-card__title { color: var(--color-red-deep); }
+    .s23c-card__feature {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      margin: 0;
+      padding-bottom: 10px;
+      border-bottom: 1px solid var(--color-line-soft);
+    }
+    /* 조건 충족 4 영역 — ✓·△·× */
+    .s23c-card__checks {
+      list-style: none;
+      padding: 0; margin: 0;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px 14px;
+      align-self: center;
+    }
+    .s23c-card__checks li {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 700;
+      color: var(--color-ink-strong);
+      line-height: 1.2;
+    }
+    .s23c-check {
+      display: inline-flex;
+      align-items: center; justify-content: center;
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      font-family: var(--font-mono);
+      font-size: 16px; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .s23c-check--ok {
+      background: var(--color-red);
+      color: var(--color-paper);
+    }
+    .s23c-check--mid {
+      background: var(--color-paper);
+      color: var(--color-graphite);
+      border: 2px solid var(--color-graphite);
+    }
+    .s23c-check--bad {
+      background: var(--color-paper);
+      color: var(--color-ink-mute);
+      border: 2px solid var(--color-ink-mute);
+    }
+    .s23c-card__reason {
+      padding-top: 12px;
+      border-top: 1px solid var(--color-line-soft);
+      font-family: var(--font-sans);
+      font-size: 15px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+      margin: 0;
+    }
+    .s23c-card--selected .s23c-card__reason {
+      color: var(--color-red-deep);
+      font-weight: 700;
+      border-top-color: var(--color-red-soft);
+    }
+    .s23c-card__reason em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    /* 20 step3-intro 전면 리빌딩 — 신규 keyframe */
+    @keyframes s20bBigNum {
+      0%   { opacity: 0; transform: translateY(-12px) scale(0.94); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes s20bPhaseIn {
+      0%   { opacity: 0; transform: translateX(20px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes s20bUnderline {
+      0%   { width: 0; opacity: 0; }
+      40%  { opacity: 1; }
+      100% { width: 100%; opacity: 1; }
+    }
+    @keyframes s20bChevronDown {
+      0%, 100% { transform: translateY(0); opacity: 0.55; }
+      50%      { transform: translateY(5px); opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -1897,7 +2908,7 @@
 <div class="stage" id="stage">
   <div class="deck" id="deck">
 
-    <!-- ============= SLIDE 20 · step3-intro-overview v3 (신규 안내 페이지·v10.13 + v3 보정·14장 → 15장) ============= -->
+    <!-- ============= SLIDE 20 · step3-intro v4 (안내 페이지·좌 35% 질문 + 우 65% 4 로드맵 2×2 + 하단 thesis·본인 디렉션 v10.15 재정의) ============= -->
     <section class="slide tone-c active" data-slide="1">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -1909,62 +2920,160 @@
         <div class="head-page"><span class="hp-num">20</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s3i-main">
+        <div class="s20b-main" style="display:flex;flex-direction:column;gap:14px;height:100%;overflow:hidden">
+
+          <!-- eyebrow -->
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 01</span>
             <span class="eb-text">Step 3 · 7개월의 구축 — 안내</span>
           </div>
-          <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            Step 3는 선택한 ERP를 <span class="v3-em">어떻게 안전하게 실행</span>했는가를 검증한다
-          </h1>
-          <div class="s3i-body reveal" style="--rev-delay:0.4s">
-            <aside class="s3i-question">
-              <span class="s3i-question__label">CORE QUESTION</span>
-              <p class="s3i-question__text">선택은 끝났다.<br/>이제 <em>어떻게 멈추지 않고<br/>통합</em>할 것인가?</p>
-              <p class="s3i-question__sub">7개월·24시간 가동·3사 병존·글로벌 운영이라는 제약 속에서 방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조</p>
+
+          <!-- 본문 영역 — 좌 32 / 우 68·stretch 정합 -->
+          <div style="display:grid;grid-template-columns:32% 68%;gap:32px;flex:1 1 auto;min-height:0;align-items:stretch">
+
+            <!-- 좌측 — 상단 묶음 (큰 "3" + Core Question) + 하단 사례 KPI 띠 -->
+            <aside style="display:flex;flex-direction:column;padding-left:24px;border-left:8px solid var(--color-red);min-height:0;height:100%">
+
+              <!-- 상단 묶음 -->
+              <div class="reveal" style="--rev-delay:0.2s;display:flex;flex-direction:column;gap:10px">
+                <div style="font-family:var(--font-mono);font-size:196px;font-weight:900;color:var(--color-red);line-height:0.82;letter-spacing:-0.04em;animation:s20bBigNum 0.7s cubic-bezier(0.2,0.7,0.2,1) 0.25s both">3</div>
+                <span style="font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.2em;color:var(--color-red);text-transform:uppercase;margin-top:6px">Core Question</span>
+                <h2 style="margin:0;font-family:var(--font-sans);font-size:32px;font-weight:900;color:var(--color-ink-strong);line-height:1.22;letter-spacing:-0.018em">
+                  선택은 끝났다.<br/>
+                  이제 어떻게 <em style="font-style:normal;font-weight:900;color:var(--color-red)">멈추지 않고</em><br/>
+                  통합할 것인가?
+                </h2>
+                <span style="font-family:var(--font-sans);font-size:15px;font-weight:600;color:var(--color-ink-soft);line-height:1.4;margin-top:4px">Step 3 · 7개월의 구축 — 실행 가능성 검증</span>
+              </div>
+
+              <!-- 하단 사례 KPI 띠 (Step 3 사실 컨텍스트·우측 시선 매칭 자연 채움) -->
+              <div class="reveal" style="--rev-delay:1.05s;margin-top:auto;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;padding:14px 4px;background:var(--color-paper);border:1px solid var(--color-line);border-top:4px solid var(--color-red)">
+                <div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 8px;border-right:1px solid var(--color-line)">
+                  <span style="font-family:var(--font-mono);font-size:28px;font-weight:900;color:var(--color-red);line-height:1;letter-spacing:-0.02em">7</span>
+                  <span style="font-family:var(--font-sans);font-size:12px;font-weight:700;color:var(--color-ink-soft);letter-spacing:-0.005em">개월 압축</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 8px;border-right:1px solid var(--color-line)">
+                  <span style="font-family:var(--font-mono);font-size:28px;font-weight:900;color:var(--color-red);line-height:1;letter-spacing:-0.02em">3</span>
+                  <span style="font-family:var(--font-sans);font-size:12px;font-weight:700;color:var(--color-ink-soft);letter-spacing:-0.005em">사 통합</span>
+                </div>
+                <div style="display:flex;flex-direction:column;align-items:center;gap:2px;padding:0 8px">
+                  <span style="font-family:var(--font-mono);font-size:28px;font-weight:900;color:var(--color-red);line-height:1;letter-spacing:-0.02em">6</span>
+                  <span style="font-family:var(--font-sans);font-size:12px;font-weight:700;color:var(--color-ink-soft);letter-spacing:-0.005em">국 글로벌</span>
+                </div>
+              </div>
             </aside>
-            <div class="s3i-flow s3i-flow--vertical">
-              <article class="s3i-card s3i-card--row">
-                <span class="s3i-card__num">01</span>
-                <h3 class="s3i-card__title">실행 제약 — 7개월·24시간·3사·글로벌 충돌</h3>
-                <p class="s3i-card__body">압축 일정 + 다운타임 통제 + 3사 본연 경쟁력 + 6국 거점</p>
+
+            <!-- 우측 — 3 Phase 진행 카드 (세로형·chevron down 연결·텍스트 크기 ↑·PAGE badge inline) -->
+            <div style="display:flex;flex-direction:column;gap:0;min-height:0;padding-right:8px">
+
+              <!-- Phase 1 · 실행 설계 (21~25·5장) -->
+              <article style="display:grid;grid-template-columns:auto 1fr;column-gap:24px;row-gap:10px;align-items:center;padding:20px 28px;background:var(--color-paper);border:1px solid var(--color-line);border-left:6px solid var(--color-red);min-height:0;flex:1 1 0;animation:s20bPhaseIn 0.5s cubic-bezier(0.2,0.7,0.2,1) 0.35s both">
+
+                <!-- 좌 col · 큰 phase 번호 (row 1~3 spanning·세로 가운데) -->
+                <div style="grid-row:1 / span 3;grid-column:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;flex-shrink:0;min-width:84px">
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.16em;color:var(--color-red);text-transform:uppercase">Phase</span>
+                  <span style="font-family:var(--font-mono);font-size:76px;font-weight:900;color:var(--color-red);line-height:0.95;letter-spacing:-0.03em">1</span>
+                </div>
+
+                <!-- row 1 · 제목 + PAGE badge inline (잘림 회피 안전 배치) -->
+                <div style="grid-row:1;grid-column:2;display:flex;align-items:center;flex-wrap:wrap;gap:14px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:36px;font-weight:900;color:var(--color-ink-strong);line-height:1.18;letter-spacing:-0.018em">실행 설계</h3>
+                  <span style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;border-radius:3px">PAGE 21–25</span>
+                </div>
+
+                <!-- row 2 · phase 질문 (큰 red 강조) -->
+                <p style="grid-row:2;grid-column:2;margin:0;font-family:var(--font-sans);font-size:24px;font-weight:800;color:var(--color-red-deep);line-height:1.32;letter-spacing:-0.012em">무엇을 제한할 것인가</p>
+
+                <!-- row 3 · 세부 태그 (18px·간격 8px) -->
+                <div style="grid-row:3;grid-column:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">제약</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">거버넌스</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">방법론</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">과거 경험</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">Roll-out</span>
+                </div>
               </article>
-              <article class="s3i-card s3i-card--row">
-                <span class="s3i-card__num">02</span>
-                <h3 class="s3i-card__title">실행 거버넌스 — 발주·수행·기술 3축 분담</h3>
-                <p class="s3i-card__body">롯데케미칼 + 롯데정보통신 + SAP 본사 협력 구조</p>
+
+              <!-- 연결 chevron 1 → 2 (강조·reveal entry + 무한 pulse) -->
+              <div aria-hidden="true" class="reveal" style="--rev-delay:0.5s;display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--color-red);animation:s20bChevronDown 1.8s ease-in-out 1.1s infinite">
+                <svg width="40" height="18" viewBox="0 0 40 18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="8 4 20 14 32 4" />
+                </svg>
+              </div>
+
+              <!-- Phase 2 · 가능성 검증 (26~30·5장) -->
+              <article style="display:grid;grid-template-columns:auto 1fr;column-gap:24px;row-gap:10px;align-items:center;padding:20px 28px;background:var(--color-paper);border:1px solid var(--color-line);border-left:6px solid var(--color-red);min-height:0;flex:1 1 0;animation:s20bPhaseIn 0.5s cubic-bezier(0.2,0.7,0.2,1) 0.55s both">
+
+                <div style="grid-row:1 / span 3;grid-column:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;flex-shrink:0;min-width:84px">
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.16em;color:var(--color-red);text-transform:uppercase">Phase</span>
+                  <span style="font-family:var(--font-mono);font-size:76px;font-weight:900;color:var(--color-red);line-height:0.95;letter-spacing:-0.03em">2</span>
+                </div>
+
+                <div style="grid-row:1;grid-column:2;display:flex;align-items:center;flex-wrap:wrap;gap:14px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:36px;font-weight:900;color:var(--color-ink-strong);line-height:1.18;letter-spacing:-0.018em">가능성 검증</h3>
+                  <span style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;border-radius:3px">PAGE 26–30</span>
+                </div>
+
+                <p style="grid-row:2;grid-column:2;margin:0;font-family:var(--font-sans);font-size:24px;font-weight:800;color:var(--color-red-deep);line-height:1.32;letter-spacing:-0.012em">어떻게 7개월에 가능한가</p>
+
+                <div style="grid-row:3;grid-column:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">압축 근거</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">Iron Triangle</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">AS-IS / TO-BE</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">GAP 3트랙</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">Baseline</span>
+                </div>
               </article>
-              <article class="s3i-card s3i-card--row">
-                <span class="s3i-card__num">03</span>
-                <h3 class="s3i-card__title">구축 방법론 — <span style="white-space:nowrap">Roll-out</span>과 통합형 컨버전 선택</h3>
-                <p class="s3i-card__body">4 방법론 비교 · 진화 흐름 + 7개월 압축 4근거</p>
+
+              <!-- 연결 chevron 2 → 3 -->
+              <div aria-hidden="true" class="reveal" style="--rev-delay:0.7s;display:flex;align-items:center;justify-content:center;padding:6px 0;color:var(--color-red);animation:s20bChevronDown 1.8s ease-in-out 1.3s infinite">
+                <svg width="40" height="18" viewBox="0 0 40 18" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="8 4 20 14 32 4" />
+                </svg>
+              </div>
+
+              <!-- Phase 3 · 플랫폼과 가동 (31~33·3장) -->
+              <article style="display:grid;grid-template-columns:auto 1fr;column-gap:24px;row-gap:10px;align-items:center;padding:20px 28px;background:var(--color-paper);border:1px solid var(--color-line);border-left:6px solid var(--color-red);min-height:0;flex:1 1 0;animation:s20bPhaseIn 0.5s cubic-bezier(0.2,0.7,0.2,1) 0.75s both">
+
+                <div style="grid-row:1 / span 3;grid-column:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;flex-shrink:0;min-width:84px">
+                  <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.16em;color:var(--color-red);text-transform:uppercase">Phase</span>
+                  <span style="font-family:var(--font-mono);font-size:76px;font-weight:900;color:var(--color-red);line-height:0.95;letter-spacing:-0.03em">3</span>
+                </div>
+
+                <div style="grid-row:1;grid-column:2;display:flex;align-items:center;flex-wrap:wrap;gap:14px;min-width:0">
+                  <h3 style="margin:0;font-family:var(--font-sans);font-size:36px;font-weight:900;color:var(--color-ink-strong);line-height:1.18;letter-spacing:-0.018em">플랫폼과 가동</h3>
+                  <span style="display:inline-flex;align-items:center;padding:6px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:14px;font-weight:800;letter-spacing:0.08em;text-transform:uppercase;flex-shrink:0;white-space:nowrap;border-radius:3px">PAGE 31–33</span>
+                </div>
+
+                <p style="grid-row:2;grid-column:2;margin:0;font-family:var(--font-sans);font-size:24px;font-weight:800;color:var(--color-red-deep);line-height:1.32;letter-spacing:-0.012em">어떻게 안전하게 가동하는가</p>
+
+                <div style="grid-row:3;grid-column:2;display:flex;flex-wrap:wrap;gap:8px;align-items:center">
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">SAP 코어</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">Migration / VAS</span>
+                  <span style="padding:7px 14px;background:var(--color-bg-cream);font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.2;border-radius:2px">다운타임 KPI</span>
+                </div>
               </article>
-              <article class="s3i-card s3i-card--row">
-                <span class="s3i-card__num">04</span>
-                <h3 class="s3i-card__title">범위 통제 — 표준화·차별성·GAP 3트랙</h3>
-                <p class="s3i-card__body">AS-IS/TO-BE + BPR·Customizing·Add-on + Configuration·Baseline</p>
-              </article>
-              <article class="s3i-card s3i-card--row">
-                <span class="s3i-card__num">05</span>
-                <h3 class="s3i-card__title">사전 검증 — Migration·테스트·SAP VAS</h3>
-                <p class="s3i-card__body">2축 결합 + 테스트 5종 + VAS 3단 검증</p>
-              </article>
-              <article class="s3i-card s3i-card--row">
-                <span class="s3i-card__num">06</span>
-                <h3 class="s3i-card__title">성과 확인 — 다운타임 114h→52h와 PIR 연결</h3>
-                <p class="s3i-card__body">SAP 중심 플랫폼 + 6대 리스크 통제 → Step 4 회수</p>
-              </article>
+
             </div>
           </div>
-          <div class="s3i-thesis reveal" style="--rev-delay:0.85s">
-            Step 3의 핵심은 빠른 구축이 아니라, <em>방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조</em>다.
+
+          <!-- 하단 결론 (red 4px 좌측바·underline sweep 애니메이션·"동시 통제 실행 구조" 강조) -->
+          <div class="reveal" style="--rev-delay:0.95s;display:flex;align-items:center;gap:18px;padding:14px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:8px solid var(--color-red);flex-shrink:0">
+            <span style="font-family:var(--font-sans);font-size:18px;font-weight:800;line-height:1.45;color:var(--color-ink-strong)">
+              Step 3의 핵심은 빠른 구축이 아니라,
+              <span style="position:relative;display:inline-block">
+                <em style="font-style:normal;font-weight:900;color:var(--color-red-deep)">설계·검증·플랫폼을 동시에 통제한 실행 구조다</em>
+                <span aria-hidden="true" style="position:absolute;left:0;bottom:-4px;width:0;height:4px;background:var(--color-red);opacity:0;animation:s20bUnderline 0.85s cubic-bezier(0.2,0.7,0.2,1) 1.3s forwards"></span>
+              </span>.
+            </span>
+            <span style="margin-left:auto;font-family:var(--font-mono);font-size:11px;font-weight:600;color:var(--color-ink-mute);letter-spacing:0.06em;flex-shrink:0;white-space:nowrap">표지(01) ↔ 결론(33) 호응</span>
           </div>
         </div>
       </main>
     </section>
 
-    <!-- ============= SLIDE 21 · four-constraints-summary v3 (구 20 chapter3-intro·v3 페이지 번호 시프트 20→21 + 핵심 숫자 강조) ============= -->
+    <!-- ============= SLIDE 21 · four-constraints v4 (4대 실행 제약·동적 시각 장치 4종·본인 디렉션 v10.15 재정의·시각 장치 차등화) ============= -->
     <section class="slide tone-c" data-slide="2">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -1976,78 +3085,109 @@
         <div class="head-page"><span class="hp-num">21</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s20-main">
+        <div class="s21c-main">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 02</span>
-            <span class="eb-text">Step 3 · 4대 제약 요약</span>
+            <span class="eb-text">4대 실행 제약</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            24시간 가동되는 3사 시스템을 멈추지 않고 <span class="v3-em">7개월 안에 통합</span>해야 했다
+            7개월 안에 네 가지 실행 제약이 <span class="v3-em">동시 작용</span>
           </h1>
-          <div class="s20-cards reveal" style="--rev-delay:0.4s">
-            <article class="s20-card">
-              <div class="s20-card__head">
-                <span class="s20-card__num">1</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 시계 SVG (Time·7개월 압축) -->
-                  <svg viewBox="0 0 32 32"><circle cx="16" cy="17" r="11" /><polyline points="16 11 16 17 21 19" /><line x1="16" y1="3" x2="16" y2="6" /><line x1="13" y1="3" x2="19" y2="3" /></svg>
-                </span>
-                <h3 class="s20-card__title">일정 압축 · Time</h3>
+          <div class="s21c-grid reveal" style="--rev-delay:0.4s">
+            <!-- 카드 1 좌상 · Time · 일정 압축 -->
+            <article class="s21c-card s21c-card--time">
+              <span class="s21c-card__label">CONSTRAINT 1 · TIME</span>
+              <h3 class="s21c-card__title">일정 압축</h3>
+              <div class="s21c-card__viz">
+                <svg class="s21c-viz--timeline" viewBox="0 0 400 100" aria-hidden="true">
+                  <rect class="s21c-bar-old" x="20" y="28" width="360" height="14" />
+                  <text class="s21c-tl-label" x="20" y="22">12~18개월 (동종 사례 평균)</text>
+                  <rect class="s21c-bar-new" x="20" y="58" width="140" height="20" />
+                  <text class="s21c-tl-label" x="20" y="94" fill="var(--color-red)" font-weight="800">2017.04</text>
+                  <text class="s21c-tl-label" x="160" y="94" fill="var(--color-red)" font-weight="800" text-anchor="end">2017.11</text>
+                </svg>
               </div>
-              <p class="s20-card__highlight"><em>2017.04 ~ 2017.11</em></p>
-              <p class="s20-card__sub">7개월 압축 일정</p>
-              <p class="s20-card__body">동종 사례 12~18개월 대비 1.5배 압축</p>
+              <p class="s21c-card__key"><em>7개월</em> 동종 평균 대비 1.5~3배 압축</p>
             </article>
-            <article class="s20-card">
-              <div class="s20-card__head">
-                <span class="s20-card__num">2</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 공장·플랜트 SVG (Business Continuity·24시간 가동) -->
-                  <svg viewBox="0 0 32 32"><path d="M 4 28 L 4 14 L 11 18 L 11 12 L 19 16 L 19 10 L 28 14 L 28 28 Z" /><rect x="8" y="22" width="3" height="4" fill="var(--color-red)" stroke="none" /><rect x="15" y="22" width="3" height="4" fill="var(--color-red)" stroke="none" /><rect x="22" y="22" width="3" height="4" fill="var(--color-red)" stroke="none" /></svg>
-                </span>
-                <h3 class="s20-card__title">연속 가동 · Continuity</h3>
+            <!-- 카드 2 우상 · Continuity · 연속 가동 -->
+            <article class="s21c-card s21c-card--continuity">
+              <span class="s21c-card__label">CONSTRAINT 2 · CONTINUITY</span>
+              <h3 class="s21c-card__title">무중단 가동</h3>
+              <div class="s21c-card__viz">
+                <svg class="s21c-viz--pipeline" viewBox="0 0 400 100" aria-hidden="true">
+                  <rect class="s21c-cap" x="20" y="20" width="18" height="60" />
+                  <rect class="s21c-cap" x="362" y="20" width="18" height="60" />
+                  <path class="s21c-pipe" d="M 38 36 L 362 36" />
+                  <path class="s21c-pipe" d="M 38 64 L 362 64" />
+                  <circle class="s21c-dot" cx="80" cy="36" r="5" style="animation-delay:0s" />
+                  <circle class="s21c-dot" cx="80" cy="36" r="5" style="animation-delay:0.6s" />
+                  <circle class="s21c-dot" cx="80" cy="36" r="5" style="animation-delay:1.2s" />
+                  <circle class="s21c-dot" cx="80" cy="64" r="5" style="animation-delay:0.3s" />
+                  <circle class="s21c-dot" cx="80" cy="64" r="5" style="animation-delay:0.9s" />
+                  <circle class="s21c-dot" cx="80" cy="64" r="5" style="animation-delay:1.5s" />
+                </svg>
               </div>
-              <p class="s20-card__highlight"><em>1분 정지도 손실</em></p>
-              <p class="s20-card__sub">석유화학 365일 연속 가동</p>
-              <p class="s20-card__body">시스템 1분 정지도 수십억 원 손실 가능</p>
+              <p class="s21c-card__key"><em>24h</em> 1분 정지도 손실</p>
             </article>
-            <article class="s20-card">
-              <div class="s20-card__head">
-                <span class="s20-card__num">3</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 합쳐지는 원 SVG (Multi-Entity·3사 병존) -->
-                  <svg viewBox="0 0 32 32"><circle cx="10" cy="12" r="6" /><circle cx="22" cy="12" r="6" /><circle cx="16" cy="22" r="6" fill="var(--color-red)" stroke="none" opacity="0.85" /></svg>
-                </span>
-                <h3 class="s20-card__title">3사 병존 · Multi-Entity</h3>
+            <!-- 중앙 허브 — 7개월 내 동시 충돌 -->
+            <aside class="s21c-hub">
+              <span class="s21c-arrow s21c-arrow--tl" aria-hidden="true">↘</span>
+              <span class="s21c-arrow s21c-arrow--tr" aria-hidden="true">↙</span>
+              <span class="s21c-arrow s21c-arrow--bl" aria-hidden="true">↗</span>
+              <span class="s21c-arrow s21c-arrow--br" aria-hidden="true">↖</span>
+              <span class="s21c-hub__label">동시 작용 구간</span>
+              <p class="s21c-hub__key">7<span class="s21c-hub__key-unit">개월</span></p>
+              <p class="s21c-hub__msg">이 7개월 동안<br/><em>네 가지 제약 모두 함께 작용</em></p>
+              <p class="s21c-hub__sub">SAP Value Assurance + Roll-out 전략으로 동시 통제</p>
+            </aside>
+            <!-- 카드 3 좌하 · Multi-Entity · 3사 병존 -->
+            <article class="s21c-card s21c-card--entity">
+              <span class="s21c-card__label">CONSTRAINT 3 · MULTI-ENTITY</span>
+              <h3 class="s21c-card__title">3사 병존</h3>
+              <div class="s21c-card__viz">
+                <svg class="s21c-viz--nodes" viewBox="0 0 400 130" aria-hidden="true">
+                  <!-- LC 박스 (실선) -->
+                  <rect class="s21c-entity-box" x="15" y="22" width="108" height="62" rx="3" />
+                  <text class="s21c-entity-name" x="69" y="50">LC</text>
+                  <text class="s21c-entity-sub" x="69" y="70">롯데케미칼</text>
+                  <!-- 충돌 표시 1 -->
+                  <text class="s21c-entity-clash" x="131" y="60">⚡</text>
+                  <!-- LF 박스 (dasharray 5 3) -->
+                  <rect class="s21c-entity-box s21c-entity-box--dash" x="140" y="22" width="108" height="62" rx="3" />
+                  <text class="s21c-entity-name" x="194" y="50">LF</text>
+                  <text class="s21c-entity-sub" x="194" y="70">정밀화학</text>
+                  <!-- 충돌 표시 2 -->
+                  <text class="s21c-entity-clash" x="256" y="60">⚡</text>
+                  <!-- LA 박스 (dasharray 2 3) -->
+                  <rect class="s21c-entity-box s21c-entity-box--dot" x="265" y="22" width="108" height="62" rx="3" />
+                  <text class="s21c-entity-name" x="319" y="50">LA</text>
+                  <text class="s21c-entity-sub" x="319" y="70">첨단소재</text>
+                  <!-- 하단 캡션 -->
+                  <text class="s21c-entity-caption" x="200" y="108">기준정보·시스템 차이 + 동시 운영</text>
+                </svg>
               </div>
-              <p class="s20-card__highlight">롯데케미칼 · 정밀화학<br/><em>· 첨단소재</em></p>
-              <p class="s20-card__sub">3사 병존 운영</p>
-              <p class="s20-card__body">각 사 본연 경쟁력 유지가 통합의 전제</p>
+              <p class="s21c-card__entities">롯데케미칼 · 정밀화학 · 첨단소재</p>
             </article>
-            <article class="s20-card">
-              <div class="s20-card__head">
-                <span class="s20-card__num">4</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 지구 SVG (Global Multi-Site·6국·110국) -->
-                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" /><ellipse cx="16" cy="16" rx="5" ry="13" /><line x1="3" y1="16" x2="29" y2="16" /><circle cx="9" cy="10" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="23" cy="13" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="20" cy="22" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
-                </span>
-                <h3 class="s20-card__title">글로벌 운영 · Global</h3>
+            <!-- 카드 4 우하 · Global · 글로벌 운영 (shared/세계지도.png 활용) -->
+            <article class="s21c-card s21c-card--global">
+              <span class="s21c-card__label">CONSTRAINT 4 · GLOBAL</span>
+              <h3 class="s21c-card__title">글로벌 운영</h3>
+              <div class="s21c-card__viz s21c-card__viz--map">
+                <img src="../shared/세계지도.png" alt="세계지도 — 6국 거점·110국 수출" onerror="this.onerror=null;this.src='../shared/world-map.png'" />
               </div>
-              <p class="s20-card__highlight"><em>6국 거점</em> · 110국 수출</p>
-              <p class="s20-card__sub">국내 + 해외 동시 통합</p>
-              <p class="s20-card__body">여수·대산·울산 + 중국·말레이시아·영국·우즈베키스탄·파키스탄·미국</p>
+              <p class="s21c-card__key"><em>6국</em> 거점 · 110국 수출</p>
             </article>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.9s">
-            <span>4대 제약 동시 충돌 — 어떻게 <em>안전하게 실행</em>했는가?</span>
-            <span class="v3-msg__src">출처 · 박제성 상무 인터뷰 · 롯데케미칼 사업보고서</span>
+            <span>4대 제약 동시 충돌 → <em>거버넌스 3축이 통제 구조로 전환</em></span>
+            <span class="v3-msg__src">박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · docx Step 3 §1.1</span>
           </div>
         </div>
       </main>
     </section>
 
-    <!-- ============= SLIDE 22 · four-constraints v1 (Step 3 4대 제약 본문 + VAS 결론 박스·v3 시프트 21→22) ============= -->
+    <!-- ============= SLIDE 22 · governance-triad v4 (실행 통제 거버넌스 3축·본인 디렉션 v10.15 재정의·슬러그 유지·메시지·구조 재정의) ============= -->
     <section class="slide tone-c" data-slide="3">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -2059,70 +3199,115 @@
         <div class="head-page"><span class="hp-num">22</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s21-main">
+        <div class="s22b-main">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 03</span>
-            <span class="eb-text">4대 제약 본문</span>
+            <span class="eb-text">실행 통제 거버넌스 3축</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            네 가지 제약이 동시에 충돌한 <span class="v3-em">고난도 통합 프로젝트</span>
+            4대 실행 제약은 <span class="v3-em">결정·구축·검증</span> 3축을 통해 통제 조건으로 전환되었다
           </h1>
-          <div class="s21-cards reveal" style="--rev-delay:0.4s">
-            <article class="s21-card">
-              <div class="s21-card__head">
-                <span class="s21-card__num">1</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <svg viewBox="0 0 32 32"><circle cx="16" cy="17" r="11" /><polyline points="16 11 16 17 21 19" /><line x1="16" y1="3" x2="16" y2="6" /><line x1="13" y1="3" x2="19" y2="3" /></svg>
+          <!-- 상단 4대 제약 RECALL 요약 스트립 (작게·본문 주인공 X) -->
+          <div class="s22b-strip reveal" style="--rev-delay:0.3s">
+            <span class="s22b-strip__label">RECALL · 21</span>
+            <span class="s22b-chip">
+              <span class="s22b-chip__pict" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="13" r="8" /><polyline points="12 9 12 13 15 14" /></svg></span>
+              Time · 7개월
+            </span>
+            <span class="s22b-chip">
+              <span class="s22b-chip__pict" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M 4 16 L 20 16" /><path d="M 4 8 L 20 8" /><circle cx="9" cy="8" r="1.5" fill="currentColor" stroke="none" /><circle cx="14" cy="16" r="1.5" fill="currentColor" stroke="none" /></svg></span>
+              Continuity · 24h
+            </span>
+            <span class="s22b-chip">
+              <span class="s22b-chip__pict" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="6" cy="8" r="2" /><circle cx="6" cy="16" r="2" /><circle cx="14" cy="12" r="2" /><line x1="8" y1="8" x2="12" y2="12" /><line x1="8" y1="16" x2="12" y2="12" /></svg></span>
+              Multi-Entity · 3사
+            </span>
+            <span class="s22b-chip">
+              <span class="s22b-chip__pict" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="3.5" ry="9" /><line x1="3" y1="12" x2="21" y2="12" /></svg></span>
+              Global · 6국·110국
+            </span>
+          </div>
+          <!-- 중앙 본문 — 3축 카드 가로 1×3 (본문 주인공) -->
+          <div class="s22b-axes reveal" style="--rev-delay:0.5s">
+            <!-- 1축 · 결정 · DECIDE -->
+            <article class="s22b-axis">
+              <div class="s22b-axis__head">
+                <span class="s22b-axis__num">1</span>
+                <span class="s22b-axis__pict" aria-hidden="true">
+                  <!-- 서명·결정 픽토그램 -->
+                  <svg viewBox="0 0 32 32"><rect x="5" y="4" width="22" height="24" rx="2" /><line x1="9" y1="11" x2="23" y2="11" /><line x1="9" y1="16" x2="20" y2="16" /><polyline points="9 22 14 26 23 18" /></svg>
                 </span>
-                <h3 class="s21-card__title">Time · 7개월 압축</h3>
               </div>
-              <p class="s21-card__sub" style="font-size:28px;font-weight:900;color:var(--color-red-deep);letter-spacing:-0.01em;margin:6px 0 4px"><span style="white-space:nowrap">2017.04 ~ 2017.11</span></p>
-              <p class="s21-card__body">10개 모듈·3사·6국·110국 통합을 7개월에 완수<br/>동종 사례 평균 12~18개월 대비 1.5배 압축 일정</p>
+              <span class="s22b-axis__label">AXIS 1 · DECIDE</span>
+              <h3 class="s22b-axis__title">결정</h3>
+              <p class="s22b-axis__subject">롯데케미칼</p>
+              <ul class="s22b-axis__roles">
+                <li>요구사항 정의</li>
+                <li>자원 배분 · IT 자산 통제</li>
+                <li>최종 의사결정</li>
+              </ul>
+              <div class="s22b-axis__result">
+                <span class="s22b-axis__result-label">통제 결과</span>
+                <em>그룹 IT 자산 통제권 확보</em> + 외부 글로벌 SI 일임 회피
+              </div>
             </article>
-            <article class="s21-card">
-              <div class="s21-card__head">
-                <span class="s21-card__num">2</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <svg viewBox="0 0 32 32"><path d="M 4 28 L 4 14 L 11 18 L 11 12 L 19 16 L 19 10 L 28 14 L 28 28 Z" /><rect x="8" y="22" width="3" height="4" fill="var(--color-red)" stroke="none" /><rect x="15" y="22" width="3" height="4" fill="var(--color-red)" stroke="none" /><rect x="22" y="22" width="3" height="4" fill="var(--color-red)" stroke="none" /></svg>
+            <!-- 2축 · 구축 · BUILD -->
+            <article class="s22b-axis">
+              <div class="s22b-axis__head">
+                <span class="s22b-axis__num">2</span>
+                <span class="s22b-axis__pict" aria-hidden="true">
+                  <!-- 톱니바퀴·구축 픽토그램 -->
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5" /><path d="M 16 4 L 16 8 M 16 24 L 16 28 M 4 16 L 8 16 M 24 16 L 28 16 M 7 7 L 10 10 M 22 22 L 25 25 M 7 25 L 10 22 M 22 10 L 25 7" /></svg>
                 </span>
-                <h3 class="s21-card__title">Continuity · 24시간 가동</h3>
               </div>
-              <p class="s21-card__sub" style="font-size:28px;font-weight:900;color:var(--color-red-deep);letter-spacing:-0.01em;margin:6px 0 4px">1분 정지도 손실</p>
-              <p class="s21-card__body">석유화학 연속 공정 365일 가동<br/>시스템 1분 정지도 수십억 원 손실 — 다운타임 제로 요구</p>
+              <span class="s22b-axis__label">AXIS 2 · BUILD</span>
+              <h3 class="s22b-axis__title">구축</h3>
+              <p class="s22b-axis__subject">롯데정보통신 (그룹 SI)</p>
+              <ul class="s22b-axis__roles">
+                <li>시스템 구축 · 통합 수행</li>
+                <li>표준 운영체계 적용</li>
+                <li>기존 시스템 연결</li>
+              </ul>
+              <div class="s22b-axis__result">
+                <span class="s22b-axis__result-label">통제 결과</span>
+                <em>그룹 IT 자산 내부 축적</em> + 외부 SI 입찰·온보딩 비용 회피
+              </div>
             </article>
-            <article class="s21-card">
-              <div class="s21-card__head">
-                <span class="s21-card__num">3</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <svg viewBox="0 0 32 32"><circle cx="10" cy="12" r="6" /><circle cx="22" cy="12" r="6" /><circle cx="16" cy="22" r="6" fill="var(--color-red)" stroke="none" opacity="0.85" /></svg>
+            <!-- 3축 · 검증 · VERIFY -->
+            <article class="s22b-axis">
+              <div class="s22b-axis__head">
+                <span class="s22b-axis__num">3</span>
+                <span class="s22b-axis__pict" aria-hidden="true">
+                  <!-- 체크·VAS 픽토그램 -->
+                  <svg viewBox="0 0 32 32"><path d="M 16 4 L 27 9 L 27 16 C 27 22 22 27 16 29 C 10 27 5 22 5 16 L 5 9 Z" /><polyline points="11 16 15 20 22 13" /></svg>
                 </span>
-                <h3 class="s21-card__title">Multi-Entity · 3사 병존</h3>
               </div>
-              <p class="s21-card__sub" style="font-size:24px;font-weight:900;color:var(--color-red-deep);letter-spacing:-0.01em;margin:6px 0 4px;line-height:1.3">롯데케미칼·정밀화학<br/>첨단소재</p>
-              <p class="s21-card__body">3사 기준정보·프로세스 병존 + 통합 압력<br/>각 사 본연 경쟁력 유지 + 단일 디지털 코어 동시 안착</p>
-            </article>
-            <article class="s21-card">
-              <div class="s21-card__head">
-                <span class="s21-card__num">4</span>
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="13" /><ellipse cx="16" cy="16" rx="5" ry="13" /><line x1="3" y1="16" x2="29" y2="16" /><circle cx="9" cy="10" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="23" cy="13" r="1.5" fill="var(--color-red)" stroke="none" /><circle cx="20" cy="22" r="1.5" fill="var(--color-red)" stroke="none" /></svg>
-                </span>
-                <h3 class="s21-card__title">Global · 6국 + 110국</h3>
+              <span class="s22b-axis__label">AXIS 3 · VERIFY</span>
+              <h3 class="s22b-axis__title">검증</h3>
+              <p class="s22b-axis__subject">SAP 본사 + Value Assurance</p>
+              <ul class="s22b-axis__roles">
+                <li>SAP Activate · Fit-Gap</li>
+                <li>Migration Planning · Go-Live Check</li>
+                <li>기술 검증</li>
+              </ul>
+              <div class="s22b-axis__result">
+                <span class="s22b-axis__result-label">통제 결과</span>
+                <em>다운타임 114h → 52h (-54%)</em> 사전 진단 + 7개월 압축 검증
               </div>
-              <p class="s21-card__sub" style="font-size:28px;font-weight:900;color:var(--color-red-deep);letter-spacing:-0.01em;margin:6px 0 4px"><span style="white-space:nowrap">6국 거점 · 110국 수출</span></p>
-              <p class="s21-card__body">국내 여수·대산·울산 + 해외 6국 거점 동시 통합<br/>중국·말레이시아·영국·우즈베키스탄·파키스탄·미국</p>
             </article>
           </div>
-          <div class="v3-msg reveal" style="--rev-delay:0.9s">
-            <span>4대 제약 동시 충돌 → <em>SAP VAS</em> 기반 사전 진단 + 반복 검증 전략</span>
-            <span class="v3-msg__src">출처 · 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 이상신 2020 박사논문 · SAP Value Assurance 공식 자료</span>
+          <!-- 하단 결론 박스 — 본인 디렉션 정확 어휘 -->
+          <div class="s22b-conclusion reveal" style="--rev-delay:0.85s">
+            <span><em>제약은 문제로 남지 않고, 결정·구축·검증의 통제 구조로 전환되었다</em></span>
+            <span class="s22b-conclusion__src">박제성 상무 인터뷰 · 롯데케미칼 사업보고서<br/>SAP Value Assurance 공식 자료 · docx Step 3 §2</span>
           </div>
         </div>
       </main>
     </section>
 
-    <!-- ============= SLIDE 23 · governance-triad v2 (구축 거버넌스 3축 발주·수행·기술·v3 시프트 22→23) ============= -->
+    <!-- ============= SLIDE 23 · four-methodologies v4 (4대 구축 방법론 비교·본 차수 정합 복구·디자인 심화 다음 차수) ============= -->
+    <!-- 본인 디렉션 v10.15 — 23 = four-methodologies (governance-triad는 22로 메시지 재정의 영역 이동)·현재 v3 24 본문 영역 재활용·디자인 심화 다음 차수 -->
     <section class="slide tone-c" data-slide="4">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -2134,60 +3319,70 @@
         <div class="head-page"><span class="hp-num">23</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s22-main">
+        <div class="s22-main" style="display:grid;grid-template-rows:auto auto 1fr auto auto;gap:18px;height:100%">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 04</span>
-            <span class="eb-text">구축 거버넌스 3축</span>
+            <span class="eb-text">방법론 진화</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            구축 거버넌스 3축 — <span class="v3-em">발주·수행·기술 역할 분담</span>
+            17년 SAP 운영 경험의 진화 — <span class="v3-em">단일 법인 Big Bang에서 3사 통합 Roll-out으로</span>
           </h1>
-          <p class="v4-subhead reveal" style="--rev-delay:0.3s">
-            어느 한 주체로는 추진 불가능한 규모 — Step 2 도입 의사결정 거버넌스가 <em>구축 실행 거버넌스</em>로 전환된 단계
-          </p>
-          <div class="s22-hub reveal" style="--rev-delay:0.4s">
-            <span class="s22-hub__label">중심 구조</span>
-            <span class="s22-hub__text"><em>그룹 IT 통제권</em> — 발주·수행·기술을 하나의 통제 구조로 묶는 중심</span>
+          <div class="s22-timeline-row reveal" style="--rev-delay:0.4s">
+            <article class="s22-tl-card">
+              <div class="s22-tl-card__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><ellipse cx="16" cy="8" rx="11" ry="4" /><path d="M 5 8 L 5 16 C 5 18 10 20 16 20 C 22 20 27 18 27 16 L 27 8" /><path d="M 5 16 L 5 24 C 5 26 10 28 16 28 C 22 28 27 26 27 24 L 27 16" /></svg>
+                </span>
+                <span class="s22-tl-card__year">2003-04</span>
+              </div>
+              <h3 class="s22-tl-card__title">SMART</h3>
+              <p class="s22-tl-card__sub">단일 법인 · Big Bang</p>
+              <p class="s22-tl-card__body">10개월 빅뱅 도입 · 롯데케미칼 단일 법인 SAP ECC 출발</p>
+              <span style="display:block;margin-top:10px;padding:7px 12px;background:var(--color-bg-cream);color:var(--color-graphite);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.06em;border-left:3px solid var(--color-graphite)">축적 · 단일 법인 전환 경험</span>
+            </article>
+            <div class="s22-tl-chevron" aria-hidden="true">›</div>
+            <article class="s22-tl-card">
+              <div class="s22-tl-card__head">
+                <span class="v3-pict-wrap" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5" /><path d="M 16 3 L 16 7 M 16 25 L 16 29 M 3 16 L 7 16 M 25 16 L 29 16 M 6 6 L 9 9 M 23 23 L 26 26 M 6 26 L 9 23 M 23 9 L 26 6" /></svg>
+                </span>
+                <span class="s22-tl-card__year">2010</span>
+              </div>
+              <h3 class="s22-tl-card__title">GEMS</h3>
+              <p class="s22-tl-card__sub">자체 운영 · 환경 시스템 확장</p>
+              <p class="s22-tl-card__body">석유화학 최초 자체 구축 · Greenhouse Gas &amp; Energy Management</p>
+              <span style="display:block;margin-top:10px;padding:7px 12px;background:var(--color-bg-cream);color:var(--color-graphite);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.06em;border-left:3px solid var(--color-graphite)">축적 · 자체 운영 경험</span>
+            </article>
+            <div class="s22-tl-chevron" aria-hidden="true">›</div>
+            <article class="s22-tl-card s22-tl-card--active">
+              <div class="s22-tl-card__head">
+                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
+                  <svg viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="1" /><line x1="8" y1="12" x2="3" y2="12" /><line x1="8" y1="16" x2="3" y2="16" /><line x1="8" y1="20" x2="3" y2="20" /><line x1="24" y1="12" x2="29" y2="12" /><line x1="24" y1="16" x2="29" y2="16" /><line x1="24" y1="20" x2="29" y2="20" /><line x1="12" y1="8" x2="12" y2="3" /><line x1="16" y1="8" x2="16" y2="3" /><line x1="20" y1="8" x2="20" y2="3" /><line x1="12" y1="24" x2="12" y2="29" /><line x1="16" y1="24" x2="16" y2="29" /><line x1="20" y1="24" x2="20" y2="29" /></svg>
+                </span>
+                <span class="s22-tl-card__year">2017.11</span>
+              </div>
+              <h3 class="s22-tl-card__title">S/4HANA 1610</h3>
+              <p class="s22-tl-card__sub">3사 통합 · Roll-out + 통합형 컨버전</p>
+              <p class="s22-tl-card__body">14년 축적 경험을 기반으로 비대칭 환경의 3사 동시 안착 — Roll-out × Big Bang 데이터 이관 2축 결합</p>
+              <span style="display:block;margin-top:10px;padding:8px 14px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.08em;border-left:3px solid var(--color-red-deep)">도달점 · 3사 통합 실행 기반</span>
+            </article>
           </div>
-          <div class="s22-cards reveal" style="--rev-delay:0.55s">
-            <article class="s22-card">
-              <span class="s22-card__label">AXIS 1 · 발주</span>
-              <div class="s22-card__head">
-                <span class="s22-card__num">1</span>
-                <h3 class="s22-card__title">발주 · 의사결정</h3>
-              </div>
-              <p class="s22-card__sub">롯데케미칼 (김교현 대표·박제성 상무)</p>
-              <p class="s22-card__body">프로젝트 거버넌스 총괄<br/>비즈니스 요구사항 정의<br/>자원 배분 의사결정<br/>IT 자산 통제권 유지</p>
-            </article>
-            <article class="s22-card">
-              <span class="s22-card__label">AXIS 2 · 수행</span>
-              <div class="s22-card__head">
-                <span class="s22-card__num">2</span>
-                <h3 class="s22-card__title">수행 · 통합</h3>
-              </div>
-              <p class="s22-card__sub">롯데정보통신 (그룹 SI)</p>
-              <p class="s22-card__body">시스템 통합 SI 수행<br/>그룹 표준 운영체계 적용<br/>신규 SAP 플랫폼 도입<br/>중복투자 리스크 제거</p>
-            </article>
-            <article class="s22-card">
-              <span class="s22-card__label">AXIS 3 · 기술</span>
-              <div class="s22-card__head">
-                <span class="s22-card__num">3</span>
-                <h3 class="s22-card__title">기술 · 방법론</h3>
-              </div>
-              <p class="s22-card__sub">SAP 본사 (Value Assurance)</p>
-              <p class="s22-card__body">SAP Activate 방법론<br/>Fit-Gap Analysis<br/>Migration Planning<br/>Go-Live Readiness Check</p>
-            </article>
+          <div class="s22-asym reveal" style="--rev-delay:0.7s">
+            <span style="display:block;font-family:var(--font-mono);font-size:14px;font-weight:800;color:var(--color-red);letter-spacing:0.1em;margin-bottom:10px">진화의 의미</span>
+            <p style="margin:0;font-family:var(--font-sans);font-size:20px;font-weight:700;color:var(--color-ink-strong);line-height:1.45">
+              <em style="color:var(--color-red);font-style:normal;font-weight:900">2003 SMART · 2010 GEMS</em> 두 운영 경험이 결합되어 <em style="color:var(--color-red);font-style:normal;font-weight:900">2017 S/4HANA 3사 통합 Roll-out</em>의 실행 가능성을 만들었다
+            </p>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.9s">
-            <span>외부 SI 일임이 아닌 <em>3축 협력 구조</em> — 그룹 자원 + 패키지 공급사 + 발주처 통제권 결합</span>
-            <span class="v3-msg__src">출처 · 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료</span>
+            <span>과거 경험 축적 → <em>2017년 3사 통합 Roll-out 실행 기반</em></span>
+            <span class="v3-msg__src">박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · docx Step 3 §3</span>
           </div>
         </div>
       </main>
     </section>
 
-    <!-- ============= SLIDE 24 · four-methodologies v2 (4 방법론 비교 + Roll-out 선정·v3 시프트 23→24) ============= -->
+    <!-- ============= SLIDE 24 · methodology-evolution v2 (본 차수 v10.16 — 잔존 four-methodologies → methodology-evolution 갱신·매트릭스 v10.13 정합 회복) ============= -->
     <section class="slide tone-c" data-slide="5">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -2199,59 +3394,104 @@
         <div class="head-page"><span class="hp-num">24</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s23-main">
+        <div class="s22-main" style="display:grid;grid-template-rows:auto auto 1fr auto;gap:18px;height:100%;overflow:hidden">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 05</span>
-            <span class="eb-text">4대 구축 방법론 비교</span>
+            <span class="eb-text">3사 통합 실행 판단</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            4대 구축 방법론 비교 — 왜 <span class="v3-em" style="white-space:nowrap">Roll-out</span>인가
+            과거 경험만으로는 부족했다 — <span class="v3-em">3사 통합 조건은 Roll-out을 요구했다</span>
           </h1>
-          <p class="v4-subhead reveal" style="--rev-delay:0.3s">
-            7개월 + 3사 + 다운타임 통제 조건의 <em>유일한 해</em> — 선택 기준: 기준 자산 유지 + 통합 리스크 최소화
-          </p>
-          <div class="s23-table reveal" style="--rev-delay:0.5s">
-            <div class="s23-row s23-row--head">
-              <div class="s23-cell">방법론</div>
-              <div class="s23-cell">특징</div>
-              <div class="s23-cell">장점·단점</div>
-              <div class="s23-cell">본 사례 적합도</div>
+          <div class="reveal" style="--rev-delay:0.4s;display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:14px;align-items:stretch;min-height:0">
+
+            <!-- 좌 · PAST · 단일 법인 빅뱅 경험의 한계 -->
+            <article style="display:grid;grid-template-rows:auto auto auto 1fr;gap:12px;padding:24px 26px;background:var(--color-paper);border:1px solid var(--color-line);border-top:4px solid var(--color-graphite);min-height:0">
+              <span style="display:inline-flex;align-items:center;gap:8px;justify-self:start;padding:5px 14px 5px 5px;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.1em;border-radius:3px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--color-paper);color:var(--color-graphite);font-size:13px;font-weight:900;flex-shrink:0">1</span>PAST · 단일 법인 빅뱅</span>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:28px;font-weight:900;color:var(--color-ink-strong);line-height:1.15;letter-spacing:-0.018em">기반은 되었지만 그대로 복제는 불가</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:18px;font-weight:600;color:var(--color-ink-soft);line-height:1.45">단일 법인 빅뱅 경험은 본 사례의 실행 기반이지만 <em style="color:var(--color-graphite);font-style:normal;font-weight:800">3사 동시 전환에는 그대로 복제 불가</em></p>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:10px;align-content:start">
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--color-paper);border:2px solid var(--color-graphite);color:var(--color-graphite);font-family:var(--font-mono);font-size:13px;font-weight:800;flex-shrink:0">×</span>
+                  <span>3사 동시 전환 시 다운타임 폭증</span>
+                </li>
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--color-paper);border:2px solid var(--color-graphite);color:var(--color-graphite);font-family:var(--font-mono);font-size:13px;font-weight:800;flex-shrink:0">×</span>
+                  <span>24시간 연속 가동 정지 불가</span>
+                </li>
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:10px;align-items:start;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:var(--color-paper);border:2px solid var(--color-graphite);color:var(--color-graphite);font-family:var(--font-mono);font-size:13px;font-weight:800;flex-shrink:0">×</span>
+                  <span>각 사 본연 경쟁력 일괄 통합 부담</span>
+                </li>
+              </ul>
+            </article>
+
+            <!-- 화살표 -->
+            <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--color-red)">
+              <svg width="52" height="72" viewBox="0 0 52 72" aria-hidden="true">
+                <path d="M 10 12 L 36 36 L 10 60" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
-            <div class="s23-row s23-row--methods">
-              <div class="s23-cell"><span class="s23-cell__title">Big Bang · 일시 전환</span></div>
-              <div class="s23-cell">전체 모듈·법인 한 번에 전환</div>
-              <div class="s23-cell">통합 효과 즉시·다운타임 리스크 집중</div>
-              <div class="s23-cell"><span class="s23-fit s23-fit--mid">△</span>3사 동시 전환 다운타임 과대</div>
+
+            <!-- 중 · CONDITION · 2017 3사 통합 조건 -->
+            <article style="display:grid;grid-template-rows:auto auto auto 1fr;gap:14px;padding:26px 28px;background:var(--color-bg-cream);border:2px solid var(--color-red);border-top:6px solid var(--color-red);min-height:0">
+              <span style="display:inline-flex;align-items:center;gap:8px;justify-self:start;padding:5px 14px 5px 5px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.1em;border-radius:3px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--color-paper);color:var(--color-red);font-size:13px;font-weight:900;flex-shrink:0">2</span>CONDITION · 3사 통합 조건</span>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:30px;font-weight:900;color:var(--color-ink-strong);line-height:1.15;letter-spacing:-0.018em">2017년의 결정적 차이</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:18px;font-weight:600;color:var(--color-ink-soft);line-height:1.45">단일 법인 빅뱅과 본 사례의 조건은 <em style="color:var(--color-red);font-style:normal;font-weight:800">규모·동시성·다운타임</em>에서 결정적으로 다름</p>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;align-content:start">
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:17px;font-weight:800;flex-shrink:0">1</span>
+                  <span>3사 병존 — 롯데케미칼·정밀화학·첨단소재</span>
+                </li>
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:17px;font-weight:800;flex-shrink:0">2</span>
+                  <span>24시간 가동 + 6국 글로벌</span>
+                </li>
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:17px;font-weight:800;flex-shrink:0">3</span>
+                  <span>7개월 압축 일정</span>
+                </li>
+              </ul>
+            </article>
+
+            <!-- 화살표 -->
+            <div aria-hidden="true" style="display:flex;align-items:center;justify-content:center;color:var(--color-red)">
+              <svg width="52" height="72" viewBox="0 0 52 72" aria-hidden="true">
+                <path d="M 10 12 L 36 36 L 10 60" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
             </div>
-            <div class="s23-row s23-row--methods">
-              <div class="s23-cell"><span class="s23-cell__title">Phased · 단계 전환</span></div>
-              <div class="s23-cell">모듈·부서별 단계적 전환</div>
-              <div class="s23-cell">리스크 분산·통합 효과 지연</div>
-              <div class="s23-cell"><span class="s23-fit s23-fit--mid">△</span>7개월 일정 내 분할 불가</div>
-            </div>
-            <div class="s23-row s23-row--methods">
-              <div class="s23-cell"><span class="s23-cell__title">Pilot · 시범 후 확산</span></div>
-              <div class="s23-cell">1개 부서·법인 시범 → 본격 확산</div>
-              <div class="s23-cell">검증 후 확산·전체 일정 길어짐</div>
-              <div class="s23-cell"><span class="s23-fit s23-fit--bad">×</span>7개월 일정상 시범 후 확산 불가</div>
-            </div>
-            <div class="s23-row s23-row--methods s23-row--active">
-              <div class="s23-cell"><span class="s23-cell__title">Roll-out · 기준 법인 확산</span></div>
-              <div class="s23-cell">기준 법인 구축 → 타 법인·거점 확산</div>
-              <div class="s23-cell">기준 모델 안정화 후 확산·리스크 통제</div>
-              <div class="s23-cell"><span class="s23-fit s23-fit--great">◎</span>롯데케미칼 기준 → 정밀화학·첨단소재 확산</div>
-            </div>
+
+            <!-- 우 · DECISION · Roll-out 적용 판단 -->
+            <article style="display:grid;grid-template-rows:auto auto auto 1fr auto;gap:14px;padding:26px 28px;background:var(--color-paper);border:2px solid var(--color-red);border-top:6px solid var(--color-red);min-height:0">
+              <span style="display:inline-flex;align-items:center;gap:8px;justify-self:start;padding:5px 14px 5px 5px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.1em;border-radius:3px"><span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--color-paper);color:var(--color-red);font-size:13px;font-weight:900;flex-shrink:0">3</span>DECISION · Roll-out 적용</span>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:30px;font-weight:900;color:var(--color-red-deep);line-height:1.15;letter-spacing:-0.018em">실행 방식의 전환</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:18px;font-weight:600;color:var(--color-ink-soft);line-height:1.45">기준 법인에 과거 경험을 활용하고 <em style="color:var(--color-red);font-style:normal;font-weight:800">3사 순차 확산</em>으로 다운타임·일정 동시 통제</p>
+              <ul style="list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:12px;align-content:start">
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:17px;font-weight:800;flex-shrink:0">✓</span>
+                  <span>기준 법인 롯데케미칼 — SAP ECC 자산 활용</span>
+                </li>
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:17px;font-weight:800;flex-shrink:0">✓</span>
+                  <span>정밀화학·첨단소재 순차 확산 — 다운타임 분산</span>
+                </li>
+                <li style="display:grid;grid-template-columns:auto 1fr;gap:12px;align-items:center;font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4">
+                  <span style="display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:17px;font-weight:800;flex-shrink:0">✓</span>
+                  <span>각 사 본연 경쟁력 + 특화 프로세스 유지</span>
+                </li>
+              </ul>
+              <div style="padding:14px 18px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-sans);font-size:18px;font-weight:800;line-height:1.4;letter-spacing:-0.01em;text-align:center;border-radius:3px">기존 자산은 활용하고, 확산 리스크는 분산</div>
+            </article>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.9s">
-            <span>Big Bang·Phased·Pilot 모두 조건 충족 X → <em>Roll-out이 유일한 해</em></span>
-            <span class="v3-msg__src">출처 · 롯데케미칼 사업보고서</span>
+            <span>2017년의 핵심은 과거 방식의 반복이 아니라, <em>3사 통합 조건에 맞춘 실행 방식 전환</em>이었다</span>
+            <span class="v3-msg__src">박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · docx Step 3 §3</span>
           </div>
         </div>
       </main>
     </section>
 
-    <!-- ============= SLIDE 25 · methodology-evolution v1 (timeline 3 + 진화 의미 + 결론·v3 시프트 24→25) ============= -->
+    <!-- ============= SLIDE 25 · roll-out-judgment v1 — 본 차수 신규 (24 회수 후 신규 역할·3사 통합 Roll-out 실행 판단·timeline 카드 반복 X·display:none 회수) ============= -->
     <section class="slide tone-c" data-slide="6">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -2263,67 +3503,82 @@
         <div class="head-page"><span class="hp-num">25</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s22-main">
+        <div class="s23c-main">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 06</span>
-            <span class="eb-text">방법론 진화</span>
+            <span class="eb-text">4대 구축 방법론 비교</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            시스템 환경 복잡도에 따라 <span class="v3-em">구축 방식도 진화</span> — Big Bang에서 Roll-out으로
+            왜 <span class="v3-em" style="white-space:nowrap">Roll-out</span>이 유일한 방법이었는가
           </h1>
-          <div class="s22-timeline-row reveal" style="--rev-delay:0.4s">
-            <article class="s22-tl-card">
-              <div class="s22-tl-card__head">
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- DB SVG (SMART) -->
-                  <svg viewBox="0 0 32 32"><ellipse cx="16" cy="8" rx="11" ry="4" /><path d="M 5 8 L 5 16 C 5 18 10 20 16 20 C 22 20 27 18 27 16 L 27 8" /><path d="M 5 16 L 5 24 C 5 26 10 28 16 28 C 22 28 27 26 27 24 L 27 16" /></svg>
-                </span>
-                <span class="s22-tl-card__year">2003-04</span>
-              </div>
-              <h3 class="s22-tl-card__title">SMART</h3>
-              <p class="s22-tl-card__sub">단일 법인 · Big Bang</p>
-              <p class="s22-tl-card__body">10개월 빅뱅 도입 · 롯데케미칼 단일 법인 SAP ECC 출발</p>
+          <!-- 상단 조건 4 바 (선택 기준) -->
+          <div class="s23c-criteria-bar reveal" style="--rev-delay:0.3s">
+            <span class="s23c-criteria-bar__label">선택 기준</span>
+            <span class="s23c-criteria"><span class="s23c-criteria__num">1</span>7개월</span>
+            <span class="s23c-criteria"><span class="s23c-criteria__num">2</span>3사 통합</span>
+            <span class="s23c-criteria"><span class="s23c-criteria__num">3</span>무중단 가동</span>
+            <span class="s23c-criteria"><span class="s23c-criteria__num">4</span>기존 자산 유지</span>
+          </div>
+          <!-- 4 후보 카드 비교 — Big Bang·Phased·Pilot 탈락 + Roll-out 활성화 -->
+          <div class="s23c-candidates reveal" style="--rev-delay:0.5s">
+            <!-- 후보 1 Big Bang — 탈락 -->
+            <article class="s23c-card">
+              <span class="s23c-card__label">CANDIDATE 1</span>
+              <h3 class="s23c-card__title">Big Bang</h3>
+              <p class="s23c-card__feature">전체 모듈·법인 일시 전환</p>
+              <ul class="s23c-card__checks">
+                <li><span class="s23c-check s23c-check--mid">△</span>7개월</li>
+                <li><span class="s23c-check s23c-check--bad">×</span>3사</li>
+                <li><span class="s23c-check s23c-check--bad">×</span>무중단</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>자산</li>
+              </ul>
+              <p class="s23c-card__reason">3사 동시 전환 시 다운타임 리스크 과대 → 부적합</p>
             </article>
-            <div class="s22-tl-chevron" aria-hidden="true">›</div>
-            <article class="s22-tl-card">
-              <div class="s22-tl-card__head">
-                <span class="v3-pict-wrap" aria-hidden="true">
-                  <!-- 톱니바퀴 SVG (GEMS) -->
-                  <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="5" /><path d="M 16 3 L 16 7 M 16 25 L 16 29 M 3 16 L 7 16 M 25 16 L 29 16 M 6 6 L 9 9 M 23 23 L 26 26 M 6 26 L 9 23 M 23 9 L 26 6" /></svg>
-                </span>
-                <span class="s22-tl-card__year">2010</span>
-              </div>
-              <h3 class="s22-tl-card__title">GEMS</h3>
-              <p class="s22-tl-card__sub">영역 확장 + 화학 특화</p>
-              <p class="s22-tl-card__body">석유화학 최초 자체 구축 · Greenhouse Gas &amp; Energy Management · 환경 안전</p>
+            <!-- 후보 2 Phased — 탈락 -->
+            <article class="s23c-card">
+              <span class="s23c-card__label">CANDIDATE 2</span>
+              <h3 class="s23c-card__title">Phased</h3>
+              <p class="s23c-card__feature">모듈·부서별 단계 전환</p>
+              <ul class="s23c-card__checks">
+                <li><span class="s23c-check s23c-check--bad">×</span>7개월</li>
+                <li><span class="s23c-check s23c-check--mid">△</span>3사</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>무중단</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>자산</li>
+              </ul>
+              <p class="s23c-card__reason">7개월 일정 내 단계 분할 불가 → 부적합</p>
             </article>
-            <div class="s22-tl-chevron" aria-hidden="true">›</div>
-            <article class="s22-tl-card s22-tl-card--active">
-              <div class="s22-tl-card__head">
-                <span class="v3-pict-wrap v3-pict-wrap--red" aria-hidden="true">
-                  <!-- 코어 칩 SVG (S/4HANA 1610) -->
-                  <svg viewBox="0 0 32 32"><rect x="8" y="8" width="16" height="16" rx="1" /><line x1="8" y1="12" x2="3" y2="12" /><line x1="8" y1="16" x2="3" y2="16" /><line x1="8" y1="20" x2="3" y2="20" /><line x1="24" y1="12" x2="29" y2="12" /><line x1="24" y1="16" x2="29" y2="16" /><line x1="24" y1="20" x2="29" y2="20" /><line x1="12" y1="8" x2="12" y2="3" /><line x1="16" y1="8" x2="16" y2="3" /><line x1="20" y1="8" x2="20" y2="3" /><line x1="12" y1="24" x2="12" y2="29" /><line x1="16" y1="24" x2="16" y2="29" /><line x1="20" y1="24" x2="20" y2="29" /></svg>
-                </span>
-                <span class="s22-tl-card__year">2017.11</span>
-              </div>
-              <h3 class="s22-tl-card__title">S/4HANA 1610</h3>
-              <p class="s22-tl-card__sub">3사 통합 Roll-out + 통합형 컨버전</p>
-              <p class="s22-tl-card__body">비대칭 환경 → 새 디지털 코어에 3사 동시 안착</p>
+            <!-- 후보 3 Pilot — 탈락 -->
+            <article class="s23c-card">
+              <span class="s23c-card__label">CANDIDATE 3</span>
+              <h3 class="s23c-card__title">Pilot</h3>
+              <p class="s23c-card__feature">1개 시범 → 본격 확산</p>
+              <ul class="s23c-card__checks">
+                <li><span class="s23c-check s23c-check--bad">×</span>7개월</li>
+                <li><span class="s23c-check s23c-check--mid">△</span>3사</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>무중단</li>
+                <li><span class="s23c-check s23c-check--mid">△</span>자산</li>
+              </ul>
+              <p class="s23c-card__reason">시범 후 확산 일정상 7개월 불가 → 부적합</p>
+            </article>
+            <!-- 후보 4 Roll-out — 선정 -->
+            <article class="s23c-card s23c-card--selected">
+              <span class="s23c-card__badge">SELECTED</span>
+              <span class="s23c-card__label">CANDIDATE 4 · 본 사례 선택</span>
+              <h3 class="s23c-card__title">Roll-out</h3>
+              <p class="s23c-card__feature">기준 법인 구축 → 타 법인·거점 확산</p>
+              <ul class="s23c-card__checks">
+                <li><span class="s23c-check s23c-check--ok">✓</span>7개월</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>3사</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>무중단</li>
+                <li><span class="s23c-check s23c-check--ok">✓</span>자산</li>
+              </ul>
+              <p class="s23c-card__reason"><em>4 조건 모두 충족</em> — 롯데케미칼 기준 → 정밀화학·첨단소재 확산</p>
             </article>
           </div>
-          <div class="s22-asym reveal" style="--rev-delay:0.7s">
-            <span style="display:block;font-family:var(--font-mono);font-size:14px;font-weight:800;color:var(--color-red);letter-spacing:0.1em;margin-bottom:10px">진화의 의미</span>
-            <ol style="margin:0;padding:0;list-style:none;display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px">
-              <li style="font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4"><span style="display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--color-graphite);color:var(--color-paper);text-align:center;line-height:28px;font-size:14px;font-weight:900;margin-right:8px">①</span>2003 SMART<br/><span style="font-size:15px;font-weight:600;color:var(--color-ink-soft);margin-left:36px;display:block;margin-top:2px">단일 법인 Big Bang 경험 확보</span></li>
-              <li style="font-family:var(--font-sans);font-size:18px;font-weight:700;color:var(--color-ink-strong);line-height:1.4"><span style="display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--color-graphite);color:var(--color-paper);text-align:center;line-height:28px;font-size:14px;font-weight:900;margin-right:8px">②</span>2010 GEMS<br/><span style="font-size:15px;font-weight:600;color:var(--color-ink-soft);margin-left:36px;display:block;margin-top:2px">환경·에너지 특화 자체 구축</span></li>
-              <li style="font-family:var(--font-sans);font-size:18px;font-weight:900;color:var(--color-red-deep);line-height:1.4"><span style="display:inline-block;width:28px;height:28px;border-radius:50%;background:var(--color-red);color:var(--color-paper);text-align:center;line-height:28px;font-size:14px;font-weight:900;margin-right:8px">③</span>2017 S/4HANA<br/><span style="font-size:15px;font-weight:800;color:var(--color-red);margin-left:36px;display:block;margin-top:2px">3사 통합 Roll-out + 통합형 컨버전</span></li>
-            </ol>
-            <span class="s22-asym__src" style="margin-top:14px;display:block">박제성 상무 인용 "롯데케미칼 기준 롤아웃 형태로 진행 · 3사 본연 경쟁력 유지 + 각 사 특화 프로세스 유지"</span>
-          </div>
-          <div class="v3-msg reveal" style="--rev-delay:0.88s">
-            <span><em>구축 방식 진화 + 비대칭성 통합 전략</em> = 본 사례 차별성</span>
-            <span class="v3-msg__src">출처 · 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 회사 연혁</span>
+          <div class="v3-msg reveal" style="--rev-delay:0.9s">
+            <span>Big Bang·Phased·Pilot 모두 조건 미충족 → <em>Roll-out이 유일한 해</em></span>
+            <span class="v3-msg__src">박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · docx Step 3 §3</span>
           </div>
         </div>
       </main>
@@ -2348,7 +3603,7 @@
             <span class="eb-text">7개월 압축 근거</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            7개월 압축은 무리한 단축이 아니라 <span class="v3-em">4 근거의 결합</span>
+            Roll-out 적용 + 4 근거 결합 → <span class="v3-em">7개월 압축 가능</span>
           </h1>
           <div class="s25-compare reveal" style="--rev-delay:0.35s">
             <span>SAP 표준 신규 구축 18~24개월 → 본 사례 <em>7개월 (2017.04~11)</em> · 1.5~3배 압축</span>
@@ -2361,7 +3616,7 @@
                 <h3 class="s25-card2__title">통합형 컨버전</h3>
               </div>
               <p class="s25-card2__sub">Brownfield 성격</p>
-              <p class="s25-card2__body">기준 법인 롯데케미칼 SAP ECC 자산 그대로 이관 → <em>신규 그린필드 대비 분석·설계·구현 분량 대폭 축소</em></p>
+              <p class="s25-card2__body">기준 법인 롯데케미칼 SAP ECC 자산 그대로 이관<br/>→ <em>신규 그린필드 대비 분석·설계·구현 분량 대폭 축소</em></p>
             </article>
             <article class="s25-card2">
               <div class="s25-card2__head">
@@ -2369,7 +3624,7 @@
                 <h3 class="s25-card2__title">13년 SAP 운영 경험</h3>
               </div>
               <p class="s25-card2__sub">2003 SMART · 2010 GEMS</p>
-              <p class="s25-card2__body">사용자 교육·변경관리 부담 신규 도입 기업 대비 현저히 낮음 · <em>사용자 경험과 커스터마이징 자산 재활용</em></p>
+              <p class="s25-card2__body">사용자 교육·변경관리 부담 신규 도입 기업 대비 현저히 낮음<br/>→ <em>사용자 경험과 커스터마이징 자산 재활용</em></p>
             </article>
             <article class="s25-card2">
               <div class="s25-card2__head">
@@ -2377,7 +3632,7 @@
                 <h3 class="s25-card2__title">그룹 SI 사전 협업</h3>
               </div>
               <p class="s25-card2__sub">롯데정보통신</p>
-              <p class="s25-card2__body">외부 SI 공모·선정·온보딩 절차 생략 · 그룹 차원 IT 자산·인력 풀 <em>즉시 동원</em></p>
+              <p class="s25-card2__body">외부 SI 공모·선정·온보딩 절차 생략<br/>→ 그룹 차원 IT 자산·인력 풀 <em>즉시 동원</em></p>
             </article>
             <article class="s25-card2">
               <div class="s25-card2__head">
@@ -2385,7 +3640,7 @@
                 <h3 class="s25-card2__title">SAP Value Assurance</h3>
               </div>
               <p class="s25-card2__sub">표준 컴포넌트</p>
-              <p class="s25-card2__body">Fit-Gap Analysis · Migration Planning Workshop · Go-Live Readiness Check — <em>자체 방법론 개발 없이 검증된 절차</em></p>
+              <p class="s25-card2__body">Fit-Gap Analysis · Migration Planning Workshop · Go-Live Readiness Check<br/>— <em>자체 방법론 개발 없이 검증된 절차</em></p>
             </article>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.9s">
@@ -2408,47 +3663,98 @@
         <div class="head-page"><span class="hp-num">27</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s26-main2">
+        <div class="s26-main2" style="display:grid;grid-template-rows:auto auto auto 1fr auto;gap:18px;height:100%">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 08</span>
             <span class="eb-text">Time·Cost·Scope 통제</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
-            PMBOK Iron Triangle — Time·Cost·Scope <span class="v3-em">3축 동시 통제</span>
+            Time·Cost·Scope — <span class="v3-em">3 제약 동시 만족</span>
           </h1>
           <div class="s26-pmbok reveal" style="--rev-delay:0.35s">
-            <span class="s26-pmbok__label">강의 자료 5p — PMBOK 정의</span>
-            계획된 일정(Time) 내, 배정된 예산(Cost)을 사용하여, 합의한 업무(Scope)를 완수함으로 고객 만족(Quality) 극대화 — 본 사례는 3대 제약이 가장 치열하게 충돌한 단계
+            <span class="s26-pmbok__label">프로젝트 관리의 3 제약 — PMBOK Iron Triangle</span>
+            일반 프로젝트는 보통 시간·비용·범위 중 하나를 희생해야 다른 둘을 만족시킨다 — 본 사례는 셋 다 만족시킨 차별적 사례
           </div>
-          <div class="s26-cards reveal" style="--rev-delay:0.5s">
-            <article class="s26-card2">
-              <div class="s26-card2__head">
-                <span class="s26-card2__num">T</span>
-                <h3 class="s26-card2__title">Time</h3>
-              </div>
-              <p class="s26-card2__sub">7개월 압축 (2017.04~11)</p>
-              <p class="s26-card2__body">동종 사례 평균 12~18개월 대비 1.5배 압축<br/><em>25번 4 근거 회수</em> — 통합형 컨버전·13년 SAP·그룹 SI·SAP VAS</p>
-              <span class="s26-key-chip">핵심 · 7개월 압축</span>
-            </article>
-            <article class="s26-card2">
-              <div class="s26-card2__head">
-                <span class="s26-card2__num">C</span>
-                <h3 class="s26-card2__title">Cost</h3>
-              </div>
-              <p class="s26-card2__sub">비용 회피형 관리</p>
-              <p class="s26-card2__body">투자 총액 비공개<br/>'최소 비용'이 아닌 <em>비용 발생 구조 통제</em>·자산 재활용·그룹 SI·중복 운영비·전환 리스크 4 통제</p>
-              <span class="s26-key-chip">핵심 · 비용 발생 구조 통제</span>
-            </article>
-            <article class="s26-card2">
-              <div class="s26-card2__head">
-                <span class="s26-card2__num">S</span>
-                <h3 class="s26-card2__title">Scope</h3>
-              </div>
-              <p class="s26-card2__sub">3축 균형</p>
-              <p class="s26-card2__body">법인 축 (3사 + 6국) · 모듈 축 (10모듈)<br/>프로세스 축 (공통 표준화 + <em>본연 경쟁력 유지</em>)</p>
-              <span class="s26-key-chip">핵심 · 본연 경쟁력 유지</span>
-            </article>
+          <div class="s26-cards reveal" style="--rev-delay:0.5s;display:grid;grid-template-columns:0.42fr 0.58fr;gap:24px;align-items:stretch;min-height:0">
+
+            <!-- 좌 — PMBOK Iron Triangle SVG 도식 (T·C·S 정점 + 중앙 메시지) -->
+            <div style="display:flex;align-items:center;justify-content:center;padding:20px 24px;background:var(--color-bg-cream);border:1px solid var(--color-red-soft);border-left:5px solid var(--color-red);position:relative;min-height:0">
+              <svg viewBox="0 0 400 380" style="width:100%;height:auto;max-height:100%;display:block" aria-hidden="true">
+                <!-- 삼각형 외곽 (얇고 부드러운 stroke·opacity 0.7) -->
+                <polygon points="200,55 60,330 340,330" style="fill:none;stroke:var(--color-red);stroke-width:2;stroke-linejoin:round;opacity:0.7" />
+
+                <!-- T 정점 (상단) — outer ring + inner circle -->
+                <circle cx="200" cy="55" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
+                <circle cx="200" cy="55" r="32" style="fill:var(--color-red)" />
+                <text x="200" y="66" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">T</text>
+                <text x="200" y="116" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Time</text>
+                <text x="200" y="138" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">시간 — 7개월</text>
+
+                <!-- C 정점 (좌하) — 라벨·sub 위로 18px (Cost 글자·원 안 겹침 해소) -->
+                <circle cx="60" cy="330" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
+                <circle cx="60" cy="330" r="32" style="fill:var(--color-red)" />
+                <text x="60" y="341" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">C</text>
+                <text x="60" y="278" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Cost</text>
+                <text x="60" y="258" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">비용 — 회피형</text>
+
+                <!-- S 정점 (우하) — 동일 처리 -->
+                <circle cx="340" cy="330" r="40" style="fill:var(--color-paper);stroke:var(--color-red);stroke-width:1.5;opacity:0.35" />
+                <circle cx="340" cy="330" r="32" style="fill:var(--color-red)" />
+                <text x="340" y="341" text-anchor="middle" style="fill:var(--color-paper);font-family:var(--font-mono);font-size:28px;font-weight:800">S</text>
+                <text x="340" y="278" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:19px;font-weight:900;letter-spacing:-0.012em">Scope</text>
+                <text x="340" y="258" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">범위 — 3축 균형</text>
+
+                <!-- 중앙 메시지 (본 사례) — 위치 미세 조정 -->
+                <text x="200" y="220" text-anchor="middle" style="fill:var(--color-red);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.16em">본 사례</text>
+                <text x="200" y="252" text-anchor="middle" style="fill:var(--color-red-deep);font-family:var(--font-sans);font-size:22px;font-weight:900;letter-spacing:-0.018em">3 축 동시 만족</text>
+                <text x="200" y="278" text-anchor="middle" style="fill:var(--color-ink-soft);font-family:var(--font-sans);font-size:13px;font-weight:700">어느 하나도 희생 X</text>
+              </svg>
+            </div>
+
+            <!-- 우 — T·C·S 3 카드 세로 (각 카드 가로 컴팩트: 큰 알파벳 좌 + 본문 우) -->
+            <div style="display:flex;flex-direction:column;gap:12px;min-height:0">
+
+              <!-- T Time 카드 -->
+              <article style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:stretch;padding:18px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-right:16px;border-right:1px solid var(--color-line-soft)">
+                  <span style="font-family:var(--font-mono);font-size:38px;font-weight:900;color:var(--color-red);line-height:1">T</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-red-deep);letter-spacing:-0.005em">Time</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center">
+                  <span style="font-family:var(--font-sans);font-size:20px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.014em">7개월 압축 (2017.04~11)</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5">동종 사례 평균 12~18개월 대비 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">1.5배 압축</em> · 4 근거 결합</span>
+                  <span style="display:inline-block;align-self:flex-start;padding:4px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.06em;border-radius:3px;margin-top:2px">핵심 · 7개월 압축</span>
+                </div>
+              </article>
+
+              <!-- C Cost 카드 -->
+              <article style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:stretch;padding:18px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-right:16px;border-right:1px solid var(--color-line-soft)">
+                  <span style="font-family:var(--font-mono);font-size:38px;font-weight:900;color:var(--color-red);line-height:1">C</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-red-deep);letter-spacing:-0.005em">Cost</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center">
+                  <span style="font-family:var(--font-sans);font-size:20px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.014em">비용 회피형 관리</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5">'최소 비용'이 아닌 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">비용 발생 구조 통제</em> · 자산 재활용·그룹 SI·중복 운영비·리스크 4 통제</span>
+                  <span style="display:inline-block;align-self:flex-start;padding:4px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.06em;border-radius:3px;margin-top:2px">핵심 · 비용 발생 구조 통제</span>
+                </div>
+              </article>
+
+              <!-- S Scope 카드 -->
+              <article style="display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:stretch;padding:18px 22px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);min-height:0;flex:1 1 0">
+                <div style="display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;padding-right:16px;border-right:1px solid var(--color-line-soft)">
+                  <span style="font-family:var(--font-mono);font-size:38px;font-weight:900;color:var(--color-red);line-height:1">S</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:800;color:var(--color-red-deep);letter-spacing:-0.005em">Scope</span>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center">
+                  <span style="font-family:var(--font-sans);font-size:20px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.014em">3 축 균형</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5">법인 축 (3사 + 6국) · 모듈 축 (10모듈) · 프로세스 축 (공통 표준화 + <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">본연 경쟁력 유지</em>)</span>
+                  <span style="display:inline-block;align-self:flex-start;padding:4px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.06em;border-radius:3px;margin-top:2px">핵심 · 본연 경쟁력 유지</span>
+                </div>
+              </article>
+
+            </div>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.9s">
             <span>Iron Triangle 3축 <em>동시 만족</em>이 본 사례 차별성 — Time 단축 + Cost 회피 + Scope 균형 어느 하나도 희생 X</span>
@@ -2470,7 +3776,7 @@
         <div class="head-page"><span class="hp-num">28</span></div>
       </header>
       <main class="slide-main-v6">
-        <div class="s23-main">
+        <div class="s23-main" style="display:grid;grid-template-rows:auto auto auto auto 1fr auto;gap:14px;height:100%;overflow:hidden">
           <div class="eyebrow v3-eyebrow reveal" style="--rev-delay:0.05s">
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 09</span>
@@ -2482,6 +3788,17 @@
           <div class="s23-recall reveal" style="--rev-delay:0.32s">
             <span class="red-box-label">챕터 1 §8 회수</span>
             <span class="s23-recall__text">강제 통일이 아니다 — 6대 항목 비교</span>
+          </div>
+          <div class="reveal" style="--rev-delay:0.38s;display:flex;align-items:center;justify-content:center;gap:28px;padding:10px 24px;background:var(--color-bg-cream);border-left:6px solid var(--color-red);margin:0">
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:var(--font-mono);font-size:32px;font-weight:900;color:var(--color-graphite);line-height:1;letter-spacing:-0.04em">5</span>
+              <span style="font-family:var(--font-sans);font-size:16px;font-weight:800;color:var(--color-ink-strong)">영역 통합 표준화</span>
+            </div>
+            <div style="font-family:var(--font-mono);font-size:24px;color:var(--color-red);font-weight:900;line-height:1">+</div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <span style="font-family:var(--font-mono);font-size:32px;font-weight:900;color:var(--color-red);line-height:1;letter-spacing:-0.04em">1</span>
+              <span style="font-family:var(--font-sans);font-size:16px;font-weight:800;color:var(--color-red-deep)">영역 본연 경쟁력 보존</span>
+            </div>
           </div>
           <div class="s23-table reveal" style="--rev-delay:0.45s">
             <div class="s23-row s23-row--head">
@@ -2502,11 +3819,11 @@
               <div class="s23-cell"><span class="s23-cell__body">통합 기준정보 체계 (그룹 표준 코드)</span></div>
               <div class="s23-cell"><span class="s23-fit s23-fit--great" style="font-size:18px">통합 표준화</span></div>
             </div>
-            <div class="s23-row">
-              <div class="s23-cell"><span class="s23-cell__label">프로세스</span></div>
+            <div class="s23-row" style="background:var(--color-bg-cream);border-left:4px solid var(--color-red)">
+              <div class="s23-cell"><span class="s23-cell__label" style="color:var(--color-red-deep)">프로세스</span></div>
               <div class="s23-cell"><span class="s23-cell__body">각 사별 독자 업무 절차 · 공통 영역 표준 부재</span></div>
               <div class="s23-cell"><span class="s23-cell__body">공통 표준 프로세스 + 각 사 특화 프로세스 병존</span></div>
-              <div class="s23-cell"><span class="s23-fit s23-fit--mid" style="font-size:18px;color:var(--color-red-deep);opacity:1">부분 보존</span></div>
+              <div class="s23-cell"><span class="s23-fit s23-fit--mid s23-preserve-chip" style="font-size:18px;background:var(--color-paper);color:var(--color-red-deep);border:2px solid var(--color-red);padding:5px 12px;border-radius:3px;font-weight:800;letter-spacing:0.02em;display:inline-block">부분 보존</span></div>
             </div>
             <div class="s23-row">
               <div class="s23-cell"><span class="s23-cell__label">데이터 처리 성능</span></div>
@@ -2526,10 +3843,6 @@
               <div class="s23-cell"><span class="s23-cell__body">통합 데이터 호수 · DT · 인텔리전트 엔터프라이즈 토대</span></div>
               <div class="s23-cell"><span class="s23-fit s23-fit--great" style="font-size:18px">전환 기반</span></div>
             </div>
-          </div>
-          <div class="v3-msg reveal" style="--rev-delay:0.92s">
-            <span><em>GAP 3트랙</em> — BPR · Customizing · Add-on (다음 페이지 본문)</span>
-            <span class="v3-msg__src">출처 · 롯데케미칼 사업보고서</span>
           </div>
         </div>
       </main>
@@ -2552,6 +3865,10 @@
             <span class="eb-bar"></span>
             <span class="red-box-label">STEP 3 · 10</span>
             <span class="eb-text">GAP 3트랙</span>
+          </div>
+          <div class="reveal" style="--rev-delay:0.18s;display:inline-flex;align-items:center;gap:10px;padding:6px 14px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);align-self:flex-start">
+            <span style="font-family:var(--font-mono);font-size:12px;font-weight:800;color:var(--color-red);letter-spacing:0.1em">RECALL · 28</span>
+            <span style="font-family:var(--font-sans);font-size:15px;font-weight:700;color:var(--color-ink-strong)">5 표준화 영역 + 1 보존 영역 → 3트랙 적용</span>
           </div>
           <h1 class="v3-headline reveal" style="--rev-delay:0.2s">
             GAP 3트랙 — <span class="v3-em">표준화·차별성·외부 연계 균형</span>
@@ -2648,14 +3965,14 @@
               <span class="s29-side__label">위험 영역</span>
               <h3 class="s29-side__title">Configuration 위험</h3>
               <p class="s29-side__sub">10모듈 × 수천 파라미터</p>
-              <p class="s29-side__body">MM(구매)·PP(생산)·PM(설비)·QM(품질)·SD(영업)·CO·FI·HR·GRC·EHS 각 모듈 수십~수백 마스터 파라미터. 강의 자료 31p Summary — 자체 개발 핵심은 '소스 코드 작성'·<em>패키지 구매 핵심은 '파라미터 조정 + 연계'</em></p>
+              <p class="s29-side__body">MM·PP·PM·QM·SD·CO·FI·HR·GRC·EHS 10모듈<br/>각 모듈 수십~수백 마스터 파라미터<br/>→ 패키지 구매 핵심은 <em>'파라미터 조정 + 연계'</em></p>
             </article>
             <div class="s29-arrow" aria-hidden="true">→</div>
             <article class="s29-side">
               <span class="s29-side__label">본 사례 통제</span>
               <h3 class="s29-side__title">13년 ECC 자산 컨버전 이관</h3>
               <p class="s29-side__sub">Configuration 위험 본질적 축소</p>
-              <p class="s29-side__body">13년 누적 SAP ECC Configuration 자산을 컨버전 방식으로 이관 → <em>신규 그린필드 도입 대비 Configuration 리스크 본질적 축소</em> · 7개월 압축 일정 가능 결정적 요인</p>
+              <p class="s29-side__body">13년 누적 SAP ECC Configuration 자산<br/>컨버전 방식으로 이관<br/>→ <em>신규 그린필드 대비 리스크 본질적 축소</em><br/>7개월 압축 일정 가능 결정적 요인</p>
             </article>
           </div>
           <div class="s29-baseline reveal" style="--rev-delay:0.75s">
@@ -2774,7 +4091,6 @@
               <p class="s31-spoke-circle__sub">에너지<br/>2010 자체 구축</p>
             </article>
 
-            <span class="s31-eai-label">EAI 6 외부 연계 · 점선 = 비SAP 시스템 통합</span>
           </div>
           <div class="v3-msg reveal" style="--rev-delay:0.92s">
             <span>S/4HANA <em>단일 디지털 코어</em> + 비SAP 주변 시스템 EAI 연계 — Step 5 결론에서 회수</span>
@@ -2810,13 +4126,13 @@
           </p>
           <div class="s31-mig-row reveal" style="--rev-delay:0.35s">
             <article class="s31-mig-card">
-              <span class="s31-mig-card__label">차원 1 · 구축 방법론</span>
+              <span class="s31-mig-card__label" style="display:inline-block;padding:6px 14px;background:var(--color-graphite);color:var(--color-paper);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.1em;border-radius:3px;align-self:flex-start">차원 1 · 구축 방법론</span>
               <h3 class="s31-mig-card__title">Roll-out</h3>
               <span class="s31-mig-card__sub">어떤 단위로 시스템을 구축·확산할 것인가</span>
               <p class="s31-mig-card__body">롯데케미칼 기준 법인 → 정밀화학·첨단소재 순차 확산 (박제성 인용·강의 자료 본 단계 3장)</p>
             </article>
             <article class="s31-mig-card s31-mig-card--active">
-              <span class="s31-mig-card__label">차원 2 · 데이터 이관 방식</span>
+              <span class="s31-mig-card__label" style="display:inline-block;padding:6px 14px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.1em;border-radius:3px;align-self:flex-start">차원 2 · 데이터 이관 방식</span>
               <h3 class="s31-mig-card__title">Big Bang 데이터 이관</h3>
               <span class="s31-mig-card__sub">어떤 흐름으로 기존 데이터를 옮길 것인가</span>
               <p class="s31-mig-card__body">다운타임 단축(114h → 52h) 단일 KPI는 <em>Big Bang 데이터 이관 시사</em> (강의 자료 17p)</p>

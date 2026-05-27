@@ -2814,6 +2814,1031 @@
       line-height: 1.7 !important;
       letter-spacing: 0.01em !important;
     }
+
+    /* ========== v21 P0-1 학술 보강 모달화 + 매트릭스 글자 복원 (canonical §7-4 정합·가드 53·45·49·75·81 정합·§4-3·§4-4 정합) ========== */
+
+    /* ===== 1. 매트릭스 글자 복원 강제 룰 (canonical §7-4·§4-4 정합) ===== */
+    /* 실측 초기 정의 (line 1104·1111): title 26px·sub 17px — 본 v21에서 22px·15px 강제 룰로 명시 보정 (가드 81 우선순위 강화) */
+    .slide .ic-cell-title {
+      font-size: 22px !important;
+      font-weight: 800 !important;
+      line-height: 1.25 !important;
+      letter-spacing: -0.018em !important;
+      color: var(--color-ink-strong) !important;
+    }
+    .slide .ic-cell-sub {
+      font-size: 15px !important;
+      font-weight: 500 !important;
+      line-height: 1.45 !important;
+      color: var(--color-ink-soft) !important;
+    }
+    .slide .ic-cell--erp .ic-cell-title {
+      color: var(--color-red-deep) !important;
+      font-weight: 900 !important;
+    }
+    .slide .ic-cell--erp .ic-cell-sub {
+      color: var(--color-red-deep) !important;
+      opacity: 0.95 !important;
+      font-weight: 600 !important;
+    }
+    .slide .ic-cell {
+      padding: 18px 20px !important;
+      min-height: auto !important;
+      display: flex !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+    .slide .ic-main {
+      display: flex !important;
+      flex-direction: column !important;
+      height: 100% !important;
+    }
+    .slide .ic-table {
+      flex: 1 1 auto !important;
+    }
+
+    /* ===== 2. 학술 보강 트리거 버튼 (기존 .ic-academic 박스 대체) ===== */
+    .slide .ic-academic-trigger {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      width: 100%;
+      margin-top: 16px;
+      padding: 14px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-red);
+      border-radius: 0;
+      cursor: pointer;
+      font-family: var(--font-sans);
+      text-align: left;
+      transition: background-color 180ms ease, border-left-color 180ms ease, transform 180ms ease;
+    }
+    .slide .ic-academic-trigger:hover {
+      background: var(--color-bg-cream);
+      border-left-color: var(--color-red-deep);
+      transform: translateY(-1px);
+    }
+    .slide .ic-academic-trigger:focus-visible {
+      outline: 2px solid var(--color-red);
+      outline-offset: 2px;
+    }
+    .slide .ic-academic-trigger__icon {
+      flex: 0 0 auto;
+      width: 36px; height: 36px;
+      display: inline-flex; align-items: center; justify-content: center;
+      background: var(--color-red-pale);
+      border-radius: 50%;
+      color: var(--color-red);
+    }
+    .slide .ic-academic-trigger__icon svg {
+      width: 20px; height: 20px;
+      fill: currentColor;
+    }
+    .slide .ic-academic-trigger__text {
+      flex: 1 1 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .slide .ic-academic-trigger__label {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      color: var(--color-red);
+      text-transform: uppercase;
+    }
+    .slide .ic-academic-trigger__desc {
+      font-size: 16px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+    }
+    .slide .ic-academic-trigger__chevron {
+      flex: 0 0 auto;
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--color-red);
+      transition: transform 180ms ease;
+      line-height: 1;
+    }
+    .slide .ic-academic-trigger:hover .ic-academic-trigger__chevron {
+      transform: translateX(3px);
+    }
+
+    /* ===== 3. 모달 백드롭 ===== */
+    .ic-academic-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 40px;
+      background: rgba(21, 23, 28, 0.65);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+    .ic-academic-modal[aria-hidden="false"] {
+      display: flex;
+      animation: icModalFadeIn 200ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+    @keyframes icModalFadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+
+    /* 다이얼로그 컨테이너 */
+    .ic-academic-modal__dialog {
+      position: relative;
+      width: 100%;
+      max-width: 1280px;
+      max-height: 88vh;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      background: var(--color-paper);
+      box-shadow:
+        0 30px 80px -20px rgba(21, 23, 28, 0.5),
+        0 8px 24px -8px rgba(21, 23, 28, 0.2);
+      transform-origin: center;
+    }
+    .ic-academic-modal[aria-hidden="false"] .ic-academic-modal__dialog {
+      animation: icModalScaleIn 240ms cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+    @keyframes icModalScaleIn {
+      from { opacity: 0; transform: scale(0.96) translateY(8px); }
+      to   { opacity: 1; transform: scale(1) translateY(0); }
+    }
+
+    /* 헤더 */
+    .ic-academic-modal__header {
+      position: relative;
+      padding: 26px 32px 22px 28px;
+      border-left: 8px solid var(--color-red);
+      border-bottom: 1px solid var(--color-line);
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 24px;
+      flex: 0 0 auto;
+    }
+    .ic-academic-modal__title-group {
+      flex: 1 1 auto;
+    }
+    .ic-academic-modal__title {
+      font-family: var(--font-sans);
+      font-size: 26px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.25;
+      margin: 0 0 6px;
+    }
+    .ic-academic-modal__subtitle {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      letter-spacing: 0.04em;
+      line-height: 1.4;
+    }
+    .ic-academic-modal__close {
+      flex: 0 0 auto;
+      width: 44px; height: 44px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: transparent;
+      border: 1px solid var(--color-line);
+      color: var(--color-ink-soft);
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 400;
+      line-height: 1;
+      transition: background-color 180ms ease, color 180ms ease, border-color 180ms ease;
+    }
+    .ic-academic-modal__close:hover {
+      background: var(--color-bg-cream);
+      color: var(--color-ink-strong);
+      border-color: var(--color-ink-soft);
+    }
+    .ic-academic-modal__close:focus-visible {
+      outline: 2px solid var(--color-red);
+      outline-offset: 2px;
+    }
+
+    /* 본문 */
+    .ic-academic-modal__body {
+      flex: 1 1 auto;
+      overflow-y: auto;
+      padding: 22px 32px 24px;
+    }
+    .ic-academic-modal__notice {
+      margin: 0 0 18px;
+      padding: 14px 20px;
+      background: var(--color-bg-cream);
+      border-left: 4px solid var(--color-ink-soft);
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.6;
+      letter-spacing: -0.005em;
+    }
+    .ic-academic-modal__notice strong {
+      font-weight: 800;
+      color: var(--color-red);
+    }
+    .ic-academic-modal__table {
+      width: 100%;
+      border-collapse: separate;
+      border-spacing: 0;
+      table-layout: fixed;
+    }
+    .ic-academic-modal__table thead th {
+      padding: 14px 18px;
+      background: var(--color-graphite);
+      color: var(--color-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      text-align: left;
+      line-height: 1.35;
+      border: none;
+    }
+    .ic-academic-modal__table thead th:first-child {
+      width: 72px;
+      text-align: center;
+    }
+    .ic-academic-modal__cell {
+      padding: 18px 20px;
+      background: var(--color-paper);
+      border-bottom: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.5;
+      letter-spacing: -0.005em;
+      vertical-align: top;
+      position: relative;
+    }
+    .ic-academic-modal__cell--row-num {
+      text-align: center;
+      font-family: var(--font-mono);
+      font-weight: 700;
+      color: var(--color-red);
+      font-size: 18px;
+      width: 72px;
+    }
+    .ic-academic-modal__cell--matrix {
+      font-weight: 700;
+      color: var(--color-ink-strong);
+    }
+    .ic-academic-modal__cell em {
+      color: var(--color-ink-soft);
+      font-style: normal;
+      font-weight: 500;
+      font-size: 13px;
+      display: block;
+      margin-top: 4px;
+      letter-spacing: 0.02em;
+      line-height: 1.45;
+    }
+    /* 강조 셀 — docx §5 명시 매칭 (④ 행 매트릭스 키워드 + 박주황 셀) */
+    .ic-academic-modal__cell--emphasized {
+      background: var(--color-red-pale);
+      border-left: 4px solid var(--color-red);
+      color: var(--color-red-deep);
+      font-weight: 800;
+    }
+    .ic-academic-modal__cell--emphasized em {
+      color: var(--color-red-deep);
+      opacity: 0.78;
+    }
+    .ic-academic-modal__cell-label {
+      position: absolute;
+      top: 6px;
+      right: 8px;
+      padding: 2px 6px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      line-height: 1.4;
+      text-transform: uppercase;
+      border-radius: 2px;
+    }
+
+    /* 푸터 */
+    .ic-academic-modal__footer {
+      flex: 0 0 auto;
+      padding: 14px 32px 18px;
+      border-top: 1px solid var(--color-line);
+      background: var(--color-bg);
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+      line-height: 1.55;
+      text-align: right;
+    }
+
+    /* body scroll lock */
+    body.modal-open {
+      overflow: hidden;
+    }
+
+    /* reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .ic-academic-modal[aria-hidden="false"],
+      .ic-academic-modal[aria-hidden="false"] .ic-academic-modal__dialog {
+        animation-duration: 0.001ms !important;
+        animation-delay: 0s !important;
+      }
+      .slide .ic-academic-trigger,
+      .slide .ic-academic-trigger__chevron {
+        transition: none !important;
+      }
+    }
+
+    /* ========== v22 slide 05 호황기 재무 페이지 디자인 보정 (인포그래픽형 KPI + 사업 포트폴리오 구조·가드 53·45·49·75·81·§4-3·§4-4 정합) ========== */
+
+    /* ===== 1. fc-main layout 정합 ===== */
+    .slide .fc-main {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 18px !important;
+      height: 100% !important;
+    }
+
+    /* ===== 2. KPI 3카드 — 인포그래픽 재구성 ===== */
+    .slide .fc-row {
+      display: grid !important;
+      grid-template-columns: 1fr 1fr 1fr !important;
+      gap: 18px !important;
+      align-items: stretch !important;
+    }
+    .slide .fc-card {
+      position: relative !important;
+      padding: 22px 26px 24px !important;
+      background: var(--color-paper) !important;
+      border: 1px solid var(--color-line) !important;
+      border-top: 4px solid var(--color-graphite) !important;
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 14px !important;
+      overflow: hidden !important;
+      min-height: 340px !important;
+    }
+    .slide .fc-card--emph {
+      background: var(--color-bg-cream) !important;
+      border: 1px solid var(--color-red-soft) !important;
+      border-top: 4px solid var(--color-red) !important;
+    }
+    .slide .fc-card-head {
+      display: flex !important;
+      align-items: center !important;
+      justify-content: space-between !important;
+      gap: 12px !important;
+      margin: 0 !important;
+    }
+    .slide .fc-card-head .red-box-label {
+      font-size: 13px !important;
+      padding: 5px 12px !important;
+      letter-spacing: 0.06em !important;
+    }
+    .slide .fc-card__meta {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--color-ink-mute);
+      text-transform: uppercase;
+    }
+    .slide .fc-card--emph .fc-card__meta {
+      color: var(--color-red-deep);
+    }
+
+    /* 큰 숫자 영역 */
+    .slide .fc-num {
+      font-family: var(--font-mono) !important;
+      font-size: 96px !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.04em !important;
+      line-height: 0.95 !important;
+      color: var(--color-ink-strong) !important;
+      display: flex !important;
+      align-items: baseline !important;
+      gap: 8px !important;
+      margin: 2px 0 0 !important;
+    }
+    .slide .fc-card--emph .fc-num {
+      color: var(--color-red) !important;
+      font-size: 104px !important;
+    }
+    .slide .fc-unit {
+      font-family: var(--font-sans) !important;
+      font-size: 26px !important;
+      font-weight: 700 !important;
+      color: var(--color-ink-soft) !important;
+    }
+    .slide .fc-card--emph .fc-unit {
+      color: var(--color-red-deep) !important;
+    }
+
+    /* 카드 1 — mini horizontal growth bar (전년 대비 +20%) */
+    .slide .fc-mini-bar {
+      margin: 2px 0 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .slide .fc-mini-bar__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      color: var(--color-ink-mute);
+    }
+    .slide .fc-mini-bar__head em {
+      color: var(--color-red);
+      font-weight: 800;
+      font-style: normal;
+      font-size: 13px;
+    }
+    .slide .fc-mini-bar__track {
+      position: relative;
+      height: 10px;
+      background: var(--color-bg-warm);
+      border-radius: 5px;
+      overflow: hidden;
+    }
+    .slide .fc-mini-bar__prev {
+      position: absolute;
+      top: 0; left: 0;
+      width: 83.3%;
+      height: 100%;
+      background: var(--color-ink-faint);
+    }
+    .slide .fc-mini-bar__curr {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--color-graphite) 70%, var(--color-red) 100%);
+      opacity: 0;
+      animation: fcMiniBarFill 1.2s cubic-bezier(0.2, 0.7, 0.2, 1) 1.0s forwards;
+    }
+    @keyframes fcMiniBarFill {
+      from { opacity: 0; transform: scaleX(0.7); transform-origin: left center; }
+      to   { opacity: 1; transform: scaleX(1); transform-origin: left center; }
+    }
+    .slide .fc-mini-bar__caption {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--color-ink-soft);
+      letter-spacing: -0.005em;
+    }
+
+    /* 카드 2 — peak signal + 최대 실적 배지 (사상 최대) */
+    .slide .fc-peak {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 14px;
+      background: var(--color-paper);
+      border-left: 3px solid var(--color-red);
+      margin: 2px 0 0;
+    }
+    .slide .fc-peak__icon {
+      width: 22px; height: 22px;
+      color: var(--color-red);
+      flex-shrink: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .slide .fc-peak__icon svg { width: 100%; height: 100%; }
+    .slide .fc-peak__text {
+      font-family: var(--font-sans);
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--color-red-deep);
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+    }
+
+    /* 카드 3 — large growth curve (영업이익 +15.2%) */
+    .slide .fc-growth {
+      position: relative;
+      width: 100%;
+      height: 92px;
+      margin: 2px 0 0;
+    }
+    .slide .fc-growth__svg {
+      width: 100%;
+      height: 100%;
+      display: block;
+    }
+    /* 기존 .fc-arrow-bg 영역 X */
+    .slide .fc-arrow-bg {
+      display: none !important;
+    }
+
+    /* 카드 푸터 영역 (의미 라벨) */
+    .slide .fc-foot {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 4px !important;
+      margin-top: auto !important;
+      padding-top: 8px !important;
+      border-top: 1px solid var(--color-line-soft) !important;
+    }
+    .slide .fc-card--emph .fc-foot {
+      border-top-color: var(--color-red-soft) !important;
+    }
+    .slide .fc-label {
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      color: var(--color-ink-strong) !important;
+      letter-spacing: -0.005em !important;
+    }
+    .slide .fc-card--emph .fc-label {
+      color: var(--color-red-deep) !important;
+    }
+    .slide .fc-sub {
+      font-size: 13px !important;
+      font-weight: 500 !important;
+      color: var(--color-ink-soft) !important;
+      line-height: 1.5 !important;
+      letter-spacing: -0.005em !important;
+    }
+    .slide .fc-sub strong {
+      color: var(--color-ink-strong);
+      font-weight: 800;
+    }
+    .slide .fc-card--emph .fc-sub strong {
+      color: var(--color-red-deep);
+    }
+
+    /* ===== 3. 하단 사업 포트폴리오 구조 ===== */
+    .slide .fc-mix {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 12px !important;
+      padding: 18px 24px 18px !important;
+      background: var(--color-paper) !important;
+      border: 1px solid var(--color-line) !important;
+      border-left: 4px solid var(--color-graphite) !important;
+    }
+    .slide .fc-mix-head {
+      display: flex !important;
+      align-items: baseline !important;
+      justify-content: space-between !important;
+      gap: 18px !important;
+    }
+    .slide .fc-mix-head__title {
+      font-family: var(--font-sans) !important;
+      font-size: 16px !important;
+      font-weight: 800 !important;
+      letter-spacing: -0.005em !important;
+      color: var(--color-ink-strong) !important;
+    }
+    .slide .fc-mix-head__note {
+      font-family: var(--font-mono) !important;
+      font-size: 11px !important;
+      font-weight: 500 !important;
+      letter-spacing: 0.04em !important;
+      color: var(--color-ink-mute) !important;
+    }
+    .slide .fc-portfolio {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .slide .fc-portfolio__bar {
+      display: grid;
+      grid-template-columns: 645fr 273fr 141fr;
+      height: 38px;
+      border: 1px solid var(--color-line);
+    }
+    .slide .fc-portfolio__seg {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+      color: var(--color-paper);
+    }
+    .slide .fc-portfolio__seg--1 { background: var(--color-graphite); }
+    .slide .fc-portfolio__seg--2 { background: var(--color-steel); }
+    .slide .fc-portfolio__seg--3 { background: var(--color-olive); }
+    .slide .fc-portfolio__labels {
+      display: grid;
+      grid-template-columns: 645fr 273fr 141fr;
+      gap: 0;
+    }
+    .slide .fc-portfolio__label {
+      position: relative;
+      padding: 10px 14px 10px;
+      border-top: 3px solid;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 8px;
+    }
+    .slide .fc-portfolio__label--1 { border-top-color: var(--color-graphite); }
+    .slide .fc-portfolio__label--2 { border-top-color: var(--color-steel); }
+    .slide .fc-portfolio__label--3 { border-top-color: var(--color-olive); }
+    .slide .fc-portfolio__name {
+      font-family: var(--font-sans);
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.005em;
+      line-height: 1.3;
+    }
+    .slide .fc-portfolio__name small {
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      margin-left: 4px;
+    }
+    .slide .fc-portfolio__pct {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1;
+    }
+    .slide .fc-portfolio__label--1 .fc-portfolio__pct { color: var(--color-graphite); }
+    .slide .fc-portfolio__label--2 .fc-portfolio__pct { color: var(--color-steel); }
+    .slide .fc-portfolio__label--3 .fc-portfolio__pct { color: var(--color-olive); }
+
+    /* 하단 메시지 */
+    .slide .fc-portfolio__msg {
+      margin-top: 6px;
+      padding: 10px 16px;
+      background: var(--color-bg-cream);
+      border-left: 3px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-ink-strong);
+      line-height: 1.55;
+      letter-spacing: -0.005em;
+    }
+    .slide .fc-portfolio__msg em {
+      color: var(--color-red);
+      font-style: normal;
+      font-weight: 800;
+    }
+
+    /* v22 reduced motion */
+    @media (prefers-reduced-motion: reduce) {
+      .slide .fc-mini-bar__curr {
+        animation: none !important;
+        opacity: 1 !important;
+      }
+    }
+
+    /* ========== v22 찐막 보정 (P5 fc-yoy 그래프 대체·P7 trait 강조·P8 sq-matrix 비교) ========== */
+
+    /* P5-V22 영업이익 성장률 — 2016→2017 단년 변화 KPI (선 그래프 폐기·성과 배지) */
+    .slide .fc-yoy {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      gap: 14px;
+      align-items: end;
+      padding: 6px 8px 2px;
+      min-height: 92px;
+    }
+    .slide .fc-yoy__step {
+      display: flex; flex-direction: column;
+      align-items: center; gap: 6px;
+    }
+    .slide .fc-yoy__bar {
+      width: 56px;
+      background: var(--color-ink-faint);
+      border-radius: 3px 3px 0 0;
+    }
+    .slide .fc-yoy__bar--base { height: 38px; }
+    .slide .fc-yoy__bar--grow {
+      height: 76px;
+      background: var(--color-red);
+    }
+    .slide .fc-yoy__year {
+      font-family: var(--font-mono);
+      font-size: 13px; font-weight: 700;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.04em;
+    }
+    .slide .fc-yoy__year--emph { color: var(--color-red); }
+    .slide .fc-yoy__arrow {
+      align-self: center;
+      font-family: var(--font-mono);
+      font-size: 30px; font-weight: 800;
+      color: var(--color-red);
+      line-height: 1;
+      padding-bottom: 12px;
+    }
+
+    /* P7-V22 trait desc 강조 (em 빨강·strong 굵게) */
+    .slide .tr-trait__desc strong {
+      font-weight: 800;
+      color: var(--color-ink-strong);
+    }
+    .slide .tr-trait__desc em {
+      font-style: normal;
+      font-weight: 800;
+      color: var(--color-red);
+    }
+
+    /* P8-V23 계열사별 ERP 차이 비교 매트릭스 (3열 비교·가독성·정렬·강조 격상·찐막 보정) */
+    /* P8-V24 첫 컬럼 폭 격상 132px·rowlabel nowrap — 시스템 성격 줄바꿈 해소 */
+    .slide .sq-matrix {
+      display: grid;
+      grid-template-columns: 132px repeat(3, 1fr);
+      gap: 8px;
+      width: 100%;
+      align-self: stretch;
+      min-height: 0;
+      padding-top: 16px;  /* "본 사례" 배지 공간 */
+    }
+
+    /* 코너 라벨 — 우측 정렬·소형 (가독성 격상) */
+    .slide .sq-matrix__corner {
+      grid-column: 1;
+      display: flex; align-items: flex-end; justify-content: flex-end;
+      padding: 6px 12px 16px;
+      font-family: var(--font-mono);
+      font-size: 15px; font-weight: 800;
+      color: var(--color-ink-soft);
+      letter-spacing: 0.06em; text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    /* 컬럼 헤더 — 폰트 격상·텍스트 정렬 통일 */
+    .slide .sq-matrix__col-header {
+      padding: 18px 22px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-top: 3px solid var(--color-ink-faint);
+      display: flex; flex-direction: column; gap: 6px;
+      justify-content: center;
+      position: relative;
+    }
+    .slide .sq-matrix__col-header--active {
+      border: 1px solid var(--color-red-soft);
+      border-top: 6px solid var(--color-red);
+      background: var(--color-bg-cream);
+      box-shadow: 0 4px 14px rgba(230, 0, 18, 0.08);
+    }
+    /* "본 사례" 배지 — 본 3사 컬럼에만 표시·시각 주인공 격상 */
+    .slide .sq-matrix__col-header--active::before {
+      content: '본 사례';
+      position: absolute;
+      top: -14px; right: 16px;
+      padding: 5px 14px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-mono);
+      font-size: 12px; font-weight: 800;
+      letter-spacing: 0.1em;
+      border-radius: 3px;
+      line-height: 1;
+      box-shadow: 0 2px 6px rgba(230, 0, 18, 0.25);
+    }
+    .slide .sq-matrix__col-cat {
+      font-family: var(--font-sans);
+      font-size: 26px; font-weight: 800;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.018em;
+      line-height: 1.2;
+    }
+    .slide .sq-matrix__col-header--active .sq-matrix__col-cat {
+      color: var(--color-red-deep);
+      font-weight: 900;
+      font-size: 30px;
+    }
+    .slide .sq-matrix__col-sub {
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 600;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+    }
+    .slide .sq-matrix__col-header--active .sq-matrix__col-sub {
+      color: var(--color-ink-strong);
+      font-weight: 700;
+    }
+
+    /* 행 라벨 — red 격상·우측 정렬·줄바꿈 X */
+    .slide .sq-matrix__rowlabel {
+      grid-column: 1;
+      display: flex; align-items: center; justify-content: flex-end;
+      padding: 14px 12px;
+      font-family: var(--font-sans);
+      font-size: 16px; font-weight: 800;
+      color: var(--color-red);
+      letter-spacing: 0.02em;
+      line-height: 1.3;
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* 셀 — 폰트 격상·정렬 통일·줄간 안정 */
+    .slide .sq-matrix__cell {
+      padding: 20px 24px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      display: flex; flex-direction: column; gap: 4px;
+      font-family: var(--font-sans);
+      font-size: 22px; font-weight: 500;
+      color: var(--color-ink-strong);
+      line-height: 1.45;
+      word-break: keep-all;
+      overflow-wrap: break-word;
+      align-items: flex-start;
+      justify-content: center;
+    }
+    .slide .sq-matrix__cell--active {
+      background: var(--color-bg-cream);
+      border-top: 1px solid var(--color-red-soft);
+      border-right: 1px solid var(--color-red-soft);
+      border-bottom: 1px solid var(--color-red-soft);
+      border-left: 5px solid var(--color-red);
+      font-weight: 600;
+      color: var(--color-ink-strong);
+    }
+
+    /* 셀 strong — 시스템 성격 행 (가장 큰 시각 강조) */
+    .slide .sq-matrix__cell strong {
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      font-size: 24px;
+      line-height: 1.25;
+      letter-spacing: -0.012em;
+      display: block;
+    }
+    .slide .sq-matrix__cell--active strong {
+      color: var(--color-red-deep);
+      font-weight: 900;
+      font-size: 26px;
+    }
+
+    /* 애니메이션 — 매트릭스 진입 stagger fade·본 사례 컬럼은 약간 강한 entrance */
+    @keyframes sqMatrixIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes sqMatrixActiveIn {
+      from { opacity: 0; transform: translateY(18px) scale(0.985); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes sqBadgeIn {
+      0%   { opacity: 0; transform: translateY(-6px) scale(0.92); }
+      60%  { opacity: 1; transform: translateY(0) scale(1.06); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    /* 매트릭스 grid 자식 16개 nth-child 정확 스태거 — 컬럼 헤더 → 행별 좌→우 */
+    .slide .sq-matrix__col-header--active::before { animation: sqBadgeIn 0.55s ease-out 1.25s both; }
+    .slide .sq-matrix > *:nth-child(1)  { animation: sqMatrixIn 0.55s ease-out 0.50s both; } /* 코너 */
+    .slide .sq-matrix > *:nth-child(2)  { animation: sqMatrixActiveIn 0.70s ease-out 0.75s both; } /* 화학 3사 헤더 */
+    .slide .sq-matrix > *:nth-child(3)  { animation: sqMatrixIn 0.55s ease-out 0.65s both; }
+    .slide .sq-matrix > *:nth-child(4)  { animation: sqMatrixIn 0.55s ease-out 0.70s both; }
+    .slide .sq-matrix > *:nth-child(5)  { animation: sqMatrixIn 0.55s ease-out 0.95s both; } /* 핵심 업무 라벨 */
+    .slide .sq-matrix > *:nth-child(6)  { animation: sqMatrixActiveIn 0.60s ease-out 1.00s both; }
+    .slide .sq-matrix > *:nth-child(7)  { animation: sqMatrixIn 0.55s ease-out 1.10s both; }
+    .slide .sq-matrix > *:nth-child(8)  { animation: sqMatrixIn 0.55s ease-out 1.15s both; }
+    .slide .sq-matrix > *:nth-child(9)  { animation: sqMatrixIn 0.55s ease-out 1.30s both; } /* 시스템 성격 라벨 */
+    .slide .sq-matrix > *:nth-child(10) { animation: sqMatrixActiveIn 0.60s ease-out 1.35s both; }
+    .slide .sq-matrix > *:nth-child(11) { animation: sqMatrixIn 0.55s ease-out 1.45s both; }
+    .slide .sq-matrix > *:nth-child(12) { animation: sqMatrixIn 0.55s ease-out 1.50s both; }
+    .slide .sq-matrix > *:nth-child(13) { animation: sqMatrixIn 0.55s ease-out 1.65s both; } /* 선택 이유 라벨 */
+    .slide .sq-matrix > *:nth-child(14) { animation: sqMatrixActiveIn 0.60s ease-out 1.70s both; }
+    .slide .sq-matrix > *:nth-child(15) { animation: sqMatrixIn 0.55s ease-out 1.80s both; }
+    .slide .sq-matrix > *:nth-child(16) { animation: sqMatrixIn 0.55s ease-out 1.85s both; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide .sq-matrix__corner,
+      .slide .sq-matrix__col-header,
+      .slide .sq-matrix__col-header::before,
+      .slide .sq-matrix__rowlabel,
+      .slide .sq-matrix__cell { animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
+    /* P8-V25 WHY 박스 paradox 강조 — "그룹 SI 존재 ↓ 그럼에도 같은 ERP X" 대비 구조 */
+    .slide .sq-question__paradox {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin: 6px 0 16px;
+    }
+    .slide .sq-paradox__line {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      padding: 12px 16px;
+      background: var(--color-paper);
+      border: 1px solid var(--color-line);
+      border-left: 4px solid var(--color-ink-faint);
+    }
+    .slide .sq-paradox__line--given {
+      background: var(--color-paper);
+      border-left-color: var(--color-ink-soft);
+    }
+    .slide .sq-paradox__line--but {
+      background: var(--color-bg-cream);
+      border: 1px solid var(--color-red-soft);
+      border-left: 5px solid var(--color-red);
+    }
+    .slide .sq-paradox__label {
+      font-family: var(--font-sans);
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--color-ink-strong);
+      line-height: 1.2;
+      letter-spacing: -0.012em;
+    }
+    .slide .sq-paradox__line--but .sq-paradox__label {
+      color: var(--color-red-deep);
+      font-weight: 900;
+      font-size: 20px;
+    }
+    .slide .sq-paradox__label-em {
+      color: var(--color-red);
+      font-weight: 900;
+    }
+    .slide .sq-paradox__sub {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      color: var(--color-ink-soft);
+      line-height: 1.4;
+    }
+    .slide .sq-paradox__arrow {
+      font-family: var(--font-mono);
+      font-size: 22px;
+      font-weight: 800;
+      color: var(--color-red);
+      text-align: center;
+      line-height: 1;
+      padding: 2px 0;
+    }
+
+    /* 애니메이션 — given 먼저 → 화살표 → but 강조 */
+    @keyframes paradoxIn {
+      from { opacity: 0; transform: translateX(-10px); }
+      to   { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes paradoxButIn {
+      from { opacity: 0; transform: translateY(-6px) scale(0.98); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    @keyframes paradoxArrowBlink {
+      0%, 100% { opacity: 0.65; transform: translateY(0); }
+      50%      { opacity: 1;    transform: translateY(3px); }
+    }
+    .slide .sq-paradox__line--given { animation: paradoxIn 0.55s ease-out 0.50s both; }
+    .slide .sq-paradox__arrow {
+      animation:
+        paradoxIn 0.45s ease-out 0.75s both,
+        paradoxArrowBlink 1.8s ease-in-out 1.6s infinite;
+    }
+    .slide .sq-paradox__line--but { animation: paradoxButIn 0.6s ease-out 1.0s both; }
+    @media (prefers-reduced-motion: reduce) {
+      .slide .sq-paradox__line--given,
+      .slide .sq-paradox__line--but,
+      .slide .sq-paradox__arrow { animation: none !important; opacity: 1 !important; transform: none !important; }
+    }
+
+    /* P8-V22 결론 박스에 출처 라인 inline */
+    .slide .sq-msg--mini .sq-msg__src {
+      flex: 0 0 auto;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      font-weight: 500;
+      color: var(--color-ink-mute);
+      letter-spacing: 0.02em;
+      text-align: right;
+      white-space: nowrap;
+      margin-left: auto;
+      padding-left: 16px;
+    }
   </style>
 </head>
 <body>
@@ -2986,11 +4011,11 @@
                 <span class="toc-hero__index-sep">·</span>
                 <span class="toc-hero__index-item">05</span>
               </div>
-              <p class="toc-hero__caption">왜 통합인가 → 어떻게 도입 → 7개월 구축 → 검증 → 학습</p>
+              <p class="toc-hero__caption">왜 통합인가 → 어떻게 도입 → 7개월 구축 → 검증 → 결론</p>
             </div>
             <div>
               <div class="toc-hero__sub">Step 1 — Step 5</div>
-              <div class="toc-hero__foot" style="margin-top:14px;">5개 Step · 약 35분</div>
+              <div class="toc-hero__foot" style="margin-top:14px;">5개 Step</div>
             </div>
           </div>
           <ol class="toc-list">
@@ -2999,6 +4024,7 @@
               <div class="toc-card-body">
                 <span class="toc-card-cat">WHY · 왜 통합인가</span>
                 <span class="toc-card-title">왜 ERP 통합이 필요했는가</span>
+                <span style="font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--color-ink-mute);text-transform:uppercase;margin-top:4px">10장 · pages 01–10</span>
               </div>
               <span class="red-box-label">Step 1</span>
             </li>
@@ -3007,14 +4033,16 @@
               <div class="toc-card-body">
                 <span class="toc-card-cat">HOW · 어떻게 도입</span>
                 <span class="toc-card-title">어떻게 도입할 것인가</span>
+                <span style="font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--color-ink-mute);text-transform:uppercase;margin-top:4px">9장 · pages 11–19</span>
               </div>
               <span class="red-box-label red-box-label--outline">Step 2</span>
             </li>
             <li class="toc-card reveal" style="--rev-delay:0.70s">
               <span class="num-circle num-circle--dark">3</span>
               <div class="toc-card-body">
-                <span class="toc-card-cat">BUILD · 7개월 구축</span>
-                <span class="toc-card-title">7개월 안에 어떻게 구축했는가</span>
+                <span class="toc-card-cat">BUILD · 7개월의 구축</span>
+                <span class="toc-card-title">어떻게 멈추지 않고 통합할 것인가</span>
+                <span style="font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--color-ink-mute);text-transform:uppercase;margin-top:4px">14장 · pages 20–33</span>
               </div>
               <span class="red-box-label red-box-label--outline">Step 3</span>
             </li>
@@ -3022,15 +4050,17 @@
               <span class="num-circle num-circle--dark">4</span>
               <div class="toc-card-body">
                 <span class="toc-card-cat">VERIFY · 가동 후 검증</span>
-                <span class="toc-card-title">가동 이후 무엇이 검증됐는가</span>
+                <span class="toc-card-title">가동 이후의 검증</span>
+                <span style="font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--color-ink-mute);text-transform:uppercase;margin-top:4px">9장 · pages 35–43</span>
               </div>
               <span class="red-box-label red-box-label--outline">Step 4</span>
             </li>
             <li class="toc-card reveal" style="--rev-delay:1.0s">
               <span class="num-circle num-circle--dark">5</span>
               <div class="toc-card-body">
-                <span class="toc-card-cat">LEARN · 무엇을 배우는가</span>
-                <span class="toc-card-title">무엇을 배우는가</span>
+                <span class="toc-card-cat">FINAL · 사례의 결론</span>
+                <span class="toc-card-title">최종 결론</span>
+                <span style="font-family:var(--font-mono);font-size:12px;font-weight:700;letter-spacing:0.08em;color:var(--color-ink-mute);text-transform:uppercase;margin-top:4px">9장 · pages 44–52</span>
               </div>
               <span class="red-box-label red-box-label--outline">Step 5</span>
             </li>
@@ -3262,49 +4292,100 @@
             사상 최대 영업이익 시기의 ERP 통합 — <span class="fc-em">위기 대응이 아닌 미래 성장 기반 정비</span>
           </h1>
           <div class="fc-row">
+            <!-- 카드 1 — 2017 매출 15.8조원 -->
             <div class="fc-card reveal" style="--rev-delay:0.4s">
-              <div class="fc-card-head"><span class="red-box-label red-box-label--dark">2017 매출</span></div>
+              <div class="fc-card-head">
+                <span class="red-box-label red-box-label--dark">2017 매출</span>
+                <span class="fc-card__meta">FY2017</span>
+              </div>
               <div class="fc-num"><span class="count" data-target="15.8" data-decimal="1">0</span><span class="fc-unit">조원</span></div>
+              <div class="fc-mini-bar" aria-hidden="false">
+                <div class="fc-mini-bar__head"><span>전년 13.2조 → 2017 15.8조</span><em>+20.0%</em></div>
+                <div class="fc-mini-bar__track">
+                  <div class="fc-mini-bar__prev"></div>
+                  <div class="fc-mini-bar__curr"></div>
+                </div>
+                <span class="fc-mini-bar__caption">규모 기반 확보 — 통합 의사결정 환경 형성</span>
+              </div>
               <div class="fc-foot">
                 <div class="fc-label">2017년 매출</div>
-                <div class="fc-sub">전년 대비 +20% 성장</div>
+                <div class="fc-sub">전년 대비 <strong>+20% 성장</strong> · 규모 기반 확보</div>
               </div>
             </div>
+
+            <!-- 카드 2 — 사상 최대 영업이익 2.93조원 (강조) -->
             <div class="fc-card fc-card--emph reveal" style="--rev-delay:0.55s">
-              <div class="fc-card-head"><span class="red-box-label">사상 최대</span></div>
+              <div class="fc-card-head">
+                <span class="red-box-label">사상 최대</span>
+                <span class="fc-card__meta">PEAK · FY2017</span>
+              </div>
               <div class="fc-num"><span class="count" data-target="2.93" data-decimal="2">0</span><span class="fc-unit">조원</span></div>
+              <div class="fc-peak">
+                <span class="fc-peak__icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24"><path d="M 3 20 L 8 11 L 13 16 L 17 7 L 21 20 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round" stroke-linecap="round"/><line x1="3" y1="20" x2="21" y2="20" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <span class="fc-peak__text">2017 = 사상 최대 실적 정점</span>
+              </div>
               <div class="fc-foot">
                 <div class="fc-label">2017년 영업이익</div>
-                <div class="fc-sub">사상 최대 실적 · 전년 +15.2% 성장</div>
+                <div class="fc-sub"><strong>통합 투자 여력이 가장 컸던 시기</strong> · 전년 +15.2% 성장</div>
               </div>
             </div>
+
+            <!-- 카드 3 — 영업이익 성장률 +15.2% -->
             <div class="fc-card reveal" style="--rev-delay:0.7s">
-              <div class="fc-card-head"><span class="red-box-label red-box-label--dark">영업이익 성장률</span></div>
-              <div class="fc-num">+<span class="count" data-target="15.2" data-decimal="1">0</span><span class="fc-unit">%</span></div>
-              <div class="fc-foot">
-                <div class="fc-label">영업이익 증감률</div>
-                <div class="fc-sub">영업이익 증감률·사상 최대 실적</div>
+              <div class="fc-card-head">
+                <span class="red-box-label red-box-label--dark">영업이익 성장률</span>
+                <span class="fc-card__meta">YoY 2016 → 2017</span>
               </div>
-              <svg class="fc-arrow-bg" viewBox="0 0 220 140" aria-hidden="true">
-                <path d="M 10 130 Q 60 130 100 80 T 200 14" fill="none" stroke="var(--color-red)" stroke-width="5" stroke-linecap="round" />
-                <polygon points="180,4 208,14 196,32" fill="var(--color-red)" />
-              </svg>
+              <div class="fc-num">+<span class="count" data-target="15.2" data-decimal="1">0</span><span class="fc-unit">%</span></div>
+              <div class="fc-yoy" aria-hidden="true">
+                <div class="fc-yoy__step">
+                  <span class="fc-yoy__bar fc-yoy__bar--base"></span>
+                  <span class="fc-yoy__year">2016</span>
+                </div>
+                <span class="fc-yoy__arrow">↗</span>
+                <div class="fc-yoy__step">
+                  <span class="fc-yoy__bar fc-yoy__bar--grow"></span>
+                  <span class="fc-yoy__year fc-yoy__year--emph">2017</span>
+                </div>
+              </div>
+              <div class="fc-foot">
+                <div class="fc-label">영업이익 성장률</div>
+                <div class="fc-sub"><strong>성장 국면</strong>에서 ERP 통합 추진 · 위기 대응 X</div>
+              </div>
             </div>
           </div>
+
+          <!-- 하단 — 사업 포트폴리오 구조 -->
           <div class="fc-mix reveal" style="--rev-delay:0.9s">
-            <div class="fc-mix-label">
-              <span class="fc-mix-label__main">제품군별 매출 비중</span>
-              <span class="fc-mix-label__note">* 페이지 4의 4대 사업과 다른 회계상 분류 기준</span>
+            <div class="fc-mix-head">
+              <span class="fc-mix-head__title">제품군별 매출 비중</span>
+              <span class="fc-mix-head__note">* 페이지 4의 4대 사업과 다른 회계상 분류 기준</span>
             </div>
-            <div>
-              <div class="fc-mix-bars">
-                <div class="fc-mix-bar--1"></div><div class="fc-mix-bar--2"></div><div class="fc-mix-bar--3"></div>
+            <div class="fc-portfolio">
+              <div class="fc-portfolio__bar" role="img" aria-label="제품군별 매출 비중 — 폴리머 64.5%, 모노머 27.3%, 기초유분 14.1%">
+                <div class="fc-portfolio__seg fc-portfolio__seg--1">64.5%</div>
+                <div class="fc-portfolio__seg fc-portfolio__seg--2">27.3%</div>
+                <div class="fc-portfolio__seg fc-portfolio__seg--3">14.1%</div>
               </div>
-              <div class="fc-mix-legend">
-                <div class="fc-mix-leg-item"><span class="fc-mix-leg-name">폴리머 (합성수지 계열)</span><span class="fc-mix-leg-pct">64.5%</span></div>
-                <div class="fc-mix-leg-item"><span class="fc-mix-leg-name">모노머 (화성 계열)</span><span class="fc-mix-leg-pct">27.3%</span></div>
-                <div class="fc-mix-leg-item"><span class="fc-mix-leg-name">기초유분</span><span class="fc-mix-leg-pct">14.1%</span></div>
+              <div class="fc-portfolio__labels">
+                <div class="fc-portfolio__label fc-portfolio__label--1">
+                  <span class="fc-portfolio__name">폴리머<small>합성수지 계열</small></span>
+                  <span class="fc-portfolio__pct">64.5%</span>
+                </div>
+                <div class="fc-portfolio__label fc-portfolio__label--2">
+                  <span class="fc-portfolio__name">모노머<small>화성 계열</small></span>
+                  <span class="fc-portfolio__pct">27.3%</span>
+                </div>
+                <div class="fc-portfolio__label fc-portfolio__label--3">
+                  <span class="fc-portfolio__name">기초유분</span>
+                  <span class="fc-portfolio__pct">14.1%</span>
+                </div>
               </div>
+            </div>
+            <div class="fc-portfolio__msg">
+              <em>올레핀 중심 포트폴리오</em>가 최대 실적의 기반 — 특정 단일 사업이 아닌 사업 구조 전반의 성장 기반.
             </div>
           </div>
           <div class="fc-source reveal" style="--rev-delay:1.1s">
@@ -3408,10 +4489,10 @@
               <p class="tl-quote-body">유가에 흔들리지 않고 지속성장하기 위해<br />
                 <strong>디지털 코어</strong>를 탄탄히 해<br />
                 <strong class="tl-quote-em">디지털 트랜스포메이션·인텔리전트 엔터프라이즈</strong>로 가야 한다.</p>
-              <span class="tl-quote-source">박제성 정보전략담당 상무보 인터뷰</span>
+              <span class="tl-quote-source">박제성 상무 인터뷰</span>
             </blockquote>
             <div class="tl-source reveal" style="--rev-delay:1.0s">
-              <span>출처: 박제성 정보전략담당 상무보 인터뷰 · 2017년 사업보고서 · 롯데케미칼 공식 회사사</span>
+              <span>출처: 박제성 상무 인터뷰 · 2017년 사업보고서 · 롯데케미칼 공식 회사사</span>
             </div>
           </div>
         </div>
@@ -3457,7 +4538,7 @@
                   </span>
                   <span class="tr-trait__name">자본집약적 장치산업</span>
                 </div>
-                <p class="tr-trait__desc">대규모 설비 투자·24시간 연속공정·다운타임 = 손익 직결</p>
+                <p class="tr-trait__desc"><em>대규모 설비 투자</em>·<strong>24시간 연속공정</strong>·<em>다운타임 = 손익 직결</em></p>
               </div>
             </div>
             <!-- 그룹 2: 시장 변동 대응 -->
@@ -3473,7 +4554,7 @@
                   </span>
                   <span class="tr-trait__name">경기순환 · 원료가 변동성</span>
                 </div>
-                <p class="tr-trait__desc">유가·환율에 따른 마진 변동. 실시간 수익성·재고 통제</p>
+                <p class="tr-trait__desc"><em>유가·환율</em>에 따른 <strong>마진 변동</strong>. <strong>실시간 수익성</strong>·<strong>재고 통제</strong></p>
               </div>
               <div class="tr-trait">
                 <div class="tr-trait__head">
@@ -3482,7 +4563,7 @@
                   </span>
                   <span class="tr-trait__name">산업의 쌀 · 전후방 연계</span>
                 </div>
-                <p class="tr-trait__desc">전후방 산업 의존도가 높음</p>
+                <p class="tr-trait__desc"><em>전후방 산업 의존도</em>가 높음</p>
               </div>
             </div>
             <!-- 그룹 3: 통합·규제 복잡성 -->
@@ -3498,7 +4579,7 @@
                   </span>
                   <span class="tr-trait__name">글로벌 다거점</span>
                 </div>
-                <p class="tr-trait__desc">6국 생산·110국 수출. 통화·세무 통합 필요</p>
+                <p class="tr-trait__desc"><strong>6국 생산</strong>·<strong>110국 수출</strong>. <em>통화·세무 통합</em> 필요</p>
               </div>
               <div class="tr-trait">
                 <div class="tr-trait__head">
@@ -3507,7 +4588,7 @@
                   </span>
                   <span class="tr-trait__name">M&amp;A 포트폴리오 확대</span>
                 </div>
-                <p class="tr-trait__desc">인수 이후 기준정보 충돌</p>
+                <p class="tr-trait__desc"><strong>인수 이후 기준정보 충돌</strong>·<em>통합 필요</em></p>
               </div>
               <div class="tr-trait">
                 <div class="tr-trait__head">
@@ -3516,20 +4597,20 @@
                   </span>
                   <span class="tr-trait__name">규제 · 품질 · 안전관리</span>
                 </div>
-                <p class="tr-trait__desc">EHS·화학물질·환경 규제 (REACH·TSCA·화평법). 기록·추적성</p>
+                <p class="tr-trait__desc"><em>EHS</em>·화학물질·환경 규제 (<em>REACH</em>·TSCA·화평법). <strong>기록·추적성</strong></p>
               </div>
             </div>
           </div>
           <div class="tr-conclusion tr-conclusion--strong reveal" style="--rev-delay:0.95s">
             <div class="tr-conclusion__main">
-              <span class="tr-conclusion__lead">멈추면 손실 · 늦으면 마진 악화 · 흩어지면 통제 불가</span>
+              <span class="tr-conclusion__lead">멈추면 손실, 늦으면 마진 악화, 흩어지면 통제 불가</span>
               <span class="tr-conclusion__arrow">→</span>
-              <span class="tr-conclusion__result">10개 핵심 업무 통합 대상</span>
+              <span class="tr-conclusion__result">10개 핵심 업무를 하나의 ERP로 통합</span>
             </div>
             <p class="tr-conclusion__detail">
-              구매 · 생산 · 설비 · 품질 · 영업 · 회계 · 재무 · 인사 · GRC · 화학물질관리 — ERP 의존도 상승·통합 운영체계가 본 사례 출발점
+              구매 · 생산 · 설비 · 품질 · 영업 · 회계 · 재무 · 인사 · GRC · 화학물질관리 — 그래서 10개 핵심 업무를 하나의 ERP 기준으로 묶어야 한다.
             </p>
-            <span class="tr-conclusion__src">출처: 박제성 정보전략담당 상무보 인터뷰 · 2017년 사업보고서 · 화학산업 IT 5대 제약 연구</span>
+            <span class="tr-conclusion__src">출처: 박제성 상무 인터뷰 · 2017년 사업보고서 · 화학산업 IT 5대 제약 연구</span>
           </div>
         </div>
       </main>
@@ -3554,49 +4635,78 @@
             <span class="eb-text">그룹 SI ≠ 동일 ERP</span>
           </div>
           <h1 class="sq-headline reveal" style="--rev-delay:0.2s">
-            왜 같은 그룹사여도 <span class="sq-em">다른 ERP 시스템</span>을 쓰는가? — 산업·업무 특성에 따라 시스템이 다르게 진화
+            왜 같은 그룹사여도 <span class="sq-em">ERP가 다른가?</span> — 산업·업무 특성이 시스템 선택을 갈랐다
           </h1>
           <div class="sq-grid">
             <aside class="sq-question reveal" style="--rev-delay:0.4s">
               <span class="sq-question__why">WHY?</span>
-              <p class="sq-question__sub">그룹 SI(롯데정보통신) 존재 <br />≠ 모든 계열사 동일 ERP</p>
-              <span class="sq-question__note">본 사례 화학 3사 중심 · 보조 비교 영역</span>
+              <p class="sq-question__sub">같은 그룹사라도<br />왜 같은 ERP를 쓰지 않는가?</p>
+              <div class="sq-question__paradox">
+                <div class="sq-paradox__line sq-paradox__line--given">
+                  <span class="sq-paradox__label"><span class="sq-paradox__label-em">그룹 SI</span> 존재</span>
+                  <span class="sq-paradox__sub">롯데정보통신 — 그룹 통합 IT 운영사</span>
+                </div>
+                <span class="sq-paradox__arrow" aria-hidden="true">▽</span>
+                <div class="sq-paradox__line sq-paradox__line--but">
+                  <span class="sq-paradox__label">그럼에도 <span class="sq-paradox__label-em">같은 ERP X</span></span>
+                  <span class="sq-paradox__sub">계열사마다 다른 시스템으로 진화</span>
+                </div>
+              </div>
+              <span class="sq-question__note">산업별 핵심 업무가 다르면 ERP 선택 기준도 달라진다.</span>
               <div class="sq-question__watermark" aria-hidden="true">08</div>
             </aside>
-            <div class="sq-cards reveal" style="--rev-delay:0.55s">
-              <article class="sq-card sq-card--active">
-                <span class="sq-card__num">1</span>
-                <span class="sq-card__pictogram" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M 4 4 L 8 4 L 8 8 L 12 8 L 12 4 L 16 4 L 16 8 L 20 8 L 20 20 L 4 20 Z M 7 12 L 9 12 L 9 14 L 7 14 Z M 11 12 L 13 12 L 13 14 L 11 14 Z M 15 12 L 17 12 L 17 14 L 15 14 Z M 7 16 L 9 16 L 9 18 L 7 18 Z M 11 16 L 13 16 L 13 18 L 11 18 Z M 15 16 L 17 16 L 17 18 L 15 18 Z" /></svg>
-                </span>
-                <h3 class="sq-card__title">화학 3사 (본 사례)</h3>
-                <p class="sq-card__sub">롯데케미칼 · 정밀화학 · 첨단소재</p>
-                <p class="sq-card__body">SAP S/4HANA 통합형 컨버전 — M&amp;A 이후 3사 통합 운영 기반 + 수직 계열화 SCM 동기화</p>
-                <span class="sq-card__src">출처: 박제성 정보전략담당 상무보 인터뷰 · 2017년 사업보고서</span>
-              </article>
-              <article class="sq-card">
-                <span class="sq-card__num">2</span>
-                <span class="sq-card__pictogram" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><rect x="2" y="6" width="20" height="12" rx="2" /><rect x="2" y="9" width="20" height="1.6" fill="var(--color-paper)" /><circle cx="6" cy="14" r="1.4" fill="var(--color-paper)" /><rect x="9" y="13" width="10" height="2" fill="var(--color-paper)" /></svg>
-                </span>
-                <h3 class="sq-card__title">금융 계열사</h3>
-                <p class="sq-card__sub">롯데카드 · 롯데캐피탈</p>
-                <p class="sq-card__body">IBM 파워 서버 기반 금융 거래 실시간 처리 특화 계정계 시스템 — SAP 같은 제조·유통 중심 ERP 패키지 사용 X</p>
-                <span class="sq-card__src">출처: 보안뉴스 — 롯데카드 계정계 시스템 고도화</span>
-              </article>
-              <article class="sq-card">
-                <span class="sq-card__num">3</span>
-                <span class="sq-card__pictogram" aria-hidden="true">
-                  <svg viewBox="0 0 24 24"><path d="M 3 21 L 3 8 L 12 3 L 21 8 L 21 21 Z M 7 12 L 9 12 L 9 14 L 7 14 Z M 11 12 L 13 12 L 13 14 L 11 14 Z M 15 12 L 17 12 L 17 14 L 15 14 Z M 7 16 L 9 16 L 9 18 L 7 18 Z M 15 16 L 17 16 L 17 18 L 15 18 Z M 11 16 L 13 16 L 13 21 L 11 21 Z" /></svg>
-                </span>
-                <h3 class="sq-card__title">호텔 · 서비스 부문</h3>
-                <p class="sq-card__sub">롯데호텔 · 롯데월드 등</p>
-                <p class="sq-card__body">객실 예약 관리(PMS) 등 산업 특화 시스템 사용 — 제조·유통 ERP 패키지로 대체 불가</p>
-              </article>
+            <div class="sq-matrix reveal" style="--rev-delay:0.55s">
+              <div class="sq-matrix__corner">계열사</div>
+              <div class="sq-matrix__col-header sq-matrix__col-header--active">
+                <span class="sq-matrix__col-cat">화학 3사</span>
+                <span class="sq-matrix__col-sub">롯데케미칼 · 정밀화학 · 첨단소재</span>
+              </div>
+              <div class="sq-matrix__col-header">
+                <span class="sq-matrix__col-cat">금융 계열사</span>
+                <span class="sq-matrix__col-sub">롯데카드 · 롯데캐피탈</span>
+              </div>
+              <div class="sq-matrix__col-header">
+                <span class="sq-matrix__col-cat">호텔 · 서비스</span>
+                <span class="sq-matrix__col-sub">롯데호텔 · 롯데월드</span>
+              </div>
+
+              <div class="sq-matrix__rowlabel">핵심 업무</div>
+              <div class="sq-matrix__cell sq-matrix__cell--active">
+                M&amp;A 이후 3사 기준정보·프로세스 통합 + 수직 계열화 SCM·글로벌 운영 동기화
+              </div>
+              <div class="sq-matrix__cell">
+                실시간 금융 거래 처리·계정계 안정성·금융 규제 대응
+              </div>
+              <div class="sq-matrix__cell">
+                객실 예약·고객 관리·현장 서비스 운영
+              </div>
+
+              <div class="sq-matrix__rowlabel">시스템 성격</div>
+              <div class="sq-matrix__cell sq-matrix__cell--active">
+                <strong>SAP S/4HANA 통합 컨버전</strong>
+              </div>
+              <div class="sq-matrix__cell">
+                <strong>금융 계정계 시스템 중심</strong>
+              </div>
+              <div class="sq-matrix__cell">
+                <strong>서비스 운영 시스템 중심 (PMS 등)</strong>
+              </div>
+
+              <div class="sq-matrix__rowlabel">선택 이유</div>
+              <div class="sq-matrix__cell sq-matrix__cell--active">
+                3사 기준정보·프로세스 통합 + 수직 계열화 SCM·글로벌 운영을 함께 묶어야 했기 때문
+              </div>
+              <div class="sq-matrix__cell">
+                실시간 거래 처리·규제 대응이 핵심 — 제조·유통형 ERP 패키지 요구사항과 다름
+              </div>
+              <div class="sq-matrix__cell">
+                서비스 운영 특화 시스템 중심 — 제조·유통 ERP만으로 대체 불가
+              </div>
             </div>
           </div>
           <div class="sq-msg sq-msg--strong sq-msg--mini reveal" style="--rev-delay:0.85s">
-            <span class="sq-msg__text">산업·업무 특성상 시스템은 다르게 진화한다. 따라서 본 사례의 SAP S/4HANA 통합은 <strong>산업 정합성 기반 의사결정</strong>이다.</span>
+            <span class="sq-msg__text">산업·업무 특성이 다르면 ERP도 달라진다. 본 사례의 <strong>SAP S/4HANA 통합</strong>은 화학 3사의 M&amp;A·SCM·글로벌 운영 조건에 맞춘 선택이다.</span>
+            <span class="sq-msg__src">출처 · 박제성 상무 인터뷰 · 2017년 사업보고서 · 보안뉴스 금융 계정계 시스템 자료</span>
           </div>
         </div>
       </main>
@@ -3675,36 +4785,18 @@
               <div class="ic-cell ic-cell--erp"><div class="ic-cell-body"><div class="ic-cell-title">EHS 모듈 연계</div><div class="ic-cell-sub">기록·추적성 시스템화</div></div></div>
             </div>
           </div>
-          <div class="ic-academic reveal" style="--rev-delay:0.95s">
-            <div class="ic-academic__head">
-              <span class="red-box-label red-box-label--outline">학술 보강</span>
-              <span class="ic-academic__title">위 매트릭스의 산업 특성·제약·통합 효과가 <strong>학술 연구의 IT 5대 제약 + 제조업 5대 동향</strong>과 정합</span>
-            </div>
-            <div class="ic-academic__grid">
-              <div class="ic-academic__col">
-                <span class="ic-academic__col-label">석유화학 IT 5대 제약</span>
-                <div class="ic-academic__chips">
-                  <span class="ic-academic__chip">폐쇄성</span>
-                  <span class="ic-academic__chip">접근성</span>
-                  <span class="ic-academic__chip">데이터 활용도</span>
-                  <span class="ic-academic__chip">투자비 과다</span>
-                  <span class="ic-academic__chip">경영진 인식</span>
-                </div>
-              </div>
-              <div class="ic-academic__col">
-                <span class="ic-academic__col-label">제조업 5대 동향</span>
-                <div class="ic-academic__chips">
-                  <span class="ic-academic__chip">글로벌 경기침체</span>
-                  <span class="ic-academic__chip">M&amp;A 확대</span>
-                  <span class="ic-academic__chip">고부가 전환</span>
-                  <span class="ic-academic__chip">제조-IT 융합</span>
-                  <span class="ic-academic__chip">모바일</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <button class="ic-academic-trigger reveal" type="button" id="ic-academic-trigger" aria-haspopup="dialog" aria-controls="ic-academic-modal" aria-expanded="false" style="--rev-delay:0.95s">
+            <span class="ic-academic-trigger__icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24"><path d="M 4 4 L 11 4 L 11 20 L 4 20 Z M 13 4 L 20 4 L 20 20 L 13 20 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><line x1="6" y1="8" x2="9" y2="8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="6" y1="11" x2="9" y2="11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="6" y1="14" x2="9" y2="14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="8" x2="18" y2="8" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="11" x2="18" y2="11" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/><line x1="15" y1="14" x2="18" y2="14" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></svg>
+            </span>
+            <span class="ic-academic-trigger__text">
+              <span class="ic-academic-trigger__label">학술 보강</span>
+              <span class="ic-academic-trigger__desc">박주황·이상신 연구와의 정합성 — 매트릭스 5행 × 학술 1:1 매핑</span>
+            </span>
+            <span class="ic-academic-trigger__chevron" aria-hidden="true">→</span>
+          </button>
           <div class="ic-source reveal" style="--rev-delay:1.05s">
-            <span>출처: 박제성 정보전략담당 상무보 인터뷰 · 2017년 사업보고서 · 화학산업 IT 5대 제약 연구</span>
+            <span>출처: 박제성 상무 인터뷰 · 2017년 사업보고서 · 화학산업 IT 5대 제약 연구</span>
           </div>
         </div>
       </main>
@@ -3794,6 +4886,158 @@
   <span class="hint-sep"></span>
   <span class="hint-key">←→</span><span class="hint-txt">슬라이드</span>
 </div>
+
+<!-- ============= v21 P0-1 학술 보강 모달 (슬라이드 9 외부·body 직속·stage transform 영향 회피) ============= -->
+<div class="ic-academic-modal" id="ic-academic-modal" role="dialog" aria-modal="true" aria-labelledby="ic-academic-modal-title" aria-hidden="true">
+  <div class="ic-academic-modal__dialog" role="document">
+    <header class="ic-academic-modal__header">
+      <div class="ic-academic-modal__title-group">
+        <h2 class="ic-academic-modal__title" id="ic-academic-modal-title">학술 연구 정합성 — 매트릭스 5행 × 학술 매핑</h2>
+        <p class="ic-academic-modal__subtitle">이상신(2020) IT 5대 제약 + 박주황(2014) 제조업 5대 동향</p>
+      </div>
+      <button class="ic-academic-modal__close" type="button" id="ic-academic-modal-close" aria-label="모달 닫기">×</button>
+    </header>
+    <div class="ic-academic-modal__body">
+      <p class="ic-academic-modal__notice">
+        <strong>④ M&amp;A 직후 3사 병존</strong>은 docx §5에서 박주황(2014) <strong>글로벌 M&amp;A 확대</strong>와 1:1 매칭이 명시되어 있으며, 나머지 행은 이상신(2020)·박주황(2014) 연구의 학술 정합 영역에 해당한다.
+      </p>
+      <table class="ic-academic-modal__table">
+        <thead>
+          <tr>
+            <th scope="col">행</th>
+            <th scope="col">매트릭스 행 (산업 특성)</th>
+            <th scope="col">이상신(2020) IT 5대 제약</th>
+            <th scope="col">박주황(2014) 제조업 5대 동향</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--row-num">①</td>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--matrix">24시간 가동되는 장치산업</td>
+            <td class="ic-academic-modal__cell">폐쇄성<em>전통적 On-premise 환경</em></td>
+            <td class="ic-academic-modal__cell">제조-IT 융합</td>
+          </tr>
+          <tr>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--row-num">②</td>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--matrix">원료가·환율 변동성</td>
+            <td class="ic-academic-modal__cell">데이터 활용도<em>공정 데이터 SCADA·PIS 잔존</em></td>
+            <td class="ic-academic-modal__cell">글로벌 경기침체</td>
+          </tr>
+          <tr>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--row-num">③</td>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--matrix">글로벌 6국·110국</td>
+            <td class="ic-academic-modal__cell">접근성<em>외부 접속 환경 취약</em></td>
+            <td class="ic-academic-modal__cell">모바일 시대</td>
+          </tr>
+          <tr>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--row-num">④</td>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--matrix ic-academic-modal__cell--emphasized">M&amp;A 직후 3사 병존<span class="ic-academic-modal__cell-label">docx §5 명시</span></td>
+            <td class="ic-academic-modal__cell">경영진 인식<em>MIS = Transaction 처리</em></td>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--emphasized">글로벌 M&amp;A 확대<span class="ic-academic-modal__cell-label">docx §5 명시</span></td>
+          </tr>
+          <tr>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--row-num">⑤</td>
+            <td class="ic-academic-modal__cell ic-academic-modal__cell--matrix">EHS · 화학물질 규제</td>
+            <td class="ic-academic-modal__cell">투자비 과다<em>MIS-공정 데이터 이원화</em></td>
+            <td class="ic-academic-modal__cell">고부가 전환</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <footer class="ic-academic-modal__footer">
+      이상신(2020), 「석유화학기업 IT서비스의 클라우드 서비스 전환의도에 영향을 미치는 요인에 관한 연구」 박사학위논문 · 박주황(2014), 제조업 5대 동향 연구 · docx §5 학술 보강 영역
+    </footer>
+  </div>
+</div>
+
+<script>
+  /* v21 P0-1 학술 보강 모달 동작 (가드 6 정합·shared/script.js 변경 X·인라인 IIFE) */
+  (function () {
+    'use strict';
+    const trigger = document.getElementById('ic-academic-trigger');
+    const modal = document.getElementById('ic-academic-modal');
+    if (!trigger || !modal) return;
+    const closeBtn = document.getElementById('ic-academic-modal-close');
+    let lastFocused = null;
+
+    function getFocusable() {
+      return modal.querySelectorAll('button:not([disabled]), [href], [tabindex]:not([tabindex="-1"])');
+    }
+
+    function isOpen() {
+      return modal.getAttribute('aria-hidden') === 'false';
+    }
+
+    function openModal() {
+      lastFocused = document.activeElement;
+      modal.setAttribute('aria-hidden', 'false');
+      trigger.setAttribute('aria-expanded', 'true');
+      document.body.classList.add('modal-open');
+      // 다음 프레임에 focus — 애니메이션 영역 안정성
+      setTimeout(function () {
+        if (closeBtn) closeBtn.focus();
+      }, 50);
+    }
+
+    function closeModal() {
+      modal.setAttribute('aria-hidden', 'true');
+      trigger.setAttribute('aria-expanded', 'false');
+      document.body.classList.remove('modal-open');
+      // 트리거 버튼으로 focus 복귀 (접근성 표준)
+      if (lastFocused && typeof lastFocused.focus === 'function' && document.body.contains(lastFocused)) {
+        lastFocused.focus();
+      } else {
+        trigger.focus();
+      }
+    }
+
+    trigger.addEventListener('click', openModal);
+    if (closeBtn) closeBtn.addEventListener('click', closeModal);
+
+    // 백드롭 클릭 — event.target === modal (백드롭 자체) 인 경우만
+    modal.addEventListener('click', function (e) {
+      if (e.target === modal) closeModal();
+    });
+
+    // 키보드 이벤트 — capture phase에서 처리하여 shared/script.js의 keydown listener보다 먼저 실행
+    document.addEventListener('keydown', function (e) {
+      if (!isOpen()) return;
+
+      // ESC — 모달 닫기
+      if (e.key === 'Escape' || e.key === 'Esc') {
+        e.preventDefault();
+        e.stopPropagation();
+        closeModal();
+        return;
+      }
+
+      // Tab — focus trap
+      if (e.key === 'Tab') {
+        const focusable = getFocusable();
+        if (focusable.length === 0) return;
+        const first = focusable[0];
+        const last = focusable[focusable.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+        return;
+      }
+
+      // 모달 열린 상태에서 shared/script.js 키 이벤트 차단 (←→·Space·F·R·1~9·Home·End)
+      if (e.key === 'ArrowLeft' || e.key === 'ArrowRight' ||
+          e.key === 'PageUp' || e.key === 'PageDown' ||
+          e.key === ' ' || e.key === 'Home' || e.key === 'End' ||
+          e.key === 'f' || e.key === 'F' || e.key === 'r' || e.key === 'R' ||
+          /^[1-9]$/.test(e.key)) {
+        e.stopPropagation();
+      }
+    }, true); // capture phase
+  })();
+</script>
 
 <script src="../shared/script.js"></script>
 </body>
