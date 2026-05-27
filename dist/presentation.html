@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>롯데케미칼 SAP S/4HANA 통합 ERP 사례 — 전체 발표</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../shared/style.css" />
+
+  <style id="master-style">
+    /* master 전용 — fetch + inject 진행 중 표시 */
+    body { background: var(--color-paper); margin: 0; }
+    .deck:empty::before {
+      content: '발표 자료 로딩 중...';
+      display: flex; align-items: center; justify-content: center;
+      width: 100%; height: 100vh;
+      font-family: var(--font-sans);
+      font-size: 28px; font-weight: 700;
+      color: var(--color-ink-soft);
+    }
+    .master-error {
+      position: fixed; top: 50%; left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px 32px;
+      background: var(--color-paper);
+      border: 2px solid var(--color-red);
+      font-family: var(--font-sans);
+      font-size: 20px; font-weight: 700;
+      color: var(--color-red-deep);
+      z-index: 9999;
+    }
+  </style>
+</head>
+<body>
+
+<div class="stage" id="stage">
+  <div class="deck" id="deck">
+    <!-- master.js가 5 step의 모든 section을 fetch + inject -->
+  </div>
+</div>
+
+<div class="hint">
+  <span class="hint-key">F</span><span class="hint-txt">전체화면</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">R</span><span class="hint-txt">애니메이션 재생</span>
+  <span class="hint-sep"></span>
+  <span class="hint-key">←→</span><span class="hint-txt">슬라이드</span>
+</div>
+
+<script src="master.js"></script>
+</body>
+</html>
