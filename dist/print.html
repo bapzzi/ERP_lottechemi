@@ -14,80 +14,109 @@
   <link rel="stylesheet" href="../shared/style.css" />
 
   <style id="print-style">
-    /* ========== 인쇄 영역 — 1920×1080 / 슬라이드 = 1 PDF 페이지 ========== */
+    /* ========== 1920×1080 인쇄 영역 — 모든 슬라이드 일렬 펼침 ========== */
     @page {
       size: 1920px 1080px;
       margin: 0;
     }
 
-    /* 모든 reveal·animation 영역 final 상태 (스크린 + 인쇄 공통) */
+    /* html·body 영역 — 스크롤 가능 + 고정 영역 해제 (shared/style.css override) */
+    html, body {
+      width: auto !important;
+      height: auto !important;
+      min-height: 100% !important;
+      overflow: visible !important;
+      overflow-x: hidden !important;
+      background: #2a2a2a !important;
+      background-image: none !important;
+      margin: 0 !important;
+      padding: 0 !important;
+    }
+
+    /* .stage 영역 — fixed 해제·static·세로 스크롤 가능 */
+    .stage {
+      position: static !important;
+      width: auto !important;
+      height: auto !important;
+      overflow: visible !important;
+      display: block !important;
+    }
+
+    /* .deck 영역 — absolute 해제·세로 적층 */
+    .deck {
+      position: static !important;
+      width: 1920px !important;
+      height: auto !important;
+      margin: 0 auto !important;
+      transform: none !important;
+      box-shadow: none !important;
+      background: transparent !important;
+      display: block !important;
+      padding: 0 !important;
+    }
+
+    /* .slide 영역 — absolute inset:0 해제·세로 적층·각자 1920×1080 */
+    .slide {
+      display: block !important;
+      position: relative !important;
+      inset: auto !important;
+      top: auto !important;
+      left: auto !important;
+      right: auto !important;
+      bottom: auto !important;
+      width: 1920px !important;
+      height: 1080px !important;
+      margin: 20px auto !important;
+      background: var(--color-paper) !important;
+      box-shadow: 0 4px 24px rgba(0, 0, 0, 0.4);
+      opacity: 1 !important;
+      transform: none !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      overflow: hidden;
+    }
+    .slide:last-child {
+      page-break-after: auto;
+    }
+
+    /* 모든 reveal·animation 영역 final 상태 강제 */
     .reveal,
     [class*="reveal"] {
       opacity: 1 !important;
       transform: none !important;
       animation: none !important;
-      animation-delay: 0s !important;
-      animation-duration: 0s !important;
     }
-    * {
+    .slide *,
+    .slide *::before,
+    .slide *::after {
       animation-duration: 0s !important;
       animation-delay: 0s !important;
       animation-iteration-count: 1 !important;
       animation-fill-mode: forwards !important;
     }
 
-    /* 모든 슬라이드 펼침 (active class 영향 X) */
-    .stage,
-    .deck {
-      transform: none !important;
-      width: 1920px;
-      margin: 0 auto;
-      position: relative;
-    }
-    .slide {
-      display: block !important;
-      position: relative !important;
-      width: 1920px !important;
-      height: 1080px !important;
-      margin: 0 auto !important;
-      page-break-after: always;
-      page-break-inside: avoid;
-      overflow: hidden;
-      opacity: 1 !important;
-    }
-    .slide:last-child {
-      page-break-after: auto;
-    }
-
-    /* 스크린 영역 — 인쇄 전 미리보기 (어두운 배경에 슬라이드 펼침) */
-    body {
-      background: #2a2a2a;
-      margin: 0;
-      padding: 0;
-    }
-    .deck:not(:empty) {
-      padding: 20px 0;
-    }
-    .slide {
-      margin: 20px auto !important;
-      background: var(--color-paper);
-      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-    }
+    /* hint 영역 (인쇄·스크린 둘 다 X) */
     .hint {
       display: none !important;
     }
 
-    /* 인쇄 영역 — 그림자·여백 X·페이지 영역 정합 */
+    /* 인쇄 영역 — 그림자·여백 X */
     @media print {
-      body { background: white; }
-      .deck:not(:empty) { padding: 0; }
+      html, body {
+        background: white !important;
+        overflow: visible !important;
+      }
+      .stage,
+      .deck {
+        background: transparent !important;
+      }
       .slide {
         margin: 0 !important;
         box-shadow: none !important;
       }
     }
 
-    /* 로딩 영역 */
+    /* 로딩 영역 표시 */
     .deck:empty::before {
       content: '인쇄용 자료 로딩 중... (5 step fetch + inject · 잠시 기다려주세요)';
       display: flex;
@@ -102,7 +131,7 @@
       background: var(--color-paper);
     }
 
-    /* 인쇄 안내 영역 (스크린만) */
+    /* 인쇄 안내 (스크린만) */
     .print-guide {
       position: fixed;
       top: 16px;
@@ -114,9 +143,9 @@
       font-size: 14px;
       font-weight: 700;
       border-radius: 4px;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.3);
       z-index: 9999;
-      max-width: 360px;
+      max-width: 380px;
       line-height: 1.5;
     }
     .print-guide strong {
