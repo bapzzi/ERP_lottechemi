@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=1920, initial-scale=1" />
+  <title>롯데케미칼 SAP S/4HANA 통합 ERP 사례 — 인쇄용 (PDF 변환)</title>
+
+  <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+  <link rel="stylesheet" as="style" crossorigin href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../shared/style.css" />
+
+  <style id="print-style">
+    /* ========== 인쇄 영역 — 1920×1080 / 슬라이드 = 1 PDF 페이지 ========== */
+    @page {
+      size: 1920px 1080px;
+      margin: 0;
+    }
+
+    /* 모든 reveal·animation 영역 final 상태 (스크린 + 인쇄 공통) */
+    .reveal,
+    [class*="reveal"] {
+      opacity: 1 !important;
+      transform: none !important;
+      animation: none !important;
+      animation-delay: 0s !important;
+      animation-duration: 0s !important;
+    }
+    * {
+      animation-duration: 0s !important;
+      animation-delay: 0s !important;
+      animation-iteration-count: 1 !important;
+      animation-fill-mode: forwards !important;
+    }
+
+    /* 모든 슬라이드 펼침 (active class 영향 X) */
+    .stage,
+    .deck {
+      transform: none !important;
+      width: 1920px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .slide {
+      display: block !important;
+      position: relative !important;
+      width: 1920px !important;
+      height: 1080px !important;
+      margin: 0 auto !important;
+      page-break-after: always;
+      page-break-inside: avoid;
+      overflow: hidden;
+      opacity: 1 !important;
+    }
+    .slide:last-child {
+      page-break-after: auto;
+    }
+
+    /* 스크린 영역 — 인쇄 전 미리보기 (어두운 배경에 슬라이드 펼침) */
+    body {
+      background: #2a2a2a;
+      margin: 0;
+      padding: 0;
+    }
+    .deck:not(:empty) {
+      padding: 20px 0;
+    }
+    .slide {
+      margin: 20px auto !important;
+      background: var(--color-paper);
+      box-shadow: 0 4px 24px rgba(0,0,0,0.4);
+    }
+    .hint {
+      display: none !important;
+    }
+
+    /* 인쇄 영역 — 그림자·여백 X·페이지 영역 정합 */
+    @media print {
+      body { background: white; }
+      .deck:not(:empty) { padding: 0; }
+      .slide {
+        margin: 0 !important;
+        box-shadow: none !important;
+      }
+    }
+
+    /* 로딩 영역 */
+    .deck:empty::before {
+      content: '인쇄용 자료 로딩 중... (5 step fetch + inject · 잠시 기다려주세요)';
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      height: 100vh;
+      font-family: var(--font-sans);
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--color-ink-soft);
+      background: var(--color-paper);
+    }
+
+    /* 인쇄 안내 영역 (스크린만) */
+    .print-guide {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      padding: 12px 18px;
+      background: var(--color-red);
+      color: var(--color-paper);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 700;
+      border-radius: 4px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+      z-index: 9999;
+      max-width: 360px;
+      line-height: 1.5;
+    }
+    .print-guide strong {
+      display: block;
+      font-size: 16px;
+      font-weight: 900;
+      margin-bottom: 4px;
+    }
+    .print-guide kbd {
+      display: inline-block;
+      padding: 2px 6px;
+      background: var(--color-paper);
+      color: var(--color-red);
+      font-family: var(--font-mono);
+      font-size: 12px;
+      font-weight: 800;
+      border-radius: 3px;
+      margin: 0 2px;
+    }
+    @media print {
+      .print-guide { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="print-guide">
+  <strong>인쇄용 진입점</strong>
+  <kbd>Cmd</kbd>+<kbd>P</kbd> · 용지 크기 "맞춤" 1920×1080 · 여백 "없음" → "PDF로 저장"
+</div>
+
+<div class="stage">
+  <div class="deck" id="deck">
+    <!-- print.js가 5 step의 모든 section을 fetch + inject -->
+  </div>
+</div>
+
+<script src="print.js"></script>
+
+</body>
+</html>
