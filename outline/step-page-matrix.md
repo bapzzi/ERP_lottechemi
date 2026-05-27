@@ -1230,145 +1230,253 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 20 chapter3-intro (Step 3 챕터 진입) — v10.4 신규
+### 20 step3-intro (Step 3 안내 페이지·로드맵) — v10.15 본 차수 재정의
 
-본 페이지는 docx Step 3 §1 챕터 진입 + 4대 제약 미리보기 + "어떻게 안전하게 실행했는가" 질문.
-**페이지 번호 정합 (가드 26·30·41)**: slides.yml 기존 17 chapter3-intro 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 20 확정.
-**docx 정독 영역**: docx Step 3 §1 직접 인용은 다음 차수 보강 권장. slides.yml chapter 3 must_include 정합 본문 작성.
+본 페이지는 docx Step 3 §1 챕터 진입 + Step 1·2 안내 페이지(chapter-cover) 정합 + GPT 피드백·본인 디렉션 v10.15 재정의 영역.
+**페이지 번호·슬러그 정합 (v10.15)**: 슬러그 `chapter3-intro` → `step3-intro` 영역 재정의 권장 (Step 1·2 안내 페이지 정합)·매트릭스 참조 영역에서는 기존 `chapter3-intro` 슬러그 유지 가능 (다음 차수 본인 결정)·페이지 번호 20 유지.
+**Step 1·2 안내 페이지 정합 영역**: Step 1 03 chapter1-intro (좌 35% 큰 red 띠 + big-num "1" + Step 1 라벨 + 우 65% 미리보기 카드 세로) + Step 2 09 step2-intro 패턴 정합. 본 차수 20 step3-intro는 좌 35% 질문 블록 + 우 65% 4 로드맵 카드 2×2 + 하단 thesis 박스 구조.
+**v10.4 → v10.15 변경 영역**:
+- 핵심 메시지 재정의 — "24시간 가동되는 3사 시스템을 멈추지 않고 7개월 안에 통합" (24h 가동 사실 명시) → "선택은 끝났다. 이제 어떻게 멈추지 않고 통합할 것인가?" (질문 형식·Step 1·2 안내 패턴 정합)
+- 4 미리보기 카드 (Time·Continuity·Multi-Entity·Global·4대 제약 미리보기) → 4 로드맵 카드 (① 4대 실행 제약 → 21 / ② 실행 통제 거버넌스 3축 → 22 / ③ 구축 방법론 비교 → 23 / ④ Roll-out 선택 구조 → 24)·다음 흐름 안내 영역
+- 질문 박스 ("어떻게 안전하게 실행했는가?") 폐기 — 본인 디렉션 "Step 3의 본질은 빠른 구축이 아니라 안전한 실행" thesis 박스로 대체
+- 좌 35% 질문 블록 영역 신규 — big-num "3" + 큰 질문 (66px) + sub 라벨
 
 ```
 구조:
-- 상단 v3-eyebrow + 헤드라인 52px
-  - eyebrow: STEP 3 · 01
-  - 핵심 메시지: "<em>24시간 가동되는 3사 시스템을 멈추지 않고</em> 7개월 안에 통합해야 했다"
-- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 챕터 라벨 + 4대 제약 미리보기 2×2 + 질문 박스)
+- 상단 v3-eyebrow + 헤드라인 영역 X — 본 페이지는 chapter-cover 영역·좌측 질문 블록이 헤드라인 역할
+- 본문 grid: 좌 35% + 우 65% (2열 split·Step 1 03 chapter1-intro 패턴 정합) + 하단 thesis 박스 (전체 폭)
 
-  영역 1 (챕터 라벨): "Step 3 · 7개월의 구축" big-num style 강조 (자체 판단·v3.1 정합)
-  영역 2 (4대 제약 미리보기 카드 2×2): 픽토그램 + 라벨 + 짧은 설명 (다음 페이지 본문 예고)
-    - Time: 7개월 압축 일정
-    - Business Continuity: 24시간 연속 가동
-    - Multi-Entity: 3사 병존 운영
-    - Global Multi-Site: 6국 + 110국
-  영역 3 (질문 박스 v3-msg): "어떻게 <em>안전하게 실행</em>했는가?"
+  영역 1 (좌 35% 질문 블록·.s20-question·chapter-cover Tone B 정합):
+  - big-num "3" (높이 240px·red 띠·Step 3 챕터 영역 강조)
+  - 큰 질문 66px 800: "선택은 끝났다. 이제 어떻게 <em>멈추지 않고</em> 통합할 것인가?"
+  - sub 라벨 20px 700 ink-soft: "Step 3 · 7개월의 구축 — 실행 가능성 검증"
+
+  영역 2 (우 65% 4 로드맵 카드 2×2·.s20-roadmap·다음 흐름 안내·Step 3 4 핵심 영역 예고):
+  - 카드 1 (4대 실행 제약 → 21): num-circle 46px red "1" + 픽토그램 56px (4 분할·제약)
+    - 제목 32px: "4대 실행 제약"
+    - sub 22px ink-soft: "Time · Continuity · Multi-Entity · Global"
+    - 연결 라벨 14px mono ink-mute: "→ 21"
+  - 카드 2 (실행 통제 거버넌스 3축 → 22): num-circle 46px red "2" + 픽토그램 56px (3축·통제)
+    - 제목 32px: "실행 통제 거버넌스 3축"
+    - sub 22px ink-soft: "제약을 통제 가능한 실행 설계로"
+    - 연결 라벨 14px mono ink-mute: "→ 22"
+  - 카드 3 (구축 방법론 비교 → 23): num-circle 46px red "3" + 픽토그램 56px (4 방법·비교)
+    - 제목 32px: "구축 방법론 비교"
+    - sub 22px ink-soft: "Big Bang · Phased · Pilot · Roll-out"
+    - 연결 라벨 14px mono ink-mute: "→ 23"
+  - 카드 4 (Roll-out 선택 구조 → 24): num-circle 46px red "4" + 픽토그램 56px (선택·기준 법인 → 자회사)
+    - 제목 32px: "Roll-out 선택 구조"
+    - sub 22px ink-soft: "기준 법인 → 정밀화학·첨단소재 확산"
+    - 연결 라벨 14px mono ink-mute: "→ 24"
+
+  영역 3 (하단 thesis 박스·전체 폭·.s20-thesis·white + red border-left 6px·핵심 메시지 회수):
+  - 본문 26px 700: "Step 3의 본질은 <em>빠른 구축이 아니라 안전한 실행</em> — 방법론·범위·검증·플랫폼 동시 통제"
+  - 우측 src 14px mono ink-mute: "표지(01) ↔ 결론(33) 호응 구조 정합"
 
 must_include:
-- 챕터 3 제목 "7개월의 구축"
-- 4대 제약 미리보기
-- "어떻게 안전하게 실행했는가" 질문
-시각 어휘: chapter-cover (Tone B)·4 카드 + 픽토그램 4개·v3-msg 결론 질문 박스
-자체 판단 결과: grid 단일 컬럼 4행·4대 제약 카드 2×2·픽토그램 56px wrap (시계·플랜트·합쳐지는 원·지구)
-출처: slides.yml chapter 3 must_include + [1] 박제성 인터뷰 정합·docx Step 3 §1 다음 차수 보강
-색상 비율 (가드 10): 헤드라인 em + 4 픽토그램 red + 질문 박스 v3-msg = 약 4.5~5.5%
+- 좌 35% 질문 블록 (big-num "3" + 큰 질문 66px + sub 라벨)
+- 큰 질문 정확 어휘: "선택은 끝났다. 이제 어떻게 멈추지 않고 통합할 것인가?"
+- 우 65% 4 로드맵 카드 2×2 (1·2·3·4번 정확 매핑 → 21·22·23·24)
+- 로드맵 4번 정확 어휘: "Roll-out 선택 구조" (방법론 진화 + Roll-out 표현 X·본인 디렉션 정합)
+- 하단 thesis 박스 정확 어휘: "Step 3의 본질은 빠른 구축이 아니라 안전한 실행"
+- 4대 제약 미리보기 카드 X (본 페이지는 안내·다음 페이지 예고 영역만)
+
+시각 어휘: chapter-cover Tone B (Step 1 03·Step 2 09 정합)·좌 35% 질문 블록 + 우 65% 4 로드맵 카드 2×2·big-num·num-circle 46px red·픽토그램 4개·thesis 박스 red border-left 6px
+
+자체 판단 결과:
+- grid: 좌 35% + 우 65% split + 하단 thesis 박스 전체 폭
+- big-num "3" height 240px (좌 영역 위계 강조)
+- 큰 질문 66px (헤드라인 최대 위계)
+- 4 로드맵 카드 num-circle 46px (20 안내 영역 정합·22·23·24 본문 num-circle 50px와 구분)
+- 카드 본문은 sub 22px + 연결 라벨 14px (안내 페이지·본문 설명 X)
+- thesis 박스 red border-left 6px (Step 1 10 step1-conclusion thesis 박스 패턴 정합)
+
+본인 디렉션 정합 영역 (v10.15 차수):
+- 4 로드맵 4번 단순화 — "구축 방법론 비교" / "Roll-out 선택 구조" 둘 중 본인 결정 "Roll-out 선택 구조" 채택
+- 안내 페이지 확장 X — 본문 설명 영역 X·다음 흐름 예고만
+- thesis 정확 어휘 유지 — "Step 3의 본질은 빠른 구축이 아니라 안전한 실행"
+
+출처 표기: slides.yml chapter 3 must_include + content-thesis §1 핵심 메시지 (표지 01 ↔ 결론 33 호응 구조)·docx Step 3 §1 다음 차수 보강
+색상 비율 (가드 10): big-num red 영역 + 4 num-circle red + 4 픽토그램 red + 큰 질문 em red + thesis 박스 red border-left 6px = 약 6.0~6.8% (7% 이내 경계 영역·본인 검수 권장)
 footer: 우하단 키보드 안내만
 ```
 
-### 21 four-constraints (Step 3 4대 제약 본문) — v10.4 신규
+### 21 four-constraints (Step 3 4대 실행 제약·동적 시각 장치) — v10.15 본 차수 재정의
 
-본 페이지는 docx Step 3 4대 제약 조건 본문 매핑.
-**페이지 번호 정합**: slides.yml 기존 18 four-constraints 슬러그 v10.4 Step 3 영역으로 이동·페이지 번호 21 확정.
+본 페이지는 docx Step 3 4대 제약 조건 본문 매핑 + GPT 피드백·본인 디렉션 v10.15 재정의 영역.
+**페이지 번호·슬러그 정합 (v10.15)**: 슬러그 `four-constraints` 유지·페이지 번호 21 유지.
+**v10.4 → v10.15 변경 영역**:
+- 시각 장치 4종 차등화 — 정적 픽토그램 (시계·플랜트·3 원·지구) → 동적 시각 장치 4종 (미니 압축 타임라인 SVG·파이프라인 + 흐르는 dot SVG·3 노드 → 통합 코어 SVG·미니 세계지도 + 6 핀 SVG·핵심어 시각화)
+- 새 문장 추가 X — 기존 핵심어를 시각화하는 방향
+- 3사명 한 줄 유지 (가운뎃점 구분·줄바꿈 X)
+- 헤드라인 재정의 — "고난도 통합 프로젝트" → "네 가지 실행 제약이 동시에 충돌한 7개월" (문제 제기 명확화)
+- 결론 박스 22 연결 명시 — "SAP VAS 사전 진단" → "다음 페이지에서 거버넌스 3축이 통제 구조로 전환" (22 연결 영역)
 
 ```
 구조:
 - 상단 v3-eyebrow + 헤드라인 52px
   - eyebrow: STEP 3 · 02
-  - 핵심 메시지: "네 가지 제약이 동시에 충돌한 <em>고난도 통합 프로젝트</em>"
-- 본문 grid: auto 1fr auto (3행 — 헤드라인 + 4대 제약 카드 2×2 + 결론 메시지 박스)
+  - 핵심 메시지: "네 가지 실행 제약이 <em>동시에 충돌한</em> 7개월"
+- 본문 grid: auto 1fr auto (3행 — 헤드라인 + 4대 제약 카드 2×2·동적 시각 장치 + 결론 v3-msg)
 
-  영역 1 (4대 제약 카드 2×2·v3.1 정합·각 카드 본문 26px 3~4줄 확장):
-  - 카드 1 (Time · 시간 제약): card-top-accent 4px red + num-circle 50px red + 픽토그램 56px (시계·압축)
-    - 제목 38px: "Time · 7개월 압축"
-    - sub 20px: "2017.04 ~ 2017.11"
-    - body 26px: "10개 모듈·3사·6국·110국 통합을 7개월에 완수. 동종 사례 평균 12~18개월 대비 1.5배 압축 일정"
-  - 카드 2 (Business Continuity · 24시간 가동): 픽토그램 (가동·연속 공정)
-    - 제목 38px: "Business Continuity · 24시간 가동"
-    - sub 20px: "1분 정지도 손실"
-    - body 26px: "석유화학 연속 공정 1년 365일 가동 — 시스템 1분 정지도 수십억 원 손실. 다운타임 제로 요구"
-  - 카드 3 (Multi-Entity · 3사 병존): 픽토그램 (3 원·통합 화살표)
-    - 제목 38px: "Multi-Entity · 3사 병존 운영"
-    - sub 20px: "롯데케미칼·정밀화학·첨단소재"
-    - body 26px: "3사 기준정보·프로세스 병존 + 통합 압력. 각 사 본연 경쟁력 유지 + 단일 디지털 코어 동시 안착"
-  - 카드 4 (Global Multi-Site · 글로벌 다거점): 픽토그램 (지구·6국 빨간 점)
-    - 제목 38px: "Global Multi-Site · 6국 + 110국"
-    - sub 20px: "글로벌 거점·수출"
-    - body 26px: "여수·대산·울산 국내 + 중국·말레이시아·영국·우즈베키스탄·파키스탄·미국 6국 + 110국 수출 통합"
+  영역 1 (4대 제약 카드 2×2·v3.1 정합·각 카드 서로 다른 시각 장치·.s21-card·card-top-accent 4px red):
 
-  영역 2 (결론 v3-msg 박스): "4대 제약 동시 충돌 → <em>SAP Value Assurance Service</em> 기반 사전 진단 + 반복 검증 전략"
-  - 출처 [1] 박제성 인터뷰 · [8] 사업보고서
+  - 카드 1 좌상 (Time · 7개월 압축):
+    - 라벨 mono 13px red: "CONSTRAINT 1 · TIME"
+    - 제목 32px 800: "일정 압축"
+    - 시각 장치: 미니 압축 타임라인 SVG (.s21-viz--timeline·width 100%·height 80px)
+      - 회색 막대 (12~18개월·rgba graphite 30%)
+      - 빨간 압축 막대 (7개월·2017.04 ─── 2017.11·red·active)
+      - 양끝 라벨 14px mono: "2017.04" · "2017.11"
+    - 핵심 키워드 96px red 800: "7개월"
+    - sub 20px ink-soft: "동종 사례 평균 12~18개월 대비 1.5~3배 압축"
+
+  - 카드 2 우상 (Continuity · 24시간 가동):
+    - 라벨 mono 13px red: "CONSTRAINT 2 · CONTINUITY"
+    - 제목 32px 800: "연속 가동"
+    - 시각 장치: 파이프라인 SVG (.s21-viz--pipeline·width 100%·height 80px)
+      - 수평 파이프 2줄 (graphite·stroke 4px)
+      - 흐르는 dot 3개 (red·CSS animation 또는 정적 배치)
+      - 좌측 입구·우측 출구 SVG 아이콘
+    - 핵심 키워드 96px red 800: "24h"
+    - sub 20px ink-soft: "1분 정지도 손실 — 다운타임 통제 필요"
+
+  - 카드 3 좌하 (Multi-Entity · 3사 병존):
+    - 라벨 mono 13px red: "CONSTRAINT 3 · MULTI-ENTITY"
+    - 제목 32px 800: "3사 병존"
+    - 시각 장치: 3 노드 → 통합 코어 SVG (.s21-viz--nodes·width 100%·height 100px)
+      - 좌측 3 원 세로 (롯데케미칼·정밀화학·첨단소재·graphite border 2px·각 원 안에 약자 라벨 12px·LC·LF·LA)
+      - 중앙 chevron 3개 (red·flow-chevron 정합)
+      - 우측 통합 코어 1 원 (red fill·"CORE" 라벨)
+    - 3사명 한 줄 유지 22px 800: "롯데케미칼 · 정밀화학 · 첨단소재"
+    - sub 20px ink-soft: "각 사 본연 경쟁력 유지 + 단일 디지털 코어 동시 안착"
+    - **줄바꿈 강제 금지** — 3사명은 절대 줄바꿈 X·CSS white-space nowrap 적용
+
+  - 카드 4 우하 (Global · 6국·110국):
+    - 라벨 mono 13px red: "CONSTRAINT 4 · GLOBAL"
+    - 제목 32px 800: "글로벌 운영"
+    - 시각 장치: 미니 세계지도 + 핀 SVG (.s21-viz--map·width 100%·height 100px)
+      - 대륙 SVG path (graphite stroke 1px·fill 없음·간략 형태·slide 04 글로벌 네트워크 축소 재활용)
+      - 6 핀 red (중국·말레이시아·영국·우즈베키스탄·파키스탄·미국)
+      - 110 작은 점 graphite (rgba 30%·산재)
+    - 핵심 키워드 영역: "6국 거점" 28px red 800 + "·" + "110국 수출" 28px graphite 800
+    - sub 20px ink-soft: "여수·대산·울산 + 중국·말레이시아·영국·우즈베키스탄·파키스탄·미국"
+
+  영역 2 (결론 v3-msg 박스·red border-left 6px·22 연결 명시):
+  - white + red border-left 6px
+  - 본문 26px 700: "4대 제약 동시 충돌 → <em>다음 페이지에서 거버넌스 3축이 통제 구조로 전환</em>"
+  - 우측 src 14px mono ink-mute: "[1] 박제성 인터뷰 · [8] 사업보고서 · docx Step 3 §1.1"
 
 must_include:
-- 4대 제약 (Time·Business Continuity·Multi-Entity·Global Multi-Site)
-- 각 제약별 본문 26px 3~4줄
-- 결론 박스 (SAP Value Assurance 사전 진단 전략)
-시각 어휘: 4 카드 2×2·픽토그램 4개·card-top-accent 4px red·v3-msg 결론 박스
-자체 판단 결과: grid 2×2·각 카드 동등 위계·card-top-accent 모두 red (4대 제약 모두 본 사례 핵심 동인)
-출처: [1] [8] · slides.yml chapter 3 must_include 정합
-색상 비율 (가드 10): 4 num-circle red + 4 card-top-accent red + 4 픽토그램 red + 결론 박스 = 약 6.0~6.5% (7% 이내 정합·경계 영역)
+- 4대 제약 (Time·Continuity·Multi-Entity·Global)
+- 각 제약별 서로 다른 동적 시각 장치 4종 (미니 타임라인·파이프라인·3 노드 통합·미니 세계지도)
+- 3사명 한 줄 유지 (줄바꿈 X·CSS white-space nowrap)
+- 각 카드 핵심 키워드 시각화 (7개월·24h·3사 노드·6국 핀)
+- 결론 박스 22 연결 명시 정확 어휘: "거버넌스 3축이 통제 구조로 전환"
+- 새 문장 다수 추가 X·기존 핵심어 시각화
+
+시각 어휘: 4 카드 2×2·card-top-accent 4px red·서로 다른 시각 장치 4종 (.s21-viz--timeline·.s21-viz--pipeline·.s21-viz--nodes·.s21-viz--map)·핵심 키워드 96px red 800 (Time·Continuity)·핵심 키워드 28px red+graphite (Global)·v3-msg 결론 박스 red border-left 6px
+
+자체 판단 결과:
+- grid 2×2·각 카드 동등 위계·card-top-accent 모두 red (4대 제약 모두 본 사례 핵심 동인)
+- 시각 장치 4종은 서로 다른 의미·다른 형태 (정보 단조성 회피)
+- 시각 장치는 dist/preview-step3.html 내부 style 영역에 SVG 인라인 정의 (shared/style.css 변경 X·가드 75 정합·다른 dist 영향 회피)
+- 시각 장치 SVG 색상은 var(--color-red)·var(--color-graphite)·var(--color-red-soft) 토큰 사용 (16진수 하드코딩 X·가드 2 정합)
+- 카드 3 다이어그램은 .integration-svg 3사 구조 정합 (가드 7 정합·3사 노드 추가·삭제 X)
+
+본인 디렉션 정합 영역 (v10.15 차수):
+- 시각 장치 4종 동적화 — 새 문장 추가 X·기존 핵심어 시각화
+- 3사명 한 줄 강제 — CSS white-space nowrap 적용·줄바꿈 발생 시 시각 장치 또는 카드 크기 조절
+- 22 페이지 연결 명시 — 결론 박스에서 다음 페이지 예고
+
+출처: [1] 박제성 인터뷰 · [8] 사업보고서 · slides.yml chapter 3 must_include 정합·docx Step 3 §1.1
+색상 비율 (가드 10): 4 num-circle red 영역 X (라벨로 대체) + 4 card-top-accent red + 4 시각 장치 red 요소 + 2 핵심 키워드 96px red + v3-msg red border-left = 약 6.0~6.5% (7% 이내 정합·경계 영역·본인 검수 권장)
 footer: 우하단 키보드 안내만
 ```
 
-### 22 governance-triad (Step 3 구축 단계 거버넌스 3축) — v10.13 신규
+### 22 governance-triad (Step 3 실행 통제 거버넌스 3축) — v10.15 본 차수 재정의
 
-본 페이지는 docx Step 3 §2 「구축 단계의 거버넌스 3축 협력 구조」 매핑.
-**페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·22 governance-triad 슬러그.
-**Step 2 13 governance-triad와 구분**: Step 2 13은 "도입 의사결정 단계 거버넌스 (외부 SI 일임이 아닌 그룹 IT 통제권)" — Step 3 22는 "구축 단계 거버넌스 (실행 책임 분담)". 동일 3축이지만 역할 세분화.
+본 페이지는 docx Step 3 §2 「구축 단계의 거버넌스 3축 협력 구조」 매핑 + GPT 피드백·본인 디렉션 v10.15 재정의 영역.
+**페이지 번호·슬러그 정합 (v10.15)**: Step 3 14장 유지·22 슬러그 `governance-triad` 유지 (매트릭스 참조 정합)·제목·핵심 메시지·구조만 재정의·페이지 번호 시프트 0건·Step 4·5 영향 0건.
+**Step 2 13 governance-triad와 구분**: Step 2 13 = 도입 의사결정 단계 거버넌스 (그룹 IT 통제권 영역)·Step 3 22 = 구축 단계 실행 통제 거버넌스 (21페이지 4대 제약 → 결정·구축·검증 통제 구조 전환).
+**v10.13 → v10.15 변경 영역**:
+- 핵심 메시지 재정의 — "어느 한 주체로는 추진 불가능한 규모" → "4대 제약은 결정·구축·검증의 통제 구조로 전환되었다" (21페이지 회수 + 22 단독 메시지)
+- 카드 라벨 재정의 — AXIS 1·2·3 발주·수행·기술 → DECIDE·BUILD·VERIFY 결정·구축·검증
+- 인물명 본문 주인공 X — 카드 sub 영역 인물명 (김교현 대표·박제성 상무보) 제거·필요 시 출처 또는 보조 텍스트만
+- 박제성 인용 박스 본 차수 생략 — 22 페이지 메시지 분산 방지·박제성 인용은 32 downtime-kpi 또는 다음 차수 검증 페이지 영역에서 활용
+- 3축 구조의 의미 2 박스 본 차수 생략 — 정보량 축소·본인 디렉션 정합
+- 신규 영역 — 상단 4대 제약 요약 스트립 (21페이지 회수·본문 주인공 X·작게)
+- 카드 4단 구조 통일 — 제목·주체·역할·통제 결과 (역할 3개 압축·카드 과밀 방지)
 
 ```
 구조:
 - 상단 v3-eyebrow + 헤드라인 52px
   - eyebrow: STEP 3 · 03
-  - 핵심 메시지: "어느 한 주체로는 추진 불가능한 규모 — <em>롯데케미칼·롯데정보통신·SAP 본사 3축</em>이 발주·수행·기술 분담"
-- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + 3축 카드 가로 1×3 + 3축 구조의 의미 + 결론 v3-msg)
+  - 핵심 메시지: "4대 실행 제약은 <em>결정·구축·검증</em> 3축을 통해 통제 조건으로 전환되었다"
+- 본문 grid: auto auto auto 1fr auto (5행 — 헤드라인 + 4대 제약 요약 스트립 + 3축 카드 가로 1×3 + 결론 v3-msg)
 
-  영역 1 (3축 카드 가로 1×3·v3.1 정합·card-top-accent 4px red):
-  - 카드 1 (발주·의사결정): num-circle 50px red "1" + 픽토그램 56px (서명·결정·문서)
-    - 라벨 mono 13px red: "AXIS 1 · 발주"
-    - 제목 38px: "발주 · 의사결정"
-    - sub 20px: "롯데케미칼 (김교현 대표·박제성 상무)"
-    - body 26px: "프로젝트 거버넌스 총괄·비즈니스 요구사항 정의·자원 배분 의사결정·IT 자산 통제권 유지"
-  - 카드 2 (수행·통합): num-circle 50px red "2" + 픽토그램 56px (톱니바퀴·구축·연결)
-    - 라벨 mono 13px red: "AXIS 2 · 수행"
-    - 제목 38px: "수행 · 통합"
-    - sub 20px: "롯데정보통신 (그룹 SI 계열사)"
-    - body 26px: "시스템 통합 SI 수행·통합 운영체계 확보·신규 SAP 플랫폼 도입을 통한 중복투자 리스크 제거"
-  - 카드 3 (기술·방법론): num-circle 50px red "3" + 픽토그램 56px (체크·검증·표준)
-    - 라벨 mono 13px red: "AXIS 3 · 기술"
-    - 제목 38px: "기술 · 방법론"
-    - sub 20px: "SAP 본사 (Value Assurance Service)"
-    - body 26px: "S/4HANA 도입 방법론 SAP Activate 적용·Fit-Gap 분석·Migration Planning·Go-Live Readiness Check 표준 컴포넌트 제공"
+  영역 1 (4대 제약 요약 스트립·신규·작게·본문 주인공 X):
+  - 가로 1×4 작은 칩 (.s22-strip·height 60px 이내)
+  - 라벨 mono 12px graphite: "RECALL · 21 four-constraints"
+  - 각 칩 (graphite border 1px·padding 8px 16px·서로 다른 작은 픽토그램 24px + 라벨 14px):
+    - 칩 1: 시계 픽토그램 + "Time · 7개월 압축"
+    - 칩 2: 파이프라인 픽토그램 + "Continuity · 24h 가동"
+    - 칩 3: 3 노드 픽토그램 + "Multi-Entity · 3사 병존"
+    - 칩 4: 지구 픽토그램 + "Global · 6국·110국"
+  - 스트립 전체 background: var(--color-bg-cream)·낮은 시각 위계 (3축 카드 주인공 보호)
 
-  영역 2 (3축 구조의 의미 2가지 — split-narrative 좌우 또는 가로 1×2 박스):
-  - 의미 1 (좌·cream + graphite border-left 4px):
-    - 라벨 mono 13px graphite: "MEANING 1"
-    - 본문 22px: "그룹 계열사 SI (롯데정보통신) 활용은 단순 비용 절감이 아니라 <em>S/4HANA 가동 이후 안정적 운영체계 확보 + 그룹 차원 IT 자산 통제권 유지</em>라는 장기적 판단"
-  - 의미 2 (우·cream + graphite border-left 4px):
-    - 라벨 mono 13px graphite: "MEANING 2"
-    - 본문 22px: "SAP 본사가 단순 라이선스 공급자가 아닌 <em>Value Assurance Service 구조화된 컨설팅</em>으로 직접 참여 — 압축 일정 하 고난도 기술 리스크를 패키지 공급사 자원으로 해결하는 전략적 판단"
+  영역 2 (3축 카드 가로 1×3·v3.1 정합·card-top-accent 4px red·4단 구조 통일):
+  - 카드 1 (결정·DECIDE): num-circle 50px red "1" + 픽토그램 56px (서명·결정·체크 마크)
+    - 라벨 mono 13px red: "AXIS 1 · DECIDE"
+    - 제목 38px: "결정"
+    - 주체 22px 800 ink-strong: "롯데케미칼"
+    - 역할 body 22px (불릿 3개·세로): "요구사항 정의 / 자원 배분·IT 자산 통제 / 최종 의사결정"
+    - 통제 결과 (카드 하단·red border-top 1px·padding-top 10px·body 18px ink-soft): "그룹 IT 자산 통제권 확보 + 외부 글로벌 SI 일임 회피"
+  - 카드 2 (구축·BUILD): num-circle 50px red "2" + 픽토그램 56px (톱니바퀴·구축·연결)
+    - 라벨 mono 13px red: "AXIS 2 · BUILD"
+    - 제목 38px: "구축"
+    - 주체 22px 800 ink-strong: "롯데정보통신 (그룹 SI)"
+    - 역할 body 22px (불릿 3개·세로): "시스템 구축·통합 수행 / 표준 운영체계 적용 / 기존 시스템 연결"
+    - 통제 결과 (카드 하단·red border-top 1px·padding-top 10px·body 18px ink-soft): "그룹 IT 자산 내부 축적 + 외부 SI 입찰·온보딩 비용 회피"
+  - 카드 3 (검증·VERIFY): num-circle 50px red "3" + 픽토그램 56px (체크·VAS·표준 컴포넌트)
+    - 라벨 mono 13px red: "AXIS 3 · VERIFY"
+    - 제목 38px: "검증"
+    - 주체 22px 800 ink-strong: "SAP 본사 + Value Assurance"
+    - 역할 body 22px (불릿 3개·세로): "SAP Activate·Fit-Gap / Migration Planning·Go-Live Readiness Check / 기술 검증"
+    - 통제 결과 (카드 하단·red border-top 1px·padding-top 10px·body 18px ink-soft): "다운타임 114h → 52h (-54%) 사전 진단 + 7개월 압축 일정 검증"
 
-  영역 3 (박제성 인용 박스 — Step 4 30 qual-5values 박제성 인용 박스 패턴 정합·자체 판단·있으면 더 좋음):
-  - cream + graphite border-left 4px
-  - "롯데정보통신이 통합 운영체계를 확보, 신규 SAP 플랫폼 도입으로 중복투자 리스크 제거"
-  - 우측 출처: "박제성 상무 인터뷰 (2019.09)"
-
-  영역 4 (결론 v3-msg 박스): white + red border-left 4px
-  - "<em>외부 SI 일임이 아닌 3축 협력 구조</em> — 단일 주체 추진 불가능 규모·그룹 자원 + 패키지 공급사 + 발주처 통제권 결합"
-  - 우측 출처: 박제성 상무 인터뷰 + 롯데케미칼 사업보고서 + 2018 정정 사업보고서 + SAP Value Assurance 공식 자료
+  영역 3 (결론 v3-msg 박스·red border-left 6px·핵심 메시지 회수):
+  - white + red border-left 6px
+  - 본문 26px 700: "<em>제약은 문제로 남지 않고, 결정·구축·검증의 통제 구조로 전환되었다</em>"
+  - 우측 src 14px mono ink-mute: "박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §2"
 
 must_include:
-- 3축 명칭 (롯데케미칼·롯데정보통신·SAP 본사)
-- 각 축 역할 (발주·수행·기술)
-- 3축 구조의 의미 2가지 (그룹 SI 장기 통제권·SAP 본사 직접 참여 전략적 판단)
-- 박제성 정확 인용 "통합 운영체계 + 중복투자 리스크 제거"
+- 4대 제약 요약 스트립 (21 회수·작게·본문 주인공 X)
+- 3축 카드 가로 1×3 (결정·구축·검증)
+- 각 카드 4단 구조 (제목·주체·역할 3 압축·통제 결과)
+- 인물명 본문 주인공 X (역할 영역 또는 통제 결과 영역에 노출 X)
+- 박제성 인용 박스 X (본 차수 생략)
+- 의미 2 박스 X (본 차수 생략)
+- 결론 박스 정확 어휘: "제약은 문제로 남지 않고, 결정·구축·검증의 통제 구조로 전환되었다"
 
-시각 어휘: 3축 카드 가로 1×3·card-top-accent 4px red·num-circle 50px·픽토그램 3개 (서명·톱니·체크)·의미 2 박스 cream·박제성 인용 박스 cream·v3-msg 결론
+시각 어휘: 4대 제약 요약 스트립 (.s22-strip·cream)·3축 카드 가로 1×3·card-top-accent 4px red·num-circle 50px·픽토그램 3개 (서명·톱니·체크)·v3-msg 결론 (red border-left 6px)
 
 자체 판단 결과:
-- grid 4행
-- 3축 카드 가로 1×3 균등 (3축 동등 위계·각 축 동일 시각 무게)
-- 의미 2 박스는 가로 1×2 또는 좌우 split-narrative (정보 위계 분리)
-- 박제성 인용 박스 cream (Step 4 30 패턴 정합·자체 판단 영역)
+- grid 5행 (헤드라인 + eyebrow + 4대 제약 요약 스트립 + 3축 카드 1×3 + v3-msg 결론)
+- 4대 제약 요약 스트립 영역 신규 (.s22-strip·height 60px 이내·작은 픽토그램 24px·라벨 14px)
+- 3축 카드는 본문 주인공 (사이즈·시각 무게 최대화·card-top-accent 4px red)
+- 각 카드 통제 결과 영역 (카드 하단 red border-top 1px·padding-top 10px)이 핵심 차별성 — 결정·구축·검증이 4대 제약을 어떻게 통제 조건으로 전환했는지 명시
+- 박제성 인용 박스·의미 2 박스 본 차수 생략 — 단일 메시지 정합 (CLAUDE.md §3-4 정합)
+- 카드 내부 과밀 방지 — 역할은 불릿 3개로 압축·인물명 본문 주인공 X
 
-출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료
-색상 비율 (가드 10): 3 num-circle red + 3 card-top-accent red + 3 픽토그램 red + 박제성 인용 박스 cream + v3-msg + eyebrow = 약 5.5~6.5% (7% 이내 정합)
+본인 디렉션 정합 영역 (v10.15 차수):
+- 핵심 메시지 단일화 — "4대 제약 → 결정·구축·검증 통제 구조 전환"
+- 페이지 수 유지 (Step 3 14장·전체 49장)·페이지 번호 시프트 0건
+- 슬러그 governance-triad 유지 (매트릭스 참조 정합)
+- 정보량 축소 (인용 박스 X·의미 박스 X·인물명 본문 X)
+
+출처 표기 (Step 2 v4 기준 정합·canonical v1.4): 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §2
+색상 비율 (가드 10): 3 num-circle red + 3 card-top-accent red + 3 픽토그램 red + 3 카드 하단 red border-top + 4 칩 cream + v3-msg + eyebrow = 약 5.5~6.5% (7% 이내 정합)
 footer: 우하단 키보드 안내만
 ```
 
@@ -3187,6 +3295,8 @@ footer: 우하단 키보드 안내만
 - v10.7 (2026.05.24) — **Step 4 §3 docx 본문 영역 매핑 진입 차수** (Step 3 빌드 v1 마감 후·본인 디렉션 "Step 4 진입"·외부 시점 가이드 정합 영역 1·2·3·4·5·6·7 순차 진입). §9-NEW에 Step 4 영역 8장 일괄 신규 강제 명시 본문 작성 (27 pir-frame·28 quant-results-1·29 quant-results-2·30 qual-5values·31 goal-matching·32 followup-2018·33 vision-bench·34 pir-conclusion). 각 장 자체 판단 결과 명시 (grid·시각 어휘·강조 영역·v3.1 디자인 패턴 정합 — 헤드라인 52px·카드 제목 38px·body 26px·픽토그램 56px wrap·card-top-accent·num-circle 50px·v3-msg 결론 박스). docx Step 4 본문 직접 정독 ○ (Read 직접 영역·611행 정합 검증 완료). 페이지 번호 27~34 8장 확정 — slides.yml 24·25·26·27 챕터 4 본론 슬러그는 v10.7 신규 슬러그(pir-frame·quant-results-1·quant-results-2·goal-matching·vision-bench)로 자리 보정·신규 슬러그 3개(qual-5values·followup-2018·pir-conclusion) slides.yml 미매핑 영역 추가. content-thesis §2 보조 논지 1·3·4 매핑 확정 영역: 보조 논지 1 → 30 qual-5values 가치 1 (3사 시너지) + 31 goal-matching 목표 1 매핑·보조 논지 3 → 30 qual-5values 가치 3 (디지털 코어 박제성 인용) + 32 followup-2018 DT 전략 로드맵 매핑·보조 논지 4 → 31 goal-matching 목표 4 (DT 기반·강조) + 34 pir-conclusion 강의 PIR 3대 기준 ② 사업 효익 회수 매핑 (25 hub-spoke 빌드와 결론 28 conclusion 정합). 보조 논지 2 (산업 특성·계열사 차이) → Step 4 직접 매핑 X (이미 06 si-question·07·08 영역). **표현 금지 회피 검증 완료 (가드 11)**: docx Step 4 본문 영역 위반 5건 검증 — 학자명 "이상신" 4건 (line 124·250·410·468) → 본문 영역 출처 [11] 번호만 사용·"Brownfield 컨버전" 단정 1건 (line 254) → "Brownfield 성격" 신중 표현 영역·"글로벌 싱글 인스턴스" X·"OPERA" X·"자금 여유" X (모두 회피 검증). §12-4 매핑 표 Step 4 영역 8행 추가 (27~34). §9-NEW 작성 영역 표 8행 추가. 미진입 영역 표 갱신 (Step 4 영역 제거·Step 5 영역만 남음·Step 2 잔여·골조 보정 유지·가드 68 신규 등록). slides.yml v1.0 골조 28장 본 차수 변경 X (§12-4 매핑 표만 확장·골조 보정 다음 차수 본인 결정·30~32장 → 34~36장 확장 필요 영역). 빌드 영향 X (Step 1 v11·Step 2 v3.2·Step 3 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 출처 [13] 2020.08.12 보도자료 docx Step 4 §3.3·§5.2 정합 영역 사용 (§11 외부 출처 영역 추가 X — docx 출처 [1]~[13] 영역 정합). 디자인 요소 보호 정합 (시각 어휘·글자 강제 룰·SVG 픽토그램·색상 비율·grid·layout 변경 X). Step 5 §3 본 차수 미진입 (가드 39·다음 차수). 가드 67·68·69 본 차수 등록 (Step 4 §3 진입·docx 정독 영역·slides.yml 골조 보정 다음 차수 권장). 백업 생략 (변경 이력 라인으로만 보존). 색상 비율 추정 8장 모두 4.5~6.5% 범위 (7% 이내·가드 10·28·29·32·34 6~6.5% 경계 영역 자체 판단 빌드 시 검증). 다음 차수: Step 4 빌드 v1 (dist/preview-step4.html 신규·우선순위 1) 또는 Step 5 §3 진입 (우선순위 2).
 - v10.8 (2026.05.25) — **Step 5 §3 docx 본문 영역 매핑 진입 차수** (Step 4 v1 분할 1·2 마감 후·본인 디렉션 "Step 5 §3 진입"·외부 시점 가이드 영역 1·2·3·4·5·6·7 순차 진입). 매트릭스 v10.7 → v10.8 보정 차수. 매트릭스 §9-NEW에 Step 5 영역 8장 일괄 신규 강제 명시 본문 작성 (35 csf-frame·36 csf-5values·37 csf-3-pres·38 limits-4·39 implications-3·40 insights-3·41 future-4·42 final-conclusion). docx Step 5 본문 직접 정독 ○ (Read 직접 영역·512행 정합). 각 장 v3.1 디자인 패턴 강제 명시 (헤드라인 52px·카드 제목 28~32px·body 18~20px·픽토그램 56px wrap·card-top-accent·num-circle 50px·v3-msg 결론 박스). 페이지 번호 35~42 8장 확정 — slides.yml 28 conclusion 슬러그 자리 보정 (42 final-conclusion 정합) + 신규 슬러그 7건 (csf-frame·csf-5values·csf-3-pres·limits-4·implications-3·insights-3·future-4) 추가. content-thesis §2 보조 논지 1·3·4 매핑 확정 영역: 보조 논지 1 → 36 CSF 1·2·4 + 39 시사 1 매핑·보조 논지 3 → 36 CSF 1·3 + 38 한계 3.3 + 39 시사 3 매핑·보조 논지 4 → 40 §5.1 통합 경영 플랫폼 + 41 §6 향후 과제 + 42 §7 최종 결론 최종 회수 (25 hub-spoke + 28 통합 4축 + 34 PIR conclusion 정합). 보조 논지 2 → Step 5 직접 매핑 X (이미 06 si-question 영역). **표현 금지 회피 검증 완료 (가드 11)**: docx Step 5 본문 영역 위반 검증 — 학자명 "이상신" 4건 (line 186·280·414·434) → 매트릭스 §9-NEW 영역 출처 [11] 번호만 사용·src "학자명 노출 X · 가드 11 정합" 명시. "Brownfield" 영역 (line 123·211·337) → 모두 "Brownfield 성격" 신중 표현 형식·docx 자체 정합 ○·매트릭스 §9-NEW 동일 신중 표현. "글로벌 싱글 인스턴스"·"OPERA"·"자금 여유" → docx 본문 위반 X (정합). 매트릭스 §12-4 매핑 표 Step 5 영역 8행 추가 (35~42) + §12-5 v10.8 갱신 (slides.yml 골조 43장 확장 영역). §9-NEW 작성 영역 표 8행 추가 + 미진입 영역 표 갱신 (Step 5 영역 제거·발표 직전 영역만 잔존·가드 71 신규 등록). 매트릭스 §11 변경 X (출처 13건 [1]~[13] docx 출처 영역 정합). 디자인 요소 보호 정합 (시각 어휘·글자 강제 룰·SVG 픽토그램·색상 비율·grid·layout 변경 X). 빌드 영향 X (Step 1 v11·Step 2 v3.2·Step 3 v1·Step 4 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 가드 70·71·72 본 차수 등록 (Step 5 §3 진입·발표 직전 영역 운영 영역·결론 회수 시각 영역). 백업 생략 (변경 이력 라인으로만 보존). 색상 비율 추정 8장 모두 4.5~6.5% 범위 (7% 이내·가드 10·42 final-conclusion 7% 경계 영역 자체 검증 필수·핀잡 박스 red border 4px 전체 영역 영역 큰 면적 영역 빌드 시점 자체 보정 영역 결정 권장). 다음 차수: Step 5 빌드 v1 (dist/preview-step5.html 신규·우선순위 1·**stage·deck id 영역 필수**·Step 4 v1 보정 차수 정합·가드 65 위반 영역 0건 유지) 또는 발표 직전 영역 (우선순위 4·5).
 - v10.9 (2026.05.25) — **Step 1 v11 → v12 외부 시점 검증 결과 반영 차수** (Step 5 v1 마감 후·본인 디렉션 "Step 1 내용 우선 보정 + hp-num 일괄 보정"·외부 시점 검증 결과 치명적 2·중대 8·경미 7 + hp-num 4 통합 반영). dist/preview-step1.html v11 → v12 영역 18건 Edit + CSS 17건 신규 추가 (dist/preview-step1.html 내부 style 블록·자체 판단·shared/style.css 변경 X·가드 53 정합). **치명적 2건 ○**: 치-1 slide 08 학술 보강 박스 (IT 5대 제약 chips 5 + 제조업 5대 동향 chips 5·.ic-academic 영역·학자명 노출 X·가드 11 정합) + Step 1 결론 박스 (.ic-conclusion 영역·중-7 통합)·치-2 출처 라벨 4건 추가 (04 [8] [14] [15]·05 fc-source 박스 [8]·06 timeline tl-source 박스 [1] [8] [10]·08 ic-conclusion__src [1] [8] [11]). **중대 8건 7건 ○·1건 보류**: 중-1 영업이익 +15.2% YoY·중-2 박제성 인용자 위계 ("정보전략담당 상무·정보전략 책임자·인터뷰 [1]")·중-3 박제성 인용 본문 후반부 회복 ("디지털 트랜스포메이션·인텔리전트 엔터프라이즈")·중-4 SMART Big Bang·10개월 sub·중-5 tr-conclusion 10모듈 본문 보강·중-6 slide 03 chapter intro 보강 카드 추가 + 라벨 "5장 + 보강 1"·중-7 치-1 통합·중-8 Tone 위계 영역 보류 (가드 53 디자인 보호·다음 차수). **경미 7건 3건 ○·4건 선택 보류**: 경-1 치-2 통합·경-4 REACH·TSCA·화평법 영역·경-5 6국 legend (미국·영국·우즈베키스탄·파키스탄·중국·말레이시아)·경-2·3·6·7 본 차수 미진입 (정보 밀도·디자인·미세 영역). **hp-num 일괄 보정 4건 ○** (가드 74 정합·Step 1 영역만 선보정·Step 2~5 §13-7 정합 유지): slide 5 11→05·slide 6 10→06·slide 7 05→07·slide 9 06→09. **신규 CSS 17건** (가드 75 정합·기존 .tr-conclusion·.sq-msg·.at-sector__msg·.tl-message 패턴 재활용): .ic-academic 영역 8 + .ic-conclusion 영역 3 + .fc-source 1 + .tl-source 1 + .tl-quote-body em 1 + .pi-card--addon 영역 3. 디자인 영역 보호 정합 ○ (가드 53·45·49 — SVG 픽토그램·글자 강제 룰·색상 비율·grid·layout·shared 변경 X)·표현 금지 5건 회피 정합 ○ (가드 11 — 학자명 노출 X·Brownfield 단정 X·글로벌 싱글 인스턴스 X·OPERA X·자금 여유 X). §9-NEW 본문 영역 변경 X (dist 빌드 영역 메모만·v10.5 패턴 정합). 빌드 영향 — Step 1 v11 → v12 1건만 (Step 2 v3.2·Step 3 v1·Step 4 v1·Step 5 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 가드 73·74·75 본 차수 등록. 백업 생략 (변경 이력 라인으로만 보존). 다음 차수: 디자인 영역 (Tone 위계·신용등급 AA+·시점 영역 등·우선순위 1) 또는 발표 직전 영역 (Step 2 잔여 보정·출처 §11 통합·hp-num Step 2~5 일괄 보정·content-thesis 본문 갱신·slides.yml 골조 보정·우선순위 2~5).
+- v10.16 (2026.05.26) — **Step 3 21·23·24 디자인 강화 + 23·24 중복 해소 차수 — GPT 디자인 감사 피드백 + 본인 디렉션 정합** (본 차수 작업 범위 = 21·23·24 영역만·25~28 다음 차수 분리·페이지 수 14장 유지·페이지 번호 시프트 0건·Step 4·5 영향 0건). **자체 판단 영역 (Claude Code 책임 영역)**: 본인 두 시나리오 제시 영역 중 시나리오 1 채택 — 매트릭스 v10.13 정합 영역 회복 (22 = governance-triad·23 = four-methodologies·24 = methodology-evolution) + 본 차수 직전 차수 v10.15 영역 유지 (22·23 빌드 영역 보호). **21 four-constraints 디자인 리빌딩** ○: 직전 차수 v10.15 4분할 카드 (.s21b-* 영역) → 본 차수 신규 중심 허브 + 4방향 압박 구조 영역 (.s21c-* 영역). 3×3 grid (좌상 Time·우상 Continuity·중앙 허브·좌하 Multi-Entity·우하 Global) + 중앙 허브 "7개월 동시 실행 압력" + 4 화살표 영역 (↘·↙·↗·↖·중앙 압박 표시) + shared/세계지도.png 영역 활용 (본인 명시 영역 파일명 정합 ○·`<img src="../shared/세계지도.png">` + onerror fallback `world-map.png`)·6 핀 (CSS absolute position·top/left % 영역). 3사명 "롯데케미칼 · 정밀화학 · 첨단소재" 한 줄 유지 (CSS white-space nowrap + ellipsis 영역). 직전 차수 .s21b-* 영역 영역 영역 잔존 영역 영역 완전 영역 제거 영역 (정합 영역 회수 영역). 신규 CSS 21건 (.s21c-main·grid·card·hub·arrow·label·title·viz·key·entities·pins·pin·viz--timeline·viz--pipeline·viz--nodes·viz--map + SVG 내부 클래스 영역 영역). **23 four-methodologies 디자인 강화** ○: 직전 차수 v10.15 표 형식 (.s23-* 영역) → 본 차수 신규 4 후보 카드 비교 영역 (.s23c-* 영역·GPT 피드백 카드형 후보군 비교 채택 영역). 상단 조건 4 바 (선택 기준 — 7개월·3사 통합·무중단 가동·기존 자산 유지) + 4 후보 카드 (Big Bang·Phased·Pilot·Roll-out) + 각 카드 영역 조건 4 충족 ✓/△/× 영역 + Roll-out 카드 영역 SELECTED 배지·red border 2px·box-shadow 영역 활성화 + 다른 3 카드 영역 opacity 0.6·흐릿 영역 + 각 카드 영역 영역 탈락/선택 사유 영역 영역. 신규 CSS 16건 (.s23c-main·criteria-bar·criteria·criteria__num·candidates·card·card--selected·card__badge·label·title·feature·checks·check·check--ok·check--mid·check--bad·card__reason). **24 methodology-evolution 본문 갱신** ○: 직전 차수 잔존 four-methodologies (.s23-* 영역) → 본 차수 methodology-evolution 본문 영역 (.s22-* 영역 timeline 3 영역) — 매트릭스 v10.13 정합 영역 회복. 23·24 중복 영역 해소 ○. 헤드라인 영역 영역 GPT 피드백 정합 구체화 ("17년 SAP 운영 경험의 진화 — 단일 법인 Big Bang에서 3사 통합 Roll-out으로"). timeline 3 영역 (SMART 2003-04·GEMS 2010·S/4HANA 1610 2017.11)·각 단계 영역 영역 의미 영역 명시 (SMART = Big Bang 경험 축적·GEMS = 자체 시스템 운영 경험·S/4HANA 1610 = 3사 통합 Roll-out + 통합형 컨버전). 하단 진화의 의미 영역 영역 영역 강화 (cream + red border-left 6px·"과거 구축 경험이 2017년 3사 통합 실행 가능성의 기반"). 결론 박스 영역 영역 영역 (시스템 환경 복잡도 ↑ → 구축 방식 진화). **본 차수 일시 잔존 중복 영역 보고**: SLIDE 24 (methodology-evolution v2·본 차수 갱신) + SLIDE 25 (methodology-evolution v1·본 차수 변경 X·잔존 중복 영역 발생). 다음 차수 영역 25 영역 = seven-month-grounds 영역 갱신 영역으로 해소 영역 (매트릭스 v10.13 정합 영역 영합 ○). 22 영역 영역 변경 X (직전 차수 v10.15 영역 유지·실행 통제 거버넌스 3축 영역). **신규 CSS prefix 영역**: .s21c-*·.s23c-* 영역 (영역 영합 영역 회피 영역·기존 .s20·.s21·.s22·.s23 영역 영향 X). **매트릭스 §9-NEW 본문 영역 변경 X** (본 차수 dist 빌드 영역만 영역). master.md §1 영역 영역 본 차수 영역 = 21·24 영역 영역 본문 영역 영역 영역 다음 차수 영역 영역 영역 영역 영역 (자세한 본문 동기화 영역 다음 차수 본인 결정 영역 권장). 디자인 영역 보호 정합 ○ (가드 53·45·49 — shared/style.css 변경 X·SVG 픽토그램 토큰 var(--color-*) 사용·grid·layout 영향 X). 표현 금지 5건 회피 정합 ○ (가드 11). **가드 65 위반 2건 회수 정직 보고** (가드 43 정합): 본 차수 초반 영역 Bash 호출 2건 (`ls shared/`·`grep world ... preview-step1.html`)·이후 영역 Read offset/limit 영역만 사용·Glob·Grep 도구 미로드 영역. 빌드 영향 — dist/preview-step3.html v4 → v5만 변경 (preview-step1·2·4·5.html 빌드 보호). 가드 93·94·95 본 차수 등록 (21 디자인 리빌딩·23 디자인 강화·24 갱신·23·24 중복 해소·잔존 영역 영역 영역 제거 영역 정합 영역 회수 영역·세계지도.png 영역 활용 영역). 백업 생략. 다음 차수 권장: 25 = seven-month-grounds 갱신 + 26 = time-cost-scope 갱신 + 27 = not-standardize-all 갱신 (GPT 피드백 28·AS-IS/TO-BE 영역) + 28 = gap-three-tracks 갱신·또는 GPT 피드백 25·26·27·28 디자인 영역 강화 영역.
+- v10.15 (2026.05.26) — **Step 3 20·21·22·23 디자인 1차 재구성 차수 — 페이지 수 14장 유지·페이지 번호 시프트 0건·Step 4·5 영향 0건** (본인 디렉션 정합·GPT 피드백 + 본인 변형안 통합). **본 차수 작업 범위**: dist/preview-step3.html v3 → v4 (20·21·22·23 4장만)·24 이후 미진입. **20 step3-intro 재구성**: 매트릭스 §9-NEW 20 chapter3-intro → step3-intro 영역 갱신 (좌 35% 큰 질문 블록 big-num "3" + 큰 질문 66px "선택은 끝났다. 이제 어떻게 멈추지 않고 통합할 것인가?" + 우 65% 4 로드맵 카드 2×2 → 21·22·23·24 연결 + 하단 thesis 박스 "Step 3의 본질은 빠른 구축이 아니라 안전한 실행"·표지 01 ↔ 결론 33 호응 구조 정합). **21 four-constraints 재구성**: 정적 픽토그램 4종 → 동적 시각 장치 4종 차등화 (일정 압축 미니 타임라인·연속 가동 파이프라인 + 흐르는 dot·3사 병존 3 노드 → 통합 코어·글로벌 미니 세계지도 + 6 핀)·3사명 한 줄 강제 (CSS white-space nowrap·줄바꿈 X)·새 문장 추가 X·기존 핵심어 시각화·결론 박스 22 연결 명시 "거버넌스 3축이 통제 구조로 전환". **22 governance-triad 메시지 재정의 (슬러그 유지·매트릭스 참조 정합)**: 핵심 메시지 "어느 한 주체로는 추진 불가능한 규모" → **"4대 실행 제약은 결정·구축·검증 3축을 통해 통제 조건으로 전환되었다"**. 카드 라벨 AXIS 1·2·3 발주·수행·기술 → DECIDE·BUILD·VERIFY 결정·구축·검증. **인물명 본문 주인공 X** (김교현 대표·박제성 상무보 카드 sub 영역 제거). **박제성 인용 박스 본 차수 생략** (메시지 분산 방지·다음 차수 32 downtime-kpi 영역에서 활용). **의미 2 박스 본 차수 생략** (정보량 축소). **신규 영역**: 상단 4대 제약 RECALL 요약 스트립 (작게·.s22b-strip·height 60px 이내·작은 픽토그램 24px + 라벨 14px·본문 주인공 X). 카드 4단 구조 통일 (제목·주체·역할 3 압축·통제 결과 영역 하단 red border-top 1px). 결론 박스 정확 어휘: "**제약은 문제로 남지 않고, 결정·구축·검증의 통제 구조로 전환되었다**". **23 four-methodologies 정합 복구**: 현재 v3 23 governance-triad → 23 four-methodologies로 교체 (현재 v3 24 four-methodologies 본문 영역 재활용·디자인 심화 다음 차수). **24 본 차수 미진입**: 현재 v3 24 four-methodologies 본문 영역 그대로 유지·23·24 둘 다 four-methodologies로 일시 중복 영역 잔존·다음 차수 24 = methodology-evolution 갱신·중복 해소·25~33 시프트 X. **신규 CSS 17건** (dist/preview-step3.html 내부 style 블록·shared/style.css 변경 X·가드 75 정합·다른 dist 영향 회피): .s20b-* 11건 (main·body·question·question__bignum·question__label·question__text·question__sub·roadmap·card·thesis·thesis__src 등)·.s21b-* (.s21b-main·s21b-cards·s21b-card 영역·s21b-card__label·title·viz·key·key--row·entities·sub + 시각 장치 .s21b-viz--timeline·--pipeline·--nodes·--map + 내부 SVG 클래스 .s21b-bar-old·bar-new·tl-label·pipe·dot·cap·node·node-label·chevron·core·core-label·continent·pin·dot-small)·.s22b-* (.s22b-main·strip·strip__label·chip·chip__pict·axes·axis·axis__head·num·pict·label·title·subject·roles·result·result-label·conclusion·conclusion__src 등). **신규 prefix b 영역 사용**: 기존 .s20-*·.s21-*·.s22-*·.s23-* 클래스 영향 X (다른 슬라이드 영향 회피). **인용 클래스 재활용 영역**: 23 four-methodologies = 기존 .s23-* 클래스 재활용 (현재 v3 24 본문 영역 그대로). **매트릭스 §9-NEW 갱신 영역** (라인 1233~1373): 20 chapter3-intro → step3-intro 영역 재정의·21 four-constraints 시각 장치 동적화 영역 재정의·22 governance-triad 실행 통제 거버넌스 3축 메시지·구조 재정의. **master.md §1 갱신 영역**: 20·21·22 영역 본문 갱신·페이지 번호 시프트 X (페이지 수 14장 유지). **content-thesis §3 매핑 표 본 차수 미변경** (페이지 번호 시프트 0건·보조 논지 회수 페이지 변경 X). 디자인 영역 보호 정합 ○ (가드 53·45·49 — shared/style.css 변경 X·SVG 픽토그램 토큰 var(--color-*) 사용·grid·layout 영향 X·다른 dist 빌드 영역 보호). 표현 금지 5건 회피 정합 ○ (가드 11 — 학자명 X·Brownfield 단정 X·글로벌 싱글 인스턴스 X·OPERA X·자금 여유 X). Bash 완전 배제 정합 (가드 65 — Read·Edit·Write만 사용·본 차수 위반 1건 회수 정직 보고 가드 43 정합). 빌드 영향 — dist/preview-step3.html v3 → v4만 변경 (preview-step1·2·4·5.html 빌드 보호). 가드 90·91·92 본 차수 등록 (Step 3 20·21·22·23 재구성·22 슬러그 유지·메시지 재정의·인물명 본문 주인공 X·박제성 인용 박스 생략·페이지 수 유지·일시 잔존 중복 23·24 영역 다음 차수 해소). 백업 생략. **본 차수 일시 잔존 중복 영역 보고**: 23 four-methodologies (본 차수 신규) + 24 four-methodologies (현재 v3 잔존) = 일시 중복 영역·다음 차수 24 = methodology-evolution 갱신·25~33 페이지 번호 시프트 X로 해소. 다음 차수 권장: 24 methodology-evolution + 25 seven-month-grounds + 26 time-cost-scope + ... + 33 step3-conclusion 정합 갱신 (Step 3 dist 빌드 v4 → v5).
 - v10.14 (2026.05.25) — **Step 4·5 9장 확정 차수 — 문서 정합만·dist 변경 X** (본인 디렉션 정합·Step 1·2·3 패턴 정합). **Step 4 9장 (35~43)**: 35 step4-intro-overview (신규 안내·좌 질문 + 우 6단 흐름 카드 + 하단 thesis) + 36 pir-frame (구 34) + 37 quant-results-1 (구 35) + 38 quant-results-2 (구 36) + 39 qual-5values (구 37) + 40 goal-matching (구 38) + 41 followup-2018 (구 39) + 42 vision-bench (구 40) + 43 pir-conclusion (구 41·**한계 5건 작은 보조 표로 축소**·주인공 = PIR 5영역 + 강의 3대 기준·**한계 별도 페이지 분리 X**). **Step 5 9장 (44~52)**: 44 step5-intro-overview (신규 안내) + 45 csf-frame (구 42) + 46 csf-5values (구 43) + 47 csf-3-pres (구 44) + 48 limits-4 (구 45·**타 기업 적용·사례 일반화 트레이드오프 관점**) + 49 implications-3 (구 46) + 50 insights-3 (구 47·보조 논지 4 회수) + 51 future-4 (구 48) + 52 final-conclusion (구 49·**핀잡 메시지 시각 주인공**·출처 작은 source-line 자료명 5건 압축·**별도 출처 페이지 X**). **§12-4 매핑 표**: Step 4 영역 9행 (35~43)·Step 5 영역 9행 (44~52)로 확장. **§9-NEW 본문 영역**: 신규 안내 페이지 2장 본문 작성은 다음 차수 권장 (자세한 강제 명시 본문 영역·본 차수 §12-4 매핑 표 + §10 변경 이력만 확정). **Step 4 한계 vs Step 5 한계 관점 분리** (가드 정합): Step 4 43 = PIR 분석 검증 가능 범위·Step 5 48 = 타 기업 적용 트레이드오프. **출처 표기 Step 2 v4 / canonical v1.4 정합 유지** — 박제성 상무 인터뷰·자료명 중심·번호 표기 청중 노출 X. content-thesis v10.13 → v10.14 + master v1.3 → v1.4 + CLAUDE.md §12 v2.15 라인 동시 갱신. dist 빌드 변경 X (preview-step4·5.html v1 빌드 보호·가드 18·22·32·35·39·41 정합·다음 차수 디자인 재구성 진입). 디자인 요소 보호 (가드 53·45·49). 표현 금지 5건 회피 (가드 11). Bash 완전 배제 (가드 7·65). 가드 85·86·87 본 차수 등록 (Step 4·5 9장·안내 페이지 신규·페이지 번호 +1 시프트). 백업 생략. 다음 차수: §9-NEW Step 4·5 영역 안내 페이지 2장 본문 작성 + 기존 8장씩 헤더 시프트 (다음 차수 진입 권장) 또는 dist 디자인 1차 재구성 (preview-step4.html v1 → v2 + preview-step5.html v1 → v2).
 - v10.13 (2026.05.25) — **Step 3 14장 완전안 확정 + §9-NEW 7장 → 14장 확장 차수** (본인 디렉션 정합 — Step 3는 Step 1·2 합친 분량의 docx·7장 압축 부적절·문서 정합만 진입·HTML 변경 X). Step 3 §9-NEW 기존 7장 (20·21·22·23·24·25·26) → 신규 14장 (20·21·22·23·24·25·26·27·28·29·30·31·32·33). **신규 7장 본문 작성**: 22 governance-triad (C·docx §2 거버넌스 3축 발주·수행·기술)·23 four-methodologies (D·docx §3.1 4 방법론 비교 + Roll-out 선정)·25 seven-month-grounds (F·docx §4.1 압축 4근거)·26 time-cost-scope (G·docx §4.1·§4.2·§4.3 PMBOK Iron Triangle)·29 configuration-baseline (J·docx §4.4 + §5.5 강의 자료 29p·13p·28p)·31 migration-test-vas (L+M·docx §6.4 + §6.5 + §6.6 Rollback 보조 라벨)·33 step3-conclusion (P·docx §7 4 원칙 회수 + Step 4 연결). **기존 7장 페이지 번호 시프트**: 22 methodology-evolution → 24·23 not-standardize-all → 27·24 gap-three-tracks → 28·25 sap-platform-hub → 30·26 downtime-kpi → 32 (본문 변경 X·헤더 페이지 번호만). 26 downtime-kpi (신규 32) 6대 리스크 매트릭스는 32 통합 유지·다운타임 의미 4 + 테스트 5종은 31 migration-test-vas로 이동 (사용자 디렉션 정합). **Step 4·5 페이지 번호 시프트 기록 (본문 변경 X·가드 67·71 정합)**: Step 4 영역 27~34 → 34~41 (+7)·Step 5 영역 35~42 → 42~49 (+7). §12-4 매핑 표 Step 3 영역 14행으로 확장·Step 4·5 영역 시프트 기록. §9-NEW 작성 영역 표 Step 3 영역 14행으로 갱신. **출처 표기 규칙 Step 2 v4 기준 유지** (canonical v1.4 §13-3 정합·"박제성 상무 인터뷰" 통일·자료명 중심·번호 표기 청중 노출 X — HTML 갱신은 본 차수 미진입·다음 차수 디자인 재구성 시점). dist 빌드 영향 X (Step 1 v12~v14·Step 2 v3.2~v3.3·Step 3 v1·Step 4 v1·Step 5 v1 빌드 보호·가드 18·22·32·35·39·41 정합). 디자인 요소 보호 정합 (가드 53·45·49). 표현 금지 5건 회피 정합 (가드 11). Bash 완전 배제 정합 (가드 7·65). 가드 82·83·84 본 차수 등록 (Step 3 14장 확정·문서 정합만·HTML 보호). 백업 생략. 다음 차수: Step 3 디자인 1차 재구성 (dist/preview-step3.html v1 → v2·신규 7장 영역 빌드 + 기존 7장 페이지 번호 시프트 + 25↔26 위치 교환 + 출처 일괄 정정).
 - v10.11 (2026.05.25) — **Step 1 v13 → v21 누적 보정 + Step 2 v3.2 매트릭스 영역 메모 차수** (Step 1 v14·v15·v16·v17·v18·v19·v20·v21 다중 보정 차수 누적 영역·dist/preview-step1.html 빌드 영역만·매트릭스 §9-NEW 본문 변경 X·디자인 보호 가드 53). Step 1 v14 외부 시점 검증 누락 4건 + Step 1 v15~v21 본인 시각 평가 영역 (HIGH·MEDIUM·F 영역 누적·P4 map 분리·P5 mix 라벨 grid·P6 quote 3줄 분리 등) 영역 빌드 메모만. Step 2 v3.2 영역 (HIGH 4 + MEDIUM 5 본문 동기화 + chapter2-intro 신설 영역·DS1~DS7 정합·H1 박제성 출처·H2 Make/Buy 강의 31p·H3 슬러그·H4 카드 4 출처·M1 §1.7 흡수·M2 카드 6 학술·M3 라벨 제거·M4 05.28 삭제·M5 분 단위 손익 통제 삭제) 영역 본 차수 매트릭스 §9-NEW 본문 갱신 X (자세한 본문 동기화 영역 본 차수 매우 큼·본인 결정 영역 권장·다음 차수). 매트릭스 §9-NEW 본문 영역은 v10.5·v10.6·v10.7·v10.8 영역 그대로 유지. 빌드 영역 (dist/preview-step1.html v13→v21·dist/preview-step2.html v3.1→v3.2) 만 변경 영역. 가드 53·45·49 정합 (디자인 보호)·가드 11 정합 (표현 금지 5건 회피)·가드 7·65 정합 (Bash 위반 영역 회수). 백업 생략.

@@ -155,10 +155,50 @@
     currentIndex = targetIndex;
     triggerCountUps(slides[targetIndex], 800);
 
+    // URL hash 갱신 — hp-num 영역 동기화 (북마크·뒤로 가기 영역 정합)
+    updateHash();
+
     setTimeout(() => { isTransitioning = false; }, TRANSITION_LOCK_MS);
   }
   function next() { goTo(currentIndex + 1); }
   function prev() { goTo(currentIndex - 1); }
+
+  /* ============== 4-bis. URL HASH NAVIGATION ============== */
+  function getHpNum(slideEl) {
+    const el = slideEl.querySelector('.hp-num');
+    return el ? parseInt(el.textContent, 10) : null;
+  }
+
+  function updateHash() {
+    const num = getHpNum(slides[currentIndex]);
+    if (num != null && !isNaN(num)) {
+      // replaceState — 페이지 reload X·history stack 영역 덮어쓰기
+      const padded = String(num).padStart(2, '0');
+      history.replaceState({}, '', '#' + padded);
+    }
+  }
+
+  function jumpToHash() {
+    const hash = (window.location.hash || '').replace(/^#/, '').trim();
+    if (!hash) return false;
+    const targetNum = parseInt(hash, 10);
+    if (isNaN(targetNum)) return false;
+    for (let i = 0; i < slides.length; i++) {
+      if (getHpNum(slides[i]) === targetNum) {
+        if (i !== currentIndex) {
+          // 초기 active 영역 정합 (init 시점·activeSlide 영역 다를 수 있음)
+          slides.forEach((s, idx) => {
+            if (idx === i) s.classList.add('active');
+            else s.classList.remove('active');
+          });
+          currentIndex = i;
+          triggerCountUps(slides[i], 800);
+        }
+        return true;
+      }
+    }
+    return false;
+  }
 
   /* ============== 5. KEYBOARD ============== */
   function onKey(e) {
@@ -192,6 +232,23 @@
         goTo(slides.length - 1);
         break;
 
+      case 'Enter':
+        // 숫자 입력 영역 즉시 확정 (1자리·2자리 모두 timeout 대기 X)
+        if (digitBuffer) {
+          e.preventDefault();
+          confirmDigitJump();
+        }
+        break;
+
+      case 'Escape':
+      case 'Esc':
+        // 숫자 입력 취소 영역
+        if (digitBuffer) {
+          e.preventDefault();
+          cancelDigitJump();
+        }
+        break;
+
       case 'f':
       case 'F':
         // Fullscreen toggle
@@ -209,13 +266,71 @@
         break;
 
       default:
-        // 1-9 slide jump
-        if (/^[1-9]$/.test(e.key)) {
-          const idx = parseInt(e.key, 10) - 1;
-          if (idx < slides.length) goTo(idx);
+        // 0-9 slide jump — 2자리 입력 영역 (600ms timeout 안 두 번째 숫자 입력 시 두 자리 점프)
+        if (/^[0-9]$/.test(e.key)) {
+          e.preventDefault();
+          tryDigitJump(e.key);
         }
         break;
     }
+  }
+
+  /* ============== 5-bis. DIGIT JUMP (1·2자리 통합 점프 + Enter 즉시 확정) ============== */
+  let digitBuffer = '';
+  let digitTimer = null;
+  const DIGIT_TIMEOUT_MS = 1200;  // 두 자릿수 입력 충분 영역 (600→1200)
+
+  function commitDigitJump() {
+    if (!digitBuffer) {
+      digitTimer = null;
+      return;
+    }
+    const targetNum = parseInt(digitBuffer, 10);
+
+    // 1순위 — hp-num 영역과 일치하는 슬라이드 찾기 (각 dist + 합본 모두 정합)
+    if (!isNaN(targetNum)) {
+      for (let i = 0; i < slides.length; i++) {
+        const hpNum = slides[i].querySelector('.hp-num');
+        if (hpNum && parseInt(hpNum.textContent, 10) === targetNum) {
+          goTo(i);
+          digitBuffer = '';
+          digitTimer = null;
+          return;
+        }
+      }
+      // 2순위 — hp-num 매칭 실패 시 슬라이드 인덱스 (1부터) fallback
+      const idx = targetNum - 1;
+      if (idx >= 0 && idx < slides.length) {
+        goTo(idx);
+      }
+    }
+    digitBuffer = '';
+    digitTimer = null;
+  }
+
+  function cancelDigitJump() {
+    if (digitTimer) clearTimeout(digitTimer);
+    digitBuffer = '';
+    digitTimer = null;
+  }
+
+  function confirmDigitJump() {
+    if (digitTimer) clearTimeout(digitTimer);
+    commitDigitJump();
+  }
+
+  function tryDigitJump(digit) {
+    if (digitTimer) clearTimeout(digitTimer);
+    digitBuffer += digit;
+
+    // 2자리 누적 시 즉시 점프 (예: 15·25·49)
+    if (digitBuffer.length >= 2) {
+      commitDigitJump();
+      return;
+    }
+
+    // 1자리 — timeout 후 단일 점프 (1200ms 영역 영역 두 번째 자리 입력 대기)
+    digitTimer = setTimeout(commitDigitJump, DIGIT_TIMEOUT_MS);
   }
 
   /* ============== 6. TOUCH / SWIPE (optional) ============== */
@@ -250,6 +365,16 @@
     document.addEventListener('keydown', onKey);
     document.addEventListener('touchstart', onTouchStart, { passive: true });
     document.addEventListener('touchend',   onTouchEnd,   { passive: true });
+
+    // URL hash navigation 진입 영역
+    // 1) 페이지 로드 시 hash 있으면 해당 슬라이드 영역 시작
+    const jumped = jumpToHash();
+    // 2) hash 없거나 매칭 실패 시 — 현재 슬라이드 hash 영역 초기 갱신
+    if (!jumped) {
+      updateHash();
+    }
+    // 3) 사용자 영역 URL 직접 변경 또는 뒤로/앞으로 가기 영역 정합
+    window.addEventListener('hashchange', jumpToHash);
 
     // Initial count-up after CSS reveal cascade
     // (KPI cards revealed at delay 1.4s–1.7s in CSS)
