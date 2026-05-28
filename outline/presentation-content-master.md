@@ -815,11 +815,11 @@
 
 ---
 
-### 26. 26 time-cost-scope — Step 3 §4.1·§4.2·§4.3 PMBOK Iron Triangle 통제 (v10.13 신규)
+### 26. 26 time-cost-scope — Step 3 §4.1·§4.2·§4.3 Iron Triangle 통제 (v10.13 신규)
 
-**핵심 메시지**: "PMBOK Iron Triangle — Time·Cost·Scope **3축 동시 통제**"
+**핵심 메시지**: "Iron Triangle — Time·Cost·Scope **3축 동시 통제**"
 
-**시각 구조**: 강의 PMBOK 정의 인용 박스 + 3축 카드 가로 1×3 (Time·Cost·Scope) + 본연 경쟁력 박스 + v3-msg 결론. Step 2 15 economic-feasibility와 구분 — Step 3 26은 PMBOK 3축 프레임.
+**시각 구조**: 강의 Iron Triangle 정의 인용 박스 + 3축 카드 가로 1×3 (Time·Cost·Scope) + 본연 경쟁력 박스 + v3-msg 결론. Step 2 15 economic-feasibility와 구분 — Step 3 26은 Iron Triangle 3축 프레임.
 
 **본문 영역**: 자세한 본문은 매트릭스 §9-NEW 26 time-cost-scope 영역 정합 — Time (25번 4 근거 회수) / Cost (비용 회피형 관리·docx §4.2 정확 표현) / Scope (3축 균형·법인+모듈+프로세스·본연 경쟁력 유지 박제성 인용).
 

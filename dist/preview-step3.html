@@ -939,7 +939,7 @@
     }
     .s25-card2__body em { color: var(--color-red); font-style: normal; font-weight: 800; }
 
-    /* 26 time-cost-scope: 3 카드 가로 + PMBOK 인용 */
+    /* 26 time-cost-scope: 3 카드 가로 + Iron Triangle 인용 */
     .s26-main2 {
       display: grid;
       grid-template-rows: auto auto auto 1fr auto auto;
@@ -1095,18 +1095,27 @@
     }
     .s29-baseline {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 50px 1fr;
       gap: 14px;
+      align-items: stretch;
     }
     .s29-baseline__item {
-      padding: 12px 18px;
+      padding: 14px 20px;
       background: var(--color-bg-cream);
       border-left: 4px solid var(--color-graphite);
       font-family: var(--font-sans);
       font-size: 17px; font-weight: 500;
       color: var(--color-ink-strong);
       line-height: 1.5;
+      box-sizing: border-box;
+      text-align: left;
+      word-break: keep-all;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
     }
+    .s29-baseline__item:first-child { grid-column: 1; }
+    .s29-baseline__item--active { grid-column: 3; }
     .s29-baseline__item--active { border-left-color: var(--color-red); }
     .s29-baseline__label {
       font-family: var(--font-mono);
@@ -3169,13 +3178,13 @@
               <div class="s21c-card__viz">
                 <svg class="s21c-viz--timeline" viewBox="0 0 400 100" aria-hidden="true">
                   <rect class="s21c-bar-old" x="20" y="28" width="360" height="14" />
-                  <text class="s21c-tl-label" x="20" y="22">12~18개월 (동종 사례 평균)</text>
+                  <text class="s21c-tl-label" x="20" y="22">12~18개월 (일반 SAP 구축 통상)</text>
                   <rect class="s21c-bar-new" x="20" y="58" width="140" height="20" />
                   <text class="s21c-tl-label" x="20" y="94" fill="var(--color-red)" font-weight="800">2017.04</text>
                   <text class="s21c-tl-label" x="160" y="94" fill="var(--color-red)" font-weight="800" text-anchor="end">2017.11</text>
                 </svg>
               </div>
-              <p class="s21c-card__key"><em>7개월</em> 동종 평균 대비 1.5~3배 압축</p>
+              <p class="s21c-card__key"><em>7개월</em> 일반 구축 통상 대비 1.5~3배 압축</p>
             </article>
             <!-- 카드 2 우상 · Continuity · 연속 가동 -->
             <article class="s21c-card s21c-card--continuity">
@@ -3418,7 +3427,7 @@
               </div>
               <h3 class="s22-tl-card__title">GEMS</h3>
               <p class="s22-tl-card__sub">자체 운영 · 환경 시스템 확장</p>
-              <p class="s22-tl-card__body">석유화학 최초 자체 구축 · Greenhouse Gas &amp; Energy Management</p>
+              <p class="s22-tl-card__body">석유화학 선도 도입 · 자체 구축 · Greenhouse Gas &amp; Energy Management</p>
               <span style="display:block;margin-top:10px;padding:7px 12px;background:var(--color-bg-cream);color:var(--color-graphite);font-family:var(--font-mono);font-size:13px;font-weight:800;letter-spacing:0.06em;border-left:3px solid var(--color-graphite)">축적 · 자체 운영 경험</span>
             </article>
             <div class="s22-tl-chevron" aria-hidden="true">›</div>
@@ -3673,8 +3682,8 @@
             Roll-out 적용 + 4 근거 결합 → <span class="v3-em">7개월 압축 가능</span>
           </h1>
           <div class="s25-compare reveal" style="--rev-delay:0.35s">
-            <span>SAP 표준 신규 구축 18~24개월 → 본 사례 <em>7개월 (2017.04~11)</em> · 1.5~3배 압축</span>
-            <span class="s25-compare__note">동종 사례 평균 12~18개월 대비도 1.5배 압축</span>
+            <span>일반 SAP 신규 구축 통상 18~24개월 → 본 사례 <em>7개월 (2017.04~11)</em> · 1.5~3배 압축</span>
+            <span class="s25-compare__note">SAP 컨버전 통상 12~18개월 대비도 1.5배 압축</span>
           </div>
           <div class="s25-grid reveal" style="--rev-delay:0.5s">
             <article class="s25-card2">
@@ -3718,7 +3727,7 @@
       </main>
     </section>
 
-    <!-- ============= SLIDE 27 · time-cost-scope v2 (PMBOK Iron Triangle·v3 시프트 26→27) ============= -->
+    <!-- ============= SLIDE 27 · time-cost-scope v2 (Iron Triangle·v3 시프트 26→27) ============= -->
     <section class="slide tone-c" data-slide="8">
       <header class="slide-head">
         <div class="brand"><img class="brand-logo" src="../shared/img_ci06.png" alt="롯데케미칼 로고" /></div>
@@ -3740,12 +3749,12 @@
             Time·Cost·Scope — <span class="v3-em">3 제약 동시 만족</span>
           </h1>
           <div class="s26-pmbok reveal" style="--rev-delay:0.35s">
-            <span class="s26-pmbok__label">프로젝트 관리의 3 제약 — PMBOK Iron Triangle</span>
+            <span class="s26-pmbok__label">프로젝트 관리의 3 제약 — Iron Triangle</span>
             일반 프로젝트는 보통 시간·비용·범위 중 하나를 희생해야 다른 둘을 만족시킨다 — 본 사례는 셋 다 만족시킨 차별적 사례
           </div>
           <div class="s26-cards reveal" style="--rev-delay:0.5s;display:grid;grid-template-columns:0.42fr 0.58fr;gap:24px;align-items:stretch;min-height:0">
 
-            <!-- 좌 — PMBOK Iron Triangle SVG 도식 (cream 배경 X·paper·동적 애니메이션) -->
+            <!-- 좌 — Iron Triangle SVG 도식 (cream 배경 X·paper·동적 애니메이션) -->
             <div style="display:flex;align-items:center;justify-content:center;padding:20px 24px;background:var(--color-paper);border:1px solid var(--color-line);border-left:5px solid var(--color-red);position:relative;min-height:0;overflow:visible">
               <svg viewBox="0 0 400 380" style="width:100%;height:auto;max-height:100%;display:block" aria-hidden="true">
                 <!-- 삼각형 외곽 — stroke draw 애니메이션 (1.4s·dashoffset 920→0) -->
@@ -3812,7 +3821,7 @@
                 </div>
                 <div style="display:flex;flex-direction:column;gap:6px;min-width:0;justify-content:center">
                   <span style="font-family:var(--font-sans);font-size:20px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.014em">7개월 압축 (2017.04~11)</span>
-                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5">동종 사례 평균 12~18개월 대비 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">1.5배 압축</em> · 4 근거 결합</span>
+                  <span style="font-family:var(--font-sans);font-size:14px;font-weight:600;color:var(--color-ink-soft);line-height:1.5">일반 SAP 구축 통상 12~18개월 대비 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">1.5배 압축</em> · 4 근거 결합</span>
                   <span style="display:inline-block;align-self:flex-start;padding:4px 12px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.06em;border-radius:3px;margin-top:2px">핵심 · 7개월 압축</span>
                 </div>
               </article>

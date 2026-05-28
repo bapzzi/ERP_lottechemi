@@ -2692,6 +2692,59 @@
       line-height: 1.5;
       text-align: right;
     }
+    .slide .s53-refs {
+      display: grid;
+      gap: 24px;
+      padding: 8px 0;
+    }
+    .slide .s53-refs__group {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      text-align: center;
+    }
+    .slide .s53-refs__label {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--color-red);
+    }
+    .slide .s53-refs__label::before,
+    .slide .s53-refs__label::after {
+      content: "";
+      display: inline-block;
+      width: 28px;
+      height: 1px;
+      background: var(--color-red);
+      opacity: 0.5;
+    }
+    .slide .s53-refs__items {
+      font-family: var(--font-sans);
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.75;
+      color: var(--color-ink-strong);
+      letter-spacing: -0.008em;
+      word-break: keep-all;
+      max-width: 1300px;
+    }
+    .slide .s53-team-meta {
+      margin: 0;
+      padding-top: 12px;
+      border-top: 1px solid var(--color-line);
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--color-ink-mute);
+      text-align: center;
+      letter-spacing: -0.005em;
+    }
 
     /* reduced motion */
     @media (prefers-reduced-motion: reduce) {
@@ -2771,7 +2824,7 @@
                 <span class="s44-num-circle">04</span>
                 <div class="s44-pi-card__body">
                   <h3 class="s44-pi-card__title">시사점 3</h3>
-                  <p class="s44-pi-card__sub">M&amp;A · 장치산업 · <span class="nowrap">2027 EOS</span></p>
+                  <p class="s44-pi-card__sub">M&amp;A · 장치산업 · <span class="nowrap">2027 지원 전환점</span></p>
                 </div>
               </div>
               <div class="s44-pi-card reveal" style="--rev-delay:0.8s">
@@ -2937,7 +2990,7 @@
                 <h3 class="s36-card__title">명확한 비즈니스 목표</h3>
               </div>
               <p class="s36-card__sub">4대 목표 사전 설정</p>
-              <p class="s36-card__body">① 3사 통합 · ② 글로벌 가시성 · ③ 중복투자 제거 · ④ <em>디지털 코어</em> — Step 2 의사결정 기반·Step 4 PIR 모두 달성</p>
+              <p class="s36-card__body">① 3사 통합 · ② 글로벌 가시성 · ③ 중복투자 제거 · ④ <em>디지털 코어</em> — Step 2 의사결정 기반·Step 4 PIR 모두 회수</p>
               <span class="s36-card__src">박제성 상무 인터뷰</span>
             </article>
             <article class="s36-card s36-card--active">
@@ -3279,14 +3332,14 @@
               </div>
             </article>
 
-            <!-- 카드 3 — 2027 ECC EOS 대비 (active·red top) -->
+            <!-- 카드 3 — 2027 ECC 지원 전환점 대응 (active·red top) -->
             <article style="display:flex;flex-direction:column;gap:14px;padding:22px 24px;background:var(--color-paper);border:1px solid var(--color-line);border-top:5px solid var(--color-red);min-height:0">
               <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
                 <span style="display:inline-flex;align-items:center;justify-content:center;width:48px;height:48px;border-radius:50%;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:22px;font-weight:800;flex-shrink:0">3</span>
-                <span style="padding:6px 14px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px">2027 ECC EOS 전환 기업</span>
+                <span style="padding:6px 14px;background:var(--color-red);color:var(--color-paper);font-family:var(--font-mono);font-size:12px;font-weight:800;letter-spacing:0.08em;border-radius:3px">2027 ECC 지원 전환점 기업</span>
               </div>
-              <h3 style="margin:0;font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.018em">2027 ECC EOS 대비</h3>
-              <p style="margin:0;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-soft);line-height:1.65;word-break:keep-all">SAP ECC를 보유하고 S/4HANA 전환을 앞둔 기업 — 단순 버전 업그레이드가 아니라 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">클라우드·AI·데이터 구조</em>까지 함께 결정해야 한다.</p>
+              <h3 style="margin:0;font-family:var(--font-sans);font-size:24px;font-weight:900;color:var(--color-red-deep);line-height:1.2;letter-spacing:-0.018em">2027 ECC 지원 전환점 대응</h3>
+              <p style="margin:0;font-family:var(--font-sans);font-size:17px;font-weight:600;color:var(--color-ink-soft);line-height:1.65;word-break:keep-all">SAP ECC 표준 지원 2027년 종료 · 연장 지원도 2030년 종료 — 단순 버전 업그레이드가 아니라 <em style="font-style:normal;font-weight:800;color:var(--color-red-deep)">클라우드·AI·데이터 구조</em>까지 함께 결정해야 한다.</p>
               <div style="margin-top:auto;padding:14px 18px;background:var(--color-bg-cream);border-left:4px solid var(--color-red);display:flex;flex-direction:column;gap:6px">
                 <span style="font-family:var(--font-mono);font-size:11px;font-weight:800;letter-spacing:0.08em;color:var(--color-red);text-transform:uppercase">적용 포인트</span>
                 <span style="font-family:var(--font-sans);font-size:15px;font-weight:800;color:var(--color-ink-strong);line-height:1.45;word-break:keep-all">Brownfield·Greenfield·Cloud 전환 전략을 조직 여건에 맞게 비교해야 한다.</span>
@@ -3736,9 +3789,22 @@
           <div class="s53-hero reveal" style="--rev-delay:0.25s">
             <span class="s53-hero__subtitle">Lotte Chemical SAP S/4HANA Case Study</span>
             <h1 class="s53-hero__title">감사합니다<br /><em>Q&amp;A</em></h1>
-            <p class="s53-hero__meta">롯데케미칼 SAP S/4HANA ERP 통합 사례 분석 · 광운대학교 경영대학 ERP개론 1팀</p>
           </div>
-          <div class="s53-roles reveal" style="--rev-delay:0.6s">
+          <div class="s53-refs reveal" style="--rev-delay:0.5s">
+            <div class="s53-refs__group">
+              <span class="s53-refs__label">기업 자료</span>
+              <span class="s53-refs__items">박제성 정보전략담당 상무 인터뷰 (2019·테크수다) · 롯데케미칼 제42기 사업보고서 (FY2017·금융감독원 DART) · 2018 정정 사업보고서 (이사회 의결사항 제3·7·14회) · 2020 신년사 · 회사 연혁</span>
+            </div>
+            <div class="s53-refs__group">
+              <span class="s53-refs__label">SAP 공식</span>
+              <span class="s53-refs__items">SAP Value Assurance 공식 자료 · SAP 2020.02.04 보도자료 (ECC 유지보수 연장) · SAP Learning 「Joint Production scenario」</span>
+            </div>
+            <div class="s53-refs__group">
+              <span class="s53-refs__label">산업·학술</span>
+              <span class="s53-refs__items">KPIA 「석유화학제조과정과 용도」 · 보안뉴스 「한국IBM 롯데카드 계정계 시스템 고도화」 · TechTarget 「What is SAP S/4HANA?」 · 광운대학교 경영대학 ERP개론 강의 자료</span>
+            </div>
+          </div>
+          <div class="s53-roles reveal" style="--rev-delay:0.7s">
             <div class="s53-roles__item">
               <span class="s53-roles__step">Step 1 · 2</span>
               <span class="s53-roles__name">성슬기</span>
@@ -3756,9 +3822,7 @@
               <span class="s53-roles__name">신해원</span>
             </div>
           </div>
-          <div class="s53-source-line reveal" style="--rev-delay:0.8s">
-            <strong>출처</strong>박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 2018 정정 사업보고서 · SAP Value Assurance 공식 자료 · 2020 보도자료 · 강의 자료 · 학술 보강 자료
-          </div>
+          <p class="s53-team-meta reveal" style="--rev-delay:0.85s">롯데케미칼 SAP S/4HANA ERP 통합 사례 분석 · 광운대학교 경영대학 ERP개론 1팀</p>
         </div>
       </main>
     </section>

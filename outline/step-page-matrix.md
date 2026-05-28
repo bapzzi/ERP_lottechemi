@@ -1650,21 +1650,21 @@ must_include:
 footer: 우하단 키보드 안내만
 ```
 
-### 26 time-cost-scope (Step 3 PMBOK Iron Triangle 통제) — v10.13 신규
+### 26 time-cost-scope (Step 3 Iron Triangle 통제) — v10.13 신규
 
 본 페이지는 docx Step 3 §4.1 + §4.2 + §4.3 「3대 제약 조건 통제: Time·Cost·Scope」 매핑.
 **페이지 번호 확정 (v10.13 신규)**: Step 3 14장 확장 차수 신규 페이지·26 time-cost-scope 슬러그.
-**핵심 메시지**: PMBOK Iron Triangle 3축 적용 — Time은 25 영역 4 근거 회수·Cost는 비용 회피형 관리·Scope는 3축 균형.
-**Step 2 15 economic-feasibility와 구분**: Step 2 15는 "경제적 타당성 4 요인 ROI 수렴" — Step 3 26은 "PMBOK 3축 통제 프레임 (Time·Cost·Scope 동시 균형)".
+**핵심 메시지**: Iron Triangle 3축 적용 — Time은 25 영역 4 근거 회수·Cost는 비용 회피형 관리·Scope는 3축 균형.
+**Step 2 15 economic-feasibility와 구분**: Step 2 15는 "경제적 타당성 4 요인 ROI 수렴" — Step 3 26은 "Iron Triangle 3축 통제 프레임 (Time·Cost·Scope 동시 균형)".
 
 ```
 구조:
 - 상단 v3-eyebrow + 헤드라인 52px
   - eyebrow: STEP 3 · 07
-  - 핵심 메시지: "PMBOK Iron Triangle — Time·Cost·Scope <em>3축 동시 통제</em>"
-- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + PMBOK 정의 인용 박스 + 3축 카드 가로 1×3 + 결론 v3-msg)
+  - 핵심 메시지: "Iron Triangle — Time·Cost·Scope <em>3축 동시 통제</em>"
+- 본문 grid: auto auto 1fr auto (4행 — 헤드라인 + Iron Triangle 정의 인용 박스 + 3축 카드 가로 1×3 + 결론 v3-msg)
 
-  영역 1 (강의 PMBOK 정의 인용 박스): cream + graphite border-left 4px
+  영역 1 (강의 Iron Triangle 정의 인용 박스): cream + graphite border-left 4px
   - "강의 자료 5p — '계획된 일정(Time) 내, 배정된 예산(Cost)을 사용하여, 합의한 업무(Scope)를 완수함으로 고객 만족(Quality) 극대화'"
   - 본 사례는 3대 제약이 가장 치열하게 충돌한 단계
 
@@ -1693,19 +1693,19 @@ footer: 우하단 키보드 안내만
   - 우측 출처: docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p
 
 must_include:
-- PMBOK Iron Triangle 정의 (강의 자료 5p 인용)
+- Iron Triangle 정의 (강의 자료 5p 인용)
 - Time·Cost·Scope 3축 카드
 - Cost는 "비용 회피형 관리" 정확 표현 (docx §4.2)
 - Scope는 3축 균형 (법인·모듈·프로세스)
 - 본연 경쟁력 유지 원칙 (박제성 정확 인용)
 - 결론: 3축 동시 만족·어느 하나도 희생 X
 
-시각 어휘: 강의 PMBOK 정의 박스 cream·3축 카드 가로 1×3·card-top-accent 4px red·픽토그램 3 (시계·동전·범위)·본연 경쟁력 박스 cream·v3-msg 결론
+시각 어휘: 강의 Iron Triangle 정의 박스 cream·3축 카드 가로 1×3·card-top-accent 4px red·픽토그램 3 (시계·동전·범위)·본연 경쟁력 박스 cream·v3-msg 결론
 
 자체 판단 결과:
 - grid 4행
 - 3축 카드 가로 1×3 동등 위계
-- 강의 PMBOK 정의 박스 cream (강의 인용 박스 패턴 정합)
+- 강의 Iron Triangle 정의 박스 cream (강의 인용 박스 패턴 정합)
 - 본연 경쟁력 박스 cream (박제성 인용·정보 위계 보조)
 - src 14px mono ink-mute (Cost·Scope 카드 docx § 인용)
 
@@ -2708,7 +2708,7 @@ footer: 우하단 키보드 안내만
   - 카드 4 (시사점 3): num-circle 50px red "4" + 픽토그램 56px (확장·다른 기업)
     - 라벨: "04 · 시사점 3"
     - 제목 22px: "어떤 기업에 적용 가능한가"
-    - body: "M&A 통합 기업 · 장치산업 · 2027 ECC EOS 대비"
+    - body: "M&A 통합 기업 · 장치산업 · 2027 ECC 지원 전환점 대응"
   - 카드 5 (본질 통찰 3·card.is-active red): num-circle 50px red "5" + 픽토그램 56px (코어 칩·플랫폼)
     - 라벨 red: "05 · 본질 통찰"
     - 제목 22px 900 red-deep: "통합 경영 플랫폼"
@@ -2979,7 +2979,7 @@ footer: 우하단 키보드 안내만
 ### 49 implications-3 (Step 5 §4 시사점 3가지) — v10.8 신규·v10.16 시프트 39→49
 
 본 페이지는 docx Step 5 §4 「타 기업 적용 시사점 3가지」 매핑.
-**content-thesis §2 보조 논지 1·3 매핑 페이지**: 시사 1 (M&A 통합) → 보조 논지 1 매핑·시사 3 (2027 ECC EOS·온프레미스 vs 클라우드) → 보조 논지 3 매핑.
+**content-thesis §2 보조 논지 1·3 매핑 페이지**: 시사 1 (M&A 통합) → 보조 논지 1 매핑·시사 3 (2027 ECC 지원 전환점·온프레미스 vs 클라우드) → 보조 논지 3 매핑.
 **페이지 번호 정합**: slides.yml 28장 골조 미매핑 영역 — v10.8 신규 슬러그 implications-3·페이지 번호 39 확정.
 
 ```
@@ -3000,8 +3000,8 @@ footer: 우하단 키보드 안내만
     - sub 18px: "24h 연속 가동·정유·제철·반도체"
     - body 20px: "① <em>다운타임 통제 최우선</em> 리스크 · ② SAP VAS 같은 구조화 서비스 활용 (자체 방법론 X) · ③ 통합형 컨버전 (Brownfield 성격) > Greenfield 신규"
     - 출처: "[1] [12]"
-  - 카드 3 (시사 3 2027 ECC EOS·card-top-accent 4px red·보조 논지 3 매핑): num-circle 50px red "3" + 픽토그램 56px (캘린더·전환)
-    - 제목 32px: "2027 ECC EOS 대비"
+  - 카드 3 (시사 3 2027 ECC 지원 전환점·card-top-accent 4px red·보조 논지 3 매핑): num-circle 50px red "3" + 픽토그램 56px (캘린더·전환)
+    - 제목 32px: "2027 ECC 지원 전환점 대응"
     - sub 18px: "국내 대기업 ECC 보유 기업"
     - body 20px: "① <em>조기 검토</em> = 일정 여유 + 리스크 통제 (롯데 2017 10년 전) · ② 컨버전 방식 우선 고려 · ③ 클라우드 vs 온프레미스 신중 결정 (SAP Cloud-First 정합)"
     - 출처: "docx Step 5 §4-3 · 보조 논지 3 매핑"
@@ -3011,7 +3011,7 @@ footer: 우하단 키보드 안내만
   - 우측 출처: docx Step 5 §4 + 강의 자료 31p
 
 must_include:
-- 시사 3건 모두 (M&A 통합·장치산업 다운타임·2027 ECC EOS)
+- 시사 3건 모두 (M&A 통합·장치산업 다운타임·2027 ECC 지원 전환점)
 - 시사 1·3 보조 논지 1·3 매핑 명시
 - 각 카드 3 영역 본문 (① ② ③)
 - 결론 — 강의 정합 가장 큰 리스크 통제 공통 핵심
@@ -3022,7 +3022,7 @@ must_include:
 - grid 3행
 - 3 카드 가로 1×3 균등 (Step 3 24·Step 5 37 패턴 정합·동등 위계)
 - 모든 카드 card-top-accent red (3 시사 모두 본 사례 핵심·차별 강조 X)
-- 픽토그램: 3원 통합 (M&A)·시계 플랜트 (장치산업)·캘린더 전환 (EOS)
+- 픽토그램: 3원 통합 (M&A)·시계 플랜트 (장치산업)·캘린더 전환 (지원 전환점)
 
 출처: [1] [8] [12] · docx Step 5 §4
 색상 비율 (가드 10): num-circle red 3 + card-top-accent red 3 + 픽토그램 red 3 + v3-msg + eyebrow = 약 5.5~6.5% (7% 이내 정합)
@@ -3224,7 +3224,7 @@ footer: 우하단 키보드 안내만
 | **23 four-methodologies (Step 3 §3.1 4대 구축 방법론 비교 + Roll-out 선정)** | 23 (v10.13 신규) | four-methodologies (신규 슬러그) | ○ (v10.13 신규) | 롯데케미칼 사업보고서 · docx Step 3 §3 |
 | 24 methodology-evolution (Step 3 §3.2 방법론 진화 + 비대칭성·새 디지털 코어) | 24 (v10.4 → v10.13 시프트 22→24·본문 변경 X·content-thesis §2 보조 논지 3 매핑 페이지 번호 갱신) | methodology-evolution | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · 회사 연혁 · content-thesis §2 보조 논지 3 |
 | **25 seven-month-grounds (Step 3 §4.1 7개월 압축 4 근거)** | 25 (v10.13 신규) | seven-month-grounds (신규 슬러그) | ○ (v10.13 신규) | 박제성 상무 인터뷰 · 롯데케미칼 사업보고서 · SAP Value Assurance 공식 자료 · docx Step 3 §4.1 |
-| **26 time-cost-scope (Step 3 §4.1·§4.2·§4.3 PMBOK Iron Triangle 통제)** | 26 (v10.13 신규) | time-cost-scope (신규 슬러그) | ○ (v10.13 신규) | docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p |
+| **26 time-cost-scope (Step 3 §4.1·§4.2·§4.3 Iron Triangle 통제)** | 26 (v10.13 신규) | time-cost-scope (신규 슬러그) | ○ (v10.13 신규) | docx Step 3 §4 · 박제성 상무 인터뷰 · 강의 자료 5p |
 | 27 not-standardize-all (Step 3 §5.1 GAP 진입 + 챕터 1 §8 회수 + AS-IS/TO-BE 6항목 표) | 27 (v10.4 → v10.13 시프트 23→27·본문 변경 X) | not-standardize-all | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 롯데케미칼 사업보고서 · docx Step 1 §6 + Step 3 GAP · content-thesis §2 보조 논지 2 |
 | 28 gap-three-tracks (Step 3 §5.2 GAP 3트랙 본문) | 28 (v10.4 → v10.13 시프트 24→28·본문 변경 X) | gap-three-tracks | ○ (v10.4 신규·v10.13 페이지 번호 시프트) | 강의 자료 27p · 박제성 상무 인터뷰 · 회사 연혁 · docx Step 3 §5 |
 | **29 configuration-baseline (Step 3 §4.4 + §5.5 Configuration·Baseline·Scope Creep 통제)** | 29 (v10.13 신규) | configuration-baseline (신규 슬러그) | ○ (v10.13 신규) | 강의 자료 29p·31p·13p·28p · docx Step 3 §4.4·§5.5 |
@@ -3491,7 +3491,7 @@ footer: 우하단 키보드 안내만
 | 23 | **four-methodologies** (v10.13 신규) | Step 3 §3.1 4대 구축 방법론 비교 (Big Bang·Phased·Pilot·Roll-out 트레이드오프) | (Step 2 13 four-alternatives 표 패턴 정합·Roll-out 선정 배지) |
 | 24 | **methodology-evolution** (v10.4 → v10.13 페이지 번호 시프트 22→24·본문 유지·content-thesis §2 보조 논지 3 매핑 페이지 번호 갱신) | Step 3 §3.2 방법론 진화 (2003 SMART → 2010 GEMS → 2017 S/4HANA 1610) | (4 방법론 비교 보조 영역은 23으로 분리·압축 4근거는 25로 분리) |
 | 25 | **seven-month-grounds** (v10.13 신규) | Step 3 §4.1 7개월 압축 4근거 (통합형 컨버전·13년 SAP·그룹 SI·SAP VAS) | (24 methodology-evolution v10.5 보조 영역에서 분리·독립 페이지) |
-| 26 | **time-cost-scope** (v10.13 신규) | Step 3 §4.1·§4.2·§4.3 PMBOK Iron Triangle (Time·Cost 회피형·Scope 균형) | (Step 2 15 economic-feasibility와 구분 — Step 3 26은 PMBOK 3축 프레임) |
+| 26 | **time-cost-scope** (v10.13 신규) | Step 3 §4.1·§4.2·§4.3 Iron Triangle (Time·Cost 회피형·Scope 균형) | (Step 2 15 economic-feasibility와 구분 — Step 3 26은 Iron Triangle 3축 프레임) |
 | 27 | **not-standardize-all** (v10.4 → v10.13 페이지 번호 시프트 23→27·본문 유지) | Step 3 §5.1 GAP 진입 + 챕터 1 §8 회수 + AS-IS/TO-BE 6항목 표 | (slides.yml 20 자리에서 이동·split-narrative 추가 권장) |
 | 28 | **gap-three-tracks** (v10.4 → v10.13 페이지 번호 시프트 24→28·본문 유지) | Step 3 §5.2 GAP 3트랙 본문 (BPR·Customizing·Add-on) | (Configuration 영역 29로 분리) |
 | 29 | **configuration-baseline** (v10.13 신규) | Step 3 §4.4 + §5.5 Configuration·Baseline·Scope Creep 통제 (강의 자료 29p "가장 큰 위험요소" + 13p·28p Baseline) | (사용자 디렉션 정합 — GAP 안 흡수 X·독립 페이지·강의 자료 직접 인용) |

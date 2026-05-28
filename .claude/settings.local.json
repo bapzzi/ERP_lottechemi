@@ -6,7 +6,20 @@
       "Bash(ls /Users/sinhaewon/claude/lotte-erp/dist/)",
       "Bash(ls -la /Users/sinhaewon/claude/lotte-erp/outline/archived/)",
       "Bash(ls -la /Users/sinhaewon/claude/lotte-erp/outline/)",
-      "Bash(unzip -p /Users/sinhaewon/claude/lotte-erp/docs/Step1_v4.docx word/document.xml)"
+      "Bash(unzip -p /Users/sinhaewon/claude/lotte-erp/docs/Step1_v4.docx word/document.xml)",
+      "Bash(kill %1)",
+      "Bash(rm -f /private/tmp/claude-501/-Users-sinhaewon-claude-lotte-erp/f17a800b-cf08-4fc6-bd23-3aff29ba2ed8/tasks/bnigbkkpo.output)",
+      "Bash(kill be6h2np8i *)",
+      "Bash(awk END{print NR} *)",
+      "Bash(tee /tmp/slide_markers.txt)",
+      "Read(//tmp/**)",
+      "Bash(python3 *)",
+      "Bash(awk *)",
+      "Bash(tee /tmp/step3_hp.txt)",
+      "Read(//Users/sinhaewon/Desktop/**)",
+      "Bash(/bin/echo hello *)",
+      "Bash(grep *)",
+      "Bash(git add *)"
     ]
   }
 }
