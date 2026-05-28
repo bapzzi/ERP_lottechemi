@@ -42,9 +42,12 @@
   }
 
   /* ============== 1. FETCH + INJECT ============== */
+  // cache-busting — 매 로드 시 신선한 preview-step*.html 가져옴 (브라우저 HTTP 캐시 영역 우회)
+  const CACHE_BUST = '?v=' + Date.now();
+
   for (const file of STEP_FILES) {
     try {
-      const res = await fetch(file);
+      const res = await fetch(file + CACHE_BUST);
       if (!res.ok) throw new Error('HTTP ' + res.status);
       const html = await res.text();
       const parser = new DOMParser();
