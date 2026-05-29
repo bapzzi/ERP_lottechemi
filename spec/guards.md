@@ -163,7 +163,8 @@
 - **dist 페이지 번호 정합 작업**: preview-step2~5 hp-num 재정렬(step2 11~21·step3 22~36·step4 37~47·step5 48~57) + step1 목차 카드 4건 + step4 흐름카드 배지·주석 12건 + step5 본문 안내 2건. dist preview-step1~5 5개 파일 커밋·push (`6472609`).
 - **가드 65 해제** (사용자 명시 승인): Bash 환경 오류 해소. Bash 도구 직접 사용 허용. `CLAUDE.md` §11 Bash 실행 규칙(foreground 기본·실행 전 선언·30초 기준·승인 원칙)만 적용.
 - **가드 66 실행 주체 제한 해제**: Claude Code가 git push 직접 수행 가능. push **시점** 규칙(66-1 Step 마감·66-2 분할 마감·66-3 발표 직전 필수)은 유지.
-- CLAUDE.md·spec "49장" → "57장" 정합: **v2.18 완료** (현재 상태 기술 라인 — §0 페이지 분배·§13-6·7·§14-2·5·content-thesis §2-1). 과거 차수 이력은 보존. 매트릭스(outline)·slides.yml 57장 정합은 outline 영역 다음 차수.
+- CLAUDE.md·spec "49장" → "57장" 정합: **v2.18 완료** (현재 상태 기술 라인 — §0 페이지 분배·§13-6·7·§14-2·5·content-thesis §2-1). 과거 차수 이력은 보존.
+- outline 정합: **slides.yml v2.0 (57장 dist 기준 지도) · step-page-matrix.md §0-NEW 현재 상태 박스 + §9-NEW 옛 번호 주석** v2.18 완료. matrix §9·§9-NEW 본문 전면 재작성은 빌드 완료로 실익 적어 다음 차수 선택.
 
 ---
 

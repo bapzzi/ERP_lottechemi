@@ -27,12 +27,11 @@
 - 결론은 56 final-conclusion (Step 5 §7) + 57 thanks-qna (Q&A·조원 역할) 마감
 
 ### v2.18 기준 미진입 항목 (다음 차수 결정)
-- `outline/slides.yml` 골조 보정 (28장 → 57장·outline 영역)
-- `outline/step-page-matrix.md` 57장 정합 (현재 v10.14 49장 기준·outline 영역)
 - `spec/content-thesis.md` §3 매핑 표 페이지 번호 갱신
+- `outline/step-page-matrix.md` §9·§9-NEW 본문 57장 전면 재작성 (선택·이미 빌드 완료라 실익 적음)
 - Step 2 잔여 디자인 보정 (11·13·16 표 본문 확대 등·발표 직전 일괄)
 
-**완료 (v2.18)**: Step 1~5 dist 빌드 57장 · hp-num 01~57 연속 정합 · 본문 페이지 참조(목차·흐름카드·안내) 정합 · 발표 치트시트 57장 재작성 · GitHub Pages 캐시 우회 · 가드 65·66 해제
+**완료 (v2.18)**: Step 1~5 dist 빌드 57장 · hp-num 01~57 연속 정합 · 본문 페이지 참조(목차·흐름카드·안내) 정합 · 발표 치트시트 57장 재작성 · GitHub Pages 캐시 우회 · 가드 65·66 해제 · **slides.yml v2.0 57장 지도 정합 · 매트릭스 §0-NEW 현재 상태 박스 추가**
 
 ### 아직 금지
 - `shared/script.js` 수정
@@ -361,7 +360,7 @@ lotte-erp/
 
 매트릭스 step-page-matrix.md와 outline/slides.yml은 슬라이드 번호·슬러그 매핑이 정합하지 않을 수 있다. 작업 진입 전 충돌 발견 시 작업 중단 + 본인 보고.
 
-매트릭스 §12-4 매핑 보정은 Step 1·2·3·4·5 영역 v10.14 정합 완료 (v2.15·v2.16 차수). slides.yml v1.0 → v2.0 골조 확장(현재 dist 57장 기준)은 발표 직전 일괄 진행 권장.
+매트릭스 §12-4 매핑 보정은 Step 1·2·3·4·5 영역 v10.14 정합 완료 (v2.15·v2.16 차수). slides.yml v1.0 → v2.0 골조 확장은 v2.18 완료 (57장 dist 기준 지도 정합).
 
 ### 13-6. 매트릭스 v10 골조 확장 인지
 
@@ -420,8 +419,6 @@ Step 1 GPT 피드백·Step 3 빌드 v1 마감·Step 4·5 §9-NEW 작성·Step 1 
 - 출처 §11 통합 (정합 ✗ 1건)
 - content-thesis §2 보조 논지 4 본문 갱신 + §3 매핑 표 페이지 번호 갱신
 - presentation-content-master.md v1.4 → v1.5
-- slides.yml v1.0 → v2.0 골조 확장 (57장 정합·§12-5 권장)
-- outline/step-page-matrix.md 57장 정합 (outline 영역·매트릭스 §9-NEW 49→57)
 - 전체 통합 검토 + 발표 리허설
 - 가드 66-3 발표 직전 통합 push (필수)
 
@@ -459,7 +456,8 @@ Step 1 GPT 피드백·Step 3 빌드 v1 마감·Step 4·5 §9-NEW 작성·Step 1 
 
 | 영역 | 본 세션 종료 시점 (v2.18) |
 |---|---|
-| 매트릭스 본문 | v10.14 §9-NEW 49장 + §12-4 매핑 + §11 출처 — dist는 57장 확장·매트릭스 57장 정합은 outline 다음 차수 |
+| 매트릭스 본문 | v10.14 §9-NEW 49장 기획 산출 + §0-NEW 현재 상태 박스 (v2.18·dist 57장 정합 명시) |
+| outline/slides.yml | v2.0 (57장 dist 기준 지도·hp-num 01~57·tone a2/b10/c45) |
 | dist/preview-step1.html | 10장 (01~10·hp-num 정합·캐시 우회) |
 | dist/preview-step2.html | 11장 (11~21·hp-num 정합·캐시 우회) |
 | dist/preview-step3.html | 15장 (22~36·hp-num 정합·디자인 재구성 완료·캐시 우회) |
