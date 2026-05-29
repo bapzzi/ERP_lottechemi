@@ -310,6 +310,7 @@ lotte-erp/
 
 본 차수 + 최근 2차수만 본체에 유지. v2.14 이하 전 영역은 `docs/changelog.md` 참조.
 
+- 2026.05.29 v2.18 · **dist 페이지 번호 01~57 연속 정합 + 가드 65·66 해제 차수**. dist preview-step2~5 hp-num 재정렬(step2 11~21·step3 22~36·step4 37~47·step5 48~57·step1과 합쳐 01~57 연속) + step1 목차 카드 4건(장수·페이지 범위) + step4 흐름카드 배지 6·주석 6(+2) + step5 본문 안내 2건("다음 50/51 페이지"·+4). 총 19곳 + hp-num 헤더. dist preview-step1~5 5개 파일 커밋·push (`6472609`). **가드 65 해제** (사용자 명시 승인): Bash 환경 오류 해소 → Bash 도구 직접 사용 허용·§11 Bash 실행 규칙만 적용. **가드 66 실행 주체 제한 해제**: Claude Code가 git push 직접 수행 가능·push 시점 규칙(66-1·66-2·66-3)은 유지. `spec/guards.md` §0·v2.7·v2.18 정합. dist 디자인·본문 시각 영역 변경 X (페이지 숫자만). 다음 차수: CLAUDE.md·spec "49장" → "57장" 정합.
 - 2026.05.26 v2.17 · **CLAUDE.md 분리 작업** (본인 디렉션 정합·대안 A 채택). 토큰 절감 + 진입점 정합 복원 목적. **신규 파일 4건**: `docs/changelog.md` (§12 v1.0~v2.14 외부화)·`spec/guards.md` (§13-4 가드 11~89 누적 외부화·영구 가드 명시)·`spec/session-log.md` (§13-9~§13-14 진입 누적 외부화)·`spec/git-push-flow.md` (§14-6 git push 흐름 외부화). **CLAUDE.md 본체 압축**: 약 1093줄 → 약 300줄. §0~§11·§13-1~§13-8·§14-1~§14-5 구조 유지·세부 표·픽토그램 어휘 등 핵심 정합 보존. §7 spec/ 디렉토리 가이드에 신규 3건 추가. §6-2 필요 시 로드에 신규 3건 추가. §12 변경 이력은 v2.17·v2.16·v2.15 본체 유지·이전 영역 `docs/changelog.md` 안내. §13-4 가드 누적 → `spec/guards.md` 안내. §13-9~§13-14 → `spec/session-log.md` 안내. §14-6 → `spec/git-push-flow.md` 안내. 디자인 요소 보호 (가드 53·45·49) 정합 ○. 표현 금지 5건 회피 (가드 11) 정합 ○. Bash 완전 배제 (가드 7·65) 정합 ○. dist/* 빌드 변경 X (모든 빌드 보호). 백업 생략. 다음 차수: 디자인 영역 또는 발표 직전 영역 (Step 2 잔여·출처 §11 통합·hp-num 일괄·slides.yml 골조).
 - 2026.05.25 v2.16 · **Step 4·5 안내 페이지 본문 신규 + 본론 16장 헤더 시프트 + content-thesis §3 갱신 차수 — 문서 정합만·dist 변경 X**. 매트릭스 §9-NEW Step 4 안내 (35 step4-intro-overview) + Step 5 안내 (44 step5-intro-overview) 본문 신규 작성. Step 4·5 본론 16장 헤더 페이지 번호 시프트 (v10.13 §12-4 시프트 기록만 → v10.14 §9-NEW 헤더 영역 실제 갱신·Step 4: 27→36 ~ 34→43·Step 5: 35→45 ~ 42→52). content-thesis §3 매핑 표 갱신 (보조 논지 1·3·4 회수 페이지 v10.14 정합). master §1 Step 4·5 본문 요약 동기화. dist 빌드 변경 X. 가드 88·89 본 차수 등록. 다음 차수: Step 4·5 dist 디자인 1차 재구성.
 - 2026.05.25 v2.15 · **Step 4·5 9장 확정 차수 — 문서 정합만·dist HTML 변경 X**. Step 4 9장 (35~43·step4-intro-overview 신규 + 본론 8장 페이지 시프트 +1)·Step 5 9장 (44~52·step5-intro-overview 신규 + 본론 8장 시프트 +1). 43 pir-conclusion 한계 5건 보조 표 축소·52 final-conclusion 핀잡 시각 주인공·출처 13건 source-line 압축. Step 4·5 한계 관점 분리 (Step 4 = PIR 검증 가능 범위·Step 5 = 일반화 트레이드오프). 매트릭스 v10.13 → v10.14·content-thesis v10.13 → v10.14·master v1.3 → v1.4. dist 빌드 영역 변경 X. 가드 85·86·87 본 차수 등록. 다음 차수: Step 4·5 dist 디자인 1차 재구성.
@@ -478,11 +479,11 @@ Step 1 GPT 피드백·Step 3 빌드 v1 마감·Step 4·5 §9-NEW 작성·Step 1 
 
 ### 14-6. git push 운영 흐름
 
-상세는 `spec/git-push-flow.md` 참조 (가드 66·66-1·66-2·66-3 영구 적용 영역).
+상세는 `spec/git-push-flow.md` 참조 (가드 66·66-1·66-2·66-3 — push **시점** 규칙은 영구 유지·**실행 주체 제한은 2026.05.29 v2.18 해제**).
 
 **요약**:
 - 가드 66-1: Step 마감 시점 push (기본)
 - 가드 66-2: 분할 마감 시점 push (선택)
 - 가드 66-3: 발표 직전 통합 push (필수)
-- Claude Code Bash 도구 X (가드 7·65). 본인 직접 터미널 실행.
+- **Claude Code가 git push 직접 수행 가능** (2026.05.29 v2.18·가드 65·66 해제). `§11` Bash 실행 규칙(foreground 기본·실행 전 선언·승인 원칙) 적용. 본인 직접 터미널 실행도 병행 가능.
 - GitHub Pages: https://bapzzi.github.io/ERP_lottechemi/dist/preview-step*.html

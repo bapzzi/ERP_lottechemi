@@ -15,8 +15,8 @@
 - **가드 11** — 표현 금지 5건. "글로벌 싱글 인스턴스"·"OPERA"·"자금 여유"·학자명 본문 노출·"Brownfield" 단정 회피. `CLAUDE.md` §3-3·§3-5 정합.
 - **가드 45·49·53** — 디자인 요소 보호. 시각 어휘·글자 강제 룰·SVG 픽토그램·색상 비율·grid·layout 변경 X. 텍스트 본문 영역만 변경 가능.
 - **가드 60** — 3가지 문서 역할 분리 (SESSION_STATE.md / CLAUDE.md / matrix·content-thesis).
-- **가드 65** — Bash 완전 배제. `Bash`·`BashOutput` 도구 호출 자체 X. 허용 도구: `Read`·`Write`·`Edit`·`Glob`·`Grep`만.
-- **가드 66·66-1·66-2·66-3** — git push 운영 규칙. Step 마감/분할 마감/발표 직전 push 영역. 본인 직접 터미널 실행 (Claude Code Bash X). 상세는 `spec/git-push-flow.md` 참조.
+- **가드 65** — ~~Bash 완전 배제~~ **→ 2026.05.29 해제 (v2.18·사용자 명시 승인)**. Bash 환경 오류 해소로 `Bash` 도구 직접 사용 허용. 이제 `CLAUDE.md` §11 Bash 실행 규칙(foreground 기본·실행 전 선언·30초 기준)만 적용한다.
+- **가드 66·66-1·66-2·66-3** — git push 운영 규칙. **→ 2026.05.29 실행 주체 제한 해제 (v2.18)**: Claude Code가 `git` push를 직접 수행 가능. push **시점** 규칙(66-1 Step 마감·66-2 분할 마감·66-3 발표 직전 필수)은 그대로 유지. 상세는 `spec/git-push-flow.md` 참조.
 
 ---
 
@@ -110,8 +110,8 @@
 
 ### v2.7 — Step 3 빌드 v1 마감 + git push 운영 규칙 신설 (영구 가드 포함)
 
-- **가드 65** (영구): Bash 완전 배제 강화 — `Bash`·`BashOutput` 도구 호출 자체 X·예외 없음. 직전 차수 Exit 143 영역 재발 방지. 허용 도구: `Read`·`Write`·`Edit`·`Glob`·`Grep`만. Bash 우회 매핑: `wc`/`cat` → Read · `grep` → Grep · `ls`/`find` → Glob · `diff` → 본인 환경 권장. 사전 체크 4단계: ① 본 명령이 허용 도구로 대체 가능한가? → ② 대체 가능 시 허용 도구 진입 → ③ 대체 불가능 시 본인 보고 + 결정 대기 → ④ 어떤 경우에도 Bash 도구 직접 호출 X.
-- **가드 66** (영구): Step 마감 시점 git push 자동 진입. 상세는 `spec/git-push-flow.md`.
+- **가드 65** (~~영구~~ · **2026.05.29 해제**): Bash 완전 배제 강화 — `Bash`·`BashOutput` 도구 호출 자체 X·예외 없음. 직전 차수 Exit 143 영역 재발 방지. 허용 도구: `Read`·`Write`·`Edit`·`Glob`·`Grep`만. **→ v2.18에서 해제: Bash 환경 오류 해소로 Bash 도구 직접 사용 허용. `CLAUDE.md` §11 Bash 실행 규칙만 적용.**
+- **가드 66** (~~영구~~ · **2026.05.29 실행 주체 제한 해제**): Step 마감 시점 git push 자동 진입. 상세는 `spec/git-push-flow.md`. **→ v2.18: Claude Code가 git push 직접 수행 가능. push 시점 규칙(66-1·66-2·66-3)은 유지.**
 - **가드 66-1** (영구): Step 마감 시점 push (기본).
 - **가드 66-2** (영구): 분할 마감 시점 push (선택).
 - **가드 66-3** (영구): 발표 직전 통합 push (필수).
@@ -157,6 +157,13 @@
 ### v2.16 — Step 4·5 안내 페이지 본문 신규 + 본론 16장 헤더 시프트 차수 (가드 88·89)
 
 `docs/changelog.md` v2.16 라인 참조. 안내 페이지 본문 작성·본론 헤더 실제 시프트.
+
+### v2.18 — dist 페이지 번호 01~57 연속 정합 + 가드 65·66 해제 차수 (2026.05.29)
+
+- **dist 페이지 번호 정합 작업**: preview-step2~5 hp-num 재정렬(step2 11~21·step3 22~36·step4 37~47·step5 48~57) + step1 목차 카드 4건 + step4 흐름카드 배지·주석 12건 + step5 본문 안내 2건. dist preview-step1~5 5개 파일 커밋·push (`6472609`).
+- **가드 65 해제** (사용자 명시 승인): Bash 환경 오류 해소. Bash 도구 직접 사용 허용. `CLAUDE.md` §11 Bash 실행 규칙(foreground 기본·실행 전 선언·30초 기준·승인 원칙)만 적용.
+- **가드 66 실행 주체 제한 해제**: Claude Code가 git push 직접 수행 가능. push **시점** 규칙(66-1 Step 마감·66-2 분할 마감·66-3 발표 직전 필수)은 유지.
+- 미정합 잔여: CLAUDE.md·spec 문서의 "49장" → "57장" 정합 (다음 차수).
 
 ---
 
