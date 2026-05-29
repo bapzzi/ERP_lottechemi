@@ -2,6 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    /* GitHub Pages 브라우저 캐시 우회 — ?v= 없으면 시각 붙여 1회 리다이렉트 (무한 루프 방지) */
+    (function(){ if (!/[?&]v=/.test(location.search)) { location.replace(location.pathname + '?v=' + Date.now() + location.hash); } })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>롯데케미칼 SAP S/4HANA 사례 — Step 2 빌드 v5 Phase A (09·10 canonical 정합 재작성·v4.1 임시 영역 폐기·mini-conclusion 통일·별도 source-line)</title>
 

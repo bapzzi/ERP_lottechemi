@@ -2,6 +2,10 @@
 <html lang="ko">
 <head>
   <meta charset="UTF-8" />
+  <script>
+    /* GitHub Pages 브라우저 캐시 우회 — ?v= 없으면 시각 붙여 1회 리다이렉트 (무한 루프 방지) */
+    (function(){ if (!/[?&]v=/.test(location.search)) { location.replace(location.pathname + '?v=' + Date.now() + location.hash); } })();
+  </script>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>롯데케미칼 SAP S/4HANA 사례 — Step 4 빌드 v2 (9장 · 35 step4-intro-overview 신규 + 36~43 본론 시프트)</title>
 
