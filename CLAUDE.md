@@ -22,15 +22,17 @@
 - 핵심 메시지 카피 (`spec/content-thesis.md` §1)
 - 4개 보조 논지 (M&A 통합 압력 / 산업 특성과 시스템 차이 / 트레이드오프 관리 / SAP 중심 플랫폼)
 - 발표 구조 — docx Step 1~5 순서를 챕터 단위로 따름. 표지(01) + 발표 흐름 미리보기(02 toc) + Step 1~5 챕터 본론 + 결론
-- **현재 페이지 분배 (v2.14 기준·총 49장)**: Step 1 10장 (01~10) + Step 2 11장 (11~19·chapter2-intro 포함) + **Step 3 14장 (20~33·v10.13 확정)** + Step 4 8장 (34~41) + Step 5 8장 (42~49)
+- **현재 페이지 분배 (v2.18 기준·총 57장)**: Step 1 10장 (01~10) + Step 2 11장 (11~21) + **Step 3 15장 (22~36)** + Step 4 11장 (37~47) + Step 5 10장 (48~57)
 - 청중 노출용 페이지 번호는 단독 표기·분모 비노출 (가드 8)
-- 결론은 49 final-conclusion (Step 5 §7) 단일 페이지로 회수
+- 결론은 56 final-conclusion (Step 5 §7) + 57 thanks-qna (Q&A·조원 역할) 마감
 
-### v2.14 기준 미진입 항목 (다음 차수 결정)
-- Step 3 디자인 1차 재구성 (`dist/preview-step3.html` v1 → v2·14장 빌드)
-- Step 4·5 dist 헤더 페이지 번호 시프트 (+7)
-- slides.yml 골조 보정 (28장 → 49장)
-- Step 2 잔여 보정 + hp-num 일괄 + content-thesis §3 매핑 표 페이지 번호 갱신 (발표 직전 일괄)
+### v2.18 기준 미진입 항목 (다음 차수 결정)
+- `outline/slides.yml` 골조 보정 (28장 → 57장·outline 영역)
+- `outline/step-page-matrix.md` 57장 정합 (현재 v10.14 49장 기준·outline 영역)
+- `spec/content-thesis.md` §3 매핑 표 페이지 번호 갱신
+- Step 2 잔여 디자인 보정 (11·13·16 표 본문 확대 등·발표 직전 일괄)
+
+**완료 (v2.18)**: Step 1~5 dist 빌드 57장 · hp-num 01~57 연속 정합 · 본문 페이지 참조(목차·흐름카드·안내) 정합 · 발표 치트시트 57장 재작성 · GitHub Pages 캐시 우회 · 가드 65·66 해제
 
 ### 아직 금지
 - `shared/script.js` 수정
@@ -359,19 +361,19 @@ lotte-erp/
 
 매트릭스 step-page-matrix.md와 outline/slides.yml은 슬라이드 번호·슬러그 매핑이 정합하지 않을 수 있다. 작업 진입 전 충돌 발견 시 작업 중단 + 본인 보고.
 
-매트릭스 §12-4 매핑 보정은 Step 1·2·3·4·5 영역 v10.14 정합 완료 (v2.15·v2.16 차수). slides.yml v1.0 → v2.0 골조 확장(42장·v2.15·v2.16 정합)은 발표 직전 일괄 진행 권장.
+매트릭스 §12-4 매핑 보정은 Step 1·2·3·4·5 영역 v10.14 정합 완료 (v2.15·v2.16 차수). slides.yml v1.0 → v2.0 골조 확장(현재 dist 57장 기준)은 발표 직전 일괄 진행 권장.
 
 ### 13-6. 매트릭스 v10 골조 확장 인지
 
-매트릭스 v10은 slides.yml 28장 기준 통합 + 매트릭스 v9 1차 산출 15장 골조 본문 흡수 + §9-NEW 신규 페이지 §3 강제 명시 영역 추가. v10.14 시점 §9-NEW 작성 영역 = Step 1·2·3·4·5 본문 + 안내 페이지 2장 = 49장 정합 완료.
+매트릭스 v10은 slides.yml 28장 기준 통합 + 매트릭스 v9 1차 산출 15장 골조 본문 흡수 + §9-NEW 신규 페이지 §3 강제 명시 영역 추가. v10.14 시점 §9-NEW 작성 영역 = Step 1·2·3·4·5 본문 + 안내 페이지 2장 = 49장 정합 완료. (단 dist 빌드는 v2.18에서 57장으로 확장됨 — 매트릭스 §9-NEW 57장 정합은 outline 영역 다음 차수.)
 
 §9-NEW 차수별 작성 누적 영역(06·12·16·09·10·11·13·14·15·17·18·19·Step 3 14장·Step 4 9장·Step 5 9장)은 `docs/changelog.md` v2.0 ~ v2.16 라인 참조.
 
 ### 13-7. hp-num 일괄 보정 차수 보류 운영 메모
 
-가드 21 정합 — hp-num(청중 노출 페이지 번호) 보정은 발표 직전 전체 빌드 완료 후 일괄 보정.
+가드 21 정합 — hp-num(청중 노출 페이지 번호) 보정은 발표 직전 전체 빌드 완료 후 일괄 보정. **→ v2.18 완료 (전체 57장 빌드 후 hp-num 01~57 연속 정합 + 본문 페이지 참조 정합). 아래 메모는 이력 보존.**
 
-**일괄 보정 진입 시점**: 전체 49장 빌드 진입 차수 (Step 3·4·5 디자인 1차 재구성 + Step 2 잔여 보정 완료 후).
+**일괄 보정 진입 시점**: 전체 57장 빌드 완료 후 (Step 3·4·5 디자인 재구성 + hp-num 정합 완료).
 **일괄 보정 영역**: hp-num + (필요 시) deck data-slide·슬라이드 위치 재정렬.
 **일괄 보정 가드**: 본문 영역(시각·텍스트·레이아웃) 변경 X — hp-num·data-slide만.
 
@@ -406,26 +408,20 @@ Step 1 GPT 피드백·Step 3 빌드 v1 마감·Step 4·5 §9-NEW 작성·Step 1 
 
 ### 14-2. 신규 세션 첫 차수 권장 진입 영역
 
-**완료 영역 (v2.16 시점 누적)**:
-- ✅ Step 1~5 §9-NEW 영역 모두 docx 본문 매핑 완료 (v2.16 정합 49장)
-- ✅ Step 1~5 빌드 v1 전체 영역 완료 (총 36장 슬라이드 빌드)
-- ✅ Step 4·5 안내 페이지 신규 추가 + 본론 헤더 시프트 (v2.16)
-- ✅ CLAUDE.md 분리 작업 (v2.17)
+**완료 영역 (v2.18 시점 누적)**:
+- ✅ Step 1~5 §9-NEW docx 본문 매핑 완료
+- ✅ Step 1~5 dist 빌드 완료 (총 57장)
+- ✅ Step 3 디자인 재구성 (15장·22~36) + Step 4·5 디자인 재구성·헤더 시프트 (37~47·48~57)
+- ✅ hp-num 01~57 연속 정합 + 본문 페이지 참조(목차·흐름카드·안내) 정합 (v2.18)
+- ✅ 발표 치트시트 57장 재작성 + GitHub Pages 캐시 우회 (v2.18)
+- ✅ CLAUDE.md 분리 작업 (v2.17) · 가드 65·66 해제 (v2.18)
 
-**우선순위 1 — Step 3 디자인 1차 재구성**:
-- dist/preview-step3.html v1 → v2 (14장 빌드·v10.13 확정 정합)
-- 신규 7장 영역 빌드 + 기존 7장 페이지 번호 시프트 + 25↔26 위치 교환 + 출처 일괄 정정
-
-**우선순위 2 — Step 4·5 dist 디자인 1차 재구성**:
-- preview-step4.html v1 → v2 (9장) + preview-step5.html v1 → v2 (9장)
-- 신규 안내 페이지 빌드 + 기존 8장씩 헤더 시프트 + 출처 일괄 정정 + 43 한계 보조 축소 + 52 출처 작은 source-line
-
-**우선순위 3 — 발표 직전 잔여 영역** (가드 71 정합):
+**우선순위 1 — 발표 직전 잔여 영역** (가드 71 정합):
 - 출처 §11 통합 (정합 ✗ 1건)
-- hp-num 일괄 보정 (§13-7)
-- content-thesis §2 보조 논지 4 본문 갱신
+- content-thesis §2 보조 논지 4 본문 갱신 + §3 매핑 표 페이지 번호 갱신
 - presentation-content-master.md v1.4 → v1.5
-- slides.yml v1.0 → v2.0 골조 확장 (49장 정합·§12-5 권장)
+- slides.yml v1.0 → v2.0 골조 확장 (57장 정합·§12-5 권장)
+- outline/step-page-matrix.md 57장 정합 (outline 영역·매트릭스 §9-NEW 49→57)
 - 전체 통합 검토 + 발표 리허설
 - 가드 66-3 발표 직전 통합 push (필수)
 
@@ -461,21 +457,23 @@ Step 1 GPT 피드백·Step 3 빌드 v1 마감·Step 4·5 §9-NEW 작성·Step 1 
 
 본 세션 종료 시점·신규 세션 진입 영역 무결성 검증:
 
-| 영역 | 본 세션 종료 시점 (v2.17) |
+| 영역 | 본 세션 종료 시점 (v2.18) |
 |---|---|
-| 매트릭스 본문 | v10.14 §9-NEW 49장 (Step 1·2·3·4·5 본문 + 안내 2장) + §12-4 매핑 + §11 출처 |
-| dist/preview-step1.html | v13 (10장·신규 slide 10 결론·hp-num 정합) |
-| dist/preview-step2.html | v3.2 (11장·13 four-alternatives 보정) |
-| dist/preview-step3.html | v1 (7장·다음 차수 v2 → 14장) |
-| dist/preview-step4.html | v1 (8장·다음 차수 v2 → 9장·헤더 시프트) |
-| dist/preview-step5.html | v1 (8장·다음 차수 v2 → 9장·헤더 시프트) |
+| 매트릭스 본문 | v10.14 §9-NEW 49장 + §12-4 매핑 + §11 출처 — dist는 57장 확장·매트릭스 57장 정합은 outline 다음 차수 |
+| dist/preview-step1.html | 10장 (01~10·hp-num 정합·캐시 우회) |
+| dist/preview-step2.html | 11장 (11~21·hp-num 정합·캐시 우회) |
+| dist/preview-step3.html | 15장 (22~36·hp-num 정합·디자인 재구성 완료·캐시 우회) |
+| dist/preview-step4.html | 11장 (37~47·hp-num 정합·캐시 우회) |
+| dist/preview-step5.html | 10장 (48~57·hp-num 정합·캐시 우회) |
+| dist/presentation.html | 합본 컨트롤러 (master.js·hp-num 01~57·캐시 우회) |
+| dist/cheatsheet.html | v2.0 (57장·발표 멘트 + 쉬운 답변·캐시 우회) |
 | content-thesis | §1·§2 (보조 논지 4건)·§4 (표현 금지 5건)·§5 변경 이력 v10.14 |
 | presentation-content-master | v1.4 |
 | docs/md | Step1·2·3·4·5_v4.md 5개 (본인 pandoc 변환) |
 | docs/changelog.md | v2.17 신설 (변경 이력 v1.0~v2.14 외부화) |
-| spec/guards.md | v2.17 신설 (가드 11~89 누적 외부화) |
+| spec/guards.md | v2.17 신설 · v2.18 가드 65·66 해제 등록 |
 | spec/session-log.md | v2.17 신설 (§13-9~§13-14 진입 누적 외부화) |
-| spec/git-push-flow.md | v2.17 신설 (§14-6 git push 흐름 외부화) |
+| spec/git-push-flow.md | v2.17 신설 · v2.18 실행 주체 해제 갱신 |
 
 ### 14-6. git push 운영 흐름
 
