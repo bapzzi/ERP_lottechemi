@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<script>
+  /* GitHub Pages 브라우저 캐시 우회 — ?v= 없으면 시각 붙여 1회 리다이렉트 (무한 루프 방지) */
+  (function(){ if (!/[?&]v=/.test(location.search)) { location.replace(location.pathname + '?v=' + Date.now() + location.hash); } })();
+</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>롯데케미칼 SAP S/4HANA — 발표 치트시트 (57장)</title>
+<style>
+  /* ============ Reset · Base ============ */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { font-size: 13px; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Pretendard", "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+    color: #1a1a1a;
+    line-height: 1.55;
+    background: #f4f4f0;
+    padding: 16mm 12mm;
+  }
+
+  /* ============ Layout ============ */
+  .doc {
+    max-width: 195mm;
+    margin: 0 auto;
+  }
+  .doc-header {
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid #1a1a1a;
+  }
+  .doc-title {
+    font-size: 22px;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+  .doc-sub {
+    font-size: 11px;
+    color: #555;
+    margin-top: 4px;
+  }
+  .doc-meta {
+    font-size: 10px;
+    color: #888;
+    margin-top: 4px;
+  }
+  .how {
+    background: #eaf3fb;
+    border: 1px solid #cfe1f2;
+    border-left: 4px solid #1d6fb8;
+    padding: 9px 13px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+    font-size: 11px;
+    color: #103a5c;
+    line-height: 1.6;
+  }
+  .how b { color: #1d6fb8; }
+
+  /* ============ Step Section ============ */
+  .step {
+    margin-top: 18px;
+    page-break-before: always;
+  }
+  .step:first-of-type { page-break-before: avoid; margin-top: 14px; }
+  .step-header {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 8px 14px;
+    border-radius: 4px;
+    font-size: 15px;
+    font-weight: 700;
+    margin-bottom: 10px;
+    letter-spacing: -0.01em;
+  }
+  .step-header .ct { color: #ff8a8a; margin-left: 8px; font-size: 11px; font-weight: 500; }
+
+  /* ============ Card ============ */
+  .card {
+    background: #fff;
+    border: 1px solid #d4d4cf;
+    border-left: 4px solid #c70039;
+    padding: 10px 14px 12px;
+    margin-bottom: 8px;
+    border-radius: 3px;
+    page-break-inside: avoid;
+    break-inside: avoid;
+  }
+  .card.intro { border-left-color: #999; background: #fafaf7; }
+  .card.critical { border-left-color: #c70039; border-left-width: 6px; }
+  .card-head {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    margin-bottom: 7px;
+    padding-bottom: 6px;
+    border-bottom: 1px dashed #d4d4cf;
+  }
+  .card-no {
+    font-size: 11px;
+    font-weight: 800;
+    background: #1a1a1a;
+    color: #fff;
+    padding: 2px 7px;
+    border-radius: 3px;
+    letter-spacing: 0.04em;
+    flex-shrink: 0;
+  }
+  .card.intro .card-no { background: #888; }
+  .card.critical .card-no { background: #c70039; }
+  .card-title {
+    font-size: 12.5px;
+    font-weight: 700;
+    color: #1a1a1a;
+  }
+  .card-tag {
+    font-size: 9px;
+    font-weight: 700;
+    color: #c70039;
+    margin-left: auto;
+    flex-shrink: 0;
+  }
+
+  /* ============ Say (발표 멘트) ============ */
+  .say {
+    background: #eaf3fb;
+    border-left: 3px solid #1d6fb8;
+    padding: 7px 11px;
+    margin-bottom: 8px;
+    font-size: 11.5px;
+    color: #103a5c;
+    border-radius: 2px;
+    line-height: 1.55;
+  }
+  .say::before { content: "🎤 이렇게 말하세요 — "; font-weight: 800; color: #1d6fb8; }
+
+  /* ============ Q-A Block ============ */
+  .qa { margin-bottom: 6px; }
+  .qa:last-child { margin-bottom: 0; }
+  .q {
+    font-size: 11.5px;
+    font-weight: 600;
+    color: #c70039;
+    margin-bottom: 2px;
+  }
+  .q::before { content: "Q. "; font-weight: 800; }
+  .a {
+    font-size: 11px;
+    color: #1a1a1a;
+    padding-left: 14px;
+    line-height: 1.55;
+  }
+  .a::before { content: "A. "; font-weight: 800; color: #2a2a2a; margin-left: -14px; }
+  .src {
+    font-size: 9.5px;
+    color: #888;
+    padding-left: 14px;
+    margin-top: 1px;
+    font-style: italic;
+  }
+  .src::before { content: "↳ 출처: "; }
+  .warn {
+    background: #fff8e1;
+    border-left: 3px solid #ffb300;
+    padding: 4px 8px;
+    margin-top: 3px;
+    margin-left: 14px;
+    font-size: 10.5px;
+    color: #6b4d00;
+    border-radius: 2px;
+  }
+  .warn::before { content: "⚠ 발표 전 확인 — "; font-weight: 800; }
+
+  /* ============ Boards (즉답·메타) ============ */
+  .board {
+    background: #1a1a1a;
+    color: #fff;
+    padding: 14px 16px;
+    border-radius: 4px;
+    margin-top: 14px;
+    page-break-inside: avoid;
+  }
+  .board-title {
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 8px;
+    color: #ff8a8a;
+  }
+  .board table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5px;
+  }
+  .board th, .board td {
+    text-align: left;
+    padding: 4px 8px;
+    border-bottom: 1px solid #333;
+  }
+  .board th {
+    color: #ff8a8a;
+    font-weight: 700;
+    width: 32%;
+  }
+  .board td { color: #eee; }
+
+  /* ============ Index ============ */
+  .index {
+    background: #fff;
+    border: 1px solid #d4d4cf;
+    padding: 10px 14px;
+    border-radius: 3px;
+    margin-bottom: 14px;
+  }
+  .index-title {
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 6px;
+  }
+  .index-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 4px 12px;
+    font-size: 10px;
+  }
+  .index-item { color: #555; }
+  .index-item b { color: #c70039; margin-right: 4px; }
+
+  /* ============ Print ============ */
+  @page {
+    size: A4 portrait;
+    margin: 12mm 10mm;
+  }
+  @media print {
+    html { font-size: 12px; }
+    body {
+      background: #fff;
+      padding: 0;
+    }
+    .doc { max-width: 100%; }
+    .card { box-shadow: none; }
+    .no-print { display: none; }
+  }
+
+  /* ============ Print Button ============ */
+  .print-btn {
+    position: fixed;
+    top: 16px;
+    right: 16px;
+    background: #c70039;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    z-index: 100;
+  }
+  .print-btn:hover { background: #a30030; }
+</style>
+</head>
+<body>
+
+<button class="print-btn no-print" onclick="window.print()">📄 PDF로 저장 (Cmd+P)</button>
+
+<div class="doc">
+
+<div class="doc-header">
+  <div class="doc-title">롯데케미칼 SAP S/4HANA — 발표 치트시트 (57장)</div>
+  <div class="doc-sub">슬라이드마다 ① 발표 때 말할 핵심 멘트 + ② 교수님 예상 질문 &amp; 쉬운 답변</div>
+  <div class="doc-meta">광운대학교 ERP개론 팀프로젝트 · 1팀 (신해원·성슬기·김동현·김민아) · 2026.05.29 v2.0 (57장 정합·쉬운 설명판)</div>
+</div>
+
+<div class="how">
+  <b>보는 법</b> — 각 슬라이드 카드의 파란 <b>🎤 멘트</b>는 발표 때 그대로 말하면 되는 핵심 문장입니다.
+  그 아래 <b>Q.</b>는 교수님이 물어볼 만한 질문, <b>A.</b>는 그에 대한 답변입니다.
+  노란 <b>⚠ 표시</b>는 발표 전에 한 번 더 확인해야 할 부분, <b>↳ 출처</b>는 근거 자료입니다.
+</div>
+
+<div class="index">
+  <div class="index-title">📑 Step 빠른 인덱스 (총 57장)</div>
+  <div class="index-grid">
+    <div class="index-item"><b>Step 1</b> 01~10 (10장)</div>
+    <div class="index-item"><b>Step 2</b> 11~21 (11장)</div>
+    <div class="index-item"><b>Step 3</b> 22~36 (15장)</div>
+    <div class="index-item"><b>Step 4</b> 37~47 (11장)</div>
+    <div class="index-item"><b>Step 5</b> 48~57 (10장)</div>
+  </div>
+</div>
+
+<div class="board" style="background:#fff; color:#1a1a1a; border:2px solid #1a1a1a; margin-bottom:14px;">
+  <div class="board-title" style="color:#c70039;">🔍 1차 출처 검증 결과 (2026.05.29 1차 라운드)</div>
+
+  <div style="margin-bottom:10px;">
+    <div style="font-size:11.5px; font-weight:700; color:#0a8a3a; margin-bottom:4px;">✓ 검증 완료 — 출처 확정 (그대로 답해도 됨)</div>
+    <table style="font-size:10.5px;">
+      <tr><th style="color:#0a8a3a; width:32%;">박제성 상무 인터뷰 (핵심 인용 통합 URL)</th><td>techsuda.com/archives/13398 (테크수다 2019.11). 다운타임 114h→52h·성능 90.5%·40만건/2분·디지털 코어·10개 모듈·7개월 — 핵심 수치가 모두 이 1개 인터뷰에서 나옵니다</td></tr>
+      <tr><th style="color:#0a8a3a;">롯데정밀화학 4,650억 (Slide 06·12)</th><td>일요신문 ilyo.co.kr/?ac=article_view&entry_id=149442 · 2015.10.30 계약·2016.02.29 완료</td></tr>
+      <tr><th style="color:#0a8a3a;">롯데첨단소재 2조 3,000억 (Slide 06·12)</th><td>나무위키·딜사이트 · 2016.04 삼성SDI 케미칼 부문 인수 (90% 지분)</td></tr>
+      <tr><th style="color:#0a8a3a;">SAP S/4HANA Cloud Public 2017.02 GA (Slide 20)</th><td>SAP 공식 + Wikipedia 정합. 발표 자료 정확</td></tr>
+      <tr><th style="color:#0a8a3a;">삼성전자 N-ERP 2022·20분→3~4분 (Slide 40)</th><td>news.samsung.com + 아주경제·이투데이 다수 보도. 정확</td></tr>
+      <tr><th style="color:#0a8a3a;">일반 SAP 12~18개월 (Slide 23)</th><td>SAP Community + Kellton + IgniteSAP. Brownfield 12~15·Bluefield 12~18·Greenfield 15~21개월</td></tr>
+      <tr><th style="color:#0a8a3a;">Iron Triangle (Slide 29)</th><td>1950년대 기원. 원형은 PMI PMBOK의 Triple Constraint(시간·비용·범위). Atkinson(1999)이 "Iron Triangle"로 비판적 재해석</td></tr>
+      <tr><th style="color:#0a8a3a;">롯데케미칼 2017.04~11 (7개월)</th><td>박제성 상무 인터뷰 직접 명시. 10개 모듈 = 구매·생산·설비·품질·영업·관리회계·재무자금·인사·GRC·화학물질관리</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-bottom:10px;">
+    <div style="font-size:11.5px; font-weight:700; color:#c70039; margin-bottom:4px;">🔴 정정 필요 — 발표 자료 수치 오류 의심 (답할 때 주의)</div>
+    <table style="font-size:10.5px;">
+      <tr><th style="color:#c70039; width:32%;">Slide 32 — 2003 SMART</th><td>발표 "SAP R/3" → <b>mySAP.com Enterprise Edition</b> (2005.02 ZDNet etnews.com/200502210082 + SAP Korea 2003 도입 사례). "13년 SAP 자산"으로 표현하면 안전</td></tr>
+      <tr><th style="color:#c70039;">Slide 39 — 삼성전기 다운타임 75%</th><td>발표 "2022" → <b>2026.04 보도</b> (SAP Korea 뉴스센터·디일렉·ZDNet). DoC(Downtime-Optimized Conversion) 방식. 비교 시 격차 명시 또는 비교 대상 변경 검토</td></tr>
+      <tr><th style="color:#c70039;">Slide 45 — SK하이닉스 도입</th><td>발표 "2018.02" → <b>2018.04 구축 시작·2019.02.24 오픈</b> (전자신문 etnews.com/20190509000132·머니투데이). 국내 4대 대기업 최초. SK㈜ C&C 협업</td></tr>
+      <tr><th style="color:#c70039;">Slide 45 — LG화학 LG CNS SI</th><td>발표 "2022~" → <b>2023.03.10 SAP·LG CNS 전략적 파트너십 MOU</b> (lgcns.com + 데이터넷). 정확하게는 "2022 결정·2023~ 구축"</td></tr>
+    </table>
+  </div>
+
+  <div style="margin-bottom:6px;">
+    <div style="font-size:11.5px; font-weight:700; color:#6b4d00; margin-bottom:4px;">⚠ 1차 출처 미확인 — 발표 전 본인이 직접 확보 필요</div>
+    <table style="font-size:10.5px;">
+      <tr><th style="color:#6b4d00; width:32%;">박주황(2014)·이상신(2020) 학술 (Slide 09)</th><td>웹 검색 미매칭. RISS·DBpia·KCI 직접 검색 권장. 정확한 논문 제목·저널·페이지를 발표 전 카드에 메모 필수</td></tr>
+      <tr><th style="color:#6b4d00;">국내 클라우드 ERP 21.5%/10.5% (Slide 45)</th><td>1차 출처 미발견. 통계청 2017 전체 ERP 도입률 8.6%는 확인됨. 21.5%/10.5%는 다른 통계. IITP·KISA·NIPA 직접 검색 또는 본인 자료 재확인</td></tr>
+      <tr><th style="color:#6b4d00;">교육비 10~15% 회피 (Slide 18)</th><td>1차 출처 미발견. 일반 ERP 통계인지 롯데 자체 산출인지 본인 확인</td></tr>
+      <tr><th style="color:#6b4d00;">광운대 ERP개론 강의 자료 10p·31p·19p (Slide 15·49·38)</th><td>외부 검색 불가. 본인 강의 자료를 직접 확인하고 페이지·문장을 사전 메모 필수</td></tr>
+    </table>
+  </div>
+</div>
+
+<div id="render"></div>
+
+<div class="board">
+  <div class="board-title">🎯 한 화면 즉답 보드 (가장 자주 나올 질문 TOP 15)</div>
+  <table>
+    <tr><th>다운타임 수치 출처</th><td>SAP VAS 사전 진단 보고서 + 박제성 상무 인터뷰 (테크수다 2019)</td></tr>
+    <tr><th>40만건/2분 출처</th><td>박제성 상무 인터뷰 (테크수다 2019) 직접 인용</td></tr>
+    <tr><th>Iron Triangle 출처</th><td>PMBOK Guide(PMI)의 Triple Constraint. Atkinson(1999) 비판 논문에서 "Iron Triangle"로 명명</td></tr>
+    <tr><th>10개 핵심 모듈</th><td>FI · CO · MM · SD · PP · QM · PM · HR · GRC · EHS</td></tr>
+    <tr><th>해외 거점 6국</th><td>미국 · 영국 · 우즈베키스탄 · 파키스탄 · 중국 · 말레이시아</td></tr>
+    <tr><th>VAS 정식 명칭</th><td>SAP Value Assurance for SAP S/4HANA (Fit-Gap · Migration Planning · Go-Live Readiness 3단계)</td></tr>
+    <tr><th>2027 ECC 정책</th><td>표준 지원 2027.12.31 종료, 연장 지원 2030.12.31까지 (추가 비용)</td></tr>
+    <tr><th>In-Memory 기술</th><td>HANA = 열 기반 저장(Columnar) + 압축(Compression) + 메모리 상주 → 디스크 입출력 제거로 속도 향상</td></tr>
+    <tr><th>Brownfield / Greenfield / Bluefield</th><td>기존 시스템 전환(컨버전) / 완전 신규 구축 / 선택적 데이터 이전 (Bluefield는 2018~ SAP 정식 명명)</td></tr>
+    <tr><th>Roll-out(순차 확산) 순서</th><td>롯데케미칼(LC) → 롯데정밀화학(LF) → 롯데첨단소재(LA) 기준 법인부터 순차</td></tr>
+    <tr><th>REACH / TSCA / 화평법</th><td>화학물질 규제 — EU(2007~) / 미국(1976~) / 한국(2015~)</td></tr>
+    <tr><th>강의 PIR 3대 기준 (19p)</th><td>① 시스템·요구사항 달성 ② 사업 효익 실현 ③ 경영 목표 부합</td></tr>
+    <tr><th>SMART 프로젝트</th><td>2003 호남석유화학(롯데케미칼 전신)의 SAP 빅뱅 도입 (10개월)</td></tr>
+    <tr><th>GEMS</th><td>Greenhouse gas &amp; Energy Management System. 2010 롯데 자체 명칭 (SAP 표준 아님)</td></tr>
+    <tr><th>M&amp;A 2.8조</th><td>롯데정밀화학 4,650억(2016.02) + 롯데첨단소재 2조 3,265억(2016.04) ≈ 2조 7,915억</td></tr>
+  </table>
+</div>
+
+</div>
+
+<script>
+const slides = [
+  // ============== STEP 1 ==============
+  { step: 1, no: '01', title: '표지 · 롯데케미칼은 왜 SAP S/4HANA로 전환했는가', say: '이 발표는 롯데케미칼이 왜 SAP S/4HANA로 바꿨는지에 대한 이야기입니다. 핵심은 단순한 시스템 교체가 아니라, M&A로 합쳐진 3개 회사를 하나의 운영 체계로 묶기 위한 프로젝트였다는 점입니다.', items: [
+    { q: '"통합 경영 기반"이라는 표현은 어디서 나왔나요?', a: '박제성 상무 인터뷰의 "디지털 코어" 개념을 우리 발표가 재해석한 표현입니다. 롯데 공식 용어는 아니므로, 질문받으면 "우리가 사례를 분석해 붙인 표현"이라고 답하면 됩니다.', s: '박제성 상무 인터뷰 (테크수다 2019)' },
+    { q: '10개 핵심 모듈이 정확히 무엇인가요?', a: '재무회계(FI)·관리회계(CO)·자재(MM)·영업(SD)·생산(PP)·품질(QM)·설비(PM)·인사(HR)·내부통제(GRC)·환경안전(EHS) 10개입니다.', s: '2017 사업보고서' },
+    { q: '110개국 수출이 정확한 수치인가요?', a: '사업보고서에 "약 110개국"으로 표현돼 있어 정합합니다.', s: '2017 사업보고서' },
+    { q: '7개월·3사·10개 모듈·6국·110국 — 이 5개 수치 출처는?', a: '박제성 상무 인터뷰와 2017 사업보고서를 종합한 것입니다.' }
+  ]},
+  { step: 1, no: '02', title: '발표 흐름 (목차)', say: '발표는 5단계로 진행됩니다. 왜 통합이 필요했나(Step 1) → 어떻게 결정했나(2) → 7개월 구축(3) → 성과 검증(4) → 결론(5) 순서입니다.', items: [
+    { q: '5개 Step과 강의 6단계는 어떻게 연결되나요?', a: 'Step 2~4가 강의의 6단계(타당성·요구사항·설계·구축·구현·PIR)와 맞물립니다. Step 1은 배경, Step 5는 시사점에 해당합니다.' },
+    { q: 'Step 3가 15장으로 가장 많은 이유는?', a: '이 사례의 핵심 차별점이 "7개월 압축 구축"이기 때문입니다. 설계·검증·플랫폼·가동 단계를 자세히 나눠 다루다 보니 장수가 많습니다.' }
+  ]},
+  { step: 1, no: '03', title: 'Step 1 진입 — 왜 통합이 필요했나', say: '먼저 이 회사가 왜 통합 ERP를 결정할 수밖에 없었는지, 그 배경부터 보겠습니다.', items: [
+    { q: '"의사결정의 출발점"이라는 걸 어떻게 입증하나요?', a: '분석 대상·재무 상황·13년 SAP 자산과 M&A·산업 특성·그룹 SI·정보화 제약 — 이 6가지 배경이 쌓여 통합 결정을 정당화합니다.', s: '박제성 상무 인터뷰 + 사업보고서' }
+  ]},
+  { step: 1, no: '04', title: '분석 대상 · 롯데케미칼 프로필', say: '롯데케미칼은 원료부터 최종 소재까지 직접 만드는 수직 계열화 석유화학 회사입니다. 해외 6개국에 생산 거점을 두고 110개국에 수출합니다.', items: [
+    { q: 'Upstream/Midstream/Downstream 분류가 표준인가요?', a: '석유화학 업계의 국제 표준 분류입니다. 원료(상류)→중간재(중류)→최종 제품(하류) 흐름을 뜻하며, 한국석유화학협회(KPIA)·유럽화학협회(CEFIC)가 공통으로 씁니다.', s: 'KPIA 산업분류' },
+    { q: '해외 거점 6개국은 어디인가요?', a: '미국·영국·우즈베키스탄·파키스탄·중국·말레이시아입니다.', s: '2017 사업보고서' },
+    { q: '1976년부터 2017년까지 주요 변화는?', a: '1976년 호남석유화학 설립 → 2012년 롯데케미칼로 사명 변경 → 2016년 정밀화학·첨단소재 인수 → 2017년 통합 ERP 구축으로 이어집니다.' },
+    { q: '"수직 계열화"가 무슨 뜻인가요?', a: '원료부터 최종 제품까지 생산 단계를 한 회사가 모두 보유하는 것입니다. 이 사례에서는 기초유분→폴리머/모노머→정밀화학/첨단소재까지 이어지는 구조를 말합니다.', s: 'Porter, Competitive Strategy (1980)' }
+  ]},
+  { step: 1, no: '05', title: '호황기 재무 · 사상 최대 실적', critical: true, say: '2017년은 영업이익 2.93조 원으로 사상 최대 실적을 낸 해였습니다. 위기 때문이 아니라, 잘 나갈 때 미래를 위해 투자한 것이라는 점이 포인트입니다.', items: [
+    { q: '사업부 매출 비중 합계가 105.9%로 100%를 넘는 이유는?', a: '사업부 간 내부거래(인터컴퍼니)가 포함됐을 가능성이 있습니다. 발표 전 사업보고서 원문 분류를 다시 확인하는 게 안전합니다.', s: '2017 사업보고서', warn: '비중 합계 산정 방식 사전 검증 필수' },
+    { q: '2017년 영업이익 2.93조가 정말 사상 최대인가요?', a: '당시 기준 최고 실적이 맞습니다. 다만 2019년 1.1조, 2020년 3,514억으로 급락했으므로 "2017년이 정점이었다"고 표현하는 게 정확합니다.', s: '연도별 사업보고서' },
+    { q: '"위기 대응이 아니라 미래 성장"이라고 단정한 근거는?', a: '박제성 상무 인터뷰의 "유가에 흔들리지 않고 지속 성장하기 위해"라는 발언이 미래 지향적 투자였음을 뒷받침합니다.' },
+    { q: 'YoY가 무슨 뜻인가요?', a: '전년 동기 대비(Year over Year)를 뜻합니다. 2017년은 매출 +20%, 영업이익 +15.2%였습니다.' }
+  ]},
+  { step: 1, no: '06', title: '13년 SAP 자산 + M&A 통합 압력', critical: true, say: '롯데케미칼은 이미 13년간 SAP를 써온 자산이 있었고, 2016년 정밀화학·첨단소재를 약 2.8조에 인수하면서 3사를 하나로 묶어야 할 통합 압력이 생겼습니다.', items: [
+    { q: '2003년 SMART 빅뱅 도입이 10개월 걸렸다는 출처는?', a: '롯데케미칼 전신인 호남석유화학의 SMART 프로젝트입니다. 박제성 상무 인터뷰와 SAP Korea 사례집에 근거합니다.', s: '박제성 상무 인터뷰' },
+    { q: 'GEMS가 SAP 표준 시스템인가요?', a: '아닙니다. 롯데 자체 명칭(온실가스·에너지 관리 시스템)으로 2010년 도입했습니다.', s: '박제성 상무 인터뷰' },
+    { q: 'M&A 2.8조는 어떻게 구성되나요?', a: '정밀화학 4,650억(2016.02) + 첨단소재 2조 3,265억(2016.04) = 약 2조 7,915억으로 2.8조에 가깝습니다.', s: '2016 사업보고서 + 공시' },
+    { q: '디지털 코어 / DT / 인텔리전트 엔터프라이즈 차이는?', a: '디지털 코어는 S/4HANA라는 단일 통합 기반, DT(디지털 전환)는 비즈니스 전체의 변혁, 인텔리전트 엔터프라이즈는 거기에 분석·AI까지 더한 SAP의 2018년 공식 슬로건입니다.', s: 'SAP 공식' }
+  ]},
+  { step: 1, no: '07', title: '6대 산업 특성', say: '석유화학은 24시간 멈추면 안 되는 장치산업이고, 나라마다 화학물질 규제가 달라서 ERP에 까다로운 요구가 많은 산업입니다.', items: [
+    { q: 'REACH·TSCA·화평법이 각각 무엇인가요?', a: '화학물질 규제법입니다. REACH는 EU(2007~), TSCA는 미국(1976~), 화평법은 한국(2015~)이며, 위반하면 수출 금지나 과징금을 받습니다.' },
+    { q: '"장치산업"이 무슨 뜻인가요?', a: '대규모 설비 투자 + 연속 공정 + 높은 진입장벽을 가진 산업입니다. 석유화학·정유·제철·반도체·디스플레이가 대표적입니다.' },
+    { q: '다운타임(가동 중단) 손실 규모는?', a: '나프타분해설비(NCC)가 정지하면 재가동에 12~24시간이 걸리고 생산 손실과 안전 리스크가 큽니다. "1분당 수십만~수억"은 업계 통설로 표현하는 게 안전합니다.', warn: '정확한 1차 출처가 비공개이므로 "업계 통설" 표현 권장' }
+  ]},
+  { step: 1, no: '08', title: '그룹 SI ≠ 동일 ERP', say: '같은 롯데 그룹이라도 산업이 다르면 ERP도 다릅니다. 그래서 화학 3사만 SAP로 통합한 것입니다.', items: [
+    { q: '롯데 계열사들의 ERP는 각각 무엇인가요?', a: '화학 3사는 SAP S/4HANA, 금융은 자체 계정계 시스템, 호텔은 PMS, 유통은 별도 시스템을 씁니다.', s: '보안뉴스 + 롯데정보통신 사례' },
+    { q: '왜 그룹 전체에 같은 ERP를 강제하지 않았나요?', a: '산업별로 업무 특성과 규제 환경이 다르기 때문입니다. 금융은 계정계, 호텔은 PMS가 ERP보다 우선이라 일률 적용이 비효율적입니다.' }
+  ]},
+  { step: 1, no: '09', title: '정보화 제약 · ERP 효과 매핑', critical: true, say: '기존 시스템의 한계(조회가 느린 점 등)가 ERP 도입으로 어떻게 풀렸는지 보여줍니다. 1년 40만 건 매출 조회가 2분으로 줄었습니다.', items: [
+    { q: '"40만 건 / 2분" 출처는?', a: '박제성 상무 인터뷰(테크수다 2019)의 "1년 40만 건 매출대장 조회를 2분 내 처리" 직접 인용입니다.', s: '테크수다 2019' },
+    { q: '이상신(2020)·박주황(2014) 학술 인용은?', a: '화학산업의 IT 제약과 ERP 적용을 다룬 논문입니다.', warn: '정확한 논문 제목·저널·페이지를 발표 전 카드에 메모 필수' },
+    { q: 'SCADA·PIS도 ERP인가요?', a: 'ERP는 아닙니다. 둘은 공정을 제어하는 운영 기술(OT)이고 ERP는 경영 정보 기술(IT)입니다. 이 사례는 ERP에 이런 공정 시스템까지 연계한 통합으로 봅니다.' }
+  ]},
+  { step: 1, no: '10', title: 'Step 1 결론', say: '정리하면 산업 특성, 13년 SAP 자산과 M&A, 정보화 제약 — 이 세 가지가 통합 ERP 결정의 출발점이었습니다.', items: [
+    { q: '3대 핵심과 6개 세부 주제는 어떻게 연결되나요?', a: '산업 특성=04·07·08번 슬라이드, 13년 자산+M&A=06번, 정보화 제약=05·09번으로, 핵심 1개당 세부 2개가 연결되는 구조입니다.' }
+  ]},
+
+  // ============== STEP 2 ==============
+  { step: 2, no: '11', title: 'Step 2 진입 (도입 결정)', intro: true, say: '이제 "그래서 도입을 어떻게 결정했는가" 의사결정 과정으로 넘어갑니다.', items: [
+    { q: '"6장을 다룬다"고 했는데 실제로는 더 많지 않나요?', a: '본문은 Make/Buy(13)→4대 대안(14)→5대 타당성(15)→ROI(16)→6대 Fact(17)→온프레미스(18)→Lock-in(19)으로 이어집니다. 안내에서 묶어 말한 것이고 실제 내용은 정합합니다.' }
+  ]},
+  { step: 2, no: '12', title: 'M&A 통합 압력', critical: true, say: '3사를 왜 롯데케미칼 중심으로 묶었는지가 핵심입니다. 인수 주체이자 13년 SAP 자산을 가진 모회사이기 때문입니다.', items: [
+    { q: '정밀화학 인수가가 465억인가요, 4,650억인가요?', a: '4,650억이 맞습니다(2016.02 삼성정밀화학 인수). 발표 자료에 "465억"으로 적혀 있다면 자릿수 누락이니 반드시 고쳐야 합니다.', s: '2016 사업보고서 공시', warn: '발표 자료 자릿수 사전 검증 필수' },
+    { q: '첨단소재 2조 3,265억은?', a: '2016.04 삼성SDI 케미칼 사업부를 인수한 금액입니다.', s: '공시 자료' },
+    { q: '왜 롯데케미칼이 통합 기준 법인이 됐나요?', a: '① 인수 주체(모회사)이고 ② 13년 SAP 자산을 보유했으며 ③ 매출 규모가 가장 커서, 자연스럽게 통합 허브가 됐습니다.' },
+    { q: '"재무 합산이 아니라 SCM 동기화"라는 게 무슨 뜻인가요?', a: '단순 회계 통합이 아니라, 원료→중간재→고기능 소재로 이어지는 공급망(SCM) 흐름을 3사가 실시간으로 같은 계획·운영으로 맞췄다는 뜻입니다.' }
+  ]},
+  { step: 2, no: '13', title: 'ERP 통합 4대 비즈니스 목적', say: 'ERP 통합의 목표는 네 가지였습니다 — 운영 통합, 글로벌 운영 지원, 중복 투자 제거, 디지털 코어 확보.', items: [
+    { q: '영어 라벨(ONE PLATFORM 등)은 왜 쓰나요?', a: '디자인상 시각 인덱스로 영문을 넣은 것이고, 본문에는 한글(운영 통합·글로벌 운영·비용 리스크 축소·디지털 코어)을 병기했습니다.' },
+    { q: '4단계 흐름이 박제성 상무 발언인가요?', a: '박제성 상무 인터뷰와 사업보고서를 종합해 발표자가 재구성한 것입니다.' }
+  ]},
+  { step: 2, no: '14', title: '거버넌스 3축 (발주·수행·기술)', say: '프로젝트는 발주(롯데케미칼)·수행(롯데정보통신)·기술(SAP) 3자 협업 체계로 진행됐습니다.', items: [
+    { q: 'VAS의 정식 명칭은?', a: 'SAP Value Assurance for SAP S/4HANA입니다. Fit-Gap 분석·마이그레이션 계획·가동 준비 점검 3단계로 구성됩니다.', s: 'SAP 공식' },
+    { q: '그룹 SI(롯데정보통신)의 역할은?', a: '발주(롯데케미칼)→수행(롯데정보통신)→기술(SAP) 3축에서 실제 구축(BUILD)을 담당했습니다. 외부 SI 대신 내부에 자산을 쌓았습니다.' },
+    { q: '2018년 이사회 의결 내용은?', a: '2018.02.08 제3회(그룹공통시스템+디지털혁신협의체), 2018.05.28 제7회(환경에너지 통합), 2018.12.19 제14회(IT 10건 일괄) 등이 있습니다.', s: '2018 정정 사업보고서' }
+  ]},
+  { step: 2, no: '15', title: '직접 개발(Make) vs 패키지 구매(Buy)', say: '직접 개발(Make)과 패키지 구매(Buy) 중 Buy를 택했습니다. 13년 SAP 자산과 7개월이라는 짧은 일정 때문에 사실상 Buy가 정답이었습니다.', items: [
+    { q: '강의 자료 10p/31p가 무엇인가요?', a: '광운대 경영대 ERP개론 강의 자료입니다.', warn: '강의명·교수명·교재명을 사전 메모 필수' },
+    { q: 'Make(직접 개발)를 진지하게 검토했나요?', a: '13년 SAP 자산과 7개월 일정 때문에 직접 개발은 현실적 대안이 아니었습니다. 사실상 Buy로 정해진 상태에서 형식적으로 비교한 것이므로, 질문받으면 솔직하게 그렇게 답하는 게 좋습니다.' }
+  ]},
+  { step: 2, no: '16', title: '패키지 4대 대안 — A안 선정', say: '패키지 도입 방식 4가지를 비교해 "A안"(기존 SAP 자산을 활용한 컨버전)을 선택했습니다.', items: [
+    { q: 'A·B·C·D 4대 대안 분류의 출처는?', a: 'SAP 공식 분류가 아니라 발표자가 시장 옵션을 재구성한 것입니다. 신규 구축(Greenfield)·전환(Brownfield)·타 ERP·병존 4가지 축입니다.' },
+    { q: 'Bluefield는 왜 빠졌나요?', a: 'Bluefield는 SAP가 2018년 이후 정식 명명한 방식이라, 2017년 구축 시점에는 존재하지 않던 개념입니다.' },
+    { q: '◎○△× 평가는 누가 했나요?', a: '발표자의 종합 평가이고 객관적 채점은 아닙니다. 평가 기준이 A안에 유리하게 짜인 면이 있으므로 솔직하게 답하면 됩니다.' }
+  ]},
+  { step: 2, no: '17', title: '5대 타당성 평가', say: '기술·경제·법·운영·일정 다섯 관점에서 A안이 모두 적합하다는 것을 보여줍니다.', items: [
+    { q: '5대 타당성이 표준 프레임인가요?', a: '일반 IT 표준은 TELOS 5축(기술·경제·법·운영·일정)이나 6T입니다. 우리 발표는 이 사례에 맞게 재구성한 5축입니다.' },
+    { q: '"교수님이 강조한 확장성"이라는 표현은?', a: '발표할 때 "본 사례에서 확장성이 가장 핵심"이라고 자연스럽게 표현하는 것을 권합니다.' }
+  ]},
+  { step: 2, no: '18', title: '4가지 비용 회피 · ROI', critical: true, say: '투자 금액은 비공개지만, 교육비·중복투자·운영·리스크 4가지 비용을 줄였다는 점에서 투자 효과가 있습니다.', items: [
+    { q: '교육비 10~15% 회피의 출처는?', a: '일반 ERP 통계인지 롯데 자체 산출인지 확인이 필요합니다.', warn: '1차 출처 사전 확인 필수' },
+    { q: '투자가 비공개인데 ROI를 단정해도 되나요?', a: '정확한 ROI 수치는 없습니다. "비용 회피 구조"이므로 정량 ROI가 아니라 정성적 ROI 영역입니다. 본문도 "벌었다기보다 피해야 할 비용을 줄였다"는 완화된 표현을 씁니다.' }
+  ]},
+  { step: 2, no: '19', title: '6대 Fact — A안 정당화', say: 'A안 선택을 뒷받침하는 6가지 사실을 핵심 3개와 보강 3개로 나눠 정리했습니다.', items: [
+    { q: '핵심 3개와 보강 3개를 나눈 기준은?', a: '직접적인 의사결정 근거인지, 간접적인 보강 근거인지로 나눴습니다. 발표자가 정의한 위계입니다.' }
+  ]},
+  { step: 2, no: '20', title: '왜 온프레미스(자체 서버)였나', critical: true, say: '2017년 당시에는 클라우드보다 온프레미스(자체 서버)가 합리적이었습니다. 24시간 공정, 보안, 기존 자산 활용 때문입니다.', items: [
+    { q: 'S/4HANA 클라우드 퍼블릭이 2017.02 출시인가요?', a: '정식 출시(GA)는 2017.09입니다. 발표 자료의 "2017.02"는 확인이 필요합니다.', s: 'SAP News Center', warn: '"2017.02" 수치 검증 필요' },
+    { q: '"1분 정지 시 수십억" 출처는?', a: '업계 통설입니다. NCC가 정지하면 재가동에 12~24시간이 걸리고 생산 손실이 발생합니다.', warn: '정확한 1차 출처가 비공개이므로 "업계 통설" 표현 권장' },
+    { q: 'TechTarget·SAP Learning의 정확한 출처는?', a: '아티클 URL과 제목을 사전에 메모해 두는 게 좋습니다.', warn: '출처 URL·제목 사전 메모 필수' }
+  ]},
+  { step: 2, no: '21', title: 'Buy의 단점 — Lock-in 완화', say: '패키지의 단점인 벤더 종속(Lock-in)은 그룹 내부 SI 활용과 표준 기능 위주 사용으로 완화했습니다.', items: [
+    { q: 'Lock-in(벤더 종속)이 ERP에서 왜 특히 위험한가요?', a: '① 다른 시스템으로 옮기는 비용이 막대하고 ② 데이터 이동이 어렵고 ③ 그동안 맞춤 개발한 자산을 잃고 ④ 학습 비용이 다시 든다는 점에서 위험합니다.' },
+    { q: '그룹 통제권이 Lock-in을 어떻게 완화하나요?', a: '외부 벤더 의존도를 낮추고, 그룹 내부 SI에 자산을 쌓으며, SAP 표준 기능 위주(맞춤 최소화)로 써서 이동 가능성을 확보합니다.' }
+  ]},
+
+  // ============== STEP 3 ==============
+  { step: 3, no: '22', title: 'Step 3 진입 (7개월의 구축)', intro: true, say: '솔루션과 방식 선택은 끝났습니다. 이제 "멈추지 않고 어떻게 7개월 만에 구축했는가"를 봅니다.', items: [
+    { q: '"선택은 끝났다 / 멈추지 않고"가 무슨 의미인가요?', a: 'Step 2에서 솔루션과 도입 방식 결정이 끝났고, Step 3는 24시간 멈추면 안 되는 환경에서 실제로 어떻게 구축했는지를 다룬다는 뜻입니다.' }
+  ]},
+  { step: 3, no: '23', title: '4대 실행 제약', say: '24시간 가동, 3사 동시 진행, 짧은 일정, 기존 자산 활용 — 이 네 가지 제약 속에서 구축을 진행했습니다.', items: [
+    { q: '"일반 SAP는 12~18개월, 1.5~3배 압축" 출처는?', a: '일반 SAP 풀스코프 구축의 평균이 12~16개월이라는 업계 통설에 근거합니다.', warn: '12~18개월 기준 1차 출처(Panorama Consulting/SAP/Gartner) 사전 확인' }
+  ]},
+  { step: 3, no: '24', title: '실행 통제 거버넌스 3축', critical: true, say: '구축 단계에서도 발주·수행·기술 3축 거버넌스가 작동해 일정과 품질을 통제했습니다.', items: [
+    { q: '다운타임 114h → 52h 수치의 출처는?', a: 'SAP VAS 사전 진단 보고서(비공개)와 박제성 상무 인터뷰, 사업보고서를 종합한 수치입니다.', warn: '114h 예측 출처를 정확히 사전 확인' }
+  ]},
+  { step: 3, no: '25', title: '방법론 진화 (과거 경험 활용)', say: '2003년 빅뱅 도입 경험을 살려, 이번에는 더 발전된 방식으로 접근했습니다.', items: [
+    { q: '2003년 SMART가 빅뱅이었다는 근거는?', a: '박제성 상무 인터뷰의 "10개월 빅뱅" 발언과 호남석유화학의 SAP 도입 사례 보도에 근거합니다.', s: '박제성 상무 인터뷰' }
+  ]},
+  { step: 3, no: '26', title: '3사 통합 실행 판단 (Roll-out)', say: '3사를 한꺼번에 바꾸지 않고, 롯데케미칼→정밀화학→첨단소재 순서로 안정적으로 확산(Roll-out)했습니다.', items: [
+    { q: 'LC→LF→LA 실제 가동 순서가 맞나요?', a: '롯데케미칼(LC)을 기준 법인으로 먼저 가동하고 정밀화학(LF), 첨단소재(LA)로 순차 확산한 것이 맞습니다.', s: '사업보고서' }
+  ]},
+  { step: 3, no: '27', title: '4대 구축 방법론 비교', say: '빅뱅·단계적·파일럿·롤아웃 네 가지 구축 방식을 비교해 우리 사례의 선택을 설명합니다.', items: [
+    { q: '빅뱅·Phased·Pilot·Roll-out 4대 분류 출처는?', a: 'ERP 구축 분야의 학술 표준 분류입니다.', s: 'Markus & Tanis (2000), Esteves & Pastor (2000)' }
+  ]},
+  { step: 3, no: '28', title: '7개월 압축의 근거', say: '13년간 쌓인 SAP 자산(기준정보와 표준 프로세스 재활용) 덕분에, 보통 1년 이상 걸릴 구축을 7개월로 압축할 수 있었습니다.', items: [
+    { q: 'Configuration(설정)을 100% 재활용했나요?', a: '그렇지는 않습니다. ECC와 S/4HANA는 데이터베이스 구조가 달라서 일부 맞춤 코드는 재작성이 필요합니다. "재활용 비중이 높다"고 표현하는 게 정확합니다.', warn: '"기준정보·표준 프로세스는 재활용, 맞춤 영역은 전환 점검"으로 답변' }
+  ]},
+  { step: 3, no: '29', title: 'Iron Triangle — 시간·비용·범위 통제', critical: true, say: '프로젝트 관리의 핵심인 시간·비용·범위(Iron Triangle)를 동시에 통제한 것이 이 사례의 차별점입니다.', items: [
+    { q: '"Iron Triangle"을 어디서 알게 됐나요?', a: '프로젝트 관리 표준(PMI PMBOK)의 삼중 제약(Triple Constraint) 개념입니다. 원래 시간-비용-범위 3축이고, Atkinson(1999) 비판 논문에서 "Iron Triangle"이라 명명했습니다.', s: 'PMI PMBOK Guide / Atkinson (1999)' },
+    { q: '품질(Quality)은 가운데인가요, 4번째 요소인가요?', a: 'PMBOK 원형에서는 4번째 요소입니다. Atkinson 이후로는 가운데 또는 4번째로 다양하게 표현되며, 우리 발표는 가운데에 배치했습니다.' },
+    { q: '"동시 통제"라고 단정할 수 있나요?', a: '시간(7개월)과 범위(3사·10모듈)를 동시에 확장한 것은 사실입니다. 다만 비용은 비공개이므로 "동시 통제"라는 단정은 제한적으로 표현하는 게 안전합니다.' }
+  ]},
+  { step: 3, no: '30', title: 'AS-IS / TO-BE 분석', say: '기존 업무(AS-IS)와 개선될 업무(TO-BE)를 비교해 무엇을 바꿀지 정했습니다.', items: [
+    { q: 'AS-IS/TO-BE의 출처는?', a: '업무 재설계(BPR)의 표준 도구입니다.', s: 'Hammer & Champy (1993) + SAP ASAP 방법론' },
+    { q: '5+1 영역 분류가 표준인가요?', a: '발표자가 정의한 것입니다. 표준 BPR에 5+1은 없으므로 "이 사례에 맞게 5+1로 재구성했다"고 답하면 됩니다.' }
+  ]},
+  { step: 3, no: '31', title: 'GAP 관리 3트랙', say: '표준과 맞지 않는 부분(GAP)을 BPR(업무 개선)·Customizing(맞춤 설정)·Add-on(추가 개발) 세 가지로 나눠 관리했습니다.', items: [
+    { q: 'BPR/Customizing/Add-on 3트랙이 표준인가요?', a: 'SAP 표준 용어나 학술 표준은 아니고 우리 발표의 정의입니다. 표준 SAP의 Fit-Gap은 "표준 수용(Fit)" vs "차이(Gap)→맞춤/추가개발/우회"로 봅니다.', warn: '"우리 발표가 GAP 관리를 3트랙으로 분류했다"고 답변' },
+    { q: 'Scope Creep이 무슨 뜻인가요?', a: '프로젝트 범위가 통제 없이 계속 늘어나는 현상입니다. 변경통제위원회(Change Control Board)로 막습니다.', s: 'PMBOK Guide' }
+  ]},
+  { step: 3, no: '32', title: 'Configuration · Baseline', say: '13년간 쌓은 설정(Configuration) 자산을 기반(Baseline)으로 이전했습니다. 강의에서 "가장 큰 위험"이라 한 설정을, 오히려 자산으로 통제한 것입니다.', items: [
+    { q: '13년 ECC 누적이라는데, ECC는 2004년 한국 출시 아닌가요?', a: '2003년 SMART는 ECC 이전 버전인 SAP R/3였을 가능성이 큽니다. 13년은 R/3+ECC+S/4HANA 누적이므로 "13년 SAP 자산"으로 표현하는 게 정확합니다.', warn: '버전 표현 검증 필요' },
+    { q: '"Configuration이 최대 위험"이라는 강의 인용은?', a: '강의 자료에 근거합니다.', warn: '정확한 페이지·문장 사전 메모' }
+  ]},
+  { step: 3, no: '33', title: 'SAP 중심 플랫폼 (Hub-Spoke)', say: 'SAP를 중앙 허브로 두고 주변 시스템 6개를 연결하는 Hub-Spoke(중심-바퀴살) 구조를 만들었습니다.', items: [
+    { q: 'Hub-Spoke가 무슨 뜻인가요?', a: '항공 운송(델타·UPS)에서 온 개념으로, IT에서는 시스템 연계(EAI) 패턴입니다. 중앙 허브 1개에 주변 시스템(Spoke) 여러 개를 연결합니다.' },
+    { q: '6개 Spoke가 무엇인가요?', a: '공급망(SCM)·생산실행(MES)·제품수명관리(PLM)·실험정보(LIMS)·환경안전(EHS)·롯데 자체 시스템(GEMS)입니다.' },
+    { q: '연계(EAI)에 쓴 구체적 솔루션은?', a: '2017년 시점 SAP 표준은 SAP PI/PO이고, 현재는 SAP CPI / Integration Suite입니다.', s: 'SAP 공식' }
+  ]},
+  { step: 3, no: '34', title: 'Migration · 테스트 · VAS', say: '데이터 이전과 5종 테스트, SAP의 검증 프로그램(VAS)으로 안전하게 가동을 준비했습니다.', items: [
+    { q: '구축은 Roll-out인데 데이터는 Big Bang(일괄)이 가능한가요?', a: '가능합니다. 시스템은 단계적으로 가동하고 데이터는 일괄 이관 후 전환(cutover)하는 방식으로, SAP Activate 표준 방법론이 지원합니다.' },
+    { q: '5종 테스트가 무엇인가요?', a: '일반 표준은 단위·통합·시스템·사용자 인수(UAT)·성능 테스트입니다.', warn: '우리 발표의 5종이 무엇인지 사전 확인' },
+    { q: 'Rollback(복구) 계획이 실제로 발동됐나요?', a: '사전 준비만 했고 실제 발동 기록은 없습니다(가동 성공).', s: '박제성 상무 인터뷰' }
+  ]},
+  { step: 3, no: '35', title: '다운타임 KPI — 구축의 핵심 성과', critical: true, say: '구축의 핵심 성과입니다. 시스템 전환 다운타임을 예측 114시간에서 실제 52시간으로, 54% 줄였습니다.', items: [
+    { q: '114h→52h, 54% 단축, 62h 회피가 무슨 의미인가요?', a: 'SAP VAS 예측 114시간 대비 실제 52시간으로, 62시간(54%)을 단축했습니다. 62시간의 가치는 생산 손실·출하 지연·재가동 비용·안전 리스크 회피를 합한 것입니다.', s: '박제성 상무 인터뷰 + SAP VAS' },
+    { q: '다운타임은 시스템 중단인가요, 공정 정지인가요?', a: '시스템 중단(ECC→S/4HANA 전환)입니다. 화학 공정 정지는 아닙니다. 다만 시스템 중단은 출하·회계·재고 처리 중단을 뜻해, 24시간 가동 공정에 영향을 주는 손실입니다.' }
+  ]},
+  { step: 3, no: '36', title: 'Step 3 결론', say: '정리하면 7개월 압축 구축은 기존 자산 활용·체계적 리스크 통제·3사 동시 확장 관리가 함께 만든 결과입니다.', items: [
+    { q: '7개월 구축의 결론을 한 문장으로 말하면?', a: '"멈추지 않고 7개월 만에 구축할 수 있었던 것은 13년 자산, SAP VAS 기반 리스크 사전 통제, 단계적 확산이라는 세 가지가 결합된 덕분"이라고 정리할 수 있습니다.' }
+  ]},
+
+  // ============== STEP 4 ==============
+  { step: 4, no: '37', title: 'Step 4 진입 · PIR 6대 흐름', intro: true, say: '이제 "그래서 성과가 있었는가"를 여섯 가지 흐름으로 검증합니다 — 정량 성과·정성 가치·목표 달성·후속 입증·벤치마크·종합.', items: [
+    { q: 'PIR 6대 흐름이 표준인가요?', a: 'PMBOK·PRINCE2의 PIR(사후 검토)은 보통 단일 단계입니다. 6대 흐름은 우리 발표가 자세히 나눈 것입니다. 흐름은 정량 성과·정성 가치·목표 달성·후속 입증·벤치마크·종합 한계입니다.' }
+  ]},
+  { step: 4, no: '38', title: 'PIR 프레임 · 데이터 가용성', say: '검증 틀은 강의의 PIR 3대 기준(시스템 달성·사업 효익·경영 목표)을 따릅니다. 공개 자료로 검증되는 것과 비공개를 솔직히 구분하는 게 강점입니다.', items: [
+    { q: 'PIR 3대 기준이 무엇인가요?', a: '강의 자료 19페이지 기준으로 ① 시스템·요구사항 달성 ② 사업 효익 실현 ③ 경영 목표 부합입니다. 우리 발표가 이에 정합합니다.', warn: '강의 자료의 정확한 인용을 사전 메모' },
+    { q: '투자/ROI 비공개를 명시하는 이유는?', a: '한계를 솔직히 밝히는 것이 오히려 발표의 신뢰도를 높이므로, 강점으로 강조하면 됩니다.' }
+  ]},
+  { step: 4, no: '39', title: '정량 검증 1 · 다운타임 · 성능', critical: true, say: '다운타임 54% 단축, 프로그램 성능 90.5% 개선 — 숫자로 입증되는 성과입니다.', items: [
+    { q: 'ECC 21분 → S/4HANA 2분의 출처는?', a: '박제성 상무 인터뷰는 "2분"을 직접 인용한 것이고, 21분은 90.5% 개선에서 역산한 수치일 가능성이 있습니다.', s: '박제성 상무 인터뷰', warn: '21분의 1차 출처 확인 필수' },
+    { q: '삼성전기 다운타임 75% 단축과 비교 조건은?', a: '삼성전기는 2026년 도입 시 다운타임을 75% 줄였습니다. 우리 사례(2017)와는 시점·산업이 달라 직접 비교는 부적합하므로 "동종 대비 우위" 정도로 완화해 표현합니다.', warn: '단정 완화 표현 사용' },
+    { q: 'In-Memory(인메모리) 기술을 쉽게 설명하면?', a: 'HANA는 데이터를 열 단위로 저장하고 압축해 메모리에 상주시킵니다. 그래서 디스크를 읽는 시간을 없애 속도가 크게 빨라집니다.', s: 'SAP HANA 공식' }
+  ]},
+  { step: 4, no: '40', title: '정량 검증 2 · 조회 · 통합 범위', say: '1년 40만 건 조회 2분, 10모듈×3사×6국×110국 통합 — 조회 속도와 통합 범위의 성과입니다.', items: [
+    { q: '삼성전자 N-ERP 2022의 출처는?', a: 'N-ERP는 삼성전자가 자체 명명한 차세대 ERP로 2022년 가동했고, 주문 조회가 20분→3~4분으로 단축됐습니다.', warn: '1차 출처 사전 메모 필수' },
+    { q: '"회계부서가 박수를 보냈다"고 단정해도 되나요?', a: '박제성 상무 인터뷰의 직접 인용 표현입니다. v2.16 차수에서 단정을 완화해 적용했습니다.', s: '박제성 상무 인터뷰' },
+    { q: '4축 통합이 무슨 의미인가요?', a: '기능(모듈)×조직(법인)×지리(거점)×시장(고객) 네 차원을 동시에 통합했다는 뜻입니다.' }
+  ]},
+  { step: 4, no: '41', title: '정성 가치 5가지', say: '숫자로는 안 잡히는 가치 다섯 가지입니다 — 3사 시너지, 글로벌 운영, 디지털 코어, 기준정보 통합, 사용자 만족.', items: [
+    { q: '"디지털 코어"라는 표현을 써도 적절한가요?', a: 'SAP의 공식 마케팅 용어입니다. 학술 발표라면 인용 표시를 권하지만, 박제성 상무 인터뷰의 직접 인용이므로 사용이 정당화됩니다.' },
+    { q: '"유가에 흔들리지 않고 지속 성장"의 정확한 인용은?', a: '박제성 상무의 테크수다 인터뷰(2019) 원문 표현입니다.', s: '테크수다' }
+  ]},
+  { step: 4, no: '42', title: '초기 목표 vs 달성도', say: 'Step 2에서 세웠던 4대 목표가 모두 달성됐는지 대조합니다 — 결과는 모두 ○입니다.', items: [
+    { q: '4대 목표 모두 ○라고 평가한 사람은 누구인가요?', a: '발표자의 종합 평가입니다. 객관 평가는 아니며, 평가 근거는 박제성 상무 인터뷰·사업보고서·2018 이사회 의결 기록을 종합한 것입니다.' }
+  ]},
+  { step: 4, no: '43', title: '2018 이사회 의결 (후속 입증)', say: 'ERP 가동 직후 2018년 이사회에서 후속 디지털 투자 15건 이상이 의결됐습니다. 도입 효과를 보여주는 객관적 후속 증거입니다.', items: [
+    { q: '3개 시점의 정확한 안건은?', a: '2018.02.08 제3회(그룹공통시스템+디지털혁신협의체), 2018.05.28 제7회(환경·에너지 통합), 2018.12.19 제14회(IT 10건 일괄, SAP 라이선스 추가 포함)입니다.', s: '2018 정정 사업보고서' },
+    { q: '시간이 가깝다는 게 인과관계 증거가 되나요?', a: '시간 인접만으로 인과를 단정하면 오류(post hoc)일 수 있습니다. 다만 이사회 의결은 객관 기록이라 후속 투자 증거로는 타당하므로, 인과는 완화해 표현합니다.' }
+  ]},
+  { step: 4, no: '44', title: 'DT 로드맵 · 비전 격상', say: '2017년 가동이 출발점이 되어 2020년 디지털 가속화, 2030년 글로벌 톱7 비전으로 이어졌습니다.', items: [
+    { q: '톱10 → 톱7 비전 격상의 출처는?', a: '2019년 박제성 상무 인터뷰 시점에는 "톱10"이었고, 2020년 신년사에서 "2030 톱7"로 격상됐습니다.', s: '2020 신년사 보도자료' },
+    { q: 'DT(디지털 전환)는 ERP 도입 전부터 있던 것 아닌가요?', a: '우리 발표는 "체계적 DT 전략 수립의 출발점이 2017년 S/4HANA 가동"이라는 범위로 한정해 말합니다.' }
+  ]},
+  { step: 4, no: '45', title: '타사 벤치마크', critical: true, say: '롯데케미칼은 2017년 도입으로 국내 대기업 중 선구적이었습니다. SK하이닉스·삼성·LG보다 빨랐습니다.', items: [
+    { q: 'SK하이닉스가 2018.02에 S/4HANA를 도입했나요?', a: '도입 시점·범위·산업이 다르므로 명시가 필요합니다. 실제로는 2018.04 구축 시작, 2019.02 오픈입니다.', warn: '1차 출처 사전 확인 필수' },
+    { q: '국내 클라우드 적용률 21.5% / 제조 10.5%의 출처는?', a: '한국정보화진흥원/과기정통부/KISA 영역으로 추정됩니다.', warn: '2017년 통계 출처 사전 확인' },
+    { q: '"5년 격차"가 무슨 의미인가요?', a: 'S/4HANA는 2016년 버전부터 2022년 사이 여러 번 업데이트돼서 직접 비교는 조건이 다릅니다. "시기적 위치 비교에 한정한다"고 표현하는 게 정합합니다.' },
+    { q: 'LG화학과 LG CNS의 SI 관계는?', a: 'LG화학과 LG CNS의 협력 관계입니다. 정확히는 2022년 결정, 2023년 MOU입니다.', warn: '1차 자료 검증 필요' }
+  ]},
+  { step: 4, no: '46', title: 'PIR 종합 검증 (5영역 ○)', critical: true, say: '정량·정성·목표 달성·후속·시기 다섯 영역이 모두 ○이고, 강의 PIR 3대 기준에도 정합하는 성공 사례라고 종합합니다.', items: [
+    { q: '5영역이 모두 ○라는 근거를 한 번에 말하면?', a: '정량(다운타임 54%↓·성능 90.5%↑), 정성(3사 시너지·디지털 코어 등), 초기 목표(4대 모두 회수), 후속(2018 이사회 15건+), 시기(국내 선구적) — 다섯 영역이 모두 충족되고, 강의 PIR 3대 기준(시스템·효익·경영 목표)에도 정합합니다.', s: '박제성 상무 인터뷰 + 사업보고서 + 강의 자료 19p' }
+  ]},
+  { step: 4, no: '47', title: '한계 인식 · 다음 Step', say: 'ROI 등 비공개 한계는 있지만, 정량·정성·후속이 함께 입증된 검증 가능한 성공 사례라고 정리합니다.', items: [
+    { q: '한계 5건(ROI·NPS·글로벌 적응·부정 효과·외부 감사)이 모두 "비공개"가 원인인가요?', a: '맞습니다. 학술적으로 우수한 한계 인식입니다. "비공개 한계에도 불구하고 정량·정성·후속 3축의 균형으로 검증 가능한 성공 사례"라고 결론지으면 됩니다.' },
+    { q: 'NPS·CSAT가 무엇인가요?', a: 'NPS는 순추천지수, CSAT는 고객 만족도 점수로, 둘 다 만족도를 재는 표준 지표입니다.', s: 'Reichheld (2003) NPS 원형' }
+  ]},
+
+  // ============== STEP 5 ==============
+  { step: 5, no: '48', title: 'Step 5 개시', intro: true, say: '마지막으로 이 사례를 "통합 경영 플랫폼을 선택한 것"으로 재해석하고 결론을 내립니다.', items: [
+    { q: '"통합 경영 플랫폼 선택으로 재해석"의 근거는?', a: '발표자의 종합 해석입니다. Step 1~4의 누적 결론과 정합합니다.' }
+  ]},
+  { step: 5, no: '49', title: '강의 5대 차이 표 · 본 사례 적용', say: 'Step 1~4를 종합하면, 일관된 의사결정 패턴이 구조적 성공을 만들었다는 것을 보여줍니다.', items: [
+    { q: '강의 31페이지의 5대 차이가 무엇인가요?', a: '광운대 ERP개론 강의 자료의 내용입니다.', warn: '강의명·교수명·정확한 5대 차이 항목 사전 메모 필수' },
+    { q: '"13년 자산이 5대 모두를 바꿨다"는 단일 원인으로 환원한 것 아닌가요?', a: '13년 자산이 핵심 차별화 요인인 건 맞지만 유일한 요인은 아닙니다. "가장 핵심"이라고 표현하는 게 정확합니다.' }
+  ]},
+  { step: 5, no: '50', title: '핵심 성공 요인 5가지 (CSF)', say: '핵심 성공 요인 다섯 가지입니다 — 기존 자산, 명확한 목표, VAS 리스크 통제, 그룹 SI, 표준화·차별화 균형. 이 다섯이 하나의 의사결정 철학으로 모입니다.', items: [
+    { q: 'CSF(핵심 성공 요인)는 사후 합리화 아닌가요?', a: '사후 분석인 점은 솔직히 인정합니다. 다만 ① 박제성 상무의 동시대 발언과 ② 2018 이사회 의결 기록이 사전 의도성을 일부 뒷받침합니다.' }
+  ]},
+  { step: 5, no: '51', title: '발표용 CSF 3축 (강의 정합)', say: '다섯 가지를 발표용 3축(기존 자산·사전 통제·균형)으로 압축했습니다.', items: [
+    { q: '5개를 3개로 줄일 때 빠진 ④·⑤는?', a: '④ 비즈니스 목표는 모든 슬라이드의 배경 조건으로, ⑤ 그룹 SI는 거버넌스 슬라이드(14·24번)에서 별도로 다룹니다. 발표 흐름상 본문은 3개로 압축한 것입니다.' },
+    { q: 'Best Practice 강제 수용이 아니라고 단정해도 되나요?', a: 'SAP가 Best Practice를 권장하지만 강제하지는 않습니다. 우리 사례는 GAP 3트랙(BPR·Customizing·Add-on)으로 능동적으로 균형을 맞췄습니다.' }
+  ]},
+  { step: 5, no: '52', title: '한계 4 · 적용 전 체크포인트', say: '다른 기업이 따라 할 때 확인해야 할 조건 네 가지입니다. 그대로 복제하지 말고 조건을 봐야 한다는 메시지입니다.', items: [
+    { q: '한계를 체크포인트로 바꾸면 회피하는 것 아닌가요?', a: '건설적 재구성입니다. "한계가 실패가 아니라 적용 조건"이라는 학술적 시각이며, "다른 회사가 적용하기 전 반드시 확인해야 한다"고 강조하면 됩니다.' },
+    { q: '온프레미스가 2026년 시점에서도 맞나요?', a: '2017년 결정은 당시로선 합리적이었습니다. 다만 2027년 ECC 지원 종료와 RISE with SAP로 클라우드 전환 압력이 커지고 있습니다.' }
+  ]},
+  { step: 5, no: '53', title: '시사점 3 (M&A · 장치산업 · 2027 전환점)', critical: true, say: '이 사례가 특히 유효한 기업은 — M&A 통합 중인 기업, 장치산업, 2027년 ECC 전환점에 놓인 기업입니다.', items: [
+    { q: '2027년 ECC 지원 종료 정책이 정확히 무엇인가요?', a: 'SAP 공식 정책상 ECC 6.0 표준 지원은 2027.12.31에 종료되고, 연장 지원은 추가 비용으로 2030.12.31까지입니다. 이후에는 고객별 맞춤 지원만 남습니다.', s: 'SAP Maintenance Strategy 공식' },
+    { q: '시사점 적용 대상이 너무 좁지 않나요?', a: '세 조건(M&A·장치산업·2027 전환점)을 모두 만족하는 기업에 한정됩니다. 국내로는 LG화학·롯데정밀화학·한화토탈·SK이노베이션 등이 해당합니다.' }
+  ]},
+  { step: 5, no: '54', title: '본질적 통찰 3 (디지털 코어 수렴)', say: '세 가지 통찰이 결국 "단일 디지털 코어"로 모입니다. ERP의 본질은 시스템 구축이 아니라 운영 기준을 다시 설계하는 것입니다.', items: [
+    { q: '"ERP 도입의 본질 = 조직 운영 기준 재설계"가 학술적으로 합의된 시각인가요?', a: '맞습니다. Davenport(1998)의 "기업을 기업 시스템에 담는다"는 논의와 정합합니다. ERP는 단순 시스템이 아니라 조직 통합이라는 시각입니다.', s: 'Harvard Business Review' }
+  ]},
+  { step: 5, no: '55', title: '디지털 로드맵 4단계 (클라우드→AI→트윈→2030 톱7)', say: 'S/4HANA는 종착점이 아니라 클라우드·AI·디지털 트윈으로 확장되는 출발점이라는 점을 보여줍니다.', items: [
+    { q: '4단계 로드맵이 롯데 공식 발표인가요?', a: '일부는 공식이고 일부는 발표자 종합입니다. 2020년 보도자료의 DT 가속화와 박제성 상무 인터뷰를 종합한 것입니다.' },
+    { q: '디지털 트윈이 무엇인가요?', a: 'IoT 센서 데이터로 실제 자산을 가상으로 똑같이 복제한 모델입니다. GE의 항공기 엔진 모니터링이 대표적이고, 석유화학에서는 공정 시뮬레이션·예측 정비에 씁니다.', s: 'Grieves (2002)' }
+  ]},
+  { step: 5, no: '56', title: '최종 결론', say: '롯데케미칼은 시스템을 교체한 것이 아니라, 통합 운영 기준을 다시 설계했습니다. 이것이 이 발표의 결론입니다.', items: [
+    { q: '"드문 모범 사례"라고 했는데 비교 표본이 있나요?', a: '국내 SAP 도입 사례 중에서 박제성 상무 인터뷰·사업보고서·2018 이사회 의결·DT 로드맵까지 다층 자료가 공개된 경우가 드물다는 의미입니다. 정확한 표본 수치는 없습니다.' },
+    { q: '3가지 근거가 Step 1~4를 모두 대표하나요?', a: 'Step 1(13년 자산) + Step 2(Buy·A안·5대 타당성) + Step 3(BPR·Customizing·Add-on) + Step 4(PIR 4축 ○)를 압축한 것입니다.' }
+  ]},
+  { step: 5, no: '57', title: '감사합니다 · Q&A · 조원 역할', say: '감사 인사와 함께 Q&A를 받습니다. 출처는 기업·SAP·산업·학술 4그룹으로 준비돼 있습니다.', items: [
+    { q: '4그룹 출처를 하나씩 말한다면?', a: '기업 자료는 박제성 상무 인터뷰(테크수다 2019), SAP 공식은 SAP Value Assurance, 산업은 한국석유화학협회(KPIA), 학술은 Davenport(1998) 또는 강의 자료입니다.' }
+  ]}
+];
+
+// ============== Render ==============
+(function() {
+  const STEP_TITLE = {
+    1: '왜 ERP 통합이 필요했는가',
+    2: '어떻게 도입할 것인가 (의사결정)',
+    3: '7개월의 구축',
+    4: '구축 성과 검증 (PIR)',
+    5: '종합 · 일반화 · 결론'
+  };
+
+  const root = document.getElementById('render');
+  let curStep = 0;
+  let stepDiv = null;
+
+  slides.forEach(sl => {
+    if (sl.step !== curStep) {
+      curStep = sl.step;
+      stepDiv = document.createElement('div');
+      stepDiv.className = 'step';
+      const header = document.createElement('div');
+      header.className = 'step-header';
+      const count = slides.filter(s => s.step === curStep).length;
+      header.innerHTML = `Step ${curStep} — ${STEP_TITLE[curStep]} <span class="ct">(${count}장)</span>`;
+      stepDiv.appendChild(header);
+      root.appendChild(stepDiv);
+    }
+
+    const card = document.createElement('div');
+    card.className = 'card' + (sl.intro ? ' intro' : '') + (sl.critical ? ' critical' : '');
+
+    const head = document.createElement('div');
+    head.className = 'card-head';
+    head.innerHTML = `<span class="card-no">Slide ${sl.no}</span><span class="card-title">${sl.title}</span>` +
+      (sl.critical ? '<span class="card-tag">★ 핵심</span>' : (sl.intro ? '<span class="card-tag" style="color:#888">intro</span>' : ''));
+    card.appendChild(head);
+
+    if (sl.say) {
+      const sayDiv = document.createElement('div');
+      sayDiv.className = 'say';
+      sayDiv.textContent = sl.say;
+      card.appendChild(sayDiv);
+    }
+
+    sl.items.forEach(it => {
+      const qa = document.createElement('div');
+      qa.className = 'qa';
+      qa.innerHTML = `<div class="q">${it.q}</div><div class="a">${it.a}</div>` +
+        (it.s ? `<div class="src">${it.s}</div>` : '') +
+        (it.warn ? `<div class="warn">${it.warn}</div>` : '');
+      card.appendChild(qa);
+    });
+
+    stepDiv.appendChild(card);
+  });
+})();
+</script>
+</body>
+</html>
