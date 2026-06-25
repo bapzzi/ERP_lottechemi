@@ -19,7 +19,21 @@
       "Read(//Users/sinhaewon/Desktop/**)",
       "Bash(/bin/echo hello *)",
       "Bash(grep *)",
-      "Bash(git add *)"
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git rev-list *)",
+      "Bash(gh api *)",
+      "Bash(curl -sI \"https://bapzzi.github.io/ERP_lottechemi/dist/preview-step4.html\")",
+      "Bash(curl -s \"https://bapzzi.github.io/ERP_lottechemi/dist/preview-step4.html\")",
+      "Bash(git fetch *)",
+      "WebSearch",
+      "Bash(mdls *)",
+      "Bash(git check-ignore *)",
+      "Bash(curl -s \"https://bapzzi.github.io/ERP_lottechemi/dist/presentation.html?nocache=$\\(date +%s\\)\")",
+      "Bash(awk '/^const slides = \\\\[/{f=1} f{print} /^\\\\}\\\\\\)\\\\\\(\\\\\\);$/{f=0}' cheatsheet.html)",
+      "Bash(node --check /tmp/cheat_check.js)",
+      "Bash(gh repo *)"
     ]
   }
 }

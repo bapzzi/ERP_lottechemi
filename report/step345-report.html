@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>롯데케미칼 SAP S/4HANA 통합 ERP 사례 분석 — Step 3·4·5</title>
+<style>
+  *{box-sizing:border-box;}
+  html{background:#888;}
+  body{
+    margin:0; color:#000;
+    font-family:"Batang","바탕","AppleMyungjo","Times New Roman",serif;
+    font-size:10.5pt; line-height:1.75;
+    -webkit-print-color-adjust:exact; print-color-adjust:exact;
+  }
+  .page{
+    width:210mm; min-height:297mm; background:#fff; margin:6mm auto; padding:20mm 22mm 18mm;
+    border:1px solid #bbb; position:relative; page-break-after:always;
+  }
+  .page:last-child{page-break-after:auto;}
+  .pno{position:absolute; bottom:11mm; left:0; right:0; text-align:center; font-size:9.5pt;}
+
+  /* title block (page 1) */
+  .title{text-align:center; margin-bottom:6px;}
+  .title .course{font-size:10pt; margin-bottom:14px;}
+  .title h1{font-size:16pt; font-weight:700; line-height:1.5; margin:0 0 6px;}
+  .title .sub{font-size:11pt; margin:0 0 16px;}
+  .title .info{font-size:10pt; line-height:1.9;}
+  .rule{border:0; border-top:1.3px solid #000; margin:14px 0 16px;}
+  .preface{font-size:9.7pt; line-height:1.7; margin:0 0 6px;}
+
+  h2{font-size:13.5pt; font-weight:700; margin:18px 0 6px; padding-bottom:3px; border-bottom:1.3px solid #000;}
+  h3{font-size:11.3pt; font-weight:700; margin:15px 0 4px;}
+  h4{font-size:10.5pt; font-weight:700; margin:10px 0 3px;}
+  p{margin:6px 0; text-align:justify;}
+  strong{font-weight:700;}
+  /* underline emphasis like a person underlines in Word */
+  em{font-style:normal; text-decoration:underline; text-underline-offset:2px;}
+  ul,ol{margin:5px 0; padding-left:22px;}
+  li{margin:3px 0; text-align:justify;}
+  sup{font-size:7.5pt;}
+
+  table{width:100%; border-collapse:collapse; margin:8px 0; font-size:9.7pt; line-height:1.55;}
+  th,td{border:1px solid #000; padding:5px 8px; vertical-align:top; text-align:left;}
+  th{background:#eaeaea; font-weight:700; text-align:center;}
+  td.c,th.c{text-align:center;}
+  caption{caption-side:top; text-align:left; font-size:9.5pt; font-weight:700; margin-bottom:3px;}
+
+  .concl{margin:9px 0; padding-left:13px; border-left:3px solid #000; font-weight:600;}
+  .supp-tag{font-weight:700; text-decoration:underline; text-underline-offset:2px;}
+  .small{font-size:9.3pt; color:#222;}
+  .sources p{font-size:9pt; margin:3px 0; padding-left:22px; text-indent:-22px; line-height:1.5; text-align:left;}
+  a{color:#000;}
+
+  @media print{
+    html,body{background:#fff;}
+    .page{margin:0; border:0; width:auto; min-height:auto; padding:0 0;}
+    @page{size:A4; margin:20mm 22mm;}
+    .pno{position:fixed; bottom:8mm;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ============ PAGE 1 : 표지 + Step 3-1 ============ -->
+<section class="page">
+  <div class="title">
+    <div class="course">광운대학교 경영대학 · ERP개론 팀프로젝트</div>
+    <h1>롯데케미칼(주) SAP S/4HANA 통합 ERP 구축 사례 분석<br>— Step 3·4·5 (구축 · 성과 검토 · 결론)</h1>
+    <div class="sub">M&amp;A 이후 3사 통합 ERP 구축 (2017.04~11, 7개월)</div>
+    <div class="info">
+      경영학부 1팀 &nbsp;|&nbsp; 신해원 · 김민아 · 김동현 · 성슬기<br>
+      분석 대상: 롯데케미칼 · 롯데정밀화학 · 롯데첨단소재
+    </div>
+  </div>
+  <hr class="rule">
+  <p class="preface">본 보고서는 발표한 Step 1~5 분석 중 배점이 집중된 Step 3·4·5를 제출용으로 정리한 것이다. 본문은 발표 내용을 기준으로 하며, 발표 후 질의응답에서 제기된 정량 수치의 근거와 2026년 현재 시점의 현황은 “[발표 후 보완]” 표기로 구분하여 추가하였다.</p>
+
+  <h2>STEP 3. 구축 단계의 의사결정과 리스크 관리</h2>
+  <p>Step 2에서 결정된 ‘기존 SAP 자산 기반 S/4HANA 통합형 컨버전’을 실행에 옮기는 단계이다. 구축의 본질은 빠른 시스템 교체가 아니라, 다중 제약을 동시에 통제한 의사결정의 연쇄였다. 핵심 질문은 다음과 같다 — <strong>“선택은 끝났다. 이제 어떻게 멈추지 않고 통합할 것인가?”</strong></p>
+
+  <h3>1. 7개월 동안 동시에 작용한 4대 실행 제약</h3>
+  <p>일반적 SAP 신규 구축(통상 18~24개월)과 달리 본 프로젝트는 약 7개월 내 완료가 요구되었다. 그 짧은 기간 동안 다음 네 제약이 서로 충돌하며 동시에 작용했다.</p>
+  <ol>
+    <li><strong>일정 압축(Time)</strong> — 7개월, 통상 대비 1.5~3배 압축.</li>
+    <li><strong>무중단 가동(Continuity)</strong> — 24시간 연속 가동, 1분 정지도 손실로 직결.</li>
+    <li><strong>3사 병존(Multi-Entity)</strong> — 롯데케미칼·정밀화학·첨단소재의 상이한 시스템·프로세스.</li>
+    <li><strong>글로벌 운영(Global)</strong> — 6개국 거점, 110개국 수출 채널 동시 지원.</li>
+  </ol>
+  <p>일정을 줄이려면 범위를 축소하거나 비용을 늘려야 하지만, 3사 통합·글로벌 다거점은 축소가 불가능한 프로젝트의 존재 이유였다. 결국 구축 단계의 핵심은 <em>네 제약을 동시에 만족시키는 방법론·범위·리스크 전략의 조합</em>을 찾는 일이었다.</p>
+
+  <h3>2. 제약을 통제 구조로 전환한 거버넌스 3축</h3>
+  <p>이 규모의 프로젝트는 한 주체가 단독으로 추진할 수 없다. 본 사례는 4대 제약을 결정·구축·검증의 3축 협력 구조를 통해 통제 가능한 조건으로 전환하였다.</p>
+  <table>
+    <caption>[표 3-1] 구축 단계 거버넌스 3축</caption>
+    <thead><tr><th style="width:13%">축</th><th style="width:25%">주체</th><th style="width:28%">역할</th><th>통제 결과</th></tr></thead>
+    <tbody>
+      <tr><td class="c">① 결정</td><td>롯데케미칼(정보전략담당)</td><td>요구사항 정의, 자원 배분, 최종 의사결정</td><td>그룹 IT 자산 통제권 확보, 외부 글로벌 SI 일임 회피</td></tr>
+      <tr><td class="c">② 구축</td><td>롯데정보통신(그룹 SI)</td><td>시스템 구축·통합 수행, 운영체계 확보</td><td>그룹 IT 자산 내부 축적, 외부 SI 입찰·온보딩 비용 회피</td></tr>
+      <tr><td class="c">③ 검증</td><td>SAP 본사(Value Assurance)</td><td>SAP Activate·Fit-Gap·Migration Planning·Go-Live Check</td><td>다운타임 114h→52h(-54%) 사전 진단, 7개월 압축 검증</td></tr>
+    </tbody>
+  </table>
+  <p class="small">그룹 계열 SI(롯데정보통신)를 선택한 것은 단순 비용 절감이 아니라 가동 이후 안정 운영체계와 그룹 차원 IT 통제권 유지라는 장기 판단이었으며, SAP 본사가 라이선스 공급자가 아닌 ‘구조화된 컨설팅(VAS)’으로 직접 참여한 것은 고난도 기술 리스크를 패키지 공급사의 자원으로 해결하려는 전략적 판단이었다.<sup>[1][8][12]</sup></p>
+  <p class="concl">제약은 문제로 남지 않고, 결정·구축·검증의 통제 구조로 전환되었다.</p>
+
+  <div class="pno">- 1 -</div>
+</section>
+
+<!-- ============ PAGE 2 : Step 3-2 ============ -->
+<section class="page">
+  <h3>3. [의사결정 ①] 구축 방법론 — 13년 경험의 진화로서의 Roll-out</h3>
+  <p>본 사례의 방법론은 백지에서 고른 것이 아니라, 13년 누적된 SAP 운영 경험이 3사 통합 조건에 맞춰 진화한 결과이다.</p>
+  <ul>
+    <li><strong>2003–04 · SMART</strong> — 단일 법인(호남석유화학) SAP를 Big Bang 방식 10개월로 도입(업계 평균 1.5~2년 대비 단축). → 단일 법인 전환 경험 축적.</li>
+    <li><strong>2010 · GEMS</strong> — 석유화학 업계 최초 SAP 기반 환경·에너지 관리 시스템 자체 구축. → 자체 운영 경험 축적.</li>
+    <li><strong>2017.11 · S/4HANA 1610</strong> — 누적 경험을 기반으로 3사 동시 안착. 구축 방법론은 Roll-out, 데이터 이관은 Big Bang의 2축 결합. → 3사 통합 실행 기반 도달.</li>
+  </ul>
+  <p>2003년 단일 법인 빅뱅이 가능했던 것과 달리, 2017년에는 ① 3사 병존, ② 글로벌 다거점, ③ 운영 중 전환이라는 조건이 더해져 빅뱅의 다운타임·영속성 위험이 감내 불가 수준으로 커졌다. 그래서 ‘기준 법인 → 타사 확산’의 Roll-out 형태와 통합형 컨버전(Brownfield 성격) 전략이 결합된, 진화된 방법론으로 전환되었다.</p>
+
+  <h4>왜 Roll-out이 유일한 해였는가 — 4대 방법론 비교</h4>
+  <table>
+    <caption>[표 3-2] 구축 방법론별 본 사례 적합도 (선택 기준: 7개월·3사 통합·무중단·기존 자산)</caption>
+    <thead><tr><th style="width:16%">방법론</th><th class="c" style="width:9%">7개월</th><th class="c" style="width:9%">3사</th><th class="c" style="width:9%">무중단</th><th class="c" style="width:9%">자산</th><th>판정</th></tr></thead>
+    <tbody>
+      <tr><td>Big Bang(전체 일시 전환)</td><td class="c">△</td><td class="c">✕</td><td class="c">✕</td><td class="c">○</td><td>3사 동시 전환 시 다운타임 리스크 과대 → 부적합</td></tr>
+      <tr><td>Phased(모듈·부서별)</td><td class="c">✕</td><td class="c">△</td><td class="c">○</td><td class="c">○</td><td>7개월 내 단계 분할 불가 → 부적합</td></tr>
+      <tr><td>Pilot(시범 후 확산)</td><td class="c">✕</td><td class="c">△</td><td class="c">○</td><td class="c">△</td><td>시범 후 확산 일정상 7개월 불가 → 부적합</td></tr>
+      <tr><td><strong>Roll-out(기준 법인 → 확산)</strong></td><td class="c">○</td><td class="c">○</td><td class="c">○</td><td class="c">○</td><td><strong>4개 조건 모두 충족</strong> — 롯데케미칼 기준 → 정밀화학·첨단소재 확산</td></tr>
+    </tbody>
+  </table>
+  <p>Roll-out 선택의 3대 근거는 다음과 같다. ① 기준 법인의 확립된 SAP 자산을 기준 모델로 활용하여 ‘처음부터(Scope 0)’ 시작하지 않을 수 있었고, ② 3사 동시 전환 시의 장애 확산 위험을 순차 확산으로 분산했으며, ③ 기존 SAP 운영 자산과의 정합성 측면에서 통합형 컨버전(데이터·설정 이관) 방식이 신규 그린필드 도입보다 일정·비용·리스크 모두에서 유리했다.<sup>[1][10]</sup></p>
+  <p class="small">※ 표현상 신중함: 본 보고서의 ‘Brownfield’는 SAP 공식 분류상 본 프로젝트가 ‘System Conversion’이었음을 단정하는 것이 아니라, 공개 자료에서 확인되는 ‘기존 SAP 운영 자산을 활용한 S/4HANA 통합 전환’을 ‘Brownfield 성격의 통합형 컨버전’으로 해석한 표현이다. 학생 발표의 학술적 정직성을 위해 이를 명시한다.</p>
+
+  <p class="concl">2017년의 핵심은 과거 방식의 반복이 아니라, 3사 통합 조건에 맞춘 실행 방식의 전환이었다.</p>
+
+  <div class="pno">- 2 -</div>
+</section>
+
+<!-- ============ PAGE 3 : Step 3-3 ============ -->
+<section class="page">
+  <h3>4. [의사결정 ②] 3대 제약(Time·Cost·Scope)의 동시 통제</h3>
+  <p>프로젝트 관리의 Iron Triangle(일정·비용·범위)은 보통 하나를 희생해야 나머지 둘을 만족시킨다. 본 사례는 셋 모두를 희생 없이 만족시킨 점이 차별적이다.</p>
+  <ul>
+    <li><strong>Time(일정)</strong> — 2017.04~11, 통상 대비 1.5~3배 압축. 아래 4대 근거의 결합으로 달성.</li>
+    <li><strong>Cost(비용)</strong> — ‘최소 비용’이 아니라 비용 발생 구조의 통제(자산 재활용·그룹 SI·중복 운영비 제거·전환 리스크 통제)인 ‘비용 회피형 관리’.</li>
+    <li><strong>Scope(범위)</strong> — 법인 축(3사+6국)·모듈 축(10모듈)·프로세스 축(공통 표준화 + 본연 경쟁력 유지)의 3축 균형.</li>
+  </ul>
+  <table>
+    <caption>[표 3-3] 7개월 압축이 가능했던 4대 근거</caption>
+    <thead><tr><th style="width:22%">근거</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>① 통합형 컨버전(Brownfield 성격)</td><td>기준 법인의 SAP ECC 자산을 그대로 이관 → 신규 그린필드 대비 분석·설계·구현 분량 대폭 축소</td></tr>
+      <tr><td>② 13년 운영 경험</td><td>2003 SMART·2010 GEMS로 사용자 교육·변경관리 부담이 신규 도입 기업 대비 현저히 낮음. 사용자 경험·커스터마이징 자산 재활용</td></tr>
+      <tr><td>③ 그룹 SI 사전 협업</td><td>외부 SI 공모·선정·온보딩 절차 생략, 그룹 차원 IT 인력 풀 즉시 동원</td></tr>
+      <tr><td>④ SAP Value Assurance</td><td>Fit-Gap Analysis·Migration Planning Workshop·Go-Live Readiness Check 등 검증된 절차를 그대로 적용(자체 방법론 개발 불필요)</td></tr>
+    </tbody>
+  </table>
+  <p class="small">비용은 직접 금액이 공개되지 않았으므로 ‘비용 발생 구조의 통제’로 분석한다. 단일화로 중복 라이선스·유지보수·인프라 비용을 제거했고(“롯데정보통신이 통합 운영체계 확보, 신규 SAP 플랫폼으로 중복투자 리스크 제거”<sup>[1]</sup>), 다운타임 단축으로 잠재 가동중단 손실을 회피했다. 2018.12.19 ‘SAP 라이선스 추가 구매’ 의결<sup>[9]</sup>은 비용 구조가 안정적으로 통제되어 추가 투자 확장이 가능했음을 간접 입증한다.</p>
+
+  <h3>5. [의사결정 ③] AS-IS / TO-BE GAP 분석과 3트랙 해결</h3>
+  <p>ERP 도입의 가장 본질적 의사결정은 ‘현 상태(AS-IS)와 목표(TO-BE)의 격차를 어떻게 메울 것인가’이다. 본 사례는 모든 것을 표준화하지 않았다 — 6대 항목 중 5개는 통합 표준화, 1개(프로세스)는 본연 경쟁력 보존을 택했다.</p>
+  <table>
+    <caption>[표 3-4] AS-IS / TO-BE 6대 항목 비교</caption>
+    <thead><tr><th style="width:17%">항목</th><th style="width:34%">AS-IS (2017.04 이전)</th><th style="width:34%">TO-BE (2017.11 이후)</th><th>판단</th></tr></thead>
+    <tbody>
+      <tr><td>시스템 플랫폼</td><td>케미칼 ECC + 정밀화학·첨단소재 각자 시스템 3사 병존</td><td>단일 SAP S/4HANA 1610</td><td class="c">표준화</td></tr>
+      <tr><td>기준정보(MDM)</td><td>각 사별 자재·거래처·계정·조직 코드 상이</td><td>통합 기준정보(그룹 표준 코드)</td><td class="c">표준화</td></tr>
+      <tr><td>프로세스</td><td>각 사 독자 절차, 공통 영역 표준 부재</td><td>공통 표준 + 각 사 특화 프로세스 병존</td><td class="c"><strong>보존</strong></td></tr>
+      <tr><td>데이터 처리</td><td>ECC 디스크 I/O·야간 배치</td><td>S/4HANA 인메모리 실시간</td><td class="c">전환</td></tr>
+      <tr><td>글로벌 다거점</td><td>법인별 개별 시스템·가시성 부재</td><td>단일 플랫폼 다국가·다통화·다언어</td><td class="c">표준화</td></tr>
+      <tr><td>디지털 전환 기반</td><td>데이터 사일로·분석 어려움</td><td>통합 데이터 호수·DT 토대</td><td class="c">전환</td></tr>
+    </tbody>
+  </table>
+  <p>GAP 해결은 세 트랙의 균형으로 이루어졌다. <strong>① BPR</strong>은 기준정보·재무·구매·물류 등 ROI가 명확한 공통 영역을 SAP 표준 베스트 프랙티스로 재설계하는 표준화 트랙이고, <strong>② Customizing</strong>은 각 사 본연 경쟁력·특화 프로세스를 표준 위에서 부분 변형해 보존하는 차별화 트랙이며, <strong>③ Add-on</strong>은 비SAP 시스템(SCM·MES·PLM·LIMS·EHS·GEMS)을 EAI로 연계해 단일 코어를 확장하는 트랙이다.</p>
+  <p class="small">Configuration·Baseline 통제: 강의 자료는 “파라미터의 부적절한 설정이 패키지 구현의 가장 큰 위험요소”라고 명시한다. 본 사례는 13년 ECC 설정 자산을 컨버전으로 이관해 이 위험을 본질적으로 축소했다. 또한 SAP를 이미 사용 중이어서 ‘벤더·제품 선정 = Baseline(설계 동결점)’ 시점이 앞당겨졌고, 3트랙 구분 자체가 추가 요구(Scope Creep)를 분류·통제하는 변경관리 장치로 작동했다.<sup>[강의 13p·29p]</sup></p>
+
+  <div class="pno">- 3 -</div>
+</section>
+
+<!-- ============ PAGE 4 : Step 3-4 ============ -->
+<section class="page">
+  <h3>6. [의사결정 ④] 리스크 관리 — 6대 리스크 통제 매트릭스</h3>
+  <table>
+    <caption>[표 3-5] 6대 리스크와 통제 전략·결과</caption>
+    <thead><tr><th style="width:16%">리스크</th><th style="width:42%">통제 전략</th><th>결과</th></tr></thead>
+    <tbody>
+      <tr><td>① 다운타임</td><td>SAP VAS 적용, 지속 테스트, Migration Planning·Go-Live Check</td><td>진단 114h → 실제 52h(-54%), 약 62h 손실 회피<sup>[1][12]</sup></td></tr>
+      <tr><td>② 비즈니스 영속성</td><td>‘3사 본연 경쟁력·특화 프로세스 유지’ 원칙 + Customizing 트랙 보존</td><td>정밀화학·첨단소재 특화 프로세스 유지, M&amp;A 직후 인재 이탈 최소화</td></tr>
+      <tr><td>③ 납기·재고</td><td>단계적 데이터 검증, 병행 운영 기간, 사용자 교육 강화</td><td>성공적 가동 후 안정화</td></tr>
+      <tr><td>④ 중복투자</td><td>롯데정보통신 통합 운영체계 + 신규 SAP 플랫폼 단일화</td><td>단일 플랫폼 일원화, 2018+ 그룹공통시스템 시너지<sup>[9]</sup></td></tr>
+      <tr><td>⑤ 변경관리</td><td>13년 SAP 사용자 경험 유지, 통합형 컨버전으로 학습 부담 최소화</td><td>“회계부서 박수”<sup>[1]</sup> — 사용자 만족 확인</td></tr>
+      <tr><td>⑥ 벤더 종속성(Lock-in)</td><td>SAP 직접 계약 + 그룹 SI 활용으로 협상력 확보(전환 자체가 더 큰 비용)</td><td>2018.12.19 라이선스 추가 의결<sup>[9]</sup>, 장기 파트너십 공식화</td></tr>
+    </tbody>
+  </table>
+
+  <h4>다운타임 통제의 의미 — 단순한 기술 성과가 아니다</h4>
+  <p>전환 다운타임은 사전 진단 114시간에서 실제 가동 시점 52시간으로 단축되어 약 62시간(-54%)을 줄였다. 24시간 연속 가동 산업에서 62시간의 비가동 회피는 다음을 의미한다. ① NCC 등 핵심 공정의 추가 가동 확보(생산 손실 회피), ② 110개국 수출 채널 주문·출하 흐름 유지(출하 손실 회피), ③ 재가동 시 공정 안정화·에너지 비용 회피, ④ 정지·재가동 시점의 안전사고 리스크 축소.</p>
+
+  <p><span class="supp-tag">[발표 후 보완 — Q&amp;A 반영]</span> 다운타임 -54%는 우연이 아니라 구조화된 검증의 결과이다. 강의 자료의 테스트 5종(단위·모듈 → 인터페이스·통합 → 시스템·성능 → 인수(UAT) → 사교성)이 본 사례에 매핑되며, SAP VAS는 사전 진단(Fit-Gap·114h 도출) → 반복 검증(모의 컷오버 rehearsal) → 사후 검증(Go-Live Readiness Check)의 3단계로 작동했다. 비상 계획(Go/No-Go·데이터 백업·Rollback)은 VAS 표준 절차에 의존했으며, 세부는 공개 자료의 제약으로 추론 수준에 머문다.</p>
+
+  <h3>7. Step 3 결론 — 4대 원칙의 동시 통제</h3>
+  <ol>
+    <li><strong>방법론 진화</strong> — 기존 자산을 진화의 디딤돌로(SMART→GEMS→S/4HANA).</li>
+    <li><strong>범위 균형</strong> — 표준화(BPR)와 차별성(Customizing)을 동시에.</li>
+    <li><strong>사전 검증</strong> — 리스크를 사후 대응이 아니라 사전 진단·계량화·외부 자원 동원으로.</li>
+    <li><strong>플랫폼 통합</strong> — 그룹 SI + SAP 본사 직접 협력, 단일 디지털 코어.</li>
+  </ol>
+  <p class="concl">Step 3의 핵심은 빠른 구축이 아니라, 방법론·범위·검증·플랫폼을 동시에 통제한 실행 구조이다. 남은 질문은 “이 구축이 실제 성과로 이어졌는가”이며, 이는 Step 4 PIR에서 검증한다.</p>
+
+  <div class="pno">- 4 -</div>
+</section>
+
+<!-- ============ PAGE 5 : Step 4-1 ============ -->
+<section class="page">
+  <h2>STEP 4. 도입 성과 및 구현 후 검토 (PIR)</h2>
+  <p>Post-Implementation Review는 가동 이후 성과를 사후 검증하는 단계이다. 핵심은 “성과가 있었다”가 아니라, 공개 자료 범위에서 정량·정성·후속·한계를 균형 있게 검증하는 것이다. 핵심 질문은 “구축은 끝났다. 실제 성과로 이어졌는가?”이다.</p>
+
+  <h3>1. PIR의 분석 프레임과 데이터 가용성</h3>
+  <p>강의 자료(19p)는 PIR을 “시스템·요구사항 달성 + 사업 효익 실현 + 경영 목표 부합”의 검토로 정의한다. 기업은 가동 이후의 정량 성과(특히 ROI)를 비공개하는 경우가 많으나, 본 사례는 정보전략 담당 임원이 직접 수치를 공개한 1차 자료가 있어 비교적 충실한 PIR이 가능하다.</p>
+  <table>
+    <caption>[표 4-1] PIR 분석 영역별 데이터 가용성</caption>
+    <thead><tr><th style="width:30%">분석 영역</th><th style="width:42%">공개 자료</th><th>출처</th></tr></thead>
+    <tbody>
+      <tr><td>① 다운타임 단축</td><td>진단 114h → 52h (-54%)</td><td>상무 인터뷰<sup>[1]</sup></td></tr>
+      <tr><td>② 프로그램 성능</td><td>주요 비즈니스 프로그램 90.5% 개선</td><td>상무 인터뷰<sup>[1]</sup></td></tr>
+      <tr><td>③ 조회 속도</td><td>1년 매출대장 40만 건 = 2분</td><td>상무 인터뷰<sup>[1]</sup></td></tr>
+      <tr><td>④ 통합 범위</td><td>10모듈·3사·6국 거점·110국 수출</td><td>상무 인터뷰<sup>[1]</sup>·사업보고서<sup>[8]</sup></td></tr>
+      <tr><td>⑤ 투자 규모·ROI</td><td>비공개</td><td>사업보고서 별도 공시 없음</td></tr>
+      <tr><td>⑥ 사용자 만족도</td><td>정성 표현 — “회계부서 박수”</td><td>상무 인터뷰<sup>[1]</sup></td></tr>
+      <tr><td>⑦ 후속 디지털 투자</td><td>2018 이사회 의결 기록(공개)</td><td>2018 정정 사업보고서<sup>[9]</sup></td></tr>
+    </tbody>
+  </table>
+
+  <h3>2. 정량 성과 4지표</h3>
+  <p>정보전략담당 상무 인터뷰에서 공개된 네 지표는 다음과 같다. ① 다운타임 114h→52h(-54%), ② 주요 비즈니스 프로그램 성능 90.5% 개선, ③ 1년 매출대장 40만 건 조회 = 2분, ④ 통합 범위 10모듈 × 3사 × 6국 거점 × 110국 수출.</p>
+  <p>성능 90.5% 개선은 S/4HANA 인메모리와 코드 단순화로 디스크 I/O 병목을 해소한 결과로, 야간 배치에 의존하던 보고·분석이 실시간으로 가능해졌음을 뜻한다. 통합 범위는 일반 ERP 핵심 7~8개 모듈을 넘어 GRC·EHS(화학물질관리)까지 포함했고, EU REACH·미국 TSCA·한국 화평법 등 국가별 규제 대응을 단일 플랫폼에서 처리한다. 3사 × 6국 거점 × 110국 수출의 ‘3중 다차원’ 통합을 7개월에 가동한 점이 본 성과의 절대 규모이다.</p>
+
+  <p><span class="supp-tag">[발표 후 보완 — 정량 수치의 근거]</span> 발표 때 “수치의 근거”를 질문받아 산출 방식을 명시한다. 네 지표 모두 정보전략담당 상무의 공개 인터뷰<sup>[1]</sup>(2019, 테크수다)에서 직접 제시된 1차 수치이며, 다운타임 진단·단축은 SAP VAS 공식 자료<sup>[12]</sup>로 보강된다. 조회 ‘40만 건 = 2분’은 인터뷰에 직접 명시된 값이고, ECC 시점의 비교치(약 21분)는 “90.5% 개선”을 역산한 추정 참고치이다(원자료 미공개). 또한 다운타임 62시간을 금액으로 환산하면(2017 매출 15.87조 ÷ 365일 × 62h ≒ 약 1,100억 규모) 영업 규모를 가늠할 수 있으나, 이는 실제 손실 회피액이 아니라 참고 환산치이며, 핵심은 금액이 아니라 연속공정 산업에서 전환 시간이 곧 운영 리스크라는 점이다.</p>
+
+  <div class="pno">- 5 -</div>
+</section>
+
+<!-- ============ PAGE 6 : Step 4-2 ============ -->
+<section class="page">
+  <h3>3. 정성 성과 5가지 가치</h3>
+  <p>정량 지표로는 포착되지 않지만 본 사례의 본질적 가치를 구성하는 정성 성과는 다섯 가지이다.</p>
+  <ol>
+    <li><strong>3사 시너지(핵심)</strong> — 폴리머·정밀화학·고기능 소재를 본연 경쟁력을 유지하면서 통합 운영. 단순 시스템 통합이 아닌 ‘통합 경영 플랫폼’ 확보.</li>
+    <li><strong>글로벌 운영</strong> — 한국 본사 + 6국 거점 + 110국 수출을 단일 플랫폼·실시간 가시성으로. 다국가 회계·다통화·다규제 대응.</li>
+    <li><strong>디지털 코어(핵심)</strong> — 인메모리 + 통합 데이터 호수가 2018 DT 전략 → 2020 가속화의 출발점. 후속 AI·빅데이터·디지털 트윈의 기반.</li>
+    <li><strong>MDM 통합</strong> — 3사 각자 코드 → 그룹 표준 코드. 장기 통합 보고·KPI 모니터링의 토대(단기엔 드러나지 않는 기반 가치).</li>
+    <li><strong>사용자 체감·변경관리</strong> — “회계부서 박수”<sup>[1]</sup>로 사용자 저항을 회피. 13년 SAP 경험 + 본연 경쟁력 유지 + 회계 등 명백한 효율 개선의 빠른 성과가 자발적 만족으로 이어짐.</li>
+  </ol>
+  <p class="small">“유가에 흔들리지 않고 지속성장하기 위해 디지털 코어를 탄탄히 해 디지털 트랜스포메이션, 인텔리전트 엔터프라이즈로 가야 한다.” — 정보전략담당 상무 인터뷰(2019)<sup>[1]</sup></p>
+
+  <h3>4. 초기 목표(Step 2) 대비 달성도 매칭</h3>
+  <table>
+    <caption>[표 4-2] 4대 초기 목표 대비 달성도</caption>
+    <thead><tr><th style="width:24%">초기 목표</th><th style="width:40%">관련 PIR 성과</th><th class="c" style="width:9%">달성</th><th>평가</th></tr></thead>
+    <tbody>
+      <tr><td>① 3사 통합·시너지</td><td>10모듈×3사×6국 단일 S/4HANA(2017.11)</td><td class="c">달성</td><td>시너지 + 본연 가치 보존 동시 확보</td></tr>
+      <tr><td>② 글로벌 운영 지원</td><td>한국+6국+110국 단일 플랫폼</td><td class="c">달성</td><td>실시간 가시성·다통화 대응 확보</td></tr>
+      <tr><td>③ 중복투자 제거</td><td>그룹 SI 통합 운영체계 + 플랫폼 단일화</td><td class="c">달성</td><td>이중 투자·후속 확장 리스크 완화</td></tr>
+      <tr><td>④ 디지털 코어 확보</td><td>인메모리 + 데이터 호수 + DT 로드맵</td><td class="c">달성</td><td>후속 DT 전략·가속화의 인프라 출발점</td></tr>
+    </tbody>
+  </table>
+  <p class="small">4대 목표는 ‘시스템 가동’이 아닌 ‘비즈니스 가치 창출’ 기준으로 평가했고 모두 달성됐다. 통합이 실패했다면 2018년 그룹 차원 후속 디지털 투자가 의결될 수 없었을 것이므로, 후속 효과 기록이 PIR 결과를 사후 입증한다.</p>
+
+  <h3>5. 후속 효과 — 객관적 사후 입증</h3>
+  <p>S/4HANA 가동 직후, 회사가 자체 홍보할 동기가 약한 객관 기록(이사회 의결)에서 후속 효과가 확인된다. 2018.02.08 그룹공통시스템 사용 계약과 디지털혁신협의체 협약(가동 3개월 만의 그룹 디지털 협력 가입), 2018.05.28 롯데지주 환경·에너지 통합서비스 계약, 2018.12.19 IT 시스템 10건 일괄 의결(‘SAP 라이선스 추가 구매’ 포함)이 그것이다. 비전 또한 2019년 ‘글로벌 톱10’에서 2020 신년사 ‘2030 글로벌 톱7’으로 격상되었다.<sup>[9][13]</sup></p>
+
+  <h3>6. 타사 벤치마크 — 도입 시기의 선구성</h3>
+  <table>
+    <caption>[표 4-3] 국내 기업 S/4HANA 도입 시기 비교</caption>
+    <thead><tr><th style="width:30%">기업</th><th style="width:26%">S/4HANA 도입 시점</th><th>비고</th></tr></thead>
+    <tbody>
+      <tr><td><strong>롯데케미칼</strong>(석유화학)</td><td>2017.11 가동</td><td>국내 대기업 중 매우 이른 시기, 3사 + 6국 동시, 다운타임 54%↓</td></tr>
+      <tr><td>SK하이닉스(반도체)</td><td>2018.04 착수·2019.02 가동</td><td>롯데보다 약 1년 늦음</td></tr>
+      <tr><td>삼성전자 N-ERP</td><td>2022</td><td>주문 조회 20분→3~4분</td></tr>
+      <tr><td>LG화학</td><td>2023~ (MOU)</td><td>약 5~6년 늦음</td></tr>
+      <tr><td>삼성전기</td><td>2026</td><td>다운타임 75%↓, 약 9년 늦음</td></tr>
+    </tbody>
+  </table>
+  <p class="small">정량 수치의 직접 비교는 측정 기준·시스템 범위·산업 특성 차이로 신중해야 하므로(삼성전기 75% vs 롯데 54%를 우열로 볼 수 없다), 본 표는 시기적 위치와 도입 맥락 차이 중심의 비교로 한정한다. PIR 종합 결과, 정량·정성·초기목표·후속효과·시기 위치 5영역이 모두 충족되었고 강의 PIR 3대 기준에 정합한다. 다만 ROI·NPS/CSAT·해외 거점 적응도·부정 효과·독립 QA팀 PIR은 비공개라는 검증 한계가 있다.</p>
+
+  <div class="pno">- 6 -</div>
+</section>
+
+<!-- ============ PAGE 7 : Step 4-3 (2026 현황 보완) ============ -->
+<section class="page">
+  <h3>7. 초기 목표는 2026년에 어떻게 되었는가 — 9년 후 현황</h3>
+  <p><span class="supp-tag">[발표 후 보완 — 2026 현재 상황]</span> 발표 때 “당시 제시한 목표가 2026년 현재 어떻게 됐는가”를 질문받아 본 절을 신설한다. 결론부터 말하면, ‘2030 글로벌 톱7·매출 50조’ 경영 비전은 사실상 좌초했으나 이는 ERP 도입의 실패가 아니라 외부 업황의 결과이며, 오히려 ERP가 만든 통합 기반이 위기 대응의 토대로 작동하고 있다.</p>
+  <table>
+    <caption>[표 4-4] 당시 목표 vs 2026 현실 타임라인</caption>
+    <thead><tr><th style="width:13%">시점</th><th style="width:46%">사실</th><th>의미</th></tr></thead>
+    <tbody>
+      <tr><td>2017</td><td>ERP 도입(본 분석 대상). 글로벌 22위·매출 약 16.5조<sup>[18]</sup></td><td>성공적 통합(성과는 위에서 검증)</td></tr>
+      <tr><td>2021</td><td>‘비전 2030’ 선포: 2030 매출 50조·글로벌 톱7, 그린사업 11조 투자<sup>[18]</sup></td><td>당시 제시한 목표</td></tr>
+      <tr><td>2022~25</td><td>4년 연속·9개 분기 연속 적자. 2024 매출 20.4조·영업손실 8,948억<sup>[14]</sup>, 2025 매출 18.5조·영업손실 9,436억·순손실 2.49조<sup>[15]</sup></td><td>목표와 정반대 — 중국발 공급과잉·업황 악화</td></tr>
+      <tr><td>2024.11~12</td><td>회사채 기한이익상실(EOD) 사유 발생 → 유동성 위기설 → 사채권자 집회로 진화<sup>[16]</sup></td><td>재무 위기</td></tr>
+      <tr><td>2021~25</td><td>‘자산 경량화’로 5년간 23개 소속법인 처분(약 2조 확보)<sup>[17]</sup></td><td>구조조정</td></tr>
+      <tr><td>2026.5</td><td>1분기 영업이익 735억 — 흑자 전환(4년 적자 탈출), 매출 4.99조<sup>[19]</sup></td><td>반등 신호</td></tr>
+      <tr><td>2026</td><td>스페셜티(고부가)·AI 조직 신설 중심 사업 재편, 친환경 에너지 사업 추진<sup>[19][20]</sup></td><td>체질 개선 본격화</td></tr>
+    </tbody>
+  </table>
+
+  <h4>해석 — ‘ERP 성과’와 ‘그룹 업황’을 분리해 평가해야 한다</h4>
+  <ol>
+    <li><strong>목표는 좌초</strong> — 2025 매출 18.5조로 2017년(16.5조)에서 거의 늘지 못했고, 2030 톱7·매출 50조 목표와 큰 괴리가 생겼다.</li>
+    <li><strong>원인은 외부</strong> — 적자의 원인은 중국발 공급과잉·석유화학 업황 구조 악화라는 시장 요인이다. 2017 ERP 통합의 운영 성과(다운타임·통합 범위)와는 다른 층위의 문제다.</li>
+    <li><strong>기반은 작동</strong> — 23개 법인의 신속한 매각·정리, 실시간 손익 관리, AI·스페셜티 전환은 단일 통합 시스템 없이는 어렵다. 2026년 1분기 흑자전환이 회복의 첫 신호다.</li>
+  </ol>
+  <p class="concl">PIR의 결론은 유효하다. ERP 도입(2017)은 ‘성공’이었고, 그룹의 경영 목표(2030 비전)는 외부 업황으로 ‘미달’이다. 두 평가는 다른 층위이며, 통합 ERP가 깔아둔 디지털 기반은 오히려 2024~2026 위기 대응과 사업 재편(스페셜티·AI 전환)의 토대로 쓰이고 있다.</p>
+  <p class="small">※ 본 절의 2026 수치는 금융감독원 공시 및 언론 보도에 근거한다(출처 [14]~[20], 10면). 발표 원자료(2017~2020)에는 없던 보완 분석이다.</p>
+
+  <div class="pno">- 7 -</div>
+</section>
+
+<!-- ============ PAGE 8 : Step 5-1 ============ -->
+<section class="page">
+  <h2>STEP 5. 결론 및 시사점</h2>
+  <p>Step 1~4를 종합·일반화하는 단계이다. 핵심은 성공 요인의 나열이 아니라, ERP 도입을 ‘통합 경영 플랫폼 선택’으로 재해석하는 것이다.</p>
+  <p>강의 자료(31p) ‘개발 vs 구매’ 5대 차이로 본 사례를 보면, ‘누구 제품을 사느냐(SAP)’는 이미 정해진 상태였고 모든 의사결정이 ‘어떻게 우리 몸에 맞출까’(3사 통합·글로벌·본연 경쟁력 유지)에 집중되었다. 그리고 13년 누적 SAP 자산이라는 특수 조건이 핵심 주체·분석 본질·TO-BE 기준·핵심 구축 작업·가장 큰 리스크의 5개 차원 모두에서 본 사례를 일반적 패키지 도입과 차별화했다.</p>
+
+  <h3>1. 핵심 성공 요인(CSF) 5가지 — 하나의 의사결정 철학</h3>
+  <table>
+    <caption>[표 5-1] 핵심 성공 요인 5가지</caption>
+    <thead><tr><th style="width:24%">CSF</th><th>내용</th></tr></thead>
+    <tbody>
+      <tr><td>① 기존 SAP 자산 활용(Brownfield 성격)</td><td>2003 SMART·2010 GEMS 13년 자산을 통합형 컨버전으로 이전 → 7개월 압축 + 변경관리 부담 최소화 + S/4HANA 신기술 동시 확보<sup>[8][10]</sup></td></tr>
+      <tr><td>② 명확한 비즈니스 목표</td><td>4대 목표(3사 통합·글로벌 가시성·중복투자 제거·디지털 코어)를 사전 설정 → Step 2 의사결정의 기반, Step 4 PIR에서 모두 회수<sup>[1]</sup></td></tr>
+      <tr><td>③ SAP VAS 사전 통제</td><td>진단 114h → Fit-Gap·Migration Planning·Go-Live Check → 52h. 사후 대응이 아닌 사전 통제가 결정적 분기점<sup>[1][12]</sup></td></tr>
+      <tr><td>④ 그룹 SI 장기 통제권</td><td>외부 글로벌 SI가 아닌 롯데정보통신 선택 → 가동 후 안정 운영체계 + 그룹 IT 통제권 + 2018+ 그룹공통시스템으로 자연 확장<sup>[1][9]</sup></td></tr>
+      <tr><td>⑤ 표준화·차별화 균형(3트랙)</td><td>기준정보·재무·구매 = BPR 표준화 + 본연 경쟁력 = Customizing 보존. 강제 통일도 방치도 아닌 능동적 균형, M&amp;A 통합의 가장 본질적 의사결정<sup>[1]</sup></td></tr>
+    </tbody>
+  </table>
+  <p class="concl">5대 CSF는 독립 항목이 아니라 하나의 철학의 5측면이다 — “기존 자산을 진화의 디딤돌로 삼고, 비즈니스 목표에서 출발하여, 리스크를 사전 통제하며, 그룹 자원을 적극 활용하면서, 표준화와 차별화를 능동적으로 균형 잡는다.”</p>
+  <p>발표에서는 위 5개를 3축으로 압축한다. ① 기존 자산(Configuration 위험을 13년 자산으로 통제), ② 사전 통제(VAS·테스트·다운타임 관리 — 강의 구현 비상계획 18p 및 PIR 19p 정합), ③ 표준화·차별화 균형(3트랙 능동 관리 — TO-BE 기준의 강제 수용 회피). 나머지 2개(명확한 목표·그룹 SI)는 ①·② 카드의 배경 조건 및 Q&amp;A 백업으로 회수한다.</p>
+
+  <div class="pno">- 8 -</div>
+</section>
+
+<!-- ============ PAGE 9 : Step 5-2 ============ -->
+<section class="page">
+  <h3>2. 한계 — 타 기업 적용 전 확인해야 할 조건 4가지</h3>
+  <p>아래는 롯데케미칼의 ‘실패 요인’이 아니라, 이 사례를 다른 기업에 적용할 때 그대로 복제하지 말고 반드시 확인해야 할 조건 4가지이다(의도된 트레이드오프·구조적 제약).</p>
+  <table>
+    <caption>[표 5-2] 적용 전 확인 조건</caption>
+    <thead><tr><th style="width:24%">체크포인트</th><th style="width:38%">의미</th><th>적용 시 확인 질문</th></tr></thead>
+    <tbody>
+      <tr><td>① ROI 비공개</td><td>투자 규모·정량 ROI가 공개되지 않음</td><td>우리 기업은 비용·효과를 얼마나 측정·공개할 수 있는가?</td></tr>
+      <tr><td>② 표준화 트레이드오프</td><td>모든 업무 표준화 X — 본연 경쟁력 보존(향후 업그레이드 부담)</td><td>표준화할 업무와 보존할 업무를 구분했는가?</td></tr>
+      <tr><td>③ 온프레미스 vs 클라우드</td><td>2017 당시 선택은 온프레미스 중심(SAP는 이후 Cloud-First 전환)</td><td>현재는 클라우드 전환 비용·조직 저항까지 검토했는가?</td></tr>
+      <tr><td>④ 인수회사 적응 비가시성</td><td>인수된 회사 직원 적응·변경관리 성과의 정량 공개 제한</td><td>사용자 교육·현장 저항을 어떻게 관리할 것인가?</td></tr>
+    </tbody>
+  </table>
+
+  <h3>3. 타 기업 적용 시사점 — 누구에게 유효한가</h3>
+  <p>본 사례는 모든 기업의 정답이 아니라, 특정 조건의 기업에 더 강하게 작동하는 참고 사례이다.</p>
+  <ol>
+    <li><strong>M&amp;A 통합 기업</strong> — 인수 후 시스템·프로세스가 분산된 기업. 롯데는 3사 병존을 단일 디지털 코어로 묶었다. 기준정보·프로세스·권한 체계를 먼저 통합해야 한다.</li>
+    <li><strong>장치산업·연속공정 기업</strong> — 화학·정유·제철·반도체처럼 다운타임 비용이 큰 기업. 전환 리스크 관리가 핵심이며, 테스트·컷오버·Rollback 기준을 먼저 설계해야 한다.</li>
+    <li><strong>2027 ECC 지원 전환점 기업</strong> — SAP ECC 표준 지원은 2027년, 연장 지원은 2030년 종료된다. 단순 버전 업그레이드가 아니라 클라우드·AI·데이터 구조까지 함께 결정해야 하며, Brownfield·Greenfield·Cloud 전환 전략을 조직 여건에 맞게 비교해야 한다.</li>
+  </ol>
+
+  <h3>4. 본 사례의 본질적 통찰 — 단일 디지털 코어로 수렴</h3>
+  <ol>
+    <li><strong>운영 기준 통합</strong> — ERP 전환은 시스템 교체가 아니라 조직의 운영 기준을 하나로 재설계하는 선택이다.</li>
+    <li><strong>누적 진화</strong> — 디지털 자산은 단발 프로젝트가 아니라 SMART→GEMS→S/4HANA→DT로 누적된 진화의 결과다.</li>
+    <li><strong>트레이드오프 관리</strong> — 의사결정의 합리성은 최적해가 아니라 트레이드오프(Big Bang↔Roll-out, 표준화↔차별화)의 명시적 관리에서 나온다.</li>
+  </ol>
+  <p class="concl">세 통찰은 결국 하나로 모인다 — SAP S/4HANA 중심의 단일 디지털 코어. ERP 도입의 본질은 시스템 구축이 아니라 조직의 운영 기준을 하나로 재설계하는 것이다.</p>
+
+  <div class="pno">- 9 -</div>
+</section>
+
+<!-- ============ PAGE 10 : Step 5-3 + 출처 ============ -->
+<section class="page">
+  <h3>5. S/4HANA 이후 — 디지털 확장 로드맵과 2026 현황</h3>
+  <p>S/4HANA는 종착점이 아니라 디지털 확장의 출발점이다. 단일 디지털 코어 위에 ① 클라우드 전환(Cloud-First 재검토), ② AI·빅데이터(분석·예측 의사결정), ③ 디지털 트윈·IoT(공정 데이터 + 경영 데이터의 실시간 최적화)의 단계가 이어지며, 이는 글로벌 확장을 위한 디지털 기반이 된다.</p>
+  <p><span class="supp-tag">[발표 후 보완 — 2026 현황 연결]</span> 이 로드맵은 추상적 전망이 아니라 현재 진행형이다. 2026년 롯데케미칼은 AI 솔루션 조직을 신설(예측 설비유지보수·최적 소재조합 시뮬레이션)하고 고부가 스페셜티 중심으로 사업을 재편하고 있다<sup>[19][20]</sup>. 다만 7면에서 보았듯 ‘2030 글로벌 톱7’ 경영 목표 자체는 업황 악화로 사실상 좌초했으므로, 본 로드맵은 ‘성과 자랑’이 아니라 ‘통합 기반 위에서의 생존·재편 과제’로 읽어야 한다.</p>
+
+  <h3>6. 최종 결론</h3>
+  <p>롯데케미칼은 시스템을 교체한 것이 아니라 ‘통합 운영 기준’을 다시 설계했다. ① 기존 13년 SAP 자산을 버리지 않고 통합형 컨버전으로 이전해 7개월 압축을 가능케 했고, ② BPR·Customizing·Add-on 3트랙으로 표준화와 본연 경쟁력을 동시에 확보했으며, ③ 하나의 디지털 코어로 수렴시켰다. 결국 ERP 도입은 단순한 시스템 구축이 아니라 M&amp;A 이후 ‘하나의 회사’로 운영하기 위한 통합 경영 플랫폼 선택이며, 그 성공은 기존 자산의 진화적 활용과 트레이드오프의 능동적 관리에서 나온다.</p>
+  <p class="small">본 사례는 강의 6단계(타당성·요구사항·설계·구축·구현·PIR) 모두에서 1차 자료와 사후 검증이 가능한 드문 모범 사례인 동시에, ‘기존 SAP 자산 보유’라는 특수 조건이 표준 프레임을 어떻게 변형시키는지를 보여주는 학습 자원이다.</p>
+
+  <h3>참고 문헌 및 출처</h3>
+  <div class="sources">
+    <p>[1] 테크수다(2019.09.11), 「ERP는 글로벌 톱10 회사 성장의 중추 — 롯데케미칼 정보전략담당 상무 인터뷰」.</p>
+    <p>[8] 롯데케미칼(주), 제42기 사업보고서(FY2017), 금융감독원 DART — 2010 GEMS 구축, 2016 M&amp;A 인수금액(정밀화학 4,650억/첨단소재 2조 3,265억), 2017 연결 매출 15조 8,745억·영업이익 2조 9,297억 등.</p>
+    <p>[9] 롯데케미칼(주), 제43기 정정 사업보고서(FY2018), DART — 2018 이사회 의결사항(그룹공통시스템·디지털혁신협의체·환경에너지 통합서비스·SAP 라이선스 추가 구매 등).</p>
+    <p>[10] 롯데케미칼 공식 회사사 — 2003–04 호남석유화학 SMART ERP 구축(Big Bang, 10개월).</p>
+    <p>[11] 「석유화학기업 IT서비스의 클라우드 전환의도에 영향을 미치는 요인에 관한 연구」(2020, 박사학위논문) — 산업 특성·클라우드 적용률(제조·건설 대기업 10.5%) 등.</p>
+    <p>[12] SAP 공식 자료, 「SAP Value Assurance Service for S/4HANA」 컴포넌트 구성(Fit-Gap·Migration Planning·Go-Live Readiness Check 등).</p>
+    <p>[13] 롯데케미칼 보도자료(2020.08.12), 「DT(Digital Transformation) 전략 추진」.</p>
+    <p>[강의] 광운대학교 경영대학 ERP개론 강의 자료(#2 ERP 도입 및 시스템 구축 단계별 관리 프로세스) 5p·13p·17~19p·23p·27~31p.</p>
+    <p>[14] 아주경제(2025.02.07), 「롯데케미칼, 2024년 영업손실 8,948억…3년 연속 적자」.</p>
+    <p>[15] 아주경제(2026.02.04), 「롯데케미칼, 2025년 영업손실 9,436억…적자 확대」.</p>
+    <p>[16] 비즈한국, 「연이은 자산 매각…롯데그룹 유동성 위기설 앞과 뒤」.</p>
+    <p>[17] 헤럴드경제, 「롯데케미칼, 5년간 23개 소속법인 처분」.</p>
+    <p>[18] 이데일리, 「롯데케미칼, 10년 내 매출 50조…글로벌 톱7 목표」(비전 2030).</p>
+    <p>[19] 비즈워치(2026.05.11), 「롯데케미칼, 4년 적자 끊었다…1분기 735억 깜짝 흑자」.</p>
+    <p>[20] 에너지뉴스(2026), 「롯데케미칼, 2026년 친환경 에너지사업 속도감 있게 추진」.</p>
+  </div>
+
+  <div class="pno">- 10 -</div>
+</section>
+
+</body>
+</html>
